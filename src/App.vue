@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { ref } from "vue"
-
-const title = ref("Age of Sky Traders")
+import StartScreen from "./components/screens/Start.screen.vue"
 </script>
 
 <template>
     <div class="app">
-        <h1>{{ title }}</h1>
+        <StartScreen />
     </div>
 </template>
 
