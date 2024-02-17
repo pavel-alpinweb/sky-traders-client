@@ -1,12 +1,8 @@
-<script setup lang="ts">
-import StartScreen from "./components/screens/Start.screen.vue"
-import GameScreen from "./components/screens/Game.screen.vue"
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <div class="app">
-        <GameScreen />
-        <StartScreen />
+        <router-view />
     </div>
 </template>
 

@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue"
+import { useRouter } from "vue-router"
 
 const name = ref("")
+const router = useRouter()
 
 const goToGame = (event: Event) => {
     event.preventDefault()
+    router.push({ path: "/game" })
 }
 </script>
 
