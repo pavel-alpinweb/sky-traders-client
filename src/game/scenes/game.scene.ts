@@ -16,7 +16,7 @@ class GameScene extends Phaser.Scene {
         this.add.image(400, 300, "sky")
         this.player = this.physics.add.image(400, 300, "ship").setScale(0.2).refreshBody()
         this.target = new Phaser.Math.Vector2()
-        this.input.on("pointerdown", (pointer: any) => {
+        this.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
             this.target.x = pointer.x
             this.target.y = pointer.y
 
