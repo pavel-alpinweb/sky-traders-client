@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useGameScene } from "../../game/scenes/game.scene.ts"
+import { onMounted } from "vue"
+onMounted(() => {
+    useGameScene()
+})
+</script>
 
 <template>
     <div id="game" class="game-screen"></div>
