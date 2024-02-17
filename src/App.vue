@@ -1,12 +1,8 @@
-<script setup lang="ts">
-import { ref } from "vue"
-
-const title = ref("Age of Sky Traders")
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <div class="app">
-        <h1>{{ title }}</h1>
+        <router-view />
     </div>
 </template>
 
