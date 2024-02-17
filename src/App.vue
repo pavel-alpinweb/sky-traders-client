@@ -9,3 +9,11 @@ const title = ref('Age of Sky Traders');
     <h1>{{ title }}</h1>
   </div>
 </template>
+
+<style lang="scss">
+$color: #fff;
+
+h1 {
+  color: $color;
+}
+</style>
