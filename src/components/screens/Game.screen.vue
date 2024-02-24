@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useGameScene } from "../../game/scenes/game.scene.ts"
 import { onMounted } from "vue"
+import { Game } from "phaser"
 onMounted(() => {
-    useGameScene()
+    const game: Game = useGameScene()
+    console.log("Start game!", game)
 })
 </script>
 
