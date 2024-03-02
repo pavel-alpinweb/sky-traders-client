@@ -1,7 +1,8 @@
 import * as Phaser from "phaser"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_ROTATION_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { engineConfig } from "../configs/engine.config.ts"
 
-class GameScene extends Phaser.Scene {
+class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
     private target!: Phaser.Math.Vector2
     constructor() {
@@ -50,20 +51,10 @@ class GameScene extends Phaser.Scene {
 
 export function useGameScene() {
     const gameContainer = <HTMLDivElement>document.getElementById("game")
-
     const config = {
-        type: Phaser.AUTO,
-        width: window.innerWidth,
-        height: window.innerHeight,
+        ...engineConfig,
         parent: gameContainer,
-        scene: GameScene,
-        physics: {
-            default: "arcade",
-            arcade: {
-                gravity: { y: 0 },
-                debug: false,
-            },
-        },
+        scene: MapScene,
     }
 
     return new Phaser.Game(config)
