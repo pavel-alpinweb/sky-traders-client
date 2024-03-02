@@ -1,8 +1,7 @@
 import * as Phaser from "phaser"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_ROTATION_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
-import { engineConfig } from "../configs/engine.config.ts"
 
-class MapScene extends Phaser.Scene {
+export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
     private target!: Phaser.Math.Vector2
     constructor() {
@@ -47,15 +46,4 @@ class MapScene extends Phaser.Scene {
             this.physics.velocityFromRotation(Phaser.Math.DegToRad(this.player.body.rotation), BASIC_SHIP_ROTATION_VELOCITY, this.player.body.velocity)
         }
     }
-}
-
-export function useGameScene() {
-    const gameContainer = <HTMLDivElement>document.getElementById("game")
-    const config = {
-        ...engineConfig,
-        parent: gameContainer,
-        scene: MapScene,
-    }
-
-    return new Phaser.Game(config)
 }

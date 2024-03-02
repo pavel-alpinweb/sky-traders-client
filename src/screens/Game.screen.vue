@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useGameScene } from "../scenes/game.scene.ts"
 import { onMounted } from "vue"
 import { Game } from "phaser"
+import { useMapLevel } from "../levels/map.level.ts"
 onMounted(() => {
-    const game: Game = useGameScene()
+    const game: Game = useMapLevel()
     console.log("Start game!", game)
 })
 </script>
