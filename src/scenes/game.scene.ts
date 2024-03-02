@@ -1,5 +1,6 @@
 import * as Phaser from "phaser"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_ROTATION_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { mapAssetsUploadComposition } from "../compositions/map-assets-upload.composition.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
@@ -9,8 +10,8 @@ export class MapScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image("sky", "/assets/backgrounds/sky.png")
-        this.load.image("ship", "/assets/ships/ship.png")
+        mapAssetsUploadComposition.playerShipUpload(this, "ship")
+        mapAssetsUploadComposition.mapBackgroundUpload(this)
     }
 
     create() {
