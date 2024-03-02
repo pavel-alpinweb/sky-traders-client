@@ -1,6 +1,6 @@
 import Phaser from "phaser"
 
-export const mapBackgroundComposition = {
+export const mapComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
         scene.load.image(ship, `/assets/ships/${ship}.png`)
     },
@@ -14,8 +14,13 @@ export const mapBackgroundComposition = {
 
     addMapBackground(scene: Phaser.Scene): void {
         scene.add.image(window.innerWidth / 2, window.innerHeight / 2, "map")
-        scene.add.sprite(1375, 500, "town")?.preFX?.addShadow()
-        scene.add.sprite(522, 942, "island").setScale(0.4)?.preFX?.addShadow()
-        scene.add.sprite(1447, 1080, "island2").setScale(0.7)?.preFX?.addShadow()
+        const islands = scene.physics.add.staticGroup()
+        islands.create(1375, 500, "town")?.preFX?.addShadow()
+        islands.create(522, 942, "island").setScale(0.4)?.preFX?.addShadow()
+        islands.create(1447, 1080, "island2").setScale(0.7)?.preFX?.addShadow()
+    },
+
+    addMapTown(scene: Phaser.Scene, key: string): Phaser.Types.Physics.Arcade.SpriteWithStaticBody {
+        return scene.physics.add.staticSprite(1375, 500, key)
     },
 }
