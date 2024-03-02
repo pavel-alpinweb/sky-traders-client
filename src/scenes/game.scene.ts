@@ -13,8 +13,11 @@ class GameScene extends Phaser.Scene {
     }
 
     create() {
-        this.add.image(400, 300, "sky")
-        this.player = this.physics.add.image(400, 300, "ship").setScale(0.2).refreshBody()
+        this.add.image(window.innerWidth / 2, window.innerHeight / 2, "sky")
+        this.player = this.physics.add
+            .image(window.innerWidth / 2, window.innerHeight / 2, "ship")
+            .setScale(0.2)
+            .refreshBody()
         this.target = new Phaser.Math.Vector2()
         this.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
             this.target.x = pointer.x
@@ -50,8 +53,8 @@ export function useGameScene() {
 
     const config = {
         type: Phaser.AUTO,
-        width: 800,
-        height: 600,
+        width: window.innerWidth,
+        height: window.innerHeight,
         parent: gameContainer,
         scene: GameScene,
         physics: {
