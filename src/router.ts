@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router"
-import StartScreen from "./components/screens/Start.screen.vue"
-import GameScreen from "./components/screens/Game.screen.vue"
-import TownScreen from "./components/screens/Town.screen.vue"
+import StartScreen from "./screens/Start.screen.vue"
+import GameScreen from "./screens/Game.screen.vue"
+import TownScreen from "./screens/Town.screen.vue"
 
 export const routes = [
     {

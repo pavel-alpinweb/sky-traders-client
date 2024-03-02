@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useGameScene } from "../../game/scenes/game.scene.ts"
+import { useGameScene } from "../scenes/game.scene.ts"
 import { onMounted } from "vue"
 import { Game } from "phaser"
 onMounted(() => {
