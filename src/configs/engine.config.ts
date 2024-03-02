@@ -2,8 +2,8 @@ import Phaser from "phaser"
 
 export const engineConfig = {
     type: Phaser.AUTO,
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 2048,
+    height: 1536,
     physics: {
         default: "arcade",
         arcade: {

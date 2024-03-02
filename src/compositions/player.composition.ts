@@ -10,12 +10,18 @@ export const playerComposition = {
     ): Phaser.Physics.Arcade.Image & {
         body: Phaser.Physics.Arcade.Body
     } {
-        return scene.physics.add.image(x, y, ship).setScale(BASIC_SHIP_SCALE).refreshBody()
+        const player = scene.physics.add.image(x, y, ship).setScale(BASIC_SHIP_SCALE).refreshBody()
+        player?.preFX?.addShadow()
+        return player
     },
 
     movePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }): Phaser.Math.Vector2 {
         const target = new Phaser.Math.Vector2()
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
+            console.log("target", {
+                x: pointer.x,
+                y: pointer.y,
+            })
             target.x = pointer.x
             target.y = pointer.y
 
