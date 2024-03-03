@@ -2,7 +2,7 @@
 export const BASIC_SHIP_SPEED = 200
 export const BASIC_SHIP_ANGULAR_VELOCITY = 180
 export const BASIC_SHIP_ROTATION_VELOCITY = 90
-export const BASIC_SHIP_SCALE = 0.3
+export const BASIC_SHIP_SCALE = 0.2
 
 /* GAMEPLAY SETTINGS */
 export const TARGET_TOLERANCE = 4
