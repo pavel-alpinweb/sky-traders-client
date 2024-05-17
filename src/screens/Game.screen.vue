@@ -1,20 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from "vue"
-import { Game } from "phaser"
 import { useMapLevel } from "../levels/map.level.ts"
-import { useRouter } from "vue-router"
 
-let game: null | Game = null
-const router = useRouter()
-
-const callback = () => {
-    if (game) {
-        game?.destroy(true)
-        router.push("/town")
-    }
-}
 onMounted(() => {
-    game = useMapLevel(callback)
+    useMapLevel()
 })
 </script>
 

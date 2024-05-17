@@ -1,9 +1,10 @@
 import Phaser from "phaser"
+import { LEVEL_HEIGHT, LEVEL_WIDTH } from "./gameplay.config.ts"
 
 export const engineConfig = {
     type: Phaser.AUTO,
-    width: 2048,
-    height: 1536,
+    width: LEVEL_WIDTH,
+    height: LEVEL_HEIGHT,
     physics: {
         default: "arcade",
         arcade: {
