@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    <h2>Test component</h2>
+    <img src="/assets/towns/town-panarame.png" alt="town" />
 </template>
 
 <style scoped lang="scss"></style>
