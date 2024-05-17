@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue"
 import { useRouter } from "vue-router"
 
-const name = ref("")
 const router = useRouter()
 
 const goToGame = (event: Event) => {
@@ -14,7 +12,6 @@ const goToGame = (event: Event) => {
 <template>
     <div class="start-screen">
         <form class="start-screen__form" @submit="goToGame">
-            <input class="start-screen__input" v-model="name" type="text" />
             <button class="start-screen__btn">Play</button>
         </form>
     </div>
