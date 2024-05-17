@@ -1,3 +1,7 @@
+/* BASE ENGINE SETTINGS */
+export const LEVEL_WIDTH = 1365
+export const LEVEL_HEIGHT = 768
+
 /* PLAYER SETTINGS */
 export const BASIC_SHIP_SPEED = 200
 export const BASIC_SHIP_ANGULAR_VELOCITY = 180
