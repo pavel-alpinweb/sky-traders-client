@@ -12,7 +12,7 @@ export const playerComposition = {
     } {
         const player = scene.physics.add.image(x, y, ship).setScale(BASIC_SHIP_SCALE).refreshBody()
         player?.preFX?.addShadow()
-        scene.cameras.main.setBackgroundColor(0xcdf8ef).startFollow(player)
+        scene.cameras.main.setBackgroundColor(0xcdf8ef).startFollow(player).setZoom(0.3)
         return player
     },
 

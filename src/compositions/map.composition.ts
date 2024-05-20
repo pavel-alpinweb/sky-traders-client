@@ -10,6 +10,15 @@ export const mapComposition = {
         scene.load.image("map", "/assets/tiles/surface.png")
     },
 
+    tileMapUpload(scene: Phaser.Scene) {
+        scene.load.tilemapTiledJSON("tilemap", "/assets/levels/dev.json")
+    },
+
+    islandUpload(scene: Phaser.Scene) {
+        scene.load.image("island-grass-big", "/assets/islands/island-grass-big.png")
+        scene.load.image("island-grass-small", "/assets/islands/island-grass-small.png")
+    },
+
     addMapBackground(scene: Phaser.Scene): void {
         scene.add
             .tileSprite(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, LEVEL_WIDTH * 4, LEVEL_HEIGHT * 4, "map")
@@ -21,5 +30,13 @@ export const mapComposition = {
 
     addMapTown(scene: Phaser.Scene, key: string): Phaser.Types.Physics.Arcade.SpriteWithStaticBody {
         return scene.physics.add.staticSprite(1375, 500, key)
+    },
+
+    createLevel(scene: Phaser.Scene): Phaser.Tilemaps.Tilemap {
+        return scene.make.tilemap({ key: "tilemap" })
+    },
+
+    createIslands(map: Phaser.Tilemaps.Tilemap) {
+        map.createFromObjects("layer up", { gid: 1, key: "island-grass-small" })
     },
 }
