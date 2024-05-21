@@ -22,7 +22,7 @@ export const mapComposition = {
     addMapBackground(scene: Phaser.Scene): void {
         scene.add
             .tileSprite(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, LEVEL_WIDTH * 4, LEVEL_HEIGHT * 4, "map")
-            .setScale(1.1)
+            .setScale(0.8)
             .setAlpha(0.8)
             .setScrollFactor(0.5)
             .postFX.addBlur(0, 2, 2, 0.2, 0xcdf8ef, 2)
@@ -37,6 +37,17 @@ export const mapComposition = {
     },
 
     createIslands(map: Phaser.Tilemaps.Tilemap) {
-        map.createFromObjects("layer up", { gid: 1, key: "island-grass-small" })
+        const islandsBottom = map.createFromObjects("islandsBottom", { gid: 2, key: "island-grass-big" })
+        const islandsTop = map.createFromObjects("islandsTop", { gid: 1, key: "island-grass-small" })
+        for (const island of islandsTop) {
+            // eslint-disable-next-line
+            // @ts-ignore
+            island.setScrollFactor(0.9)
+        }
+        for (const island of islandsBottom) {
+            // eslint-disable-next-line
+            // @ts-ignore
+            island.setScrollFactor(0.6)
+        }
     },
 }
