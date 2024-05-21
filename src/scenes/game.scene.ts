@@ -9,7 +9,7 @@ export class MapScene extends Phaser.Scene {
     private map!: Phaser.Tilemaps.Tilemap
 
     preload() {
-        mapComposition.playerShipUpload(this, "ship")
+        playerComposition.playerShipUpload(this, "ship")
         mapComposition.mapBackgroundUpload(this)
         mapComposition.tileMapUpload(this)
         mapComposition.islandUpload(this)
@@ -20,7 +20,8 @@ export class MapScene extends Phaser.Scene {
         this.map = mapComposition.createLevel(this)
         mapComposition.createIslands(this.map)
         this.player = playerComposition.initPlayer(this, "ship", LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2)
-        this.target = playerComposition.movePlayer(this, this.player)
+        this.target = playerComposition.initTarget()
+        playerComposition.movePlayer(this, this.player, this.target)
     }
 
     update() {

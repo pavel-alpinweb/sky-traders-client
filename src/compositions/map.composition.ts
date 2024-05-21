@@ -2,10 +2,6 @@ import Phaser from "phaser"
 import { LEVEL_HEIGHT, LEVEL_WIDTH } from "../configs/gameplay.config.ts"
 
 export const mapComposition = {
-    playerShipUpload(scene: Phaser.Scene, ship: string): void {
-        scene.load.image(ship, `/assets/ships/${ship}.png`)
-    },
-
     mapBackgroundUpload(scene: Phaser.Scene): void {
         scene.load.image("map", "/assets/tiles/surface.png")
     },
@@ -23,7 +19,7 @@ export const mapComposition = {
         scene.add
             .tileSprite(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, LEVEL_WIDTH * 4, LEVEL_HEIGHT * 4, "map")
             .setScale(0.8)
-            .setAlpha(0.8)
+            .setAlpha(0.6)
             .setScrollFactor(0.5)
             .postFX.addBlur(0, 2, 2, 0.2, 0xcdf8ef, 2)
     },
