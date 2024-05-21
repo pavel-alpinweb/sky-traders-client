@@ -1,6 +1,5 @@
 import Phaser from "phaser"
-import { BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
-
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_ROTATION_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
         scene.load.image(ship, `/assets/ships/${ship}.png`)
@@ -24,34 +23,42 @@ export const playerComposition = {
         return new Phaser.Math.Vector2()
     },
 
-    movePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.Math.Vector2): Phaser.Math.Vector2 {
+    movePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.Math.Vector2) {
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
             target.x = pointer.x
             target.y = pointer.y
+            const distance = Phaser.Math.Distance.BetweenPoints(player, target)
 
             scene.physics.moveToObject(player, target, BASIC_SHIP_SPEED)
+            if (distance < TARGET_TOLERANCE) {
+                player.body.reset(target.x, target.y)
+            }
             // player.setAngularVelocity(BASIC_SHIP_ANGULAR_VELOCITY).refreshBody()
         })
+    },
 
-        return target
+    onMovingPlayer(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.Math.Vector2) {
+        const distance = Phaser.Math.Distance.BetweenPoints(player, target)
+        if (distance < TARGET_TOLERANCE) {
+            player.body.reset(target.x, target.y)
+        }
     },
 
     rotatePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.Math.Vector2): void {
-        // const angleToPointer = Phaser.Math.RadToDeg(Phaser.Math.Angle.Between(player.x, player.y, target.x, target.y))
-        // const angleDelta = Phaser.Math.Angle.ShortestBetween(player.body.rotation, angleToPointer)
+        const angleToPointer = Phaser.Math.RadToDeg(Phaser.Math.Angle.Between(player.x, player.y, target.x, target.y))
+        const angleDelta = Phaser.Math.Angle.ShortestBetween(player.body.rotation, angleToPointer)
         const distance = Phaser.Math.Distance.BetweenPoints(player, target)
 
-        console.log(scene)
-        // if (Phaser.Math.Fuzzy.Equal(angleDelta, 0, TARGET_TOLERANCE)) {
-        //     player.body.rotation = angleToPointer
-        //     player.setAngularVelocity(0)
-        // } else {
-        //     player.setAngularVelocity(Math.sign(angleDelta) * BASIC_SHIP_ANGULAR_VELOCITY)
-        // }
+        if (Phaser.Math.Fuzzy.Equal(angleDelta, 0, TARGET_TOLERANCE)) {
+            player.body.rotation = angleToPointer
+            player.setAngularVelocity(0)
+        } else {
+            player.setAngularVelocity(Math.sign(angleDelta) * BASIC_SHIP_ANGULAR_VELOCITY)
+        }
 
         if (distance < TARGET_TOLERANCE) {
             player.body.reset(target.x, target.y)
-            // scene.physics.velocityFromRotation(Phaser.Math.DegToRad(player.body.rotation), BASIC_SHIP_ROTATION_VELOCITY, player.body.velocity)
+            scene.physics.velocityFromRotation(Phaser.Math.DegToRad(player.body.rotation), BASIC_SHIP_ROTATION_VELOCITY, player.body.velocity)
         }
     },
 }

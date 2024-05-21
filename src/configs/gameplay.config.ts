@@ -9,4 +9,4 @@ export const BASIC_SHIP_ROTATION_VELOCITY = 90
 export const BASIC_SHIP_SCALE = 0.2
 
 /* GAMEPLAY SETTINGS */
-export const TARGET_TOLERANCE = 2
+export const TARGET_TOLERANCE = 4
