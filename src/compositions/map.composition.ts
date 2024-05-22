@@ -34,8 +34,8 @@ export const mapComposition = {
 
     createIslands(map: Phaser.Tilemaps.Tilemap) {
         const islandsBottom = map.createFromObjects("islandsBottom", { gid: 2, key: "island-grass-big" })
-        const islandsTop = map.createFromObjects("islandsTop", { gid: 1, key: "island-grass-small" })
         const islandsMiddle = map.createFromObjects("islandMiddle", { gid: 3, key: "island-grass-small" })
+        const islandsTop = map.createFromObjects("islandsTop", { gid: 1, key: "island-grass-small" })
         for (const island of islandsTop) {
             // eslint-disable-next-line
             // @ts-ignore
