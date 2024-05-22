@@ -16,19 +16,15 @@ export class MapScene extends Phaser.Scene {
     }
 
     create() {
-        mapComposition.addMapBackground(this)
+        // mapComposition.addMapBackground(this)
         this.map = mapComposition.createLevel(this)
         mapComposition.createIslands(this.map)
         this.player = playerComposition.initPlayer(this, "ship", this.map.widthInPixels / 2, this.map.heightInPixels / 2)
         this.target = playerComposition.initTarget(this, this.player)
         playerComposition.movePlayer(this, this.player, this.target)
-        // if (this.map) {
-        //     this.map.tileToWorldXY(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2)
-        // }
     }
 
     update() {
-        // playerComposition.rotatePlayer(this, this.player, this.target)
         playerComposition.onMovingPlayer(this.player, this.target, this)
     }
 }

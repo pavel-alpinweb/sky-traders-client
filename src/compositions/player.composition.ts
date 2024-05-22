@@ -1,5 +1,5 @@
 import Phaser from "phaser"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_ROTATION_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
         scene.load.image(ship, `/assets/ships/${ship}.png`)
@@ -29,7 +29,6 @@ export const playerComposition = {
             target.y = pointer.worldY
 
             scene.physics.moveToObject(player, target, BASIC_SHIP_SPEED)
-            // player.setAngularVelocity(BASIC_SHIP_ANGULAR_VELOCITY).refreshBody()
         })
     },
 
@@ -38,27 +37,23 @@ export const playerComposition = {
         if (player.body.speed > 0) {
             scene.physics.moveToObject(player, target, BASIC_SHIP_SPEED)
             player.body.velocity.scale(Phaser.Math.SmoothStep(distance, 0, 20))
+            this.rotatePlayer(player, target)
         }
         if (distance < TARGET_TOLERANCE) {
             player.body.reset(target.x, target.y)
         }
     },
 
-    rotatePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.Math.Vector2): void {
+    rotatePlayer(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image): void {
         const angleToPointer = Phaser.Math.RadToDeg(Phaser.Math.Angle.Between(player.x, player.y, target.x, target.y))
         const angleDelta = Phaser.Math.Angle.ShortestBetween(player.body.rotation, angleToPointer)
-        const distance = Phaser.Math.Distance.BetweenPoints(player, target)
 
+        target.angle = angleToPointer
         if (Phaser.Math.Fuzzy.Equal(angleDelta, 0, TARGET_TOLERANCE)) {
             player.body.rotation = angleToPointer
             player.setAngularVelocity(0)
         } else {
             player.setAngularVelocity(Math.sign(angleDelta) * BASIC_SHIP_ANGULAR_VELOCITY)
-        }
-
-        if (distance < TARGET_TOLERANCE) {
-            player.body.reset(target.x, target.y)
-            scene.physics.velocityFromRotation(Phaser.Math.DegToRad(player.body.rotation), BASIC_SHIP_ROTATION_VELOCITY, player.body.velocity)
         }
     },
 }
