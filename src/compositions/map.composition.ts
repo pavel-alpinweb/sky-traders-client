@@ -39,17 +39,17 @@ export const mapComposition = {
         for (const island of islandsTop) {
             // eslint-disable-next-line
             // @ts-ignore
-            island.setScrollFactor(0.95).setScale(0.95)
+            island.setScrollFactor(0.9).setScale(0.9)
         }
         for (const island of islandsMiddle) {
             // eslint-disable-next-line
             // @ts-ignore
-            island.setScrollFactor(0.75).setScale(0.75)
+            island.setScrollFactor(0.6).setScale(0.6)
         }
         for (const island of islandsBottom) {
             // eslint-disable-next-line
             // @ts-ignore
-            island.setScrollFactor(0.5).setScale(0.5)
+            island.setScrollFactor(0.4).setScale(0.4)
         }
     },
 }
