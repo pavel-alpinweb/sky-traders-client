@@ -18,7 +18,7 @@
                  "width":1024,
                  "x":312,
                  "y":1868
-                }, 
+                },
                 {
                  "gid":2147483650,
                  "height":1024,
@@ -36,7 +36,54 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
+        {
+         "draworder":"topdown",
+         "id":7,
+         "name":"islandMiddle",
+         "objects":[
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":18,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":1032,
+                 "y":2140
+                },
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":19,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":580,
+                 "y":1484
+                },
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":20,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":1432,
+                 "y":1176
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        },
         {
          "draworder":"topdown",
          "id":5,
@@ -53,7 +100,7 @@
                  "width":512,
                  "x":4,
                  "y":628
-                }, 
+                },
                 {
                  "gid":1073741825,
                  "height":512,
@@ -72,8 +119,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":7,
- "nextobjectid":18,
+ "nextlayerid":8,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
@@ -91,7 +138,7 @@
          "tilecount":1,
          "tileheight":512,
          "tilewidth":512
-        }, 
+        },
         {
          "columns":1,
          "firstgid":2,

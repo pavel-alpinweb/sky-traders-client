@@ -35,15 +35,21 @@ export const mapComposition = {
     createIslands(map: Phaser.Tilemaps.Tilemap) {
         const islandsBottom = map.createFromObjects("islandsBottom", { gid: 2, key: "island-grass-big" })
         const islandsTop = map.createFromObjects("islandsTop", { gid: 1, key: "island-grass-small" })
+        const islandsMiddle = map.createFromObjects("islandMiddle", { gid: 3, key: "island-grass-small" })
         for (const island of islandsTop) {
             // eslint-disable-next-line
             // @ts-ignore
-            island.setScrollFactor(0.9)
+            island.setScrollFactor(0.95).setScale(0.95)
+        }
+        for (const island of islandsMiddle) {
+            // eslint-disable-next-line
+            // @ts-ignore
+            island.setScrollFactor(0.75).setScale(0.75)
         }
         for (const island of islandsBottom) {
             // eslint-disable-next-line
             // @ts-ignore
-            island.setScrollFactor(0.6)
+            island.setScrollFactor(0.5).setScale(0.5)
         }
     },
 }

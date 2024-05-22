@@ -15,12 +15,12 @@ export const playerComposition = {
     } {
         const player = scene.physics.add.image(x, y, ship).setScale(BASIC_SHIP_SCALE).refreshBody()
         player?.preFX?.addShadow()
-        scene.cameras.main.setBackgroundColor(0xcdf8ef).startFollow(player).setZoom(0.5)
+        scene.cameras.main.setBackgroundColor(0xa7efff).startFollow(player).setZoom(0.6)
         return player
     },
 
     initTarget(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }): Phaser.GameObjects.Image {
-        return scene.add.image(player.body.x, player.body.y, "ship").setAlpha(0.4).setScale(BASIC_SHIP_SCALE)
+        return scene.add.image(player.x, player.y, "ship").setAlpha(0.4).setScale(BASIC_SHIP_SCALE)
     },
 
     movePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image) {
