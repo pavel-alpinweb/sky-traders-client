@@ -5,7 +5,7 @@ import { playerComposition } from "../compositions/player.composition.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
-    private target!: Phaser.Math.Vector2
+    private target!: Phaser.GameObjects.Image
     private map!: Phaser.Tilemaps.Tilemap
 
     preload() {
@@ -20,7 +20,7 @@ export class MapScene extends Phaser.Scene {
         this.map = mapComposition.createLevel(this)
         mapComposition.createIslands(this.map)
         this.player = playerComposition.initPlayer(this, "ship", this.map.widthInPixels / 2, this.map.heightInPixels / 2)
-        this.target = playerComposition.initTarget()
+        this.target = playerComposition.initTarget(this, this.player)
         playerComposition.movePlayer(this, this.player, this.target)
         // if (this.map) {
         //     this.map.tileToWorldXY(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2)
@@ -29,6 +29,6 @@ export class MapScene extends Phaser.Scene {
 
     update() {
         // playerComposition.rotatePlayer(this, this.player, this.target)
-        playerComposition.onMovingPlayer(this.player, this.target)
+        playerComposition.onMovingPlayer(this.player, this.target, this)
     }
 }

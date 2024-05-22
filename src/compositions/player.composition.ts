@@ -19,26 +19,26 @@ export const playerComposition = {
         return player
     },
 
-    initTarget(): Phaser.Math.Vector2 {
-        return new Phaser.Math.Vector2()
+    initTarget(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }): Phaser.GameObjects.Image {
+        return scene.add.image(player.body.x, player.body.y, "ship").setAlpha(0.4).setScale(BASIC_SHIP_SCALE)
     },
 
-    movePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.Math.Vector2) {
+    movePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image) {
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
-            target.x = pointer.x
-            target.y = pointer.y
-            const distance = Phaser.Math.Distance.BetweenPoints(player, target)
+            target.x = pointer.worldX
+            target.y = pointer.worldY
 
             scene.physics.moveToObject(player, target, BASIC_SHIP_SPEED)
-            if (distance < TARGET_TOLERANCE) {
-                player.body.reset(target.x, target.y)
-            }
             // player.setAngularVelocity(BASIC_SHIP_ANGULAR_VELOCITY).refreshBody()
         })
     },
 
-    onMovingPlayer(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.Math.Vector2) {
+    onMovingPlayer(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image, scene: Phaser.Scene) {
         const distance = Phaser.Math.Distance.BetweenPoints(player, target)
+        if (player.body.speed > 0) {
+            scene.physics.moveToObject(player, target, BASIC_SHIP_SPEED)
+            player.body.velocity.scale(Phaser.Math.SmoothStep(distance, 0, 20))
+        }
         if (distance < TARGET_TOLERANCE) {
             player.body.reset(target.x, target.y)
         }

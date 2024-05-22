@@ -17,7 +17,7 @@ export const mapComposition = {
 
     addMapBackground(scene: Phaser.Scene): void {
         scene.add
-            .tileSprite(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, LEVEL_WIDTH * 4, LEVEL_HEIGHT * 4, "map")
+            .tileSprite(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, LEVEL_WIDTH * 8, LEVEL_HEIGHT * 8, "map")
             .setScale(0.8)
             .setAlpha(0.6)
             .setScrollFactor(0.5)
