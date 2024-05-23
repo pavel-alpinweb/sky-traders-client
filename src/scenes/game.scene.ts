@@ -13,12 +13,14 @@ export class MapScene extends Phaser.Scene {
         mapComposition.mapBackgroundUpload(this)
         mapComposition.tileMapUpload(this)
         mapComposition.islandUpload(this)
+        mapComposition.townsUpload(this)
     }
 
     create() {
         // mapComposition.addMapBackground(this)
         this.map = mapComposition.createLevel(this)
         mapComposition.createIslands(this.map)
+        mapComposition.createTowns(["start-01", "start-02"], this.map)
         this.player = playerComposition.initPlayer(this, "ship", this.map.widthInPixels / 2, this.map.heightInPixels / 2)
         this.target = playerComposition.initTarget(this, this.player)
         playerComposition.movePlayer(this, this.player, this.target)

@@ -15,17 +15,18 @@ export const mapComposition = {
         scene.load.image("island-grass-small", "/assets/islands/island-grass-small.png")
     },
 
+    townsUpload(scene: Phaser.Scene) {
+        scene.load.image("start-01", "/assets/towns/start-01-map.png")
+        scene.load.image("start-02", "/assets/towns/start-02-map.png")
+    },
+
     addMapBackground(scene: Phaser.Scene): void {
         scene.add
             .tileSprite(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, LEVEL_WIDTH * 8, LEVEL_HEIGHT * 8, "map")
             .setScale(0.8)
             .setAlpha(0.6)
-            .setScrollFactor(0.5)
+            .setScrollFactor(0.2)
             .postFX.addBlur(0, 2, 2, 0.2, 0xcdf8ef, 2)
-    },
-
-    addMapTown(scene: Phaser.Scene, key: string): Phaser.Types.Physics.Arcade.SpriteWithStaticBody {
-        return scene.physics.add.staticSprite(1375, 500, key)
     },
 
     createLevel(scene: Phaser.Scene): Phaser.Tilemaps.Tilemap {
@@ -39,7 +40,7 @@ export const mapComposition = {
         for (const island of islandsTop) {
             // eslint-disable-next-line
             // @ts-ignore
-            island.setScrollFactor(0.9).setScale(0.9).postFX.addBlur(0, 2, 2, 0.1, 0xa7efff, 2)
+            island.setScrollFactor(0.8).setScale(0.8).postFX.addBlur(0, 2, 2, 0.2, 0xa7efff, 2)
         }
         for (const island of islandsMiddle) {
             // eslint-disable-next-line
@@ -50,6 +51,12 @@ export const mapComposition = {
             // eslint-disable-next-line
             // @ts-ignore
             island.setScrollFactor(0.4).setScale(0.4).postFX.addBlur(0, 2, 2, 0.6, 0xa7efff, 2)
+        }
+    },
+
+    createTowns(towns: string[], map: Phaser.Tilemaps.Tilemap) {
+        for (const town of towns) {
+            map.createFromObjects("towns", { name: town, key: town })
         }
     },
 }
