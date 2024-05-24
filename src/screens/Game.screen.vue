@@ -4,17 +4,22 @@ import { useMapLevel } from "../levels/map.level.ts"
 import { EventBus } from "../utils/utils.ts"
 import { router } from "../router.ts"
 import { useTown } from "../store/town.ts"
+import { Game } from "phaser"
 
 const isShowTownAlert = ref(false)
+let game: null | Game = null
 
 const townStore = useTown()
 
 const goToTown = () => {
+    if (game) {
+        game?.destroy(true)
+    }
     router.push({ path: "/town" })
 }
 
 onMounted(() => {
-    useMapLevel()
+    game = useMapLevel()
     // eslint-disable-next-line
     EventBus.on("fly-on-town", (params: any) => {
         townStore.setTown(params.town)
