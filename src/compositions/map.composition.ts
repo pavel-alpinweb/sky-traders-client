@@ -54,9 +54,10 @@ export const mapComposition = {
         }
     },
 
-    createTowns(towns: string[], map: Phaser.Tilemaps.Tilemap) {
-        for (const town of towns) {
-            map.createFromObjects("towns", { name: town, key: town })
+    createTowns(townsNames: string[], towns: Phaser.Physics.Arcade.StaticGroup, map: Phaser.Tilemaps.Tilemap): void {
+        for (const townName of townsNames) {
+            const town = map.createFromObjects("towns", { name: townName, key: townName })
+            towns.add(town[0])
         }
     },
 }
