@@ -19,12 +19,12 @@ export const useTown = defineStore("town", {
         },
     }),
     actions: {
-        setTown: (name: string): void => {
+        setTown(name: string): void {
             // eslint-disable-next-line
             // @ts-ignore
             this.name = name
         },
-        setCoords: (coords: Coords): void => {
+        setCoords(coords: Coords): void {
             // eslint-disable-next-line
             // @ts-ignore
             this.coords = coords

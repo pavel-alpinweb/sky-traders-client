@@ -17,8 +17,8 @@ onMounted(() => {
     useMapLevel()
     // eslint-disable-next-line
     EventBus.on("fly-on-town", (params: any) => {
-        townStore.name = params.town
-        townStore.coords = params.coords
+        townStore.setTown(params.town)
+        townStore.setCoords(params.coords)
     })
     EventBus.on("leave-town", () => {
         isShowTownAlert.value = false
