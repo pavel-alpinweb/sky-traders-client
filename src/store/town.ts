@@ -14,8 +14,8 @@ export const useTown = defineStore("town", {
     state: (): Town => ({
         name: "",
         coords: {
-            x: 0,
-            y: 0,
+            x: 1280,
+            y: 1280,
         },
     }),
     actions: {
