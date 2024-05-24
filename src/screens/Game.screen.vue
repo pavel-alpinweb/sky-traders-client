@@ -2,9 +2,14 @@
 import { onMounted, ref } from "vue"
 import { useMapLevel } from "../levels/map.level.ts"
 import { EventBus } from "../utils/utils.ts"
+import { router } from "../router.ts"
 
 const townName = ref("")
 const isShowTownAlert = ref(false)
+
+const goToTown = () => {
+    router.push({ path: "/town" })
+}
 
 onMounted(() => {
     useMapLevel()
@@ -26,7 +31,7 @@ onMounted(() => {
     <div class="game-screen">
         <div v-if="isShowTownAlert" class="game-screen__town-alert">
             <div class="game-screen__name">Вы хотите приземлиться в городе {{ townName }}?</div>
-            <button>В город!</button>
+            <button @click="goToTown">В город!</button>
         </div>
         <div id="game" class="game-screen__game-wrapper"></div>
     </div>
