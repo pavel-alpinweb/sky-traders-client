@@ -1,13 +1,15 @@
 import { defineStore } from "pinia"
 
-interface Coords {
-    x: number
-    y: number
-}
+declare global {
+    interface Coords {
+        x: number
+        y: number
+    }
 
-interface Town {
-    name: string
-    coords: Coords
+    interface Town {
+        name: string
+        coords: Coords
+    }
 }
 
 export const useTown = defineStore("town", {

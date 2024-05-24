@@ -19,7 +19,7 @@ const goToTown = () => {
 }
 
 onMounted(() => {
-    game = useMapLevel()
+    game = useMapLevel(townStore.coords)
     // eslint-disable-next-line
     EventBus.on("fly-on-town", (params: any) => {
         townStore.setTown(params.town)
