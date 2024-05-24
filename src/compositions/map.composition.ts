@@ -1,19 +1,67 @@
 import Phaser from "phaser"
+import { LEVEL_HEIGHT, LEVEL_WIDTH } from "../configs/gameplay.config.ts"
 
 export const mapComposition = {
-    playerShipUpload(scene: Phaser.Scene, ship: string): void {
-        scene.load.image(ship, `/assets/ships/${ship}.png`)
+    mapBackgroundUpload(scene: Phaser.Scene): void {
+        scene.load.image("map", "/assets/tiles/surface.png")
     },
 
-    mapBackgroundUpload(scene: Phaser.Scene): void {
-        scene.load.image("map", "/assets/backgrounds/map3.jpg")
+    tileMapUpload(scene: Phaser.Scene) {
+        scene.load.tilemapTiledJSON("tilemap", "/assets/levels/dev.json")
+    },
+
+    islandUpload(scene: Phaser.Scene) {
+        scene.load.image("island-grass-big", "/assets/islands/island-grass-big.png")
+        scene.load.image("island-grass-small", "/assets/islands/island-grass-small.png")
+    },
+
+    townsUpload(scene: Phaser.Scene) {
+        scene.load.image("start-01", "/assets/towns/start-01-map.png")
+        scene.load.image("start-02", "/assets/towns/start-02-map.png")
     },
 
     addMapBackground(scene: Phaser.Scene): void {
-        scene.add.image(window.innerWidth / 2, window.innerHeight / 2, "map")
+        scene.add
+            .tileSprite(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, LEVEL_WIDTH * 8, LEVEL_HEIGHT * 8, "map")
+            .setScale(0.8)
+            .setAlpha(0.6)
+            .setScrollFactor(0.2)
+            .postFX.addBlur(0, 2, 2, 0.2, 0xcdf8ef, 2)
     },
 
-    addMapTown(scene: Phaser.Scene, key: string): Phaser.Types.Physics.Arcade.SpriteWithStaticBody {
-        return scene.physics.add.staticSprite(1375, 500, key)
+    createLevel(scene: Phaser.Scene): Phaser.Tilemaps.Tilemap {
+        return scene.make.tilemap({ key: "tilemap" })
+    },
+
+    createIslands(map: Phaser.Tilemaps.Tilemap) {
+        const islandsBottom = map.createFromObjects("islandsBottom", { name: "islandsBottom", key: "island-grass-big" })
+        const islandsMiddle = map.createFromObjects("islandsMiddle", { name: "islandsMiddle", key: "island-grass-small" })
+        const islandsTop = map.createFromObjects("islandsTop", { name: "islandsTop", key: "island-grass-small" })
+        for (const island of islandsTop) {
+            // eslint-disable-next-line
+            // @ts-ignore
+            island.setScrollFactor(0.8).setScale(0.8).postFX.addBlur(0, 2, 2, 0.2, 0xa7efff, 2)
+        }
+        for (const island of islandsMiddle) {
+            // eslint-disable-next-line
+            // @ts-ignore
+            island.setScrollFactor(0.6).setScale(0.6).postFX.addBlur(0, 2, 2, 0.4, 0xa7efff, 2)
+        }
+        for (const island of islandsBottom) {
+            // eslint-disable-next-line
+            // @ts-ignore
+            island.setScrollFactor(0.4).setScale(0.4).postFX.addBlur(0, 2, 2, 0.6, 0xa7efff, 2)
+        }
+    },
+
+    createTowns(townsNames: string[], towns: Phaser.Physics.Arcade.StaticGroup, map: Phaser.Tilemaps.Tilemap): Phaser.GameObjects.GameObject[] {
+        const townsArray: Phaser.GameObjects.GameObject[] = []
+        for (const townName of townsNames) {
+            const town = map.createFromObjects("towns", { name: townName, key: townName })
+            towns.add(town[0])
+            townsArray.push(town[0])
+        }
+
+        return townsArray
     },
 }
