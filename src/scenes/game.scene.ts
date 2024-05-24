@@ -33,6 +33,9 @@ export class MapScene extends Phaser.Scene {
         this.player = playerComposition.initPlayer(this, "ship", this.map.widthInPixels / 2, this.map.heightInPixels / 2)
         this.target = playerComposition.initTarget(this, this.player)
         playerComposition.movePlayer(this, this.player, this.target)
+
+        /* Эмитим событие с данными о городе и коориданты игрока при полете над городом */
+        playerComposition.flyOnTown(this.player, this.towns, this)
     }
 
     update() {

@@ -1,4 +1,5 @@
 import Phaser from "phaser"
+import { EventBus } from "../utils/EventBus.ts"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
@@ -55,5 +56,23 @@ export const playerComposition = {
         } else {
             player.setAngularVelocity(Math.sign(angleDelta) * BASIC_SHIP_ANGULAR_VELOCITY)
         }
+    },
+
+    flyOnTown(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, towns: Phaser.Physics.Arcade.StaticGroup, scene: Phaser.Scene): void {
+        scene.physics.add.overlap(player, towns, (player, town) => {
+            EventBus.emit("fly-on-town", {
+                coords: {
+                    // eslint-disable-next-line
+                    // @ts-ignore
+                    x: player.x,
+                    // eslint-disable-next-line
+                    // @ts-ignore
+                    y: player.y,
+                },
+                // eslint-disable-next-line
+                // @ts-ignore
+                town: town.name,
+            })
+        })
     },
 }
