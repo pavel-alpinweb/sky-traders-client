@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue"
 import { useMapLevel } from "../levels/map.level.ts"
-import { EventBus } from "../utils/EventBus.ts"
+import { EventBus } from "../utils/utils.ts"
 
 const townName = ref("")
 const isShowTownAlert = ref(false)
@@ -10,11 +10,14 @@ onMounted(() => {
     useMapLevel()
     // eslint-disable-next-line
     EventBus.on("fly-on-town", (params: any) => {
+        console.log(params.town)
         townName.value = params.town
-        isShowTownAlert.value = true
     })
-    EventBus.on("live-town", () => {
+    EventBus.on("leave-town", () => {
         isShowTownAlert.value = false
+    })
+    EventBus.on("arrive-town", () => {
+        isShowTownAlert.value = true
     })
 })
 </script>

@@ -1,13 +1,15 @@
 import * as Phaser from "phaser"
 import { mapComposition } from "../compositions/map.composition.ts"
 import { playerComposition } from "../compositions/player.composition.ts"
+import { checkOverlap, EventBus } from "../utils/utils.ts"
 // import { LEVEL_HEIGHT, LEVEL_WIDTH } from "../configs/gameplay.config.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
     private target!: Phaser.GameObjects.Image
     private map!: Phaser.Tilemaps.Tilemap
-    private towns!: Phaser.Physics.Arcade.StaticGroup
+    private townsGroup!: Phaser.Physics.Arcade.StaticGroup
+    private townsArray!: Phaser.GameObjects.GameObject[]
 
     preload() {
         playerComposition.playerShipUpload(this, "ship")
@@ -26,8 +28,8 @@ export class MapScene extends Phaser.Scene {
         mapComposition.createIslands(this.map)
 
         /* Добавляем города на карту */
-        this.towns = this.physics.add.staticGroup()
-        mapComposition.createTowns(["start-01", "start-02"], this.towns, this.map)
+        this.townsGroup = this.physics.add.staticGroup()
+        this.townsArray = mapComposition.createTowns(["start-01", "start-02"], this.townsGroup, this.map)
 
         /* Создаем игрока и передвижение для него */
         this.player = playerComposition.initPlayer(this, "ship", this.map.widthInPixels / 2, this.map.heightInPixels / 2)
@@ -35,10 +37,19 @@ export class MapScene extends Phaser.Scene {
         playerComposition.movePlayer(this, this.player, this.target)
 
         /* Эмитим событие с данными о городе и коориданты игрока при полете над городом */
-        playerComposition.flyOnTown(this.player, this.towns, this)
+        playerComposition.flyOnTown(this.player, this.townsGroup, this)
     }
 
     update() {
         playerComposition.onMovingPlayer(this.player, this.target, this)
+
+        for (const town of this.townsArray) {
+            if (checkOverlap(this.player, town)) {
+                EventBus.emit("arrive-town")
+                break
+            } else {
+                EventBus.emit("leave-town")
+            }
+        }
     }
 }

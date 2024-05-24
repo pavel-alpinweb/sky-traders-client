@@ -1,5 +1,5 @@
 import Phaser from "phaser"
-import { EventBus } from "../utils/EventBus.ts"
+import { EventBus } from "../utils/utils.ts"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
