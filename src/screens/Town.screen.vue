@@ -5,6 +5,7 @@ import Test from "../ui-components/Test.component.vue"
 <template>
     <div class="town-screen">
         <h1>Town screen</h1>
+        <button>Покинуть город</button>
         <Test />
     </div>
 </template>
