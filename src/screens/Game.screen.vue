@@ -3,9 +3,11 @@ import { onMounted, ref } from "vue"
 import { useMapLevel } from "../levels/map.level.ts"
 import { EventBus } from "../utils/utils.ts"
 import { router } from "../router.ts"
+import { useTown } from "../store/town.ts"
 
-const townName = ref("")
 const isShowTownAlert = ref(false)
+
+const townStore = useTown()
 
 const goToTown = () => {
     router.push({ path: "/town" })
@@ -15,8 +17,8 @@ onMounted(() => {
     useMapLevel()
     // eslint-disable-next-line
     EventBus.on("fly-on-town", (params: any) => {
-        console.log(params.town)
-        townName.value = params.town
+        townStore.name = params.town
+        townStore.coords = params.coords
     })
     EventBus.on("leave-town", () => {
         isShowTownAlert.value = false
@@ -30,7 +32,7 @@ onMounted(() => {
 <template>
     <div class="game-screen">
         <div v-if="isShowTownAlert" class="game-screen__town-alert">
-            <div class="game-screen__name">Вы хотите приземлиться в городе {{ townName }}?</div>
+            <div class="game-screen__name">Вы хотите приземлиться в городе {{ townStore.name }}?</div>
             <button @click="goToTown">В город!</button>
         </div>
         <div id="game" class="game-screen__game-wrapper"></div>

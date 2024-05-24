@@ -10,7 +10,7 @@ interface Town {
     coords: Coords
 }
 
-export const Town = defineStore("town", {
+export const useTown = defineStore("town", {
     state: (): Town => ({
         name: "",
         coords: {
