@@ -1,6 +1,6 @@
 /* BASE ENGINE SETTINGS */
-export const LEVEL_WIDTH = 1365
-export const LEVEL_HEIGHT = 768
+export const LEVEL_WIDTH = window.innerWidth
+export const LEVEL_HEIGHT = window.innerHeight
 
 /* PLAYER SETTINGS */
 export const BASIC_SHIP_SPEED = 200

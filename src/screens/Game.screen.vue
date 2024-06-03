@@ -54,8 +54,8 @@ onMounted(() => {
     justify-content: center;
     position: relative;
     &__game-wrapper {
-        width: 1365px;
-        height: 768px;
+        width: 100vw;
+        height: 100vh;
     }
     &__town-alert {
         position: absolute;
