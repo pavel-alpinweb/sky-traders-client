@@ -1,9 +1,22 @@
 <script setup lang="ts">
 import { router } from "../router.ts"
+import { onMounted } from "vue"
+import { Game } from "phaser"
+import { useTown } from "../store/town.ts"
+import { useTownLevel } from "../levels/town.level.ts"
 
+let background: null | Game = null
+const townStore = useTown()
 const goToMap = () => {
+    if (background) {
+        background?.destroy(true)
+    }
     router.push({ path: "/game" })
 }
+
+onMounted(() => {
+    background = useTownLevel(townStore.name)
+})
 </script>
 
 <template>
@@ -29,6 +42,7 @@ const goToMap = () => {
         top: 0;
         left: 0;
         right: 0;
+        overflow: hidden;
     }
 
     &__content {

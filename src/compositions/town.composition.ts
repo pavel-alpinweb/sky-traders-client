@@ -1,4 +1,5 @@
 import Phaser from "phaser"
+import { LEVEL_HEIGHT, LEVEL_WIDTH } from "../configs/gameplay.config.ts"
 
 export const townComposition = {
     uploadTown(scene: Phaser.Scene, name: string) {
@@ -6,6 +7,6 @@ export const townComposition = {
     },
 
     createTown(scene: Phaser.Scene): Phaser.GameObjects.Image {
-        return scene.add.image(0, 0, "town")
+        return scene.add.image(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, "town")
     },
 }

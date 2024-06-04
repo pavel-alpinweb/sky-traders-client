@@ -5,7 +5,7 @@ import { TownScene } from "../scenes/town.scene.ts"
 export function useTownLevel(name: string) {
     const gameContainer = <HTMLDivElement>document.getElementById("town")
     const config = {
-        container: gameContainer,
+        parent: gameContainer,
         type: Phaser.AUTO,
         width: LEVEL_WIDTH,
         height: LEVEL_HEIGHT,
@@ -17,6 +17,7 @@ export function useTownLevel(name: string) {
             },
         },
         scene: new TownScene(name),
+        backgroundColor: 0xa7efff,
     }
 
     return new Phaser.Game(config)
