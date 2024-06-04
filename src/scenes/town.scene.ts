@@ -1,4 +1,5 @@
 import * as Phaser from "phaser"
+import { townComposition } from "../compositions/town.composition.ts"
 
 export class TownScene extends Phaser.Scene {
     private name!: string
@@ -8,9 +9,13 @@ export class TownScene extends Phaser.Scene {
         this.name = name
     }
 
-    preload() {}
+    preload() {
+        townComposition.uploadTown(this, this.name)
+    }
 
-    create() {}
+    create() {
+        townComposition.createTown(this)
+    }
 
     update() {}
 }

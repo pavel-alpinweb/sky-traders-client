@@ -1,7 +1,8 @@
 import Phaser from "phaser"
 import { LEVEL_HEIGHT, LEVEL_WIDTH } from "../configs/gameplay.config.ts"
+import { TownScene } from "../scenes/town.scene.ts"
 
-export function useTownLevel(town: string) {
+export function useTownLevel(name: string) {
     const gameContainer = <HTMLDivElement>document.getElementById("town")
     const config = {
         container: gameContainer,
@@ -15,6 +16,7 @@ export function useTownLevel(town: string) {
                 debug: false,
             },
         },
+        scene: new TownScene(name),
     }
 
     return new Phaser.Game(config)
