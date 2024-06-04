@@ -14,7 +14,7 @@ declare global {
 
 export const useTown = defineStore("town", {
     state: (): Town => ({
-        name: "",
+        name: "start-01",
         coords: {
             x: 1280,
             y: 1280,

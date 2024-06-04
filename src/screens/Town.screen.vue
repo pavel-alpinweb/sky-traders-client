@@ -9,10 +9,15 @@ const goToMap = () => {
 
 <template>
     <div class="town-screen">
-        <h1>Town screen</h1>
         <button @click="goToMap">Покинуть город</button>
         <Test />
     </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.town-screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #a7efff;
+}
+</style>
