@@ -23,7 +23,7 @@ onMounted(() => {
     <div class="town-screen">
         <div id="town" class="town-screen__background"></div>
         <div class="town-screen__content">
-            <button @click="goToMap">Покинуть город</button>
+            <v-btn size="x-large" class="text-none" variant="elevated" color="green" @click="goToMap">Покинуть город</v-btn>
         </div>
     </div>
 </template>
