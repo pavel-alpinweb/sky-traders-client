@@ -37,7 +37,8 @@ onMounted(() => {
 <template>
     <div class="game-screen">
         <v-snackbar v-model="isShowTownAlert" color="green">
-            Вы хотите приземлиться в городе {{ townStore.name }}?
+            Вы хотите приземлиться в городе <b>{{ townStore.name }}</b
+            >?
             <template #actions>
                 <v-btn color="green-darken-4" variant="elevated" @click="goToTown"> OK </v-btn>
             </template>
