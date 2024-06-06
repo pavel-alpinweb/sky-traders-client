@@ -79,10 +79,10 @@ const resources = <Resource[]>reactive([
 </script>
 
 <template>
-    <v-sheet class="resources-panel" :width="615" :height="50" :elevation="10" border rounded>
+    <v-sheet class="resources-panel" color="green-lighten-5" :width="615" :height="50" :elevation="10" border rounded>
         <div v-for="resource in resources" :key="resource.name" :class="`resources-panel__item resources-panel__item--${resource.name}`">
             <component :is="resource.component" class="resources-panel__icon"></component>
-            <div class="resources-panel__value text-body-1 font-weight-bold">{{ resource.value }}</div>
+            <div class="resources-panel__value text-green-darken-4 text-body-1 font-weight-bold">{{ resource.value }}</div>
         </div>
     </v-sheet>
 </template>
@@ -104,7 +104,6 @@ const resources = <Resource[]>reactive([
         @each $name, $attr in $resourcesMap {
             &--#{$name} {
                 fill: $attr;
-                //stroke: $attr;
                 color: $attr;
             }
         }

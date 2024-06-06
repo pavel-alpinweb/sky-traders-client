@@ -26,8 +26,8 @@ onMounted(() => {
         <div class="town-screen__panel">
             <ResourcesPanal />
         </div>
-        <v-btn class="text-none town-screen__back-btn" size="x-large" variant="elevated" color="green" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
-        <v-sheet :width="1200" :elevation="10" class="town-screen__content">
+        <v-btn class="text-none town-screen__back-btn" size="large" variant="elevated" color="green" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
+        <v-sheet :width="1200" :elevation="10" color="green-lighten-5" class="town-screen__content">
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
                 maiores, pariatur possimus reprehenderit totam vitae, voluptas.
