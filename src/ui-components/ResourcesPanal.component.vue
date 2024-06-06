@@ -88,6 +88,8 @@ const resources = <Resource[]>reactive([
 </template>
 
 <style scoped lang="scss">
+@import "/public/assets/scss/variables.scss";
+
 .resources-panel {
     display: flex;
     justify-content: space-between;
@@ -99,6 +101,13 @@ const resources = <Resource[]>reactive([
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @each $name, $attr in $resourcesMap {
+            &--#{$name} {
+                fill: $attr;
+                //stroke: $attr;
+                color: $attr;
+            }
+        }
     }
 
     &__icon {
