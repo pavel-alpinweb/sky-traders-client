@@ -4,6 +4,7 @@ import { onMounted } from "vue"
 import { Game } from "phaser"
 import { useTown } from "../store/town.ts"
 import { useTownLevel } from "../levels/town.level.ts"
+import ResourcesPanal from "../ui-components/ResourcesPanal.component.vue"
 
 let background: null | Game = null
 const townStore = useTown()
@@ -22,7 +23,9 @@ onMounted(() => {
 <template>
     <div class="town-screen">
         <div id="town" class="town-screen__background"></div>
-        <v-sheet class="town-screen__panel" :width="615" :height="40" :elevation="10" border rounded> </v-sheet>
+        <div class="town-screen__panel">
+            <ResourcesPanal />
+        </div>
         <v-btn class="text-none town-screen__back-btn" size="x-large" variant="elevated" color="green" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
         <v-sheet :width="1200" :elevation="10" class="town-screen__content">
             <p>

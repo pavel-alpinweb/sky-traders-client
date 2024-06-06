@@ -1,16 +1,5 @@
 import { defineStore } from "pinia"
-
-declare global {
-    interface Coords {
-        x: number
-        y: number
-    }
-
-    interface Town {
-        name: string
-        coords: Coords
-    }
-}
+import { Coords, Town } from "../types/interfaces.ts"
 
 export const useTown = defineStore("town", {
     state: (): Town => ({
