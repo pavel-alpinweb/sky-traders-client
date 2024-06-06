@@ -1,5 +1,5 @@
 import Phaser from "phaser"
-import { LEVEL_HEIGHT, LEVEL_WIDTH } from "../configs/gameplay.config.ts"
+import { LEVEL_WIDTH, TOWN_SIZE } from "../configs/gameplay.config.ts"
 
 export const townComposition = {
     uploadTown(scene: Phaser.Scene, name: string) {
@@ -11,11 +11,11 @@ export const townComposition = {
     },
 
     createTown(scene: Phaser.Scene): Phaser.GameObjects.Image {
-        return scene.add.image(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, "town")
+        return scene.add.image(LEVEL_WIDTH / 2, TOWN_SIZE / 2, "town")
     },
 
     createClouds(scene: Phaser.Scene) {
-        return scene.add.tileSprite(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, LEVEL_WIDTH, 310, "clouds")
+        return scene.add.tileSprite(LEVEL_WIDTH / 2, TOWN_SIZE / 2, LEVEL_WIDTH, 310, "clouds")
     },
 
     moveClouds(clouds: Phaser.GameObjects.TileSprite) {

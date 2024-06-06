@@ -22,9 +22,46 @@ onMounted(() => {
 <template>
     <div class="town-screen">
         <div id="town" class="town-screen__background"></div>
-        <div class="town-screen__content">
-            <v-btn size="x-large" class="text-none" variant="elevated" color="green" @click="goToMap">Покинуть город</v-btn>
-        </div>
+        <v-sheet class="town-screen__panel" :width="615" :height="40" :elevation="10" border rounded> </v-sheet>
+        <v-btn class="text-none town-screen__back-btn" size="x-large" variant="elevated" color="green" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
+        <v-sheet :width="1200" :elevation="10" class="town-screen__content">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
+                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
+                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
+                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
+                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
+                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
+                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
+                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
+                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
+                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
+            </p>
+        </v-sheet>
     </div>
 </template>
 
@@ -38,16 +75,31 @@ onMounted(() => {
     &__background {
         width: 100%;
         height: 100%;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
         overflow: hidden;
     }
 
+    &__panel {
+        position: fixed;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &__back-btn {
+        position: fixed;
+        top: 40px;
+        left: 40px;
+    }
+
     &__content {
         position: relative;
-        z-index: 1;
+        top: 1024px;
+        z-index: 2;
+        margin: 0 auto;
     }
 }
 </style>
