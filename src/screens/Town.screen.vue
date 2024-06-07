@@ -5,6 +5,7 @@ import { Game } from "phaser"
 import { useTown } from "../store/town.ts"
 import { useTownLevel } from "../levels/town.level.ts"
 import ResourcesPanal from "../ui-components/ResourcesPanal.component.vue"
+import Market from "../windows/market.window.vue"
 
 let background: null | Game = null
 const townStore = useTown()
@@ -37,7 +38,7 @@ onMounted(() => {
             </v-tabs>
             <v-tabs-window v-model="tab">
                 <v-tabs-window-item value="market">
-                    <h1>Рынок</h1>
+                    <Market />
                 </v-tabs-window-item>
                 <v-tabs-window-item value="shipyard">
                     <h1>Верфь</h1>
