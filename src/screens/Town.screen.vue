@@ -85,7 +85,7 @@ onMounted(() => {
     &__content {
         position: relative;
         z-index: 2;
-        margin: 1024px auto 40px;
+        margin: 768px auto 40px;
         padding: 5px 15px;
     }
 }

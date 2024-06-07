@@ -13,3 +13,7 @@ export interface Resource {
     value: number
     component: string
 }
+
+export type IconList = {
+    [key in string]: string
+}
