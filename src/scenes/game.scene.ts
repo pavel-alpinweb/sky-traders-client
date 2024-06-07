@@ -2,7 +2,7 @@ import * as Phaser from "phaser"
 import { mapComposition } from "../compositions/map.composition.ts"
 import { playerComposition } from "../compositions/player.composition.ts"
 import { checkOverlap, EventBus } from "../utils/utils.ts"
-// import { LEVEL_HEIGHT, LEVEL_WIDTH } from "../configs/gameplay.config.ts"
+import { Coords } from "../types/interfaces.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
