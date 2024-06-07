@@ -87,11 +87,18 @@ const items = reactive([
         [HEADING.BUY_PRICE]: 16,
         [HEADING.SELL_PRICE]: 23,
     },
+    {
+        [HEADING.NAME]: "Шелк",
+        key: "silk",
+        [HEADING.VALUE]: 262,
+        [HEADING.BUY_PRICE]: 16,
+        [HEADING.SELL_PRICE]: 23,
+    },
 ])
 </script>
 
 <template>
-    <v-data-table class="bg-green-lighten-4" :items="items" show-select>
+    <v-data-table class="bg-green-lighten-4" :items-per-page="12" :items="items" show-select>
         <template #[`header.${[HEADING.NAME]}`]="{ column }">
             <span class="text-green-darken-4 font-weight-bold">{{ column.title }}</span>
         </template>

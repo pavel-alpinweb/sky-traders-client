@@ -11,6 +11,7 @@ import IconCoal from "/public/assets/icons/resources/coal.svg"
 import IconSteel from "/public/assets/icons/resources/steel.svg"
 import IconIvory from "/public/assets/icons/resources/ivory.svg"
 import IconGold from "/public/assets/icons/resources/gold.svg"
+import IconSilk from "/public/assets/icons/resources/silk.svg"
 import { IconList } from "../types/interfaces.ts"
 
 export const EventBus = new Phaser.Events.EventEmitter()
@@ -37,5 +38,6 @@ export const ICONS_LIST: IconList = {
     coal: IconCoal,
     steel: IconSteel,
     ivory: IconIvory,
+    silk: IconSilk,
     gold: IconGold,
 }

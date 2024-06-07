@@ -10,6 +10,7 @@ import IconGunPower from "/public/assets/icons/resources/gunpowder.svg"
 import IconCoal from "/public/assets/icons/resources/coal.svg"
 import IconSteel from "/public/assets/icons/resources/steel.svg"
 import IconIvory from "/public/assets/icons/resources/ivory.svg"
+import IconSilk from "/public/assets/icons/resources/silk.svg"
 import IconGold from "/public/assets/icons/resources/gold.svg"
 import { reactive } from "vue"
 import { Resource } from "../types/interfaces.ts"
@@ -69,6 +70,11 @@ const resources = <Resource[]>reactive([
         value: 2000,
         name: "ivory",
         component: IconIvory,
+    },
+    {
+        value: 2000,
+        name: "silk",
+        component: IconSilk,
     },
     {
         value: 10000,
