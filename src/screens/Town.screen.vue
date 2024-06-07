@@ -74,6 +74,7 @@ onMounted(() => {
     height: 100vh;
     background-color: #a7efff;
     position: relative;
+    overflow: auto;
 
     &__background {
         width: 100%;
@@ -100,9 +101,9 @@ onMounted(() => {
 
     &__content {
         position: relative;
-        top: 1024px;
         z-index: 2;
-        margin: 0 auto;
+        margin: 1024px auto 40px;
+        padding: 5px 15px;
     }
 }
 </style>
