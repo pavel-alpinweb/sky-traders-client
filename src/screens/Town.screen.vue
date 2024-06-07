@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { router } from "../router.ts"
-import { onMounted } from "vue"
+import { onMounted, ref } from "vue"
 import { Game } from "phaser"
 import { useTown } from "../store/town.ts"
 import { useTownLevel } from "../levels/town.level.ts"
@@ -8,6 +8,8 @@ import ResourcesPanal from "../ui-components/ResourcesPanal.component.vue"
 
 let background: null | Game = null
 const townStore = useTown()
+const tab = ref(null)
+
 const goToMap = () => {
     if (background) {
         background?.destroy(true)
@@ -27,43 +29,23 @@ onMounted(() => {
             <ResourcesPanal />
         </div>
         <v-btn class="text-none town-screen__back-btn" size="large" variant="elevated" color="green" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
-        <v-sheet :width="1200" :elevation="10" color="green-lighten-5" class="town-screen__content">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
-                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
-                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
-                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
-                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
-                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
-                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
-                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
-                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid dolor fuga itaque maiores nesciunt numquam unde. Accusantium adipisci exercitationem inventore itaque laudantium
-                maiores, pariatur possimus reprehenderit totam vitae, voluptas.
-            </p>
+        <v-sheet :width="1200" :elevation="10" border rounded color="green-lighten-5" class="town-screen__content">
+            <v-tabs v-model="tab" align-tabs="center" color="green-darken-4">
+                <v-tab value="market">Рынок</v-tab>
+                <v-tab value="shipyard">Верфь</v-tab>
+                <v-tab value="warehouse">Склад</v-tab>
+            </v-tabs>
+            <v-tabs-window v-model="tab">
+                <v-tabs-window-item value="market">
+                    <h1>Рынок</h1>
+                </v-tabs-window-item>
+                <v-tabs-window-item value="shipyard">
+                    <h1>Верфь</h1>
+                </v-tabs-window-item>
+                <v-tabs-window-item value="warehouse">
+                    <h1>Склад</h1>
+                </v-tabs-window-item>
+            </v-tabs-window>
         </v-sheet>
     </div>
 </template>
