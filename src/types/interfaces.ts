@@ -6,6 +6,7 @@ export interface Coords {
 export interface Town {
     name: string
     coords: Coords
+    color: string
 }
 
 export interface Resource {

@@ -6,6 +6,7 @@ const props = defineProps<{
     maxAmount: number
     sellPrice: number
     buyPrice: number
+    color: string
 }>()
 
 const tradeMode = ref<TradeMode>("buy")
@@ -39,7 +40,7 @@ const buySell = () => {
                 class="trade-widget__input"
                 density="comfortable"
                 control-variant="split"
-                color="green"
+                :color="props.color"
                 variant="outlined"
                 :suffix="`макс. ${props.maxAmount}`"
                 label="Количество"
@@ -47,7 +48,7 @@ const buySell = () => {
             <v-text-field
                 :value="totalAmount"
                 class="trade-widget__input trade-widget__input--readonly"
-                color="green"
+                :color="props.color"
                 density="comfortable"
                 readonly
                 variant="outlined"
@@ -55,12 +56,12 @@ const buySell = () => {
                 focused
                 :append-inner-icon="tradeMode === 'buy' ? 'mdi-cash-minus' : 'mdi-cash-plus'"
             />
-            <v-slider class="trade-widget__slider" v-model="amount" :max="props.maxAmount" :step="1" color="green" />
+            <v-slider class="trade-widget__slider" v-model="amount" :max="props.maxAmount" :step="1" :color="props.color" />
         </div>
         <div class="trade-widget__right-control">
             <v-btn-group color="green" variant="outlined">
-                <v-btn :icon="tradeMode === 'buy' ? 'mdi-cash-plus' : 'mdi-cash-minus'" color="green" size="x-large" @click="changeMode" />
-                <v-btn color="green" size="x-large" @click="buySell">
+                <v-btn :icon="tradeMode === 'buy' ? 'mdi-cash-plus' : 'mdi-cash-minus'" :color="props.color" size="x-large" @click="changeMode" />
+                <v-btn :color="props.color" size="x-large" @click="buySell">
                     {{ tradeMode === "buy" ? "Купить" : "Продать" }}
                 </v-btn>
             </v-btn-group>

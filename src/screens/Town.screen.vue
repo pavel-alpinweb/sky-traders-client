@@ -27,18 +27,18 @@ onMounted(() => {
     <div class="town-screen">
         <div id="town" class="town-screen__background"></div>
         <div class="town-screen__panel">
-            <ResourcesPanal />
+            <ResourcesPanal :color="townStore.color" />
         </div>
-        <v-btn class="text-none town-screen__back-btn" size="large" variant="elevated" color="green" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
-        <v-sheet :width="1200" :elevation="10" border rounded color="green-lighten-5" class="town-screen__content">
-            <v-tabs v-model="tab" align-tabs="center" color="green-darken-4">
+        <v-btn class="text-none town-screen__back-btn" size="large" variant="elevated" :color="townStore.color" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
+        <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.color}-lighten-5`" class="town-screen__content">
+            <v-tabs v-model="tab" align-tabs="center" :color="`${townStore.color}-darken-4`">
                 <v-tab value="market">Рынок</v-tab>
                 <v-tab value="shipyard">Верфь</v-tab>
                 <v-tab value="warehouse">Склад</v-tab>
             </v-tabs>
             <v-tabs-window v-model="tab">
                 <v-tabs-window-item value="market">
-                    <Market />
+                    <Market :color="townStore.color" />
                 </v-tabs-window-item>
                 <v-tabs-window-item value="shipyard">
                     <h1>Верфь</h1>

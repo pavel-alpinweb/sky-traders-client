@@ -8,6 +8,7 @@ export const useTown = defineStore("town", {
             x: 1280,
             y: 1280,
         },
+        color: "green",
     }),
     actions: {
         setTown(name: string): void {

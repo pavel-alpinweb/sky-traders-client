@@ -2,6 +2,10 @@
 import { reactive } from "vue"
 import { ICONS_LIST } from "../utils/utils.ts"
 
+const props = defineProps<{
+    color: string
+}>()
+
 const HEADING = {
     NAME: "Название",
     VALUE: "Количество на складе",
@@ -98,39 +102,39 @@ const items = reactive([
 </script>
 
 <template>
-    <v-data-table class="bg-green-lighten-4" :items-per-page="12" :items="items" show-select>
+    <v-data-table :class="`bg-${props.color}-lighten-4`" :items-per-page="12" :items="items" show-select>
         <template #[`header.${[HEADING.NAME]}`]="{ column }">
-            <span class="text-green-darken-4 font-weight-bold">{{ column.title }}</span>
+            <span :class="`text-${props.color}-darken-4 font-weight-bold`">{{ column.title }}</span>
         </template>
         <template #[`header.${[HEADING.VALUE]}`]="{ column }">
-            <span class="text-green-darken-4 font-weight-bold">{{ column.title }}</span>
+            <span :class="`text-${props.color}-darken-4 font-weight-bold`">{{ column.title }}</span>
         </template>
         <template #[`header.${[HEADING.BUY_PRICE]}`]="{ column }">
-            <span class="text-green-darken-4 font-weight-bold">{{ column.title }}</span>
+            <span :class="`text-${props.color}-darken-4 font-weight-bold`">{{ column.title }}</span>
         </template>
         <template #[`header.${[HEADING.SELL_PRICE]}`]="{ column }">
-            <span class="text-green-darken-4 font-weight-bold">{{ column.title }}</span>
+            <span :class="`text-${props.color}-darken-4 font-weight-bold`">{{ column.title }}</span>
         </template>
         <template #[`item.${HEADING.NAME}`]="{ item }">
             <div class="trade-table__item">
                 <component :class="`trade-table__icon trade-table__icon--${item.key}`" :is="ICONS_LIST[item.key]"></component>
-                <span class="text-green-darken-4">{{ item[HEADING.NAME] }}</span>
+                <span :class="`text-${props.color}-darken-4`">{{ item[HEADING.NAME] }}</span>
             </div>
         </template>
         <template #[`item.${HEADING.VALUE}`]="{ item }">
             <div class="trade-table__item">
-                <span class="text-green-darken-4">{{ item[HEADING.VALUE] }}</span>
+                <span :class="`text-${props.color}-darken-4`">{{ item[HEADING.VALUE] }}</span>
             </div>
         </template>
         <template #[`item.${HEADING.BUY_PRICE}`]="{ item }">
             <div class="trade-table__item">
-                <span class="text-green-darken-4">{{ item[HEADING.BUY_PRICE] }}</span>
+                <span :class="`text-${props.color}-darken-4`">{{ item[HEADING.BUY_PRICE] }}</span>
                 <component class="trade-table__icon" :is="ICONS_LIST.gold"></component>
             </div>
         </template>
         <template #[`item.${HEADING.SELL_PRICE}`]="{ item }">
             <div class="trade-table__item">
-                <span class="text-green-darken-4">{{ item[HEADING.SELL_PRICE] }}</span>
+                <span :class="`text-${props.color}-darken-4`">{{ item[HEADING.SELL_PRICE] }}</span>
                 <component class="trade-table__icon" :is="ICONS_LIST.gold"></component>
             </div>
         </template>
