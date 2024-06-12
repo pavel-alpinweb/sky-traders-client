@@ -6,6 +6,9 @@ import { useTown } from "../store/town.ts"
 import { useTownLevel } from "../levels/town.level.ts"
 import ResourcesPanal from "../ui-components/ResourcesPanal.component.vue"
 import Market from "../windows/market.window.vue"
+import IconMarket from "/public/assets/icons/screens/market.svg"
+import IconShipyard from "/public/assets/icons/screens/shipyard.svg"
+import IconWarehouse from "/public/assets/icons/screens/warehouse.svg"
 
 let background: null | Game = null
 const townStore = useTown()
@@ -30,24 +33,30 @@ onMounted(() => {
             <ResourcesPanal :color="townStore.color" />
         </div>
         <v-btn class="text-none town-screen__back-btn" size="large" variant="elevated" :color="townStore.color" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
-        <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.color}-lighten-5`" class="town-screen__content">
-            <v-tabs v-model="tab" align-tabs="center" :color="`${townStore.color}-darken-4`">
-                <v-tab value="market">Рынок</v-tab>
-                <v-tab value="shipyard">Верфь</v-tab>
-                <v-tab value="warehouse">Склад</v-tab>
-            </v-tabs>
-            <v-tabs-window v-model="tab">
-                <v-tabs-window-item value="market">
+
+        <v-tabs v-model="tab" class="town-screen__menu" direction="vertical" :bg-color="townStore.color" :mandatory="false">
+            <v-tab value="market"><IconMarket class="town-screen__screen-icon" />Рынок</v-tab>
+            <v-tab value="shipyard"><IconShipyard class="town-screen__screen-icon" />Верфь</v-tab>
+            <v-tab value="warehouse"><IconWarehouse class="town-screen__screen-icon" />Склад</v-tab>
+        </v-tabs>
+
+        <v-tabs-window v-model="tab" class="town-screen__wrapper">
+            <v-tabs-window-item value="market" class="town-screen__window">
+                <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.color}-lighten-5`" class="town-screen__content">
                     <Market :color="townStore.color" />
-                </v-tabs-window-item>
-                <v-tabs-window-item value="shipyard">
+                </v-sheet>
+            </v-tabs-window-item>
+            <v-tabs-window-item value="shipyard" class="town-screen__window">
+                <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.color}-lighten-5`" class="town-screen__content">
                     <h1>Верфь</h1>
-                </v-tabs-window-item>
-                <v-tabs-window-item value="warehouse">
+                </v-sheet>
+            </v-tabs-window-item>
+            <v-tabs-window-item value="warehouse" class="town-screen__window">
+                <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.color}-lighten-5`" class="town-screen__content">
                     <h1>Склад</h1>
-                </v-tabs-window-item>
-            </v-tabs-window>
-        </v-sheet>
+                </v-sheet>
+            </v-tabs-window-item>
+        </v-tabs-window>
     </div>
 </template>
 
@@ -58,6 +67,16 @@ onMounted(() => {
     background-color: #a7efff;
     position: relative;
     overflow: auto;
+    display: flex;
+
+    &__wrapper {
+        margin: 15vh auto 0;
+        overflow: auto;
+    }
+
+    &__window {
+        padding: 15px;
+    }
 
     &__background {
         width: 100%;
@@ -67,6 +86,14 @@ onMounted(() => {
         left: 0;
         right: 0;
         overflow: hidden;
+    }
+
+    &__menu {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
     }
 
     &__panel {
@@ -83,10 +110,14 @@ onMounted(() => {
     }
 
     &__content {
-        position: relative;
         z-index: 2;
-        margin: 768px auto 40px;
-        padding: 5px 15px;
+        padding: 15px;
+    }
+
+    &__screen-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
     }
 }
 </style>
