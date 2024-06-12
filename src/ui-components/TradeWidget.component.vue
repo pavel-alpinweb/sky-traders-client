@@ -80,7 +80,7 @@ const buySell = () => {
 </template>
 
 <style scoped lang="scss">
-@import "/public/assets/scss/variables.scss";
+@import "/public/assets/scss/mixins.scss";
 
 .trade-widget {
     display: flex;
@@ -110,15 +110,8 @@ const buySell = () => {
         width: 100%;
     }
     &__resource {
-        width: 20px;
-        height: 20px;
         margin: 0 5px;
-        @each $name, $attr in $resourcesMap {
-            &--#{$name} {
-                fill: $attr;
-                color: $attr;
-            }
-        }
+        @include icon-styles;
     }
 }
 </style>

@@ -145,7 +145,7 @@ const items = reactive([
 </template>
 
 <style scoped lang="scss">
-@import "/public/assets/scss/variables.scss";
+@import "/public/assets/scss/mixins.scss";
 
 .trade-table {
     &__item {
@@ -154,14 +154,7 @@ const items = reactive([
         gap: 5px;
     }
     &__icon {
-        width: 20px;
-        height: 20px;
-        @each $name, $attr in $resourcesMap {
-            &--#{$name} {
-                fill: $attr;
-                color: $attr;
-            }
-        }
+        @include icon-styles;
     }
 }
 </style>

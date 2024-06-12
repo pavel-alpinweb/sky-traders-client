@@ -90,15 +90,15 @@ const resources = reactive<Resource[]>([
 
 <template>
     <v-sheet class="resources-panel" :color="`${props.color}-lighten-5`" :width="615" :height="50" :elevation="10" border rounded>
-        <div v-for="resource in resources" :key="resource.name" :class="`resources-panel__item resources-panel__item--${resource.name}`">
-            <component :is="resource.component" class="resources-panel__icon"></component>
+        <div v-for="resource in resources" :key="resource.name" class="resources-panel__item">
+            <component :is="resource.component" :class="`resources-panel__icon resources-panel__icon--${resource.name}`"></component>
             <div :class="`resources-panel__value text-${props.color}-darken-4 text-body-1 font-weight-bold`">{{ resource.value }}</div>
         </div>
     </v-sheet>
 </template>
 
 <style scoped lang="scss">
-@import "/public/assets/scss/variables.scss";
+@import "/public/assets/scss/mixins.scss";
 
 .resources-panel {
     display: flex;
@@ -111,17 +111,10 @@ const resources = reactive<Resource[]>([
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        @each $name, $attr in $resourcesMap {
-            &--#{$name} {
-                fill: $attr;
-                color: $attr;
-            }
-        }
     }
 
     &__icon {
-        width: 20px;
-        height: 20px;
+        @include icon-styles;
     }
 }
 </style>

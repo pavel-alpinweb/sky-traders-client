@@ -1,0 +1,12 @@
+@import "/public/assets/scss/variables.scss";
+
+@mixin icon-styles {
+    width: 20px;
+    height: 20px;
+    @each $name, $attr in $resourcesMap {
+        &--#{$name} {
+            fill: $attr;
+            color: $attr;
+        }
+    }
+}
