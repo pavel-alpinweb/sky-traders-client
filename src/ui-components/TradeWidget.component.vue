@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { TradeMode } from "../types/types.ts"
 import { computed, ComputedRef, ref } from "vue"
+import { ICONS_LIST } from "../utils/utils.ts"
 
 const props = defineProps<{
     maxAmount: number
     sellPrice: number
     buyPrice: number
     color: string
+    resource: string
 }>()
 
 const tradeMode = ref<TradeMode>("buy")
@@ -44,7 +46,11 @@ const buySell = () => {
                 variant="outlined"
                 :suffix="`макс. ${props.maxAmount}`"
                 label="Количество"
-            />
+            >
+                <template v-slot:prepend-inner>
+                    <component :class="`trade-widget__resource trade-widget__resource--${props.resource}`" :is="ICONS_LIST[props.resource]"></component>
+                </template>
+            </v-number-input>
             <v-text-field
                 :value="totalAmount"
                 class="trade-widget__input trade-widget__input--readonly"
@@ -55,7 +61,11 @@ const buySell = () => {
                 :label="`Общая стоимость ${tradeMode === 'buy' ? 'покупки' : 'продажи'}`"
                 focused
                 :append-inner-icon="tradeMode === 'buy' ? 'mdi-cash-minus' : 'mdi-cash-plus'"
-            />
+            >
+                <template v-slot:prepend-inner>
+                    <component class="trade-widget__resource" :is="ICONS_LIST.gold"></component>
+                </template>
+            </v-text-field>
             <v-slider class="trade-widget__slider" v-model="amount" :max="props.maxAmount" :step="1" :color="props.color" />
         </div>
         <div class="trade-widget__right-control">
@@ -70,6 +80,8 @@ const buySell = () => {
 </template>
 
 <style scoped lang="scss">
+@import "/public/assets/scss/variables.scss";
+
 .trade-widget {
     display: flex;
     justify-content: space-between;
@@ -96,6 +108,17 @@ const buySell = () => {
     }
     &__slider {
         width: 100%;
+    }
+    &__resource {
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+        @each $name, $attr in $resourcesMap {
+            &--#{$name} {
+                fill: $attr;
+                color: $attr;
+            }
+        }
     }
 }
 </style>
