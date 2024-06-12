@@ -80,21 +80,29 @@ const resources = reactive<Resource[]>([
         name: "silk",
         component: IconSilk,
     },
-    {
-        value: 10000,
-        name: "gold",
-        component: IconGold,
-    },
 ])
+const gold = reactive<Resource>({
+    value: 10000,
+    name: "gold",
+    component: IconGold,
+})
 </script>
 
 <template>
-    <v-sheet class="resources-panel" :color="`${props.color}-lighten-5`" :width="615" :height="50" :elevation="10" border rounded>
-        <div v-for="resource in resources" :key="resource.name" class="resources-panel__item">
-            <component :is="resource.component" :class="`resources-panel__icon resources-panel__icon--${resource.name}`"></component>
-            <div :class="`resources-panel__value text-${props.color}-darken-4 text-body-1 font-weight-bold`">{{ resource.value }}</div>
-        </div>
-    </v-sheet>
+    <div class="resources-panel">
+        <v-sheet class="resources-panel__wrapper" :color="`${props.color}-lighten-5`" :width="615" :height="50" :elevation="10" border rounded>
+            <div v-for="resource in resources" :key="resource.name" class="resources-panel__item">
+                <component :is="resource.component" :class="`resources-panel__icon resources-panel__icon--${resource.name}`"></component>
+                <div :class="`resources-panel__value text-${props.color}-darken-4 text-body-1 font-weight-bold`">{{ resource.value }}</div>
+            </div>
+        </v-sheet>
+        <v-sheet class="resources-panel__wrapper" :color="`${props.color}-lighten-5`" :height="50" :elevation="10" border rounded>
+            <div class="resources-panel__item">
+                <component :is="gold.component" class="resources-panel__icon"></component>
+                <div :class="`resources-panel__value text-${props.color}-darken-4 text-body-1 font-weight-bold`">{{ gold.value }}</div>
+            </div>
+        </v-sheet>
+    </div>
 </template>
 
 <style scoped lang="scss">
@@ -102,9 +110,16 @@ const resources = reactive<Resource[]>([
 
 .resources-panel {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 5px 10px;
+    gap: 10px;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 10px;
+        gap: 5px;
+    }
 
     &__item {
         display: flex;
