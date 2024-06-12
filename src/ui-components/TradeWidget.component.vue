@@ -69,7 +69,7 @@ const buySell = () => {
             <v-slider class="trade-widget__slider" v-model="amount" :max="props.maxAmount" :step="1" :color="props.color" />
         </div>
         <div class="trade-widget__right-control">
-            <v-btn-group color="green" variant="outlined">
+            <v-btn-group color="green" variant="elevated">
                 <v-btn :icon="tradeMode === 'buy' ? 'mdi-cash-plus' : 'mdi-cash-minus'" :color="props.color" size="x-large" @click="changeMode" />
                 <v-btn :color="props.color" size="x-large" @click="buySell">
                     {{ tradeMode === "buy" ? "Купить" : "Продать" }}
