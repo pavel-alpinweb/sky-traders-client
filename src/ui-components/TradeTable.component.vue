@@ -113,21 +113,22 @@ const rowProps = (data: Record<string, ResourceTable>) => {
         :items-per-page="12"
         :items="items"
         :row-props="rowProps"
+        :header-props="{ class: `bg-${props.color}-darken-1` }"
         select-strategy="single"
         show-select
         return-object
     >
         <template #[`header.${[HEADING.NAME]}`]="{ column }">
-            <span :class="`text-${props.color}-darken-4 font-weight-bold`">{{ column.title }}</span>
+            <span class="text-white font-weight-bold">{{ column.title }}</span>
         </template>
         <template #[`header.${[HEADING.VALUE]}`]="{ column }">
-            <span :class="`text-${props.color}-darken-4 font-weight-bold`">{{ column.title }}</span>
+            <span class="text-white font-weight-bold">{{ column.title }}</span>
         </template>
         <template #[`header.${[HEADING.BUY_PRICE]}`]="{ column }">
-            <span :class="`text-${props.color}-darken-4 font-weight-bold`">{{ column.title }}</span>
+            <span class="text-white font-weight-bold">{{ column.title }}</span>
         </template>
         <template #[`header.${[HEADING.SELL_PRICE]}`]="{ column }">
-            <span :class="`text-${props.color}-darken-4 font-weight-bold`">{{ column.title }}</span>
+            <span class="text-white font-weight-bold">{{ column.title }}</span>
         </template>
         <template #[`item.${HEADING.NAME}`]="{ item }">
             <div class="trade-table__item">
