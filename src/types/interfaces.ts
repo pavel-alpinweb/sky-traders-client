@@ -19,7 +19,6 @@ export interface Town {
 export interface Resource {
     name: string
     value: number
-    component: string
 }
 
 export interface ResourceTable {
