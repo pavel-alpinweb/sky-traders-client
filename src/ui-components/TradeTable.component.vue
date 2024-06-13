@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue"
+import { reactive, ref, watch } from "vue"
 import { ICONS_LIST } from "../utils/utils.ts"
 import { ResourceTable, HEADING } from "../types/interfaces.ts"
 
@@ -103,6 +103,14 @@ const rowProps = (data: Record<string, ResourceTable>) => {
         },
     }
 }
+
+const toggleResource = defineEmits<{
+    (event: "toggle", value: ResourceTable): void
+}>()
+
+watch(currentRow, () => {
+    toggleResource("toggle", currentRow.value[0])
+})
 </script>
 
 <template>

@@ -82,7 +82,7 @@ const resources = reactive<Resource[]>([
     },
 ])
 const gold = reactive<Resource>({
-    value: 10000,
+    value: 5000,
     name: "gold",
     component: IconGold,
 })

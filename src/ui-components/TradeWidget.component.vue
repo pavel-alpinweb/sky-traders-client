@@ -9,6 +9,8 @@ const props = defineProps<{
     buyPrice: number
     color: string
     resource: string
+    playerGold: number
+    playerResourceAmount: number
 }>()
 
 const tradeMode = ref<TradeMode>("buy")
@@ -31,6 +33,19 @@ const buySell = () => {
         buySellEmit("sell", amount.value)
     }
 }
+
+const disabledAction = computed(() => {
+    return amount.value === 0 || props.resource === "" || (props.playerGold < totalAmount.value && tradeMode.value === "buy")
+})
+
+const errorMessages = computed(() => {
+    const messages = []
+    if (props.playerGold < totalAmount.value && tradeMode.value === "buy") {
+        messages.push("Не хватает золота")
+    }
+
+    return messages
+})
 </script>
 
 <template>
@@ -38,7 +53,7 @@ const buySell = () => {
         <div class="trade-widget__center-control">
             <v-number-input
                 v-model="amount"
-                :max="props.maxAmount"
+                :max="tradeMode === 'buy' ? props.maxAmount : props.playerResourceAmount"
                 class="trade-widget__input"
                 density="comfortable"
                 control-variant="split"
@@ -47,7 +62,7 @@ const buySell = () => {
                 :suffix="`макс. ${props.maxAmount}`"
                 label="Количество"
             >
-                <template v-slot:prepend-inner>
+                <template #prepend-inner>
                     <component :class="`trade-widget__resource trade-widget__resource--${props.resource}`" :is="ICONS_LIST[props.resource]"></component>
                 </template>
             </v-number-input>
@@ -61,17 +76,18 @@ const buySell = () => {
                 :label="`Общая стоимость ${tradeMode === 'buy' ? 'покупки' : 'продажи'}`"
                 focused
                 :append-inner-icon="tradeMode === 'buy' ? 'mdi-cash-minus' : 'mdi-cash-plus'"
+                :error-messages="errorMessages"
             >
-                <template v-slot:prepend-inner>
+                <template #prepend-inner>
                     <component class="trade-widget__resource" :is="ICONS_LIST.gold"></component>
                 </template>
             </v-text-field>
-            <v-slider class="trade-widget__slider" v-model="amount" :max="props.maxAmount" :step="1" :color="props.color" />
+            <v-slider class="trade-widget__slider" v-model="amount" :max="tradeMode === 'buy' ? props.maxAmount : props.playerResourceAmount" :step="1" :color="props.color" />
         </div>
         <div class="trade-widget__right-control">
             <v-btn-group color="green" variant="elevated">
                 <v-btn :icon="tradeMode === 'buy' ? 'mdi-cash-plus' : 'mdi-cash-minus'" :color="props.color" size="x-large" @click="changeMode" />
-                <v-btn :color="props.color" size="x-large" @click="buySell">
+                <v-btn :color="props.color" size="x-large" @click="buySell" :disabled="disabledAction">
                     {{ tradeMode === "buy" ? "Купить" : "Продать" }}
                 </v-btn>
             </v-btn-group>
