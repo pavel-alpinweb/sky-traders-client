@@ -1,19 +1,13 @@
 <script setup lang="ts">
-import { reactive } from "vue"
+import { reactive, ref } from "vue"
 import { ICONS_LIST } from "../utils/utils.ts"
+import { ResourceTable, HEADING } from "../types/interfaces.ts"
 
 const props = defineProps<{
     color: string
 }>()
 
-const HEADING = {
-    NAME: "Название",
-    VALUE: "Количество на складе",
-    BUY_PRICE: "Цена покупки",
-    SELL_PRICE: "Цена продажи",
-}
-
-const items = reactive([
+const items = reactive<ResourceTable[]>([
     {
         [HEADING.NAME]: "Сахарный тростник",
         key: "sugar",
@@ -99,10 +93,30 @@ const items = reactive([
         [HEADING.SELL_PRICE]: 23,
     },
 ])
+
+const currentRow = ref<ResourceTable[]>([])
+
+const rowProps = (data: Record<string, ResourceTable>) => {
+    return {
+        class: {
+            [`bg-${props.color}-accent-1`]: data.item.key === currentRow.value[0]?.key,
+        },
+    }
+}
 </script>
 
 <template>
-    <v-data-table :class="`bg-${props.color}-lighten-4`" :items-per-page="12" :items="items" show-select>
+    <v-data-table
+        v-model="currentRow"
+        :class="`bg-${props.color}-lighten-4`"
+        item-value="key"
+        :items-per-page="12"
+        :items="items"
+        :row-props="rowProps"
+        select-strategy="single"
+        show-select
+        return-object
+    >
         <template #[`header.${[HEADING.NAME]}`]="{ column }">
             <span :class="`text-${props.color}-darken-4 font-weight-bold`">{{ column.title }}</span>
         </template>
