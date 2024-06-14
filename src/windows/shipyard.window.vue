@@ -13,6 +13,7 @@ const tab = ref(null)
 
 <template>
     <div class="shipyard-window">
+        <h3 :class="`text-${props.color}-darken-4 text-h3`">Верфь</h3>
         <v-tabs v-model="tab" :color="props.color" align-tabs="center">
             <v-tab value="ships">
                 <IconShips class="shipyard-window__menu-icon" />
