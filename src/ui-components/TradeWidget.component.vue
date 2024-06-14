@@ -34,11 +34,15 @@ const buySell = () => {
     }
 }
 
-const disabledAction = computed(() => {
+const disabledAction = computed<boolean>(() => {
     return amount.value === 0 || props.resource === "" || (props.playerGold < totalAmount.value && tradeMode.value === "buy")
 })
 
-const errorMessages = computed(() => {
+const maxAmount = computed<number>(() => {
+    return tradeMode.value === "buy" ? props.maxAmount : props.playerResourceAmount
+})
+
+const errorMessages = computed<string[]>(() => {
     const messages = []
     if (props.playerGold < totalAmount.value && tradeMode.value === "buy") {
         messages.push("Не хватает золота")
@@ -53,13 +57,13 @@ const errorMessages = computed(() => {
         <div class="trade-widget__center-control">
             <v-number-input
                 v-model="amount"
-                :max="tradeMode === 'buy' ? props.maxAmount : props.playerResourceAmount"
+                :max="maxAmount"
                 class="trade-widget__input"
                 density="comfortable"
                 control-variant="split"
                 :color="props.color"
                 variant="outlined"
-                :suffix="`макс. ${props.maxAmount}`"
+                :suffix="`макс. ${maxAmount}`"
                 label="Количество"
             >
                 <template #prepend-inner>
