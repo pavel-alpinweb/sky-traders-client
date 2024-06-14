@@ -6,6 +6,7 @@ import { useTown } from "../store/town.ts"
 import { useTownLevel } from "../levels/town.level.ts"
 import ResourcesPanal from "../ui-components/ResourcesPanal.component.vue"
 import Market from "../windows/market.window.vue"
+import Shipyard from "../windows/shipyard.window.vue"
 import IconMarket from "/public/assets/icons/screens/market.svg"
 import IconShipyard from "/public/assets/icons/screens/shipyard.svg"
 import IconWarehouse from "/public/assets/icons/screens/warehouse.svg"
@@ -48,7 +49,7 @@ onMounted(() => {
             </v-tabs-window-item>
             <v-tabs-window-item value="shipyard" class="town-screen__window">
                 <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.color}-lighten-5`" class="town-screen__content">
-                    <h1>Верфь</h1>
+                    <Shipyard :color="townStore.color" />
                 </v-sheet>
             </v-tabs-window-item>
             <v-tabs-window-item value="warehouse" class="town-screen__window">
