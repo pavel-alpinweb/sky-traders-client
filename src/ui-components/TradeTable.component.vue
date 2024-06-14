@@ -96,6 +96,15 @@ const items = reactive<ResourceTable[]>([
 
 const currentRow = ref<ResourceTable[]>([])
 
+const selectResource = (data: unknown) => {
+    const row = data as ResourceTable[]
+    if (row?.length > 0) {
+        currentRow.value = row
+    } else {
+        return
+    }
+}
+
 const rowProps = (data: Record<string, ResourceTable>) => {
     return {
         class: {
@@ -115,7 +124,6 @@ watch(currentRow, () => {
 
 <template>
     <v-data-table
-        v-model="currentRow"
         :class="`bg-${props.color}-lighten-4`"
         item-value="key"
         :items-per-page="12"
@@ -125,6 +133,7 @@ watch(currentRow, () => {
         select-strategy="single"
         show-select
         return-object
+        @update:model-value="selectResource"
     >
         <template #[`header.${[HEADING.NAME]}`]="{ column }">
             <span class="text-white font-weight-bold">{{ column.title }}</span>
