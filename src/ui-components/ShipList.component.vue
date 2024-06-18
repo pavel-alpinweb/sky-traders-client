@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Ship } from "../types/interfaces.ts"
+import ShipCard from "./ShipCard.vue"
 
 const props = defineProps<{
     color: string
@@ -10,7 +11,7 @@ const props = defineProps<{
 <template>
     <div class="ship-list">
         <div v-for="(ship, key) in props.ships" :key="key" class="ship-list__item">
-            <pre>{{ ship }}</pre>
+            <ShipCard :color="props.color" mode="select" :ship="ship" />
         </div>
     </div>
 </template>
