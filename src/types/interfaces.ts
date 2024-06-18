@@ -29,6 +29,17 @@ export interface ResourceTable {
     [HEADING.SELL_PRICE]: number
 }
 
+export interface Ship {
+    name: string
+    velocity: number
+    damage: number
+    type: string
+    maxHealth: number
+    currentHealth: number
+    maxFuel: number
+    currentFuel: number
+}
+
 export type IconList = {
     [key in string]: string
 }
