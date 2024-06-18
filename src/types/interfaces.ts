@@ -39,3 +39,11 @@ export interface Ship {
     maxFuel: number
     currentFuel: number
 }
+
+export interface Player {
+    id: number
+    gold: number
+    resources: Resource[]
+    ships: Ship[]
+    currentShip: Ship | null
+}
