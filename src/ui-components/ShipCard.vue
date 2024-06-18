@@ -11,7 +11,7 @@ const props = defineProps<{
 
 <template>
     <v-card class="mx-auto" :color="`${props.color}-darken-4`" variant="tonal">
-        <v-img :src="`/public/assets/ships/seagull/${props.ship.type}-shop.png`" height="200" />
+        <v-img :src="`/public/assets/ships/${props.ship.type}/${props.ship.type}-shop.png`" height="200" />
         <v-card-title>{{ props.ship.name }}</v-card-title>
     </v-card>
 </template>
