@@ -39,7 +39,3 @@ export interface Ship {
     maxFuel: number
     currentFuel: number
 }
-
-export type IconList = {
-    [key in string]: string
-}

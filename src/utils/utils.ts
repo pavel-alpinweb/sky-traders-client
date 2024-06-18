@@ -12,7 +12,7 @@ import IconSteel from "/public/assets/icons/resources/steel.svg"
 import IconIvory from "/public/assets/icons/resources/ivory.svg"
 import IconGold from "/public/assets/icons/resources/gold.svg"
 import IconSilk from "/public/assets/icons/resources/silk.svg"
-import { IconList } from "../types/interfaces.ts"
+import { IconList } from "../types/types.ts"
 
 export const EventBus = new Phaser.Events.EventEmitter()
 
