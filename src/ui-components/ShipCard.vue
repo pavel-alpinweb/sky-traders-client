@@ -38,6 +38,9 @@ const props = defineProps<{
         <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
             <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние коробля'" /> {{ props.ship.currentHealth }} / {{ props.ship.maxHealth }}
         </v-card-subtitle>
+        <v-card-actions>
+            <v-btn :color="props.color">Выбрать</v-btn>
+        </v-card-actions>
     </v-card>
 </template>
 
