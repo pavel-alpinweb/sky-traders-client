@@ -14,6 +14,7 @@ export interface Town {
     name: string
     coords: Coords
     color: string
+    ships: Ship[]
 }
 
 export interface ResourcePanel {

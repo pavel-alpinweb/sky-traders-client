@@ -5,12 +5,14 @@ import IconBlueprints from "/public/assets/icons/shipyard/drawing.svg"
 import IconBuildings from "/public/assets/icons/shipyard/building.svg"
 import { usePlayer } from "../store/player.ts"
 import ShipList from "../ui-components/ShipList.component.vue"
+import { useTown } from "../store/town.ts"
 
 const props = defineProps<{
     color: string
 }>()
 
 const player = usePlayer()
+const town = useTown()
 
 const tab = ref(null)
 </script>
@@ -35,13 +37,13 @@ const tab = ref(null)
 
         <v-tabs-window v-model="tab">
             <v-tabs-window-item value="ships">
-                <ship-list :ships="player.ships" :color="props.color" />
+                <ship-list :ships="player.ships" :color="props.color" mode="select" />
             </v-tabs-window-item>
             <v-tabs-window-item value="blueprints">
                 <h2>Мои чертежи</h2>
             </v-tabs-window-item>
             <v-tabs-window-item value="building">
-                <h2>Построить корабль</h2>
+                <ship-list :ships="town.ships" :color="props.color" mode="build" />
             </v-tabs-window-item>
         </v-tabs-window>
     </div>
