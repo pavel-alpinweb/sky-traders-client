@@ -1,65 +1,78 @@
 <script setup lang="ts">
 import { reactive } from "vue"
-import { Resource } from "../types/interfaces.ts"
+import { ResourcePanel } from "../types/interfaces.ts"
 import { ICONS_LIST } from "../utils/utils.ts"
 
 const props = defineProps<{
     color: string
 }>()
 
-const resources = reactive<Resource[]>([
+const resources = reactive<ResourcePanel[]>([
     {
         value: 2000,
         name: "sugar",
+        title: "Сахарный тростник",
     },
     {
         value: 2000,
         name: "corn",
+        title: "Кукуруза",
     },
     {
         value: 2000,
         name: "spice",
+        title: "Пряности",
     },
     {
         value: 2000,
         name: "grain",
+        title: "Зерно",
     },
     {
         value: 2000,
         name: "wood",
+        title: "Древесина",
     },
     {
         value: 2000,
         name: "hemp",
+        title: "Конопля",
     },
     {
         value: 2000,
         name: "cotton",
+        title: "Хлопок",
     },
     {
         value: 2000,
         name: "gunpowder",
+        title: "Порох",
     },
     {
         value: 2000,
         name: "coal",
+        title: "Уголь",
     },
     {
         value: 2000,
         name: "steel",
+        title: "Сталь",
     },
     {
         value: 2000,
         name: "ivory",
+        title: "Слоновая кость",
     },
     {
         value: 2000,
         name: "silk",
+        title: "Шелк",
     },
 ])
-const gold = reactive<Resource>({
+const gold = reactive<ResourcePanel>({
     value: 5000,
     name: "gold",
+    title: "Золото",
 })
 </script>
 
@@ -67,13 +80,13 @@ const gold = reactive<Resource>({
     <div class="resources-panel">
         <v-sheet class="resources-panel__wrapper" :color="`${props.color}-lighten-5`" :width="615" :height="50" :elevation="10" border rounded>
             <div v-for="resource in resources" :key="resource.name" class="resources-panel__item">
-                <component :is="ICONS_LIST[resource.name]" :class="`resources-panel__icon resources-panel__icon--${resource.name}`"></component>
+                <component :is="ICONS_LIST[resource.name]" :class="`resources-panel__icon resources-panel__icon--${resource.name}`" v-tooltip="resource.title"></component>
                 <div :class="`resources-panel__value text-${props.color}-darken-4 text-body-1 font-weight-bold`">{{ resource.value }}</div>
             </div>
         </v-sheet>
         <v-sheet class="resources-panel__wrapper" :color="`${props.color}-lighten-5`" :height="50" :elevation="10" border rounded>
             <div class="resources-panel__item">
-                <component :is="ICONS_LIST[gold.name]" class="resources-panel__icon"></component>
+                <component :is="ICONS_LIST[gold.name]" class="resources-panel__icon" v-tooltip="gold.title"></component>
                 <div :class="`resources-panel__value text-${props.color}-darken-4 text-body-1 font-weight-bold`">{{ gold.value }}</div>
             </div>
         </v-sheet>

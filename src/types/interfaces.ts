@@ -16,8 +16,9 @@ export interface Town {
     color: string
 }
 
-export interface Resource {
+export interface ResourcePanel {
     name: string
+    title: string
     value: number
 }
 
@@ -43,7 +44,7 @@ export interface Ship {
 export interface Player {
     id: number
     gold: number
-    resources: Resource[]
+    resources: ResourcePanel[]
     ships: Ship[]
     currentShip: Ship | null
 }
