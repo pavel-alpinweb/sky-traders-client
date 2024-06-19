@@ -13,6 +13,14 @@ const props = defineProps<{
     ship: Ship
     mode: ShipCardMode
 }>()
+
+const selectShipEmit = defineEmits<{
+    (event: ShipCardMode, value: Ship): void
+}>()
+
+const selectShip = (): void => {
+    selectShipEmit(props.mode, props.ship)
+}
 </script>
 
 <template>
@@ -39,7 +47,7 @@ const props = defineProps<{
             <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние коробля'" /> {{ props.ship.currentHealth }} / {{ props.ship.maxHealth }}
         </v-card-subtitle>
         <v-card-actions>
-            <v-btn :color="props.color">Выбрать</v-btn>
+            <v-btn :color="props.color" @click="selectShip">Выбрать</v-btn>
         </v-card-actions>
     </v-card>
 </template>
