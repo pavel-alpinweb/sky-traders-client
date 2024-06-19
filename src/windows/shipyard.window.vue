@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import IconShips from "/public/assets/icons/shipyard/zeppelin.svg"
-import IconBlueprints from "/public/assets/icons/shipyard/drawing.svg"
+// import IconBlueprints from "/public/assets/icons/shipyard/drawing.svg"
 import IconBuildings from "/public/assets/icons/shipyard/building.svg"
 import { usePlayer } from "../store/player.ts"
 import ShipList from "../ui-components/ShipList.component.vue"
@@ -25,10 +25,10 @@ const tab = ref(null)
                 <IconShips class="shipyard-window__menu-icon" />
                 Мои корабли
             </v-tab>
-            <v-tab value="blueprints">
-                <IconBlueprints class="shipyard-window__menu-icon" />
-                Мои чертежи
-            </v-tab>
+            <!--            <v-tab value="blueprints">-->
+            <!--                <IconBlueprints class="shipyard-window__menu-icon" />-->
+            <!--                Мои чертежи-->
+            <!--            </v-tab>-->
             <v-tab value="building">
                 <IconBuildings class="shipyard-window__menu-icon" />
                 Построить корабль
@@ -39,9 +39,9 @@ const tab = ref(null)
             <v-tabs-window-item value="ships">
                 <ship-list :ships="player.ships" :color="props.color" mode="select" />
             </v-tabs-window-item>
-            <v-tabs-window-item value="blueprints">
-                <h2>Мои чертежи</h2>
-            </v-tabs-window-item>
+            <!--            <v-tabs-window-item value="blueprints">-->
+            <!--                <h2>Мои чертежи</h2>-->
+            <!--            </v-tabs-window-item>-->
             <v-tabs-window-item value="building">
                 <ship-list :ships="town.ships" :color="props.color" mode="build" />
             </v-tabs-window-item>
