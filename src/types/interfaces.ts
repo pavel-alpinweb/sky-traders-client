@@ -39,6 +39,7 @@ export interface Ship {
     currentHealth: number
     maxFuel: number
     currentFuel: number
+    price: number
 }
 
 export interface Player {

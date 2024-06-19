@@ -11,7 +11,7 @@ const props = defineProps<{
 <template>
     <div class="ship-list">
         <div v-for="(ship, key) in props.ships" :key="key" class="ship-list__item">
-            <ShipCard :color="props.color" mode="select" :ship="ship" />
+            <ShipCard :color="props.color" mode="build" :ship="ship" />
         </div>
     </div>
 </template>

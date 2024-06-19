@@ -7,6 +7,8 @@ import IconArmor from "/public/assets/icons/ship-params/shield.svg"
 import IconFuel from "/public/assets/icons/ship-params/fuel.svg"
 import IconFuelLevel from "/public/assets/icons/ship-params/fuel-level.svg"
 import IconRepair from "/public/assets/icons/ship-params/repair.svg"
+import IconGold from "/public/assets/icons/resources/gold.svg"
+import { computed } from "vue"
 
 const props = defineProps<{
     color: string
@@ -21,6 +23,10 @@ const selectShipEmit = defineEmits<{
 const selectShip = (): void => {
     selectShipEmit(props.mode, props.ship)
 }
+
+const actionsLabel = computed<string>(() => {
+    return props.mode === "select" ? "Выбрать" : "Построить"
+})
 </script>
 
 <template>
@@ -40,14 +46,17 @@ const selectShip = (): void => {
             </v-card-subtitle>
         </v-img>
         <v-card-title>{{ props.ship.name }}</v-card-title>
-        <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
+        <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
             <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" /> {{ props.ship.currentFuel }} / {{ props.ship.maxFuel }}
         </v-card-subtitle>
-        <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
+        <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
             <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние коробля'" /> {{ props.ship.currentHealth }} / {{ props.ship.maxHealth }}
         </v-card-subtitle>
+        <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
+            <IconGold class="ship-card__param-icon" v-tooltip="'Стоимость постройки'" /> {{ props.ship.price }}
+        </v-card-subtitle>
         <v-card-actions>
-            <v-btn :color="props.color" @click="selectShip">Выбрать</v-btn>
+            <v-btn :color="props.color" @click="selectShip">{{ actionsLabel }}</v-btn>
         </v-card-actions>
     </v-card>
 </template>

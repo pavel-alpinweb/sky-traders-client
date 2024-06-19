@@ -16,6 +16,7 @@ export const usePlayer = defineStore("player", {
                 currentHealth: 18,
                 maxFuel: 50,
                 currentFuel: 20,
+                price: 100,
             },
             {
                 name: "Наглый альбатрос",
@@ -26,6 +27,7 @@ export const usePlayer = defineStore("player", {
                 currentHealth: 100,
                 maxFuel: 120,
                 currentFuel: 100,
+                price: 1000,
             },
             {
                 name: "Золотой пеликан",
@@ -36,6 +38,7 @@ export const usePlayer = defineStore("player", {
                 currentHealth: 300,
                 maxFuel: 500,
                 currentFuel: 200,
+                price: 5000,
             },
             {
                 name: "Небесный кит",
@@ -46,6 +49,7 @@ export const usePlayer = defineStore("player", {
                 currentHealth: 600,
                 maxFuel: 900,
                 currentFuel: 900,
+                price: 15000,
             },
         ],
         currentShip: null,
