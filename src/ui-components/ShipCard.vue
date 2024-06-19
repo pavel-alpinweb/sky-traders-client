@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { Ship } from "../types/interfaces.ts"
 import { ShipCardMode } from "../types/types.ts"
+import IconVelocity from "/public/assets/icons/ship-params/velocity.svg"
+import IconAim from "/public/assets/icons/ship-params/aim.svg"
+import IconArmor from "/public/assets/icons/ship-params/shield.svg"
+import IconFuel from "/public/assets/icons/ship-params/fuel.svg"
+import IconFuelLevel from "/public/assets/icons/ship-params/fuel-level.svg"
+import IconRepair from "/public/assets/icons/ship-params/repair.svg"
 
 const props = defineProps<{
     color: string
@@ -10,10 +16,41 @@ const props = defineProps<{
 </script>
 
 <template>
-    <v-card class="mx-auto" :color="`${props.color}-darken-4`" variant="tonal">
-        <v-img :src="`/public/assets/ships/${props.ship.type}/${props.ship.type}-shop.png`" height="200" />
+    <v-card class="mx-auto ship-card" :color="`${props.color}-darken-4`" variant="tonal">
+        <v-img class="align-end" :src="`/public/assets/ships/${props.ship.type}/${props.ship.type}-shop.png`" height="200">
+            <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
+                <IconVelocity class="ship-card__param-icon" v-tooltip="'Скорость'" /> {{ props.ship.velocity }}
+            </v-card-subtitle>
+            <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
+                <IconAim class="ship-card__param-icon" v-tooltip="'Урон'" /> {{ props.ship.damage }}
+            </v-card-subtitle>
+            <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
+                <IconArmor class="ship-card__param-icon" v-tooltip="'Максимальный запас прочности'" /> {{ props.ship.maxHealth }}
+            </v-card-subtitle>
+            <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
+                <IconFuel class="ship-card__param-icon" v-tooltip="'Максимальный запас топлива'" /> {{ props.ship.maxFuel }}
+            </v-card-subtitle>
+        </v-img>
         <v-card-title>{{ props.ship.name }}</v-card-title>
+        <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
+            <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" /> {{ props.ship.currentFuel }} / {{ props.ship.maxFuel }}
+        </v-card-subtitle>
+        <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
+            <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние коробля'" /> {{ props.ship.currentHealth }} / {{ props.ship.maxHealth }}
+        </v-card-subtitle>
     </v-card>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.ship-card {
+    &__param {
+        opacity: 1;
+        margin-top: 5px;
+    }
+    &__param-icon {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+    }
+}
+</style>
