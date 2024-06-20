@@ -6,6 +6,7 @@ import IconBuildings from "/public/assets/icons/shipyard/building.svg"
 import { usePlayer } from "../store/player.ts"
 import ShipList from "../ui-components/ShipList.component.vue"
 import { useTown } from "../store/town.ts"
+import { Ship } from "../types/interfaces.ts"
 
 const props = defineProps<{
     color: string
@@ -15,6 +16,10 @@ const player = usePlayer()
 const town = useTown()
 
 const tab = ref(null)
+
+const selectShipHandler = (ship: Ship) => {
+    player.setCurrentShip(ship.id)
+}
 </script>
 
 <template>
@@ -37,7 +42,7 @@ const tab = ref(null)
 
         <v-tabs-window v-model="tab">
             <v-tabs-window-item value="ships">
-                <ship-list :ships="player.ships" :color="props.color" mode="select" :current-ship-id="player.currentShipId" />
+                <ship-list :ships="player.ships" :color="props.color" mode="select" :current-ship-id="player.currentShipId" @select="selectShipHandler" />
             </v-tabs-window-item>
             <!--            <v-tabs-window-item value="blueprints">-->
             <!--                <h2>Мои чертежи</h2>-->

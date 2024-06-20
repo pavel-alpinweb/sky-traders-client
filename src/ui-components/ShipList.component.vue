@@ -9,12 +9,20 @@ const props = defineProps<{
     mode: ShipCardMode
     currentShipId?: number | null
 }>()
+
+const selectShipEmit = defineEmits<{
+    (event: ShipCardMode, value: Ship): void
+}>()
+
+const selectShipHandler = (ship: Ship) => {
+    selectShipEmit("select", ship)
+}
 </script>
 
 <template>
     <div class="ship-list">
         <div v-for="(ship, key) in props.ships" :key="key" class="ship-list__item">
-            <ShipCard :color="props.color" :mode="props.mode" :ship="ship" :variant="ship.id === currentShipId ? 'outlined' : 'tonal'" />
+            <ShipCard :color="props.color" :mode="props.mode" :ship="ship" :variant="ship.id === currentShipId ? 'outlined' : 'tonal'" @select="selectShipHandler" />
         </div>
     </div>
 </template>
