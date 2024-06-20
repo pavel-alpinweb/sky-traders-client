@@ -4,7 +4,7 @@ import { Player, Ship } from "../types/interfaces.ts"
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
         id: 0,
-        gold: 0,
+        gold: 100,
         resources: [],
         ships: [
             {
@@ -27,7 +27,7 @@ export const usePlayer = defineStore("player", {
                 damage: 20,
                 type: "albatross",
                 maxHealth: 100,
-                currentHealth: 100,
+                currentHealth: 1,
                 maxFuel: 120,
                 currentFuel: 100,
                 price: 1000,

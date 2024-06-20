@@ -7,6 +7,7 @@ import { usePlayer } from "../store/player.ts"
 import ShipList from "../ui-components/ShipList.component.vue"
 import { useTown } from "../store/town.ts"
 import { Ship } from "../types/interfaces.ts"
+import RepairShip from "../ui-components/RepairShip.component.vue"
 
 const props = defineProps<{
     color: string
@@ -42,6 +43,14 @@ const selectShipHandler = (ship: Ship) => {
 
         <v-tabs-window v-model="tab">
             <v-tabs-window-item value="ships">
+                <RepairShip
+                    v-if="player.currentShip"
+                    :color="props.color"
+                    :current-health="player.currentShip.currentHealth"
+                    :max-health="player.currentShip.maxHealth"
+                    :repair-price="player.currentShip.repairPrice"
+                    :gold="player.gold"
+                />
                 <ship-list :ships="player.ships" :color="props.color" mode="select" :current-ship-id="player.currentShipId" @select="selectShipHandler" />
             </v-tabs-window-item>
             <!--            <v-tabs-window-item value="blueprints">-->
