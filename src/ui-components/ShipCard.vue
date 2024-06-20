@@ -14,6 +14,7 @@ const props = defineProps<{
     color: string
     ship: Ship
     mode: ShipCardMode
+    variant: "flat" | "text" | "elevated" | "tonal" | "outlined" | "plain"
 }>()
 
 const selectShipEmit = defineEmits<{
@@ -30,7 +31,7 @@ const actionsLabel = computed<string>(() => {
 </script>
 
 <template>
-    <v-card class="mx-auto ship-card" :color="`${props.color}-darken-4`" variant="tonal">
+    <v-card class="mx-auto ship-card" :color="`${props.color}-darken-4`" :variant="variant">
         <v-img class="align-end" :src="`/public/assets/ships/${props.ship.type}/${props.ship.type}-shop.png`" height="200">
             <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
                 <IconVelocity class="ship-card__param-icon" v-tooltip="'Скорость'" /> {{ props.ship.velocity }}

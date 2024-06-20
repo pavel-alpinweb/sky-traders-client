@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { Player } from "../types/interfaces.ts"
+import { Player, Ship } from "../types/interfaces.ts"
 
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
@@ -34,6 +34,14 @@ export const usePlayer = defineStore("player", {
                 repairPrice: 3,
             },
         ],
-        currentShipId: null,
+        currentShipId: 1,
     }),
+    getters: {
+        currentShip: (state): Ship | null => {
+            if (state.currentShipId) {
+                return state.ships.find((ship) => ship.id === state.currentShipId) as Ship
+            }
+            return null
+        },
+    },
 })

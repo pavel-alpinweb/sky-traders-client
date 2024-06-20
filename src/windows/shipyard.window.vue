@@ -37,7 +37,7 @@ const tab = ref(null)
 
         <v-tabs-window v-model="tab">
             <v-tabs-window-item value="ships">
-                <ship-list :ships="player.ships" :color="props.color" mode="select" />
+                <ship-list :ships="player.ships" :color="props.color" mode="select" :current-ship-id="player.currentShipId" />
             </v-tabs-window-item>
             <!--            <v-tabs-window-item value="blueprints">-->
             <!--                <h2>Мои чертежи</h2>-->
