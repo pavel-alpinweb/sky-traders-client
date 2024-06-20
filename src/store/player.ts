@@ -8,6 +8,7 @@ export const usePlayer = defineStore("player", {
         resources: [],
         ships: [
             {
+                id: 1,
                 name: "Хромая чайка",
                 velocity: 10,
                 damage: 5,
@@ -17,8 +18,10 @@ export const usePlayer = defineStore("player", {
                 maxFuel: 50,
                 currentFuel: 20,
                 price: 100,
+                repairPrice: 1,
             },
             {
+                id: 2,
                 name: "Наглый альбатрос",
                 velocity: 30,
                 damage: 20,
@@ -28,8 +31,9 @@ export const usePlayer = defineStore("player", {
                 maxFuel: 120,
                 currentFuel: 100,
                 price: 1000,
+                repairPrice: 3,
             },
         ],
-        currentShip: null,
+        currentShipId: null,
     }),
 })

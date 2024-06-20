@@ -11,6 +11,7 @@ export const useTown = defineStore("town", {
         color: "green",
         ships: [
             {
+                id: 4,
                 name: "Хромая чайка",
                 velocity: 10,
                 damage: 5,
@@ -20,8 +21,10 @@ export const useTown = defineStore("town", {
                 maxFuel: 50,
                 currentFuel: 20,
                 price: 100,
+                repairPrice: 1,
             },
             {
+                id: 5,
                 name: "Наглый альбатрос",
                 velocity: 30,
                 damage: 20,
@@ -31,8 +34,10 @@ export const useTown = defineStore("town", {
                 maxFuel: 120,
                 currentFuel: 100,
                 price: 1000,
+                repairPrice: 3,
             },
             {
+                id: 6,
                 name: "Золотой пеликан",
                 velocity: 80,
                 damage: 50,
@@ -42,8 +47,10 @@ export const useTown = defineStore("town", {
                 maxFuel: 500,
                 currentFuel: 200,
                 price: 5000,
+                repairPrice: 5,
             },
             {
+                id: 7,
                 name: "Небесный кит",
                 velocity: 200,
                 damage: 100,
@@ -53,6 +60,7 @@ export const useTown = defineStore("town", {
                 maxFuel: 900,
                 currentFuel: 900,
                 price: 15000,
+                repairPrice: 8,
             },
         ],
     }),

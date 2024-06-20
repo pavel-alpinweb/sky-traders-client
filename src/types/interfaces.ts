@@ -32,6 +32,7 @@ export interface ResourceTable {
 }
 
 export interface Ship {
+    id: number
     name: string
     velocity: number
     damage: number
@@ -41,6 +42,7 @@ export interface Ship {
     maxFuel: number
     currentFuel: number
     price: number
+    repairPrice: number
 }
 
 export interface Player {
@@ -48,5 +50,5 @@ export interface Player {
     gold: number
     resources: ResourcePanel[]
     ships: Ship[]
-    currentShip: Ship | null
+    currentShipId: number | null
 }
