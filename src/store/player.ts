@@ -44,4 +44,9 @@ export const usePlayer = defineStore("player", {
             return null
         },
     },
+    actions: {
+        setCurrentShip(id: number): void {
+            this.currentShipId = id
+        },
+    },
 })
