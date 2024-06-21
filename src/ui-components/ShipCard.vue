@@ -32,6 +32,21 @@ const actionsLabel = computed<string>(() => {
 
 <template>
     <v-card class="mx-auto ship-card" :color="`${props.color}-darken-4`" :variant="variant">
+        <v-dialog max-width="600">
+            <template #activator="{ props: activatorProps }">
+                <v-btn class="ship-card__description-trigger" v-bind="activatorProps" :color="`${props.color}-darken-4`" size="x-small" variant="flat" icon="mdi-script-text-outline" />
+            </template>
+            <template #default="{ isActive }">
+                <v-card :title="props.ship.name" :color="`${props.color}-lighten-5`">
+                    <v-card-text> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </v-card-text>
+
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn :color="props.color" text="Закрыть" @click="isActive.value = false"></v-btn>
+                    </v-card-actions>
+                </v-card>
+            </template>
+        </v-dialog>
         <v-img class="align-end" :src="`/public/assets/ships/${props.ship.type}/${props.ship.type}-shop.png`" height="200">
             <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
                 <IconVelocity class="ship-card__param-icon" v-tooltip="'Скорость'" /> {{ props.ship.velocity }}
@@ -64,6 +79,13 @@ const actionsLabel = computed<string>(() => {
 
 <style scoped lang="scss">
 .ship-card {
+    position: relative;
+    &__description-trigger {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        z-index: 2;
+    }
     &__param {
         opacity: 1;
         margin-top: 5px;
