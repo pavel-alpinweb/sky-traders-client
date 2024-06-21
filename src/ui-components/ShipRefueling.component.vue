@@ -18,6 +18,15 @@ const fuelBill = computed(() => fuelAmount.value * FUEL_PRICE)
 
 const maxFueling = computed(() => props.maxFuel - props.currentFuel)
 
+const errorMessages = computed<string[]>(() => {
+    const messages = []
+    if (props.gold < fuelBill.value) {
+        messages.push("Не хватает золота")
+    }
+
+    return messages
+})
+
 watch(
     () => props.id,
     () => {
@@ -40,6 +49,7 @@ watch(
                 label="Стоимость заправки"
                 variant="outlined"
                 :suffix="`${fuelAmount + currentFuel}/${maxFuel}`"
+                :error-messages="errorMessages"
                 readonly
                 focused
             >
