@@ -43,14 +43,18 @@ const selectShipHandler = (ship: Ship) => {
 
         <v-tabs-window v-model="tab">
             <v-tabs-window-item value="ships">
-                <RepairShip
-                    v-if="player.currentShip"
-                    :color="props.color"
-                    :current-health="player.currentShip.currentHealth"
-                    :max-health="player.currentShip.maxHealth"
-                    :repair-price="player.currentShip.repairPrice"
-                    :gold="player.gold"
-                />
+                <div v-if="player.currentShip" class="shipyard-window__ship-service">
+                    <div :class="`text-${props.color}-darken-4 shipyard-window__service-title text-h5 text-center`">Обслуживание корабля</div>
+                    <div class="shipyard-window__ship-service-grid">
+                        <RepairShip
+                            :color="props.color"
+                            :current-health="player.currentShip.currentHealth"
+                            :max-health="player.currentShip.maxHealth"
+                            :repair-price="player.currentShip.repairPrice"
+                            :gold="player.gold"
+                        />
+                    </div>
+                </div>
                 <ship-list :ships="player.ships" :color="props.color" mode="select" :current-ship-id="player.currentShipId" @select="selectShipHandler" />
             </v-tabs-window-item>
             <!--            <v-tabs-window-item value="blueprints">-->
@@ -69,6 +73,17 @@ const selectShipHandler = (ship: Ship) => {
         width: 30px;
         height: 30px;
         margin-right: 10px;
+    }
+    &__ship-service {
+        padding: 15px 0 0;
+    }
+    &__service-title {
+        margin-bottom: 15px;
+    }
+    &__ship-service-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 15px;
     }
 }
 </style>

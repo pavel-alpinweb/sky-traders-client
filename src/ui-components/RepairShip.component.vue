@@ -41,7 +41,7 @@ const errorMessages = computed<string[]>(() => {
                 <component class="repair-ship__gold-icon" :is="ICONS_LIST.gold"></component>
             </template>
         </v-text-field>
-        <v-btn class="repair-ship__btn" size="large" variant="elevated" :color="props.color" :disabled="repairBill === 0 || repairBill > props.gold">Купить</v-btn>
+        <v-btn class="repair-ship__btn" size="large" variant="elevated" :color="props.color" :disabled="repairBill === 0 || repairBill > props.gold">Ремонтировать</v-btn>
     </div>
 </template>
 
@@ -51,7 +51,6 @@ const errorMessages = computed<string[]>(() => {
     justify-content: center;
     align-items: flex-start;
     gap: 15px;
-    margin: 15px 0;
     &__repair-icon {
         width: 50px;
         height: 50px;
