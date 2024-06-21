@@ -45,7 +45,7 @@ const selectShipHandler = (ship: Ship) => {
         <v-tabs-window v-model="tab">
             <v-tabs-window-item value="ships">
                 <div v-if="player.currentShip" class="shipyard-window__ship-service">
-                    <div :class="`text-${props.color}-darken-4 shipyard-window__service-title text-h5 text-center`">Обслуживание корабля</div>
+                    <div :class="`text-${props.color}-darken-4 shipyard-window__service-title text-h5 text-center`">Обслуживание корабля: {{ player.currentShip.name }}</div>
                     <div class="shipyard-window__ship-service-grid">
                         <RepairShip
                             :color="props.color"
@@ -80,7 +80,7 @@ const selectShipHandler = (ship: Ship) => {
         padding: 15px 0 0;
     }
     &__service-title {
-        margin-bottom: 15px;
+        margin-bottom: 30px;
     }
     &__ship-service-grid {
         display: grid;
