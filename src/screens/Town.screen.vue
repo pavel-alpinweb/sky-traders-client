@@ -9,7 +9,7 @@ import Market from "../windows/market.window.vue"
 import Shipyard from "../windows/shipyard.window.vue"
 import IconMarket from "/public/assets/icons/screens/market.svg"
 import IconShipyard from "/public/assets/icons/screens/shipyard.svg"
-import IconWarehouse from "/public/assets/icons/screens/warehouse.svg"
+// import IconWarehouse from "/public/assets/icons/screens/warehouse.svg"
 
 let background: null | Game = null
 const townStore = useTown()
@@ -38,7 +38,7 @@ onMounted(() => {
         <v-tabs v-model="tab" class="town-screen__menu" direction="vertical" :bg-color="townStore.color" :mandatory="false">
             <v-tab value="market"><IconMarket class="town-screen__screen-icon" />Рынок</v-tab>
             <v-tab value="shipyard"><IconShipyard class="town-screen__screen-icon" />Верфь</v-tab>
-            <v-tab value="warehouse"><IconWarehouse class="town-screen__screen-icon" />Склад</v-tab>
+            <!--            <v-tab value="warehouse"><IconWarehouse class="town-screen__screen-icon" />Склад</v-tab>-->
         </v-tabs>
 
         <v-tabs-window v-model="tab" class="town-screen__wrapper">
@@ -52,11 +52,11 @@ onMounted(() => {
                     <Shipyard :color="townStore.color" />
                 </v-sheet>
             </v-tabs-window-item>
-            <v-tabs-window-item value="warehouse" class="town-screen__window">
-                <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.color}-lighten-5`" class="town-screen__content">
-                    <h1>Склад</h1>
-                </v-sheet>
-            </v-tabs-window-item>
+            <!--            <v-tabs-window-item value="warehouse" class="town-screen__window">-->
+            <!--                <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.color}-lighten-5`" class="town-screen__content">-->
+            <!--                    <h1>Склад</h1>-->
+            <!--                </v-sheet>-->
+            <!--            </v-tabs-window-item>-->
         </v-tabs-window>
     </div>
 </template>
