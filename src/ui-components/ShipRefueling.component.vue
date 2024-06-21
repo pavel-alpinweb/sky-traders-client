@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue"
+import { computed, ref, watch } from "vue"
 import { FUEL_PRICE } from "../configs/gameplay.config.ts"
 import { ICONS_LIST } from "../utils/utils.ts"
 
@@ -9,16 +9,24 @@ const props = defineProps<{
     color: string
 }>()
 
-const fuelAmount = ref<number>(props.currentFuel)
+const fuelAmount = ref<number>(0)
 
-const fuelBill = computed(() => fuelAmount.value * FUEL_PRICE)
+const fuelBill = computed(() => (props.maxFuel - fuelAmount.value) * FUEL_PRICE)
+
+watch(
+    () => props.currentFuel,
+    (value) => {
+        fuelAmount.value = value
+    },
+    { immediate: true }
+)
 </script>
 
 <template>
     <div class="ship-refueling">
         <div class="ship-refueling__left"></div>
         <div class="ship-refueling__center">
-            <v-text-field class="ship-refueling__input" :value="fuelBill" :color="props.color" density="comfortable" label="Стоимость ремонта" variant="outlined" readonly focused>
+            <v-text-field class="ship-refueling__input" :value="fuelBill" :color="props.color" density="comfortable" label="Стоимость заправки" variant="outlined" readonly focused>
                 <template #prepend-inner>
                     <component class="ship-refueling__gold-icon" :is="ICONS_LIST.gold"></component>
                 </template>
