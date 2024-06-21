@@ -7,18 +7,20 @@ const props = defineProps<{
     maxFuel: number
     currentFuel: number
     color: string
+    id: number
 }>()
 
 const fuelAmount = ref<number>(0)
 
-const fuelBill = computed(() => (props.maxFuel - fuelAmount.value) * FUEL_PRICE)
+const fuelBill = computed(() => fuelAmount.value * FUEL_PRICE)
+
+const maxFueling = computed(() => props.maxFuel - props.currentFuel)
 
 watch(
-    () => props.currentFuel,
-    (value) => {
-        fuelAmount.value = value
-    },
-    { immediate: true }
+    () => props.id,
+    () => {
+        fuelAmount.value = 0
+    }
 )
 </script>
 
@@ -26,11 +28,22 @@ watch(
     <div class="ship-refueling">
         <div class="ship-refueling__left"></div>
         <div class="ship-refueling__center">
-            <v-text-field class="ship-refueling__input" :value="fuelBill" :color="props.color" density="comfortable" label="Стоимость заправки" variant="outlined" readonly focused>
+            <v-text-field
+                class="ship-refueling__input"
+                :value="fuelBill"
+                :color="props.color"
+                density="comfortable"
+                label="Стоимость заправки"
+                variant="outlined"
+                :suffix="`${fuelAmount + currentFuel}/${maxFuel}`"
+                readonly
+                focused
+            >
                 <template #prepend-inner>
                     <component class="ship-refueling__gold-icon" :is="ICONS_LIST.gold"></component>
                 </template>
             </v-text-field>
+            <v-slider class="ship-refueling__slider" v-model="fuelAmount" :max="maxFueling" :step="1" :color="props.color" />
         </div>
         <div class="ship-refueling__right"></div>
     </div>

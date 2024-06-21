@@ -54,7 +54,7 @@ const selectShipHandler = (ship: Ship) => {
                             :repair-price="player.currentShip.repairPrice"
                             :gold="player.gold"
                         />
-                        <ShipRefueling :color="props.color" :max-fuel="player.currentShip.maxFuel" :current-fuel="player.currentShip.currentFuel" />
+                        <ShipRefueling :color="props.color" :max-fuel="player.currentShip.maxFuel" :current-fuel="player.currentShip.currentFuel" :id="player.currentShip.id" />
                     </div>
                 </div>
                 <ship-list :ships="player.ships" :color="props.color" mode="select" :current-ship-id="player.currentShipId" @select="selectShipHandler" />
