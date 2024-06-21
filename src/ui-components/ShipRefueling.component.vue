@@ -2,12 +2,14 @@
 import { computed, ref, watch } from "vue"
 import { FUEL_PRICE } from "../configs/gameplay.config.ts"
 import { ICONS_LIST } from "../utils/utils.ts"
+import IconFuelLevel from "/public/assets/icons/ship-params/fuel-level.svg"
 
 const props = defineProps<{
     maxFuel: number
     currentFuel: number
     color: string
     id: number
+    gold: number
 }>()
 
 const fuelAmount = ref<number>(0)
@@ -26,7 +28,9 @@ watch(
 
 <template>
     <div class="ship-refueling">
-        <div class="ship-refueling__left"></div>
+        <div class="ship-refueling__left">
+            <IconFuelLevel class="ship-refueling__icon" />
+        </div>
         <div class="ship-refueling__center">
             <v-text-field
                 class="ship-refueling__input"
@@ -45,7 +49,9 @@ watch(
             </v-text-field>
             <v-slider class="ship-refueling__slider" v-model="fuelAmount" :max="maxFueling" :step="1" :color="props.color" />
         </div>
-        <div class="ship-refueling__right"></div>
+        <div class="ship-refueling__right">
+            <v-btn class="repair-ship__btn" size="large" variant="elevated" :color="props.color" :disabled="fuelBill === 0 || fuelBill > props.gold">Заправить</v-btn>
+        </div>
     </div>
 </template>
 
@@ -65,6 +71,10 @@ watch(
         width: 20px;
         height: 20px;
         margin: 0 5px;
+    }
+    &__icon {
+        width: 50px;
+        height: 50px;
     }
 }
 </style>
