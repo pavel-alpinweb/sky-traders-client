@@ -33,6 +33,24 @@ onMounted(() => {
         <div class="town-screen__panel">
             <ResourcesPanal :color="townStore.color" />
         </div>
+        <h1 :class="`town-screen__name text-h2 text-${townStore.color}-darken-4`">
+            <v-dialog max-width="600">
+                <template #activator="{ props: activatorProps }">
+                    <v-btn class="town-screen__description-trigger" v-bind="activatorProps" :color="`${townStore.color}-darken-4`" size="x-small" variant="flat" icon="mdi-script-text-outline" />
+                </template>
+                <template #default="{ isActive }">
+                    <v-card :title="townStore.name" :color="`${townStore.color}-lighten-5`">
+                        <v-card-text> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </v-card-text>
+
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn :color="townStore.color" text="Закрыть" @click="isActive.value = false"></v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </template>
+            </v-dialog>
+            {{ townStore.name }}
+        </h1>
         <v-btn class="text-none town-screen__back-btn" size="large" variant="elevated" :color="townStore.color" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
 
         <v-tabs v-model="tab" class="town-screen__menu" direction="vertical" :bg-color="townStore.color" :mandatory="false">
@@ -102,6 +120,19 @@ onMounted(() => {
         top: 40px;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    &__name {
+        position: fixed;
+        top: 140px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &__description-trigger {
+        position: absolute;
+        top: -15px;
+        right: -15px;
     }
 
     &__back-btn {
