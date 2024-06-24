@@ -36,10 +36,13 @@ onMounted(() => {
 
 <template>
     <div class="game-screen">
-        <div v-if="isShowTownAlert" class="game-screen__town-alert">
-            <div class="game-screen__name">Вы хотите приземлиться в городе {{ townStore.name }}?</div>
-            <button @click="goToTown">В город!</button>
-        </div>
+        <v-snackbar v-model="isShowTownAlert" color="green">
+            Вы хотите приземлиться в городе <b>{{ townStore.name }}</b
+            >?
+            <template #actions>
+                <v-btn color="green-darken-4" variant="elevated" @click="goToTown"> OK </v-btn>
+            </template>
+        </v-snackbar>
         <div id="game" class="game-screen__game-wrapper"></div>
     </div>
 </template>
