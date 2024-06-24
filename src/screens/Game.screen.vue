@@ -5,6 +5,7 @@ import { EventBus } from "../utils/utils.ts"
 import { router } from "../router.ts"
 import { useTown } from "../store/town.ts"
 import { Game } from "phaser"
+import mapIcon from "/public/assets/icons/map/map.svg"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 
 const isShowTownAlert = ref(false)
@@ -39,6 +40,18 @@ onMounted(() => {
     <div class="game-screen">
         <div class="game-screen__panel">
             <ResourcesPanel :color="townStore.color" />
+        </div>
+        <div class="game-screen__map-button-container">
+            <v-dialog max-width="1200">
+                <template #activator="{ props: activatorProps }">
+                    <v-btn class="game-screen__map-trigger" v-bind="activatorProps" :color="`${townStore.color}-lighten-5`" variant="elevated" size="x-large" icon="">
+                        <mapIcon class="game-screen__map-icon" />
+                    </v-btn>
+                </template>
+                <template #default>
+                    <v-img src="/public/assets/maps/start-map.jpg" />
+                </template>
+            </v-dialog>
         </div>
         <div id="game" class="game-screen__game-wrapper"></div>
         <v-snackbar v-model="isShowTownAlert" color="green">
@@ -79,6 +92,17 @@ onMounted(() => {
         top: 40px;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    &__map-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    &__map-button-container {
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
     }
 }
 </style>
