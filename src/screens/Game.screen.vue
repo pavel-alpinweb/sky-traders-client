@@ -5,6 +5,7 @@ import { EventBus } from "../utils/utils.ts"
 import { router } from "../router.ts"
 import { useTown } from "../store/town.ts"
 import { Game } from "phaser"
+import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 
 const isShowTownAlert = ref(false)
 let game: null | Game = null
@@ -36,6 +37,10 @@ onMounted(() => {
 
 <template>
     <div class="game-screen">
+        <div class="game-screen__panel">
+            <ResourcesPanel :color="townStore.color" />
+        </div>
+        <div id="game" class="game-screen__game-wrapper"></div>
         <v-snackbar v-model="isShowTownAlert" color="green">
             Вы хотите приземлиться в городе <b>{{ townStore.name }}</b
             >?
@@ -43,7 +48,6 @@ onMounted(() => {
                 <v-btn color="green-darken-4" variant="elevated" @click="goToTown"> OK </v-btn>
             </template>
         </v-snackbar>
-        <div id="game" class="game-screen__game-wrapper"></div>
     </div>
 </template>
 
@@ -69,6 +73,12 @@ onMounted(() => {
         height: 50px;
         background-color: #fff;
         color: #1a1a1a;
+    }
+    &__panel {
+        position: fixed;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 </style>
