@@ -44,7 +44,7 @@ onMounted(() => {
         <div class="game-screen__map-button-container">
             <v-dialog max-width="1200">
                 <template #activator="{ props: activatorProps }">
-                    <v-btn class="game-screen__map-trigger" v-bind="activatorProps" :color="`${townStore.color}-lighten-5`" variant="elevated" size="x-large" icon="">
+                    <v-btn class="game-screen__map-trigger" v-bind="activatorProps" :color="`${townStore.color}-lighten-5`" variant="elevated" size="x-large" v-tooltip="'Карта'" icon="">
                         <mapIcon class="game-screen__map-icon" />
                     </v-btn>
                 </template>
