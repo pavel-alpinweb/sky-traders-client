@@ -4,7 +4,7 @@ import { onMounted, ref } from "vue"
 import { Game } from "phaser"
 import { useTown } from "../store/town.ts"
 import { useTownLevel } from "../levels/town.level.ts"
-import ResourcesPanal from "../ui-components/ResourcesPanal.component.vue"
+import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import Market from "../windows/market.window.vue"
 import Shipyard from "../windows/shipyard.window.vue"
 import IconMarket from "/public/assets/icons/screens/market.svg"
@@ -31,7 +31,7 @@ onMounted(() => {
     <div class="town-screen">
         <div id="town" class="town-screen__background"></div>
         <div class="town-screen__panel">
-            <ResourcesPanal :color="townStore.color" />
+            <ResourcesPanel :color="townStore.color" />
         </div>
         <h1 :class="`town-screen__name text-h2 text-${townStore.color}-darken-4`">
             <v-dialog max-width="600">

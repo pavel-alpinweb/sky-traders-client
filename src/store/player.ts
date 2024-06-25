@@ -14,7 +14,7 @@ export const usePlayer = defineStore("player", {
                 damage: 5,
                 type: "seagull",
                 maxHealth: 20,
-                currentHealth: 18,
+                currentHealth: 5,
                 maxFuel: 50,
                 currentFuel: 20,
                 price: 100,
