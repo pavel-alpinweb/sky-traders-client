@@ -8,11 +8,13 @@ import { Game } from "phaser"
 import mapIcon from "/public/assets/icons/map/map.svg"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import FuelWidget from "../ui-components/FuelWidget.component.vue"
+import { usePlayer } from "../store/player.ts"
 
 const isShowTownAlert = ref(false)
 let game: null | Game = null
 
 const townStore = useTown()
+const player = usePlayer()
 
 const goToTown = () => {
     if (game) {
@@ -42,8 +44,8 @@ onMounted(() => {
         <div class="game-screen__top-panel">
             <ResourcesPanel :color="townStore.color" />
         </div>
-        <div class="game-screen__left-panel">
-            <FuelWidget />
+        <div v-if="player.currentShip" class="game-screen__left-panel">
+            <FuelWidget :fuel="player.currentShip.currentFuel" />
         </div>
         <div class="game-screen__map-button-container">
             <v-dialog max-width="1200">

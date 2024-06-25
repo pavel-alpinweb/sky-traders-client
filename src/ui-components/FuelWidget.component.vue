@@ -1,8 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps<{
+    fuel: number
+}>()
+</script>
 
 <template>
     <div class="fuel-widget">
-        <h1>Fuel Widget</h1>
+        <h1>Fuel Widget {{ props.fuel }}</h1>
     </div>
 </template>
 
