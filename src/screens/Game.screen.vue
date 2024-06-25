@@ -45,7 +45,7 @@ onMounted(() => {
             <ResourcesPanel :color="townStore.color" />
         </div>
         <div v-if="player.currentShip" class="game-screen__left-panel">
-            <FuelWidget :fuel="player.currentShip.currentFuel" />
+            <FuelWidget :current-fuel="player.currentShip.currentFuel" :max-fuel="player.currentShip.maxFuel" />
         </div>
         <div class="game-screen__map-button-container">
             <v-dialog max-width="1200">
