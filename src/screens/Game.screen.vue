@@ -8,6 +8,7 @@ import { Game } from "phaser"
 import mapIcon from "/public/assets/icons/map/map.svg"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import FuelWidget from "../ui-components/FuelWidget.component.vue"
+import HealthWidget from "../ui-components/HealthWidget.component.vue"
 import { usePlayer } from "../store/player.ts"
 
 const isShowTownAlert = ref(false)
@@ -45,6 +46,7 @@ onMounted(() => {
             <ResourcesPanel :color="townStore.color" />
         </div>
         <div v-if="player.currentShip" class="game-screen__left-panel">
+            <HealthWidget :current-health="player.currentShip.currentHealth" :max-health="player.currentShip.maxHealth" />
             <FuelWidget :current-fuel="player.currentShip.currentFuel" :max-fuel="player.currentShip.maxFuel" />
         </div>
         <div class="game-screen__map-button-container">
@@ -101,6 +103,9 @@ onMounted(() => {
     }
 
     &__left-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
         position: fixed;
         top: 50%;
         left: 40px;

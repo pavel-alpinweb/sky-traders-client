@@ -66,7 +66,7 @@ const actionsLabel = computed<string>(() => {
             <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" /> {{ props.ship.currentFuel }} / {{ props.ship.maxFuel }}
         </v-card-subtitle>
         <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-            <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние коробля'" /> {{ props.ship.currentHealth }} / {{ props.ship.maxHealth }}
+            <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние корабля'" /> {{ props.ship.currentHealth }} / {{ props.ship.maxHealth }}
         </v-card-subtitle>
         <v-card-subtitle v-if="props.mode === 'build'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
             <IconGold class="ship-card__param-icon" v-tooltip="'Стоимость постройки'" /> {{ props.ship.price }}
