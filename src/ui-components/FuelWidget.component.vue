@@ -8,13 +8,24 @@ const props = defineProps<{
 }>()
 
 const fuelPercentage = computed<number>(() => props.currentFuel / (props.maxFuel / 100))
+const fuelBarColor = computed<string>(() => {
+    let color = ""
+    if (fuelPercentage.value >= 60) {
+        color = "green"
+    } else if (fuelPercentage.value >= 40) {
+        color = "amber"
+    } else if (fuelPercentage.value <= 39) {
+        color = "red"
+    }
+    return color
+})
 </script>
 
 <template>
     <div class="fuel-widget">
         <IconFuelLevel class="fuel-widget__icon" v-tooltip="'Текущий запас топлива'" />
         <div class="fuel-widget__bar">
-            <v-progress-linear color="green" :model-value="fuelPercentage" height="20" rounded />
+            <v-progress-linear :color="fuelBarColor" :model-value="fuelPercentage" height="20" rounded />
         </div>
     </div>
 </template>
