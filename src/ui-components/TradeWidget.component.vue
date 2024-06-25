@@ -90,7 +90,13 @@ const errorMessages = computed<string[]>(() => {
         </div>
         <div class="trade-widget__right-control">
             <v-btn-group color="green" variant="elevated">
-                <v-btn :icon="tradeMode === 'buy' ? 'mdi-cash-plus' : 'mdi-cash-minus'" :color="props.color" size="x-large" @click="changeMode" />
+                <v-btn
+                    :icon="tradeMode === 'buy' ? 'mdi-cash-plus' : 'mdi-cash-minus'"
+                    :color="props.color"
+                    size="x-large"
+                    v-tooltip="tradeMode === 'buy' ? 'Продать ресурс' : 'Купить ресурс'"
+                    @click="changeMode"
+                />
                 <v-btn :color="props.color" size="x-large" @click="buySell" :disabled="disabledAction">
                     {{ tradeMode === "buy" ? "Купить" : "Продать" }}
                 </v-btn>
