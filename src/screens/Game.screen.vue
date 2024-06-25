@@ -7,6 +7,7 @@ import { useTown } from "../store/town.ts"
 import { Game } from "phaser"
 import mapIcon from "/public/assets/icons/map/map.svg"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
+import FuelWidget from "../ui-components/FuelWidget.component.vue"
 
 const isShowTownAlert = ref(false)
 let game: null | Game = null
@@ -38,8 +39,11 @@ onMounted(() => {
 
 <template>
     <div class="game-screen">
-        <div class="game-screen__panel">
+        <div class="game-screen__top-panel">
             <ResourcesPanel :color="townStore.color" />
+        </div>
+        <div class="game-screen__left-panel">
+            <FuelWidget />
         </div>
         <div class="game-screen__map-button-container">
             <v-dialog max-width="1200">
@@ -87,11 +91,18 @@ onMounted(() => {
         background-color: #fff;
         color: #1a1a1a;
     }
-    &__panel {
+    &__top-panel {
         position: fixed;
         top: 40px;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    &__left-panel {
+        position: fixed;
+        top: 50%;
+        left: 40px;
+        transform: translateY(-50%);
     }
 
     &__map-icon {
