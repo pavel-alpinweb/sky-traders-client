@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { Player, Ship } from "../types/interfaces.ts"
-import { BASIC_SHIP_SPEED, FUEL_CONSUMPTION } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION } from "../configs/gameplay.config.ts"
 
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
@@ -75,6 +75,11 @@ export const usePlayer = defineStore("player", {
         decreaseCurrentShipFuel(): void {
             if (this.currentShip.currentFuel > 0) {
                 this.currentShip.currentFuel -= FUEL_CONSUMPTION
+            }
+        },
+        decreaseCurrentShipHealth(): void {
+            if (this.currentShip.currentHealth > 0) {
+                this.currentShip.currentHealth -= HEALTH_CONSUMPTION
             }
         },
     },

@@ -40,6 +40,9 @@ onMounted(() => {
     EventBus.on("decrease-fuel", () => {
         player.decreaseCurrentShipFuel()
     })
+    EventBus.on("decrease-health", () => {
+        player.decreaseCurrentShipHealth()
+    })
 })
 </script>
 

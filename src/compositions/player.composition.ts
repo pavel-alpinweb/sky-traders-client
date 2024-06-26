@@ -42,11 +42,13 @@ export const playerComposition = {
         scene: Phaser.Scene,
         velocity: number,
         fuelConsumption: Phaser.Time.TimerEvent,
+        healthConsumption: Phaser.Time.TimerEvent,
         ship: Ship
     ) {
         const distance = Phaser.Math.Distance.BetweenPoints(player, target)
         if (player.body.speed > 0 && ship.currentFuel > 0) {
             fuelConsumption.paused = false
+            healthConsumption.paused = false
             scene.physics.moveToObject(player, target, velocity)
             player.body.velocity.scale(Phaser.Math.SmoothStep(distance, 0, 20))
             this.rotatePlayer(player, target)
@@ -57,6 +59,7 @@ export const playerComposition = {
         }
         if (distance < TARGET_TOLERANCE) {
             fuelConsumption.paused = true
+            healthConsumption.paused = true
             player.body.reset(target.x, target.y)
         }
     },
@@ -96,9 +99,21 @@ export const playerComposition = {
         return scene.time.addEvent({
             paused: true,
             delay: 100,
-            startAt: 1000,
+            startAt: 100,
             callback: () => {
                 EventBus.emit("decrease-fuel")
+            },
+            loop: true,
+        })
+    },
+
+    initHealthConsumption(scene: Phaser.Scene) {
+        return scene.time.addEvent({
+            paused: true,
+            delay: 100,
+            startAt: 100,
+            callback: () => {
+                EventBus.emit("decrease-health")
             },
             loop: true,
         })

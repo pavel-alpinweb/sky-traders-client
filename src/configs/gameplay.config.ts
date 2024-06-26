@@ -12,6 +12,7 @@ export const BASIC_SHIP_SCALE = 0.3
 export const TARGET_TOLERANCE = 1
 export const FUEL_PRICE = 5
 export const FUEL_CONSUMPTION = 0.1
+export const HEALTH_CONSUMPTION = 0.01
 
 /* Town Settings */
 export const TOWN_SIZE = 1024

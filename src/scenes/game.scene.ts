@@ -12,6 +12,7 @@ export class MapScene extends Phaser.Scene {
     private townsGroup!: Phaser.Physics.Arcade.StaticGroup
     private townsArray!: Phaser.GameObjects.GameObject[]
     private fuelConsumption!: TimerEvent
+    private healthConsumption!: TimerEvent
     private readonly coords!: Coords
     private readonly ship!: Ship
 
@@ -49,12 +50,15 @@ export class MapScene extends Phaser.Scene {
         /* Создаем таймер для расхода топлива */
         this.fuelConsumption = playerComposition.initFuelConsumption(this)
 
+        /* Создаем таймер для поломки во время полета */
+        this.healthConsumption = playerComposition.initHealthConsumption(this)
+
         /* Эмитим событие с данными о городе и коориданты игрока при полете над городом */
         playerComposition.flyOnTown(this.player, this.townsGroup, this)
     }
 
     update() {
-        playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity, this.fuelConsumption, this.ship)
+        playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity, this.fuelConsumption, this.healthConsumption, this.ship)
 
         for (const town of this.townsArray) {
             if (checkOverlap(this.player, town)) {
