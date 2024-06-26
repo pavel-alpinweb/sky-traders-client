@@ -9,10 +9,12 @@ import Market from "../windows/market.window.vue"
 import Shipyard from "../windows/shipyard.window.vue"
 import IconMarket from "/public/assets/icons/screens/market.svg"
 import IconShipyard from "/public/assets/icons/screens/shipyard.svg"
+import { usePlayer } from "../store/player.ts"
 // import IconWarehouse from "/public/assets/icons/screens/warehouse.svg"
 
 let background: null | Game = null
 const townStore = useTown()
+const player = usePlayer()
 const tab = ref(null)
 
 const goToMap = () => {
@@ -31,7 +33,7 @@ onMounted(() => {
     <div class="town-screen">
         <div id="town" class="town-screen__background"></div>
         <div class="town-screen__panel">
-            <ResourcesPanel :color="townStore.color" />
+            <ResourcesPanel :color="townStore.color" :gold="player.gold" />
         </div>
         <h1 :class="`town-screen__name text-h2 text-${townStore.color}-darken-4`">
             <v-dialog max-width="600">

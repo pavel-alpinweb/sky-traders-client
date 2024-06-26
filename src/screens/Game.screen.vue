@@ -49,7 +49,7 @@ onMounted(() => {
 <template>
     <div class="game-screen">
         <div class="game-screen__top-panel">
-            <ResourcesPanel :color="townStore.color" />
+            <ResourcesPanel :color="townStore.color" :gold="player.gold" />
         </div>
         <div v-if="player.currentShip" class="game-screen__left-panel">
             <HealthWidget :current-health="player.currentShip.currentHealth" :max-health="player.currentShip.maxHealth" />

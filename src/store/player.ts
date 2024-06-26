@@ -5,7 +5,7 @@ import { BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION } from "../confi
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
         id: 0,
-        gold: 100,
+        gold: 5000,
         resources: [],
         ships: [
             {
