@@ -29,6 +29,10 @@ const roundedCurrentFuel = computed<number>(() => {
     return Math.round(props.ship.currentFuel)
 })
 
+const roundedCurrentHealth = computed<number>(() => {
+    return Math.round(props.ship.currentHealth)
+})
+
 const actionsLabel = computed<string>(() => {
     return props.mode === "select" ? "Выбрать" : "Построить"
 })
@@ -70,7 +74,7 @@ const actionsLabel = computed<string>(() => {
             <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" /> {{ roundedCurrentFuel }} / {{ props.ship.maxFuel }}
         </v-card-subtitle>
         <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-            <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние корабля'" /> {{ props.ship.currentHealth }} / {{ props.ship.maxHealth }}
+            <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние корабля'" /> {{ roundedCurrentHealth }} / {{ props.ship.maxHealth }}
         </v-card-subtitle>
         <v-card-subtitle v-if="props.mode === 'build'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
             <IconGold class="ship-card__param-icon" v-tooltip="'Стоимость постройки'" /> {{ props.ship.price }}

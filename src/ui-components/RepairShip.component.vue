@@ -11,7 +11,11 @@ const props = defineProps<{
     color: string
 }>()
 
-const repairBill = computed<number>(() => (props.maxHealth - props.currentHealth) * props.repairPrice)
+const roundedCurrentHealth = computed<number>(() => {
+    return Math.round(props.currentHealth)
+})
+
+const repairBill = computed<number>(() => (props.maxHealth - roundedCurrentHealth.value) * props.repairPrice)
 
 const errorMessages = computed<string[]>(() => {
     const messages = []
