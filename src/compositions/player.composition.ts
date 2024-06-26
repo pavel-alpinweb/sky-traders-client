@@ -33,10 +33,10 @@ export const playerComposition = {
         })
     },
 
-    onMovingPlayer(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image, scene: Phaser.Scene) {
+    onMovingPlayer(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image, scene: Phaser.Scene, velocity: number) {
         const distance = Phaser.Math.Distance.BetweenPoints(player, target)
         if (player.body.speed > 0) {
-            scene.physics.moveToObject(player, target, BASIC_SHIP_SPEED)
+            scene.physics.moveToObject(player, target, velocity)
             player.body.velocity.scale(Phaser.Math.SmoothStep(distance, 0, 20))
             this.rotatePlayer(player, target)
         }

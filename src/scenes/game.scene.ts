@@ -49,7 +49,7 @@ export class MapScene extends Phaser.Scene {
     }
 
     update() {
-        playerComposition.onMovingPlayer(this.player, this.target, this)
+        playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity)
 
         for (const town of this.townsArray) {
             if (checkOverlap(this.player, town)) {
