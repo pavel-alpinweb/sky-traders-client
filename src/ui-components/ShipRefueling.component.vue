@@ -27,6 +27,10 @@ const errorMessages = computed<string[]>(() => {
     return messages
 })
 
+const roundedCurrentFuel = computed<number>(() => {
+    return Math.round(props.currentFuel)
+})
+
 watch(
     () => props.id,
     () => {
@@ -48,7 +52,7 @@ watch(
                 density="comfortable"
                 label="Стоимость заправки"
                 variant="outlined"
-                :suffix="`${fuelAmount + currentFuel}/${maxFuel}`"
+                :suffix="`${fuelAmount + roundedCurrentFuel}/${maxFuel}`"
                 :error-messages="errorMessages"
                 readonly
                 focused

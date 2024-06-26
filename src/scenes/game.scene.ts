@@ -3,6 +3,7 @@ import { mapComposition } from "../compositions/map.composition.ts"
 import { playerComposition } from "../compositions/player.composition.ts"
 import { checkOverlap, EventBus } from "../utils/utils.ts"
 import { Coords, Ship } from "../types/interfaces.ts"
+import TimerEvent = Phaser.Time.TimerEvent
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
@@ -10,6 +11,7 @@ export class MapScene extends Phaser.Scene {
     private map!: Phaser.Tilemaps.Tilemap
     private townsGroup!: Phaser.Physics.Arcade.StaticGroup
     private townsArray!: Phaser.GameObjects.GameObject[]
+    private fuelConsumption!: TimerEvent
     private readonly coords!: Coords
     private readonly ship!: Ship
 
@@ -42,14 +44,17 @@ export class MapScene extends Phaser.Scene {
         /* Создаем игрока и передвижение для него */
         this.player = playerComposition.initPlayer(this, this.coords.x, this.coords.y)
         this.target = playerComposition.initTarget(this, this.player)
-        playerComposition.movePlayer(this, this.player, this.target)
+        playerComposition.movePlayer(this, this.player, this.target, this.ship)
+
+        /* Создаем таймер для расхода топлива */
+        this.fuelConsumption = playerComposition.initFuelConsumption(this)
 
         /* Эмитим событие с данными о городе и коориданты игрока при полете над городом */
         playerComposition.flyOnTown(this.player, this.townsGroup, this)
     }
 
     update() {
-        playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity)
+        playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity, this.fuelConsumption, this.ship)
 
         for (const town of this.townsArray) {
             if (checkOverlap(this.player, town)) {

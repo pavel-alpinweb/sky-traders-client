@@ -1,6 +1,7 @@
 import Phaser from "phaser"
 import { EventBus } from "../utils/utils.ts"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { Ship } from "../types/interfaces.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
         console.log("player ship upload", ship)
@@ -24,23 +25,38 @@ export const playerComposition = {
         return scene.add.image(player.x, player.y, "ship").setAlpha(0.4).setScale(BASIC_SHIP_SCALE)
     },
 
-    movePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image) {
+    movePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image, ship: Ship) {
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
-            target.x = pointer.worldX
-            target.y = pointer.worldY
+            if (ship.currentFuel > 0) {
+                target.x = pointer.worldX
+                target.y = pointer.worldY
 
-            scene.physics.moveToObject(player, target, BASIC_SHIP_SPEED)
+                scene.physics.moveToObject(player, target, BASIC_SHIP_SPEED)
+            }
         })
     },
 
-    onMovingPlayer(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image, scene: Phaser.Scene, velocity: number) {
+    onMovingPlayer(
+        player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body },
+        target: Phaser.GameObjects.Image,
+        scene: Phaser.Scene,
+        velocity: number,
+        fuelConsumption: Phaser.Time.TimerEvent,
+        ship: Ship
+    ) {
         const distance = Phaser.Math.Distance.BetweenPoints(player, target)
-        if (player.body.speed > 0) {
+        if (player.body.speed > 0 && ship.currentFuel > 0) {
+            fuelConsumption.paused = false
             scene.physics.moveToObject(player, target, velocity)
             player.body.velocity.scale(Phaser.Math.SmoothStep(distance, 0, 20))
             this.rotatePlayer(player, target)
         }
+        if (ship.currentFuel <= 0) {
+            target.x = player.x
+            target.y = player.y
+        }
         if (distance < TARGET_TOLERANCE) {
+            fuelConsumption.paused = true
             player.body.reset(target.x, target.y)
         }
     },
@@ -73,6 +89,18 @@ export const playerComposition = {
                 // @ts-ignore
                 town: town.name,
             })
+        })
+    },
+
+    initFuelConsumption(scene: Phaser.Scene) {
+        return scene.time.addEvent({
+            paused: true,
+            delay: 100,
+            startAt: 1000,
+            callback: () => {
+                EventBus.emit("decrease-fuel")
+            },
+            loop: true,
         })
     },
 }

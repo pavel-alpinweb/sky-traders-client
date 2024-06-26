@@ -25,6 +25,10 @@ const selectShip = (): void => {
     selectShipEmit(props.mode, props.ship)
 }
 
+const roundedCurrentFuel = computed<number>(() => {
+    return Math.round(props.ship.currentFuel)
+})
+
 const actionsLabel = computed<string>(() => {
     return props.mode === "select" ? "Выбрать" : "Построить"
 })
@@ -63,7 +67,7 @@ const actionsLabel = computed<string>(() => {
         </v-img>
         <v-card-title>{{ props.ship.name }}</v-card-title>
         <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-            <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" /> {{ props.ship.currentFuel }} / {{ props.ship.maxFuel }}
+            <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" /> {{ roundedCurrentFuel }} / {{ props.ship.maxFuel }}
         </v-card-subtitle>
         <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
             <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние корабля'" /> {{ props.ship.currentHealth }} / {{ props.ship.maxHealth }}

@@ -37,6 +37,9 @@ onMounted(() => {
     EventBus.on("arrive-town", () => {
         isShowTownAlert.value = true
     })
+    EventBus.on("decrease-fuel", () => {
+        player.decreaseCurrentShipFuel()
+    })
 })
 </script>
 
