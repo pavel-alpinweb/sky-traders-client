@@ -40,7 +40,7 @@ const actionsLabel = computed<string>(() => {
 
 <template>
     <v-card class="mx-auto ship-card" :color="`${props.color}-darken-4`" :variant="variant">
-        <v-dialog max-width="600">
+        <v-dialog v-if="props.mode === 'select'" max-width="600">
             <template #activator="{ props: activatorProps }">
                 <v-btn class="ship-card__description-trigger" v-bind="activatorProps" :color="`${props.color}-darken-4`" size="x-small" variant="flat" icon="mdi-script-text-outline" />
             </template>
