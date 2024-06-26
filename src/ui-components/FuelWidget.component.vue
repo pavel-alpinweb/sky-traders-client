@@ -14,7 +14,7 @@ const fuelBarColor = computed<string>(() => {
         color = "green"
     } else if (fuelPercentage.value >= 40) {
         color = "amber"
-    } else if (fuelPercentage.value <= 39) {
+    } else if (fuelPercentage.value <= 39.9) {
         color = "red"
     }
     return color

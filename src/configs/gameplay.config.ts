@@ -11,7 +11,7 @@ export const BASIC_SHIP_SCALE = 0.3
 /* GAMEPLAY SETTINGS */
 export const TARGET_TOLERANCE = 1
 export const FUEL_PRICE = 5
-export const FUEL_CONSUMPTION = 0.01
+export const FUEL_CONSUMPTION = 0.1
 
 /* Town Settings */
 export const TOWN_SIZE = 1024
