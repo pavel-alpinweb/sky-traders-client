@@ -2,7 +2,7 @@ import * as Phaser from "phaser"
 import { mapComposition } from "../compositions/map.composition.ts"
 import { playerComposition } from "../compositions/player.composition.ts"
 import { checkOverlap, EventBus } from "../utils/utils.ts"
-import { Coords } from "../types/interfaces.ts"
+import { Coords, Ship } from "../types/interfaces.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
@@ -11,16 +11,16 @@ export class MapScene extends Phaser.Scene {
     private townsGroup!: Phaser.Physics.Arcade.StaticGroup
     private townsArray!: Phaser.GameObjects.GameObject[]
     private readonly coords!: Coords
-    private readonly ship!: string
+    private readonly ship!: Ship
 
-    constructor(coords: Coords, ship: string) {
+    constructor(coords: Coords, ship: Ship) {
         super()
         this.coords = coords
         this.ship = ship
     }
 
     preload() {
-        playerComposition.playerShipUpload(this, this.ship)
+        playerComposition.playerShipUpload(this, this.ship.type)
         mapComposition.mapBackgroundUpload(this)
         mapComposition.tileMapUpload(this)
         mapComposition.islandUpload(this)
