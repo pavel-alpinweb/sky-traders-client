@@ -26,6 +26,10 @@ const selectShipHandler = (ship: Ship) => {
 const refuelHandler = (params: RefuelParams) => {
     player.refuelCurrentShip(params)
 }
+
+const repairHandler = (value: number) => {
+    player.repairCurrentShip(value)
+}
 </script>
 
 <template>
@@ -57,6 +61,7 @@ const refuelHandler = (params: RefuelParams) => {
                             :max-health="player.currentShip.maxHealth"
                             :repair-price="player.currentShip.repairPrice"
                             :gold="player.gold"
+                            @repair="repairHandler"
                         />
                         <ShipRefueling
                             :color="props.color"

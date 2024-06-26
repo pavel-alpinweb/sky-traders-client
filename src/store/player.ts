@@ -86,5 +86,9 @@ export const usePlayer = defineStore("player", {
             this.gold -= params.fuelBill
             this.currentShip.currentFuel += params.fuelAmount
         },
+        repairCurrentShip(repairBill: number): void {
+            this.gold -= repairBill
+            this.currentShip.currentHealth = this.currentShip.maxHealth
+        },
     },
 })

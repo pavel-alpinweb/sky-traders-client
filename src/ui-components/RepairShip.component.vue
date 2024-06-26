@@ -25,6 +25,14 @@ const errorMessages = computed<string[]>(() => {
 
     return messages
 })
+
+const repairShipEmit = defineEmits<{
+    (event: "repair", value: number): void
+}>()
+
+const repair = () => {
+    repairShipEmit("repair", repairBill.value)
+}
 </script>
 
 <template>
@@ -45,7 +53,7 @@ const errorMessages = computed<string[]>(() => {
                 <component class="repair-ship__gold-icon" :is="ICONS_LIST.gold"></component>
             </template>
         </v-text-field>
-        <v-btn class="repair-ship__btn" size="large" variant="elevated" :color="props.color" :disabled="repairBill === 0 || repairBill > props.gold">Ремонтировать</v-btn>
+        <v-btn class="repair-ship__btn" size="large" variant="elevated" :color="props.color" :disabled="repairBill === 0 || repairBill > props.gold" @click="repair">Ремонтировать</v-btn>
     </div>
 </template>
 
