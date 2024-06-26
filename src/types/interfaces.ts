@@ -52,3 +52,8 @@ export interface Player {
     ships: Ship[]
     currentShipId: number | null
 }
+
+export interface RefuelParams {
+    fuelAmount: number
+    fuelBill: number
+}

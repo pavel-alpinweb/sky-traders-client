@@ -3,6 +3,7 @@ import { computed, ref, watch } from "vue"
 import { FUEL_PRICE } from "../configs/gameplay.config.ts"
 import { ICONS_LIST } from "../utils/utils.ts"
 import IconFuelLevel from "/public/assets/icons/ship-params/fuel-level.svg"
+import { RefuelParams } from "../types/interfaces.ts"
 
 const props = defineProps<{
     maxFuel: number
@@ -30,6 +31,18 @@ const errorMessages = computed<string[]>(() => {
 const roundedCurrentFuel = computed<number>(() => {
     return Math.round(props.currentFuel)
 })
+
+const refuelShipEmit = defineEmits<{
+    (event: "refuel", value: RefuelParams): void
+}>()
+
+const refuelShip = () => {
+    refuelShipEmit("refuel", {
+        fuelAmount: fuelAmount.value,
+        fuelBill: fuelBill.value,
+    })
+    fuelAmount.value = 0
+}
 
 watch(
     () => props.id,
@@ -64,7 +77,7 @@ watch(
             <v-slider class="ship-refueling__slider" v-model="fuelAmount" :max="maxFueling" :step="1" :color="props.color" />
         </div>
         <div class="ship-refueling__right">
-            <v-btn class="repair-ship__btn" size="large" variant="elevated" :color="props.color" :disabled="fuelBill === 0 || fuelBill > props.gold">Заправить</v-btn>
+            <v-btn class="repair-ship__btn" size="large" variant="elevated" :color="props.color" :disabled="fuelBill === 0 || fuelBill > props.gold" @click="refuelShip">Заправить</v-btn>
         </div>
     </div>
 </template>

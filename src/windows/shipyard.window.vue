@@ -6,7 +6,7 @@ import IconBuildings from "/public/assets/icons/shipyard/building.svg"
 import { usePlayer } from "../store/player.ts"
 import ShipList from "../ui-components/ShipList.component.vue"
 import { useTown } from "../store/town.ts"
-import { Ship } from "../types/interfaces.ts"
+import { RefuelParams, Ship } from "../types/interfaces.ts"
 import RepairShip from "../ui-components/RepairShip.component.vue"
 import ShipRefueling from "../ui-components/ShipRefueling.component.vue"
 
@@ -21,6 +21,10 @@ const tab = ref(null)
 
 const selectShipHandler = (ship: Ship) => {
     player.setCurrentShip(ship.id)
+}
+
+const refuelHandler = (params: RefuelParams) => {
+    player.refuelCurrentShip(params)
 }
 </script>
 
@@ -54,7 +58,14 @@ const selectShipHandler = (ship: Ship) => {
                             :repair-price="player.currentShip.repairPrice"
                             :gold="player.gold"
                         />
-                        <ShipRefueling :color="props.color" :max-fuel="player.currentShip.maxFuel" :current-fuel="player.currentShip.currentFuel" :id="player.currentShip.id" :gold="player.gold" />
+                        <ShipRefueling
+                            :color="props.color"
+                            :max-fuel="player.currentShip.maxFuel"
+                            :current-fuel="player.currentShip.currentFuel"
+                            :id="player.currentShip.id"
+                            :gold="player.gold"
+                            @refuel="refuelHandler"
+                        />
                     </div>
                 </div>
                 <ship-list :ships="player.ships" :color="props.color" mode="select" :current-ship-id="player.currentShipId" @select="selectShipHandler" />
