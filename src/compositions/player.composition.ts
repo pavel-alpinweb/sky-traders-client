@@ -3,18 +3,18 @@ import { EventBus } from "../utils/utils.ts"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
-        scene.load.image(ship, `/assets/ships/${ship}.png`)
+        console.log("player ship upload", ship)
+        scene.load.image("ship", `/assets/ships/${ship}/${ship}-map.png`)
     },
 
     initPlayer(
         scene: Phaser.Scene,
-        ship: string,
         x: number,
         y: number
     ): Phaser.Physics.Arcade.Image & {
         body: Phaser.Physics.Arcade.Body
     } {
-        const player = scene.physics.add.image(x, y, ship).setScale(BASIC_SHIP_SCALE).refreshBody()
+        const player = scene.physics.add.image(x, y, "ship").setScale(BASIC_SHIP_SCALE).refreshBody()
         player?.preFX?.addShadow()
         scene.cameras.main.setBackgroundColor(0xa7efff).startFollow(player).setZoom(0.6)
         return player

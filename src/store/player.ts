@@ -63,11 +63,8 @@ export const usePlayer = defineStore("player", {
         currentShipId: 1,
     }),
     getters: {
-        currentShip: (state): Ship | null => {
-            if (state.currentShipId) {
-                return state.ships.find((ship) => ship.id === state.currentShipId) as Ship
-            }
-            return null
+        currentShip: (state): Ship => {
+            return state.ships.find((ship) => ship.id === state.currentShipId) as Ship
         },
     },
     actions: {

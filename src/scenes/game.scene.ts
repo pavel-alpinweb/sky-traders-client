@@ -11,14 +11,16 @@ export class MapScene extends Phaser.Scene {
     private townsGroup!: Phaser.Physics.Arcade.StaticGroup
     private townsArray!: Phaser.GameObjects.GameObject[]
     private readonly coords!: Coords
+    private readonly ship!: string
 
-    constructor(coords: Coords) {
+    constructor(coords: Coords, ship: string) {
         super()
         this.coords = coords
+        this.ship = ship
     }
 
     preload() {
-        playerComposition.playerShipUpload(this, "ship")
+        playerComposition.playerShipUpload(this, this.ship)
         mapComposition.mapBackgroundUpload(this)
         mapComposition.tileMapUpload(this)
         mapComposition.islandUpload(this)
@@ -38,7 +40,7 @@ export class MapScene extends Phaser.Scene {
         this.townsArray = mapComposition.createTowns(["start-01", "start-02"], this.townsGroup, this.map)
 
         /* Создаем игрока и передвижение для него */
-        this.player = playerComposition.initPlayer(this, "ship", this.coords.x, this.coords.y)
+        this.player = playerComposition.initPlayer(this, this.coords.x, this.coords.y)
         this.target = playerComposition.initTarget(this, this.player)
         playerComposition.movePlayer(this, this.player, this.target)
 
