@@ -1,16 +1,17 @@
 import { defineStore } from "pinia"
-import { Player, Ship } from "../types/interfaces.ts"
+import { Player, RefuelParams, Ship } from "../types/interfaces.ts"
+import { BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION } from "../configs/gameplay.config.ts"
 
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
         id: 0,
-        gold: 100,
+        gold: 5000,
         resources: [],
         ships: [
             {
                 id: 1,
                 name: "Хромая чайка",
-                velocity: 10,
+                velocity: BASIC_SHIP_SPEED,
                 damage: 5,
                 type: "seagull",
                 maxHealth: 20,
@@ -23,7 +24,7 @@ export const usePlayer = defineStore("player", {
             {
                 id: 2,
                 name: "Наглый альбатрос",
-                velocity: 30,
+                velocity: BASIC_SHIP_SPEED + 30,
                 damage: 20,
                 type: "albatross",
                 maxHealth: 100,
@@ -36,7 +37,7 @@ export const usePlayer = defineStore("player", {
             {
                 id: 6,
                 name: "Золотой пеликан",
-                velocity: 80,
+                velocity: BASIC_SHIP_SPEED + 80,
                 damage: 50,
                 type: "pelican",
                 maxHealth: 300,
@@ -49,7 +50,7 @@ export const usePlayer = defineStore("player", {
             {
                 id: 7,
                 name: "Небесный кит",
-                velocity: 200,
+                velocity: BASIC_SHIP_SPEED + 120,
                 damage: 100,
                 type: "whale",
                 maxHealth: 700,
@@ -70,6 +71,24 @@ export const usePlayer = defineStore("player", {
     actions: {
         setCurrentShip(id: number): void {
             this.currentShipId = id
+        },
+        decreaseCurrentShipFuel(): void {
+            if (this.currentShip.currentFuel > 0) {
+                this.currentShip.currentFuel -= FUEL_CONSUMPTION
+            }
+        },
+        decreaseCurrentShipHealth(): void {
+            if (this.currentShip.currentHealth > 0) {
+                this.currentShip.currentHealth -= HEALTH_CONSUMPTION
+            }
+        },
+        refuelCurrentShip(params: RefuelParams): void {
+            this.gold -= params.fuelBill
+            this.currentShip.currentFuel += params.fuelAmount
+        },
+        repairCurrentShip(repairBill: number): void {
+            this.gold -= repairBill
+            this.currentShip.currentHealth = this.currentShip.maxHealth
         },
     },
 })

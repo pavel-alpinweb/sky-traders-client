@@ -25,6 +25,14 @@ const selectShip = (): void => {
     selectShipEmit(props.mode, props.ship)
 }
 
+const roundedCurrentFuel = computed<number>(() => {
+    return Math.round(props.ship.currentFuel)
+})
+
+const roundedCurrentHealth = computed<number>(() => {
+    return Math.round(props.ship.currentHealth)
+})
+
 const actionsLabel = computed<string>(() => {
     return props.mode === "select" ? "Выбрать" : "Построить"
 })
@@ -32,7 +40,7 @@ const actionsLabel = computed<string>(() => {
 
 <template>
     <v-card class="mx-auto ship-card" :color="`${props.color}-darken-4`" :variant="variant">
-        <v-dialog max-width="600">
+        <v-dialog v-if="props.mode === 'select'" max-width="600">
             <template #activator="{ props: activatorProps }">
                 <v-btn class="ship-card__description-trigger" v-bind="activatorProps" :color="`${props.color}-darken-4`" size="x-small" variant="flat" icon="mdi-script-text-outline" />
             </template>
@@ -63,10 +71,10 @@ const actionsLabel = computed<string>(() => {
         </v-img>
         <v-card-title>{{ props.ship.name }}</v-card-title>
         <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-            <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" /> {{ props.ship.currentFuel }} / {{ props.ship.maxFuel }}
+            <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" /> {{ roundedCurrentFuel }} / {{ props.ship.maxFuel }}
         </v-card-subtitle>
         <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-            <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние корабля'" /> {{ props.ship.currentHealth }} / {{ props.ship.maxHealth }}
+            <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние корабля'" /> {{ roundedCurrentHealth }} / {{ props.ship.maxHealth }}
         </v-card-subtitle>
         <v-card-subtitle v-if="props.mode === 'build'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
             <IconGold class="ship-card__param-icon" v-tooltip="'Стоимость постройки'" /> {{ props.ship.price }}
