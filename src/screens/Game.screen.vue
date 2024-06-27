@@ -21,6 +21,11 @@ const goToTown = () => {
     if (game) {
         game?.destroy(true)
     }
+    EventBus.off("fly-on-town")
+    EventBus.off("leave-town")
+    EventBus.off("arrive-town")
+    EventBus.off("decrease-fuel")
+    EventBus.off("decrease-health")
     router.push({ path: "/town" })
 }
 

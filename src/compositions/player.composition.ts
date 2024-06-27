@@ -4,7 +4,6 @@ import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET
 import { Ship } from "../types/interfaces.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
-        console.log("player ship upload", ship)
         scene.load.image("ship", `/assets/ships/${ship}/${ship}-map.png`)
     },
 
