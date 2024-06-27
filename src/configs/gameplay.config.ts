@@ -9,7 +9,8 @@ export const BASIC_SHIP_ROTATION_VELOCITY = 90
 export const BASIC_SHIP_SCALE = 0.3
 
 /* GAMEPLAY SETTINGS */
-export const TARGET_TOLERANCE = 1
+export const TARGET_TOLERANCE = 2
+export const TARGET_HIDE_DISTANCE = 50
 export const FUEL_PRICE = 5
 export const FUEL_CONSUMPTION = 0.1
 export const HEALTH_CONSUMPTION = 0.01

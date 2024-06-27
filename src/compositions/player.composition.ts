@@ -1,6 +1,6 @@
 import Phaser from "phaser"
 import { EventBus } from "../utils/utils.ts"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_HIDE_DISTANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 import { Ship } from "../types/interfaces.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
@@ -26,6 +26,7 @@ export const playerComposition = {
 
     movePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image, ship: Ship) {
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
+            target.setAlpha(0.4)
             if (ship.currentFuel > 0) {
                 target.x = pointer.worldX
                 target.y = pointer.worldY
@@ -48,13 +49,16 @@ export const playerComposition = {
         if (player.body.speed > 0 && ship.currentFuel > 0) {
             fuelConsumption.paused = false
             healthConsumption.paused = false
-            scene.physics.moveToObject(player, target, velocity)
-            player.body.velocity.scale(Phaser.Math.SmoothStep(distance, 0, 20))
             this.rotatePlayer(player, target)
+            scene.physics.moveToObject(player, target, velocity)
+            player.body.velocity.scale(Phaser.Math.SmoothStep(distance, 0, 50))
         }
         if (ship.currentFuel <= 0) {
             target.x = player.x
             target.y = player.y
+        }
+        if (distance < TARGET_HIDE_DISTANCE) {
+            target.setAlpha(0)
         }
         if (distance < TARGET_TOLERANCE) {
             fuelConsumption.paused = true
