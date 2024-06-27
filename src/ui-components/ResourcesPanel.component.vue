@@ -5,6 +5,7 @@ import { ICONS_LIST } from "../utils/utils.ts"
 
 const props = defineProps<{
     color: string
+    gold: number
 }>()
 
 const resources = reactive<ResourcePanel[]>([
@@ -69,8 +70,8 @@ const resources = reactive<ResourcePanel[]>([
         title: "Шелк",
     },
 ])
-const gold = reactive<ResourcePanel>({
-    value: 5000,
+const goldSlot = reactive<ResourcePanel>({
+    value: props.gold,
     name: "gold",
     title: "Золото",
 })
@@ -86,8 +87,8 @@ const gold = reactive<ResourcePanel>({
         </v-sheet>
         <v-sheet class="resources-panel__wrapper" :color="`${props.color}-lighten-5`" :height="50" :elevation="10" border rounded>
             <div class="resources-panel__item">
-                <component :is="ICONS_LIST[gold.name]" class="resources-panel__icon" v-tooltip="gold.title"></component>
-                <div :class="`resources-panel__value text-${props.color}-darken-4 text-body-1 font-weight-bold`">{{ gold.value }}</div>
+                <component :is="ICONS_LIST[goldSlot.name]" class="resources-panel__icon" v-tooltip="goldSlot.title"></component>
+                <div :class="`resources-panel__value text-${props.color}-darken-4 text-body-1 font-weight-bold`">{{ props.gold }}</div>
             </div>
         </v-sheet>
     </div>

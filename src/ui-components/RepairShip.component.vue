@@ -11,7 +11,11 @@ const props = defineProps<{
     color: string
 }>()
 
-const repairBill = computed<number>(() => (props.maxHealth - props.currentHealth) * props.repairPrice)
+const roundedCurrentHealth = computed<number>(() => {
+    return Math.round(props.currentHealth)
+})
+
+const repairBill = computed<number>(() => (props.maxHealth - roundedCurrentHealth.value) * props.repairPrice)
 
 const errorMessages = computed<string[]>(() => {
     const messages = []
@@ -21,6 +25,14 @@ const errorMessages = computed<string[]>(() => {
 
     return messages
 })
+
+const repairShipEmit = defineEmits<{
+    (event: "repair", value: number): void
+}>()
+
+const repair = () => {
+    repairShipEmit("repair", repairBill.value)
+}
 </script>
 
 <template>
@@ -41,7 +53,7 @@ const errorMessages = computed<string[]>(() => {
                 <component class="repair-ship__gold-icon" :is="ICONS_LIST.gold"></component>
             </template>
         </v-text-field>
-        <v-btn class="repair-ship__btn" size="large" variant="elevated" :color="props.color" :disabled="repairBill === 0 || repairBill > props.gold">Ремонтировать</v-btn>
+        <v-btn class="repair-ship__btn" size="large" variant="elevated" :color="props.color" :disabled="repairBill === 0 || repairBill > props.gold" @click="repair">Ремонтировать</v-btn>
     </div>
 </template>
 
