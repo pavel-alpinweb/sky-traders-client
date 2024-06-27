@@ -57,11 +57,11 @@ export const playerComposition = {
             target.y = player.y
         }
         if (distance < TARGET_HIDE_DISTANCE) {
+            fuelConsumption.paused = true
+            healthConsumption.paused = true
             target.setAlpha(0)
         }
         if (distance < TARGET_TOLERANCE) {
-            fuelConsumption.paused = true
-            healthConsumption.paused = true
             player.body.reset(target.x, target.y)
         }
     },
