@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue"
-import { useMapLevel } from "../levels/map.level.ts"
+import { useMapLevel } from "../setups/map.setup.ts"
 import { EventBus } from "../utils/utils.ts"
 import { router } from "../router.ts"
 import { useTown } from "../store/town.ts"
