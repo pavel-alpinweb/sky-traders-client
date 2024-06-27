@@ -16,7 +16,6 @@ export const playerComposition = {
         body: Phaser.Physics.Arcade.Body
     } {
         const player = scene.physics.add.image(x, y, "ship").setScale(BASIC_SHIP_SCALE).refreshBody()
-        player?.preFX?.addShadow()
         scene.cameras.main.setBackgroundColor(0xa7efff).startFollow(player).setZoom(0.6)
         return player
     },
