@@ -36,6 +36,32 @@ const roundedCurrentHealth = computed<number>(() => {
 const actionsLabel = computed<string>(() => {
     return props.mode === "select" ? "Выбрать" : "Построить"
 })
+
+const fuelPercentage = computed<number>(() => props.ship.currentFuel / (props.ship.maxFuel / 100))
+const fuelBarColor = computed<string>(() => {
+    let color = ""
+    if (fuelPercentage.value >= 60) {
+        color = "green"
+    } else if (fuelPercentage.value >= 40) {
+        color = "amber"
+    } else if (fuelPercentage.value <= 39.9) {
+        color = "red"
+    }
+    return color
+})
+
+const healthPercentage = computed<number>(() => props.ship.currentHealth / (props.ship.maxHealth / 100))
+const healthBarColor = computed<string>(() => {
+    let color = ""
+    if (healthPercentage.value >= 60) {
+        color = "green"
+    } else if (healthPercentage.value >= 40) {
+        color = "amber"
+    } else if (healthPercentage.value <= 39) {
+        color = "red"
+    }
+    return color
+})
 </script>
 
 <template>
@@ -71,10 +97,18 @@ const actionsLabel = computed<string>(() => {
         </v-img>
         <v-card-title>{{ props.ship.name }}</v-card-title>
         <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-            <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" /> {{ roundedCurrentFuel }} / {{ props.ship.maxFuel }}
+            <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние корабля'" />
+            <div class="ship-card__bar">
+                <v-progress-linear :color="healthBarColor" :model-value="healthPercentage" height="10" rounded />
+            </div>
+            <span>{{ roundedCurrentHealth }} / {{ props.ship.maxHealth }}</span>
         </v-card-subtitle>
         <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-            <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние корабля'" /> {{ roundedCurrentHealth }} / {{ props.ship.maxHealth }}
+            <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" />
+            <div class="ship-card__bar">
+                <v-progress-linear :color="fuelBarColor" :model-value="fuelPercentage" height="10" rounded />
+            </div>
+            <span>{{ roundedCurrentFuel }} / {{ props.ship.maxFuel }}</span>
         </v-card-subtitle>
         <v-card-subtitle v-if="props.mode === 'build'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
             <IconGold class="ship-card__param-icon" v-tooltip="'Стоимость постройки'" /> {{ props.ship.price }}
@@ -101,6 +135,10 @@ const actionsLabel = computed<string>(() => {
     &__param-icon {
         width: 25px;
         height: 25px;
+        margin-right: 10px;
+    }
+    &__bar {
+        flex-grow: 1;
         margin-right: 10px;
     }
 }
