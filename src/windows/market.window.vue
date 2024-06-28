@@ -3,10 +3,13 @@ import TradeWidget from "../ui-components/TradeWidget.component.vue"
 import TradeTable from "../ui-components/TradeTable.component.vue"
 import { HEADING, ResourceTable } from "../types/interfaces.ts"
 import { ref } from "vue"
+import { usePlayer } from "../store/player.ts"
 
 const props = defineProps<{
     color: string
 }>()
+
+const player = usePlayer()
 
 const selectedResource = ref<ResourceTable>({
     [HEADING.NAME]: "",
@@ -31,7 +34,7 @@ const toggleResource = (resource: ResourceTable) => {
                 :max-amount="selectedResource[HEADING.VALUE]"
                 :color="props.color"
                 :resource="selectedResource.key"
-                :player-gold="5000"
+                :player-gold="player.gold"
                 :player-resource-amount="2000"
             />
         </div>
