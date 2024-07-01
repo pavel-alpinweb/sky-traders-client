@@ -2,8 +2,8 @@ import Phaser from "phaser"
 import { BULLET_VELOCITY } from "../configs/gameplay.config.ts"
 
 export const weaponComposition = {
-    uploadBullets(scene: Phaser.Scene) {
-        scene.load.image("bullets", "/assets/projectiles/red-bullet.png")
+    uploadBullets(scene: Phaser.Scene, ship: string) {
+        scene.load.image("bullets", `/assets/projectiles/${ship}-bullet.png`)
     },
 
     init(scene: Phaser.Scene): Phaser.Physics.Arcade.Group {
