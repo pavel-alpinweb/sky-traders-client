@@ -30,6 +30,7 @@ export class MapScene extends Phaser.Scene {
         mapComposition.tileMapUpload(this)
         mapComposition.islandUpload(this)
         mapComposition.townsUpload(this)
+        weaponComposition.uploadBullets(this)
     }
 
     create() {
