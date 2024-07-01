@@ -1,4 +1,5 @@
 import Phaser from "phaser"
+import { BULLET_VELOCITY } from "../configs/gameplay.config.ts"
 
 export const weaponComposition = {
     uploadBullets(scene: Phaser.Scene) {
@@ -13,7 +14,7 @@ export const weaponComposition = {
         if (bullets.get()) {
             const bullet = bullets.create(body.x, body.y, texture).setScale(0.7)
             bullet.angle = body.angle
-            scene.physics.velocityFromAngle(body.angle, 600, bullet.body.velocity)
+            scene.physics.velocityFromAngle(body.angle, BULLET_VELOCITY, bullet.body.velocity)
         }
     },
 }
