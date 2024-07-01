@@ -4,6 +4,7 @@ import { playerComposition } from "../compositions/player.composition.ts"
 import { checkOverlap, EventBus } from "../utils/utils.ts"
 import { Coords, Ship } from "../types/interfaces.ts"
 import TimerEvent = Phaser.Time.TimerEvent
+import { weaponComposition } from "../compositions/weapon.composition.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
@@ -13,6 +14,7 @@ export class MapScene extends Phaser.Scene {
     private townsArray!: Phaser.GameObjects.GameObject[]
     private fuelConsumption!: TimerEvent
     private healthConsumption!: TimerEvent
+    private bullets!: Phaser.Physics.Arcade.Group
     private readonly coords!: Coords
     private readonly ship!: Ship
 
@@ -41,6 +43,10 @@ export class MapScene extends Phaser.Scene {
         /* Добавляем города на карту */
         this.townsGroup = this.physics.add.staticGroup()
         this.townsArray = mapComposition.createTowns(["start-01", "start-02"], this.townsGroup, this.map)
+
+        /* Инициализируем снаряды для игрока и пиратов */
+        this.bullets = weaponComposition.init(this)
+        console.log(this.bullets)
 
         /* Создаем игрока и передвижение для него */
         this.player = playerComposition.initPlayer(this, this.coords.x, this.coords.y)
