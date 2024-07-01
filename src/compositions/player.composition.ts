@@ -1,10 +1,9 @@
 import Phaser from "phaser"
 import { EventBus } from "../utils/utils.ts"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_HIDE_DISTANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 import { Ship } from "../types/interfaces.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
-        console.log("player ship upload", ship)
         scene.load.image("ship", `/assets/ships/${ship}/${ship}-map.png`)
     },
 
@@ -16,7 +15,6 @@ export const playerComposition = {
         body: Phaser.Physics.Arcade.Body
     } {
         const player = scene.physics.add.image(x, y, "ship").setScale(BASIC_SHIP_SCALE).refreshBody()
-        player?.preFX?.addShadow()
         scene.cameras.main.setBackgroundColor(0xa7efff).startFollow(player).setZoom(0.6)
         return player
     },
@@ -27,6 +25,7 @@ export const playerComposition = {
 
     movePlayer(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image, ship: Ship) {
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
+            target.setAlpha(0.4)
             if (ship.currentFuel > 0) {
                 target.x = pointer.worldX
                 target.y = pointer.worldY
@@ -49,17 +48,20 @@ export const playerComposition = {
         if (player.body.speed > 0 && ship.currentFuel > 0) {
             fuelConsumption.paused = false
             healthConsumption.paused = false
-            scene.physics.moveToObject(player, target, velocity)
-            player.body.velocity.scale(Phaser.Math.SmoothStep(distance, 0, 20))
             this.rotatePlayer(player, target)
+            scene.physics.moveToObject(player, target, velocity)
+            player.body.velocity.scale(Phaser.Math.SmoothStep(distance, 0, 50))
         }
         if (ship.currentFuel <= 0) {
             target.x = player.x
             target.y = player.y
         }
-        if (distance < TARGET_TOLERANCE) {
+        if (distance < TARGET_HIDE_DISTANCE) {
             fuelConsumption.paused = true
             healthConsumption.paused = true
+            target.setAlpha(0)
+        }
+        if (distance < TARGET_TOLERANCE) {
             player.body.reset(target.x, target.y)
         }
     },
