@@ -5,7 +5,7 @@ export const weaponComposition = {
         return scene.physics.add.group()
     },
 
-    create(bullets: Phaser.Physics.Arcade.Group): void {
+    fire(bullets: Phaser.Physics.Arcade.Group): void {
         console.log("fire", bullets)
     },
 }
