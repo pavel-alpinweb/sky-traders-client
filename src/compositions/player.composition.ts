@@ -1,6 +1,6 @@
 import Phaser from "phaser"
 import { EventBus } from "../utils/utils.ts"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_HIDE_DISTANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, FIRE_BUTTON, TARGET_HIDE_DISTANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 import { Ship } from "../types/interfaces.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
@@ -119,5 +119,14 @@ export const playerComposition = {
             },
             loop: true,
         })
+    },
+
+    fire(scene: Phaser.Scene) {
+        const fireButton = scene.input.keyboard?.addKey(FIRE_BUTTON)
+        if (fireButton) {
+            fireButton.on("up", () => {
+                console.log("Fire!")
+            })
+        }
     },
 }

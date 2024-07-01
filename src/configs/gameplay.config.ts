@@ -14,6 +14,7 @@ export const TARGET_HIDE_DISTANCE = 50
 export const FUEL_PRICE = 5
 export const FUEL_CONSUMPTION = 0.1
 export const HEALTH_CONSUMPTION = 0.01
+export const FIRE_BUTTON = "space"
 
 /* Town Settings */
 export const TOWN_SIZE = 1024
