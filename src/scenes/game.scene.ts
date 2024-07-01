@@ -54,7 +54,7 @@ export class MapScene extends Phaser.Scene {
         playerComposition.movePlayer(this, this.player, this.target, this.ship)
 
         /* Создаем стрельбу игрока */
-        playerComposition.fire(this, this.bullets)
+        playerComposition.fire(this, this.bullets, this.player, "bullets")
 
         /* Создаем таймер для расхода топлива */
         this.fuelConsumption = playerComposition.initFuelConsumption(this)

@@ -9,7 +9,9 @@ export const weaponComposition = {
         return scene.physics.add.group()
     },
 
-    fire(bullets: Phaser.Physics.Arcade.Group): void {
-        console.log("fire", bullets)
+    fire(bullets: Phaser.Physics.Arcade.Group, body: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, texture: string): void {
+        if (bullets.get()) {
+            bullets.create(body.x, body.y, texture).setScale(0.7)
+        }
     },
 }

@@ -122,11 +122,11 @@ export const playerComposition = {
         })
     },
 
-    fire(scene: Phaser.Scene, bullets: Phaser.Physics.Arcade.Group) {
+    fire(scene: Phaser.Scene, bullets: Phaser.Physics.Arcade.Group, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, texture: string): void {
         const fireButton = scene.input.keyboard?.addKey(FIRE_BUTTON)
         if (fireButton) {
             fireButton.on("up", () => {
-                weaponComposition.fire(bullets)
+                weaponComposition.fire(bullets, player, texture)
             })
         }
     },
