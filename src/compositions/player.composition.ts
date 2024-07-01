@@ -126,7 +126,7 @@ export const playerComposition = {
         const fireButton = scene.input.keyboard?.addKey(FIRE_BUTTON)
         if (fireButton) {
             fireButton.on("up", () => {
-                weaponComposition.fire(bullets, player, texture)
+                weaponComposition.fire(scene, bullets, player, texture)
             })
         }
     },
