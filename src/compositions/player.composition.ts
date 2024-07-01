@@ -2,6 +2,7 @@ import Phaser from "phaser"
 import { EventBus } from "../utils/utils.ts"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, FIRE_BUTTON, TARGET_HIDE_DISTANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 import { Ship } from "../types/interfaces.ts"
+import { weaponComposition } from "./weapon.composition.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
         scene.load.image("ship", `/assets/ships/${ship}/${ship}-map.png`)
@@ -121,11 +122,11 @@ export const playerComposition = {
         })
     },
 
-    fire(scene: Phaser.Scene) {
+    fire(scene: Phaser.Scene, bullets: Phaser.Physics.Arcade.Group) {
         const fireButton = scene.input.keyboard?.addKey(FIRE_BUTTON)
         if (fireButton) {
             fireButton.on("up", () => {
-                console.log("Fire!")
+                weaponComposition.fire(bullets)
             })
         }
     },

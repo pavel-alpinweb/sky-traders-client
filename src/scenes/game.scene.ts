@@ -46,7 +46,6 @@ export class MapScene extends Phaser.Scene {
 
         /* Инициализируем снаряды для игрока и пиратов */
         this.bullets = weaponComposition.init(this)
-        console.log(this.bullets)
 
         /* Создаем игрока и передвижение для него */
         this.player = playerComposition.initPlayer(this, this.coords.x, this.coords.y)
@@ -54,7 +53,7 @@ export class MapScene extends Phaser.Scene {
         playerComposition.movePlayer(this, this.player, this.target, this.ship)
 
         /* Создаем стрельбу игрока */
-        playerComposition.fire(this)
+        playerComposition.fire(this, this.bullets)
 
         /* Создаем таймер для расхода топлива */
         this.fuelConsumption = playerComposition.initFuelConsumption(this)
@@ -62,7 +61,7 @@ export class MapScene extends Phaser.Scene {
         /* Создаем таймер для поломки во время полета */
         this.healthConsumption = playerComposition.initHealthConsumption(this)
 
-        /* Эмитим событие с данными о городе и коориданты игрока при полете над городом */
+        /* Эмитим событие с данными о городе и координаты игрока при полете над городом */
         playerComposition.flyOnTown(this.player, this.townsGroup, this)
     }
 
