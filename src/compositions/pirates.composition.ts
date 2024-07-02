@@ -1,5 +1,5 @@
 import Phaser from "phaser"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, ENEMY_FIRE_DELAY, ENEMY_START_FIRE_DELAY, PIRATE_STOP_TOLERANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, PIRATE_FIRE_DELAY, PIRATE_START_FIRE_DELAY, PIRATE_STOP_TOLERANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 
 export const piratesComposition = {
     piratesShipsUpload(scene: Phaser.Scene) {
@@ -43,8 +43,8 @@ export const piratesComposition = {
     initFireTimer(scene: Phaser.Scene) {
         return scene.time.addEvent({
             paused: true,
-            delay: ENEMY_FIRE_DELAY,
-            startAt: ENEMY_START_FIRE_DELAY,
+            delay: PIRATE_FIRE_DELAY,
+            startAt: PIRATE_START_FIRE_DELAY,
             callback: () => {},
             loop: true,
         })
