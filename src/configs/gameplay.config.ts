@@ -5,7 +5,6 @@ export const LEVEL_HEIGHT = window.innerHeight
 /* PLAYER SETTINGS */
 export const BASIC_SHIP_SPEED = 200
 export const BASIC_SHIP_ANGULAR_VELOCITY = 180
-export const BASIC_SHIP_ROTATION_VELOCITY = 90
 export const BASIC_SHIP_SCALE = 0.3
 
 /* GAMEPLAY SETTINGS */
@@ -21,6 +20,7 @@ export const PIRATE_STOP_TOLERANCE = 500
 export const PIRATE_FIRE_DELAY = 2500
 export const PIRATE_START_FIRE_DELAY = 2500
 export const PIRATE_FIRE_DISTANCE = 800
+export const PIRATE_ANGULAR_VELOCITY = 35
 
 /* Town Settings */
 export const TOWN_SIZE = 1024

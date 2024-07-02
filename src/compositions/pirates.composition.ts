@@ -1,5 +1,5 @@
 import Phaser from "phaser"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, PIRATE_FIRE_DELAY, PIRATE_FIRE_DISTANCE, PIRATE_START_FIRE_DELAY, PIRATE_STOP_TOLERANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_SCALE, PIRATE_ANGULAR_VELOCITY, PIRATE_FIRE_DELAY, PIRATE_FIRE_DISTANCE, PIRATE_START_FIRE_DELAY, PIRATE_STOP_TOLERANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 import { weaponComposition } from "./weapon.composition.ts"
 
 export const piratesComposition = {
@@ -35,7 +35,7 @@ export const piratesComposition = {
             pirate.body.rotation = angleToPlayer
             pirate.setAngularVelocity(0)
         } else {
-            pirate.setAngularVelocity(Math.sign(angleDelta) * BASIC_SHIP_ANGULAR_VELOCITY)
+            pirate.setAngularVelocity(Math.sign(angleDelta) * PIRATE_ANGULAR_VELOCITY)
         }
 
         scene.physics.moveToObject(pirate, player, velocity)
