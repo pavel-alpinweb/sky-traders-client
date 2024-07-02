@@ -1,5 +1,6 @@
 import Phaser from "phaser"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, PIRATE_FIRE_DELAY, PIRATE_FIRE_DISTANCE, PIRATE_START_FIRE_DELAY, PIRATE_STOP_TOLERANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { weaponComposition } from "./weapon.composition.ts"
 
 export const piratesComposition = {
     piratesShipsUpload(scene: Phaser.Scene) {
@@ -40,13 +41,13 @@ export const piratesComposition = {
         scene.physics.moveToObject(pirate, player, velocity)
     },
 
-    initFireTimer(scene: Phaser.Scene) {
+    initFireTimer(scene: Phaser.Scene, bullets: Phaser.Physics.Arcade.Group, pirate: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }) {
         return scene.time.addEvent({
             paused: true,
             delay: PIRATE_FIRE_DELAY,
             startAt: PIRATE_START_FIRE_DELAY,
             callback: () => {
-                console.log("Pirate Fire!")
+                weaponComposition.fire(scene, bullets, pirate, "pirate-bullets")
             },
             loop: true,
         })
