@@ -16,7 +16,7 @@ export const FUEL_CONSUMPTION = 0.1
 export const HEALTH_CONSUMPTION = 0.01
 export const FIRE_BUTTON = "space"
 export const BULLET_VELOCITY = 1000
-export const PIRATE_VELOCITY = 230
+export const PIRATE_VELOCITY = 150
 
 /* Town Settings */
 export const TOWN_SIZE = 1024

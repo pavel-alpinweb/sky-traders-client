@@ -6,6 +6,7 @@ import { Coords, Ship } from "../types/interfaces.ts"
 import TimerEvent = Phaser.Time.TimerEvent
 import { weaponComposition } from "../compositions/weapon.composition.ts"
 import { piratesComposition } from "../compositions/pirates.composition.ts"
+import { PIRATE_VELOCITY } from "../configs/gameplay.config.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
@@ -58,7 +59,6 @@ export class MapScene extends Phaser.Scene {
 
         /* Создаем пиратов */
         this.pirates = piratesComposition.initPirates(this, this.coords.x, this.coords.y - 800)
-        console.log(this.pirates)
 
         /* Создаем стрельбу игрока */
         playerComposition.fire(this, this.bullets, this.player, "bullets")
@@ -75,6 +75,10 @@ export class MapScene extends Phaser.Scene {
 
     update() {
         playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity, this.fuelConsumption, this.healthConsumption, this.ship)
+
+        if (this.pirates) {
+            piratesComposition.movePirate(this, this.player, this.pirates, PIRATE_VELOCITY)
+        }
 
         for (const town of this.townsArray) {
             if (checkOverlap(this.player, town)) {
