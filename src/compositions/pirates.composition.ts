@@ -1,5 +1,5 @@
 import Phaser from "phaser"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, PIRATE_STOP_TOLERANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 
 export const piratesComposition = {
     piratesShipsUpload(scene: Phaser.Scene) {
@@ -22,8 +22,13 @@ export const piratesComposition = {
         pirate: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body },
         velocity: number
     ) {
+        const distance = Phaser.Math.Distance.BetweenPoints(pirate, player)
         const angleToPlayer = Phaser.Math.RadToDeg(Phaser.Math.Angle.Between(pirate.x, pirate.y, player.x, player.y))
         const angleDelta = Phaser.Math.Angle.ShortestBetween(pirate.body.rotation, angleToPlayer)
+
+        if (distance < PIRATE_STOP_TOLERANCE) {
+            pirate.body.reset(pirate.x, pirate.y)
+        }
 
         if (Phaser.Math.Fuzzy.Equal(angleDelta, 0, TARGET_TOLERANCE)) {
             pirate.body.rotation = angleToPlayer
