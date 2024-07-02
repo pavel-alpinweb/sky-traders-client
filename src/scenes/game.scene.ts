@@ -9,6 +9,7 @@ import { piratesComposition } from "../compositions/pirates.composition.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
+    private pirates!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
     private target!: Phaser.GameObjects.Image
     private map!: Phaser.Tilemaps.Tilemap
     private townsGroup!: Phaser.Physics.Arcade.StaticGroup
@@ -54,6 +55,10 @@ export class MapScene extends Phaser.Scene {
         this.player = playerComposition.initPlayer(this, this.coords.x, this.coords.y)
         this.target = playerComposition.initTarget(this, this.player)
         playerComposition.movePlayer(this, this.player, this.target, this.ship)
+
+        /* Создаем пиратов */
+        this.pirates = piratesComposition.initPirates(this, this.coords.x, this.coords.y - 800)
+        console.log(this.pirates)
 
         /* Создаем стрельбу игрока */
         playerComposition.fire(this, this.bullets, this.player, "bullets")
