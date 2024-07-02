@@ -5,6 +5,7 @@ import { checkOverlap, EventBus } from "../utils/utils.ts"
 import { Coords, Ship } from "../types/interfaces.ts"
 import TimerEvent = Phaser.Time.TimerEvent
 import { weaponComposition } from "../compositions/weapon.composition.ts"
+import { piratesComposition } from "../compositions/pirates.composition.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
@@ -26,6 +27,7 @@ export class MapScene extends Phaser.Scene {
 
     preload() {
         playerComposition.playerShipUpload(this, this.ship.type)
+        piratesComposition.piratesShipsUpload(this)
         mapComposition.mapBackgroundUpload(this)
         mapComposition.tileMapUpload(this)
         mapComposition.islandUpload(this)
