@@ -18,9 +18,9 @@ export const FIRE_BUTTON = "space"
 export const BULLET_VELOCITY = 1000
 export const PIRATE_VELOCITY = 150
 export const PIRATE_STOP_TOLERANCE = 500
-export const PIRATE_FIRE_DELAY = 700
-export const PIRATE_START_FIRE_DELAY = 700
-export const PIRATE_FIRE_DISTANCE = 700
+export const PIRATE_FIRE_DELAY = 2500
+export const PIRATE_START_FIRE_DELAY = 2500
+export const PIRATE_FIRE_DISTANCE = 800
 
 /* Town Settings */
 export const TOWN_SIZE = 1024
