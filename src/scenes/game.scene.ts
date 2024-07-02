@@ -61,7 +61,6 @@ export class MapScene extends Phaser.Scene {
         /* Создаем пиратов и их стрельбу */
         this.pirates = piratesComposition.initPirates(this, this.coords.x, this.coords.y - 800)
         this.pirateFire = piratesComposition.initFireTimer(this)
-        console.log("pirateFire", this.pirateFire)
 
         /* Создаем стрельбу игрока */
         playerComposition.fire(this, this.bullets, this.player, "bullets")
@@ -80,6 +79,7 @@ export class MapScene extends Phaser.Scene {
         playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity, this.fuelConsumption, this.healthConsumption, this.ship)
 
         if (this.pirates) {
+            piratesComposition.fire(this.pirates, this.player, this.pirateFire)
             piratesComposition.movePirate(this, this.player, this.pirates, PIRATE_VELOCITY)
         }
 

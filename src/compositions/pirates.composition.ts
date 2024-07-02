@@ -1,5 +1,5 @@
 import Phaser from "phaser"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, PIRATE_FIRE_DELAY, PIRATE_START_FIRE_DELAY, PIRATE_STOP_TOLERANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, PIRATE_FIRE_DELAY, PIRATE_FIRE_DISTANCE, PIRATE_START_FIRE_DELAY, PIRATE_STOP_TOLERANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 
 export const piratesComposition = {
     piratesShipsUpload(scene: Phaser.Scene) {
@@ -45,8 +45,16 @@ export const piratesComposition = {
             paused: true,
             delay: PIRATE_FIRE_DELAY,
             startAt: PIRATE_START_FIRE_DELAY,
-            callback: () => {},
+            callback: () => {
+                console.log("Pirate Fire!")
+            },
             loop: true,
         })
+    },
+
+    fire(pirate: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, timer: Phaser.Time.TimerEvent) {
+        const distance = Phaser.Math.Distance.BetweenPoints(pirate, player)
+
+        timer.paused = distance > PIRATE_FIRE_DISTANCE
     },
 }
