@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { Player, RefuelParams, Ship } from "../types/interfaces.ts"
-import { BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION, PIRATE_DAMAGE } from "../configs/gameplay.config.ts"
 
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
@@ -89,6 +89,9 @@ export const usePlayer = defineStore("player", {
         repairCurrentShip(repairBill: number): void {
             this.gold -= repairBill
             this.currentShip.currentHealth = this.currentShip.maxHealth
+        },
+        damageCurrentShip(): void {
+            this.currentShip.currentHealth -= PIRATE_DAMAGE
         },
     },
 })
