@@ -11,6 +11,20 @@ export const weaponComposition = {
         scene.load.atlas("explosion", "/assets/fx/explosion.png", "/assets/fx/explosion.json")
     },
 
+    initVFXAnimations(scene: Phaser.Scene) {
+        scene.anims.create({
+            key: "explosion",
+            frames: scene.anims.generateFrameNames("explosion", {
+                start: 1,
+                end: 4,
+                zeroPad: 0,
+                suffix: ".png",
+            }),
+            frameRate: 10,
+            repeat: 1,
+        })
+    },
+
     init(scene: Phaser.Scene): Phaser.Physics.Arcade.Group {
         return scene.physics.add.group()
     },
