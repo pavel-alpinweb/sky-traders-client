@@ -34,6 +34,7 @@ export const weaponComposition = {
         if (bullets.get()) {
             const bullet = bullets.create(body.x, body.y, texture).setScale(0.7)
             bullet.angle = body.angle
+            bullet.setBodySize(50, 50)
             scene.physics.velocityFromAngle(body.angle, BULLET_VELOCITY, bullet.body.velocity)
 
             bullet.on(
