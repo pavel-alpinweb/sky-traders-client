@@ -7,6 +7,10 @@ export const weaponComposition = {
         scene.load.image("pirate-bullets", "/assets/projectiles/shark-bullet.png")
     },
 
+    uploadVFX(scene: Phaser.Scene) {
+        scene.load.atlas("explosion", "/assets/fx/explosion.png", "/assets/fx/explosion.json")
+    },
+
     init(scene: Phaser.Scene): Phaser.Physics.Arcade.Group {
         return scene.physics.add.group()
     },

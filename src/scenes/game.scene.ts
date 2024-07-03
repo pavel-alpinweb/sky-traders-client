@@ -36,6 +36,7 @@ export class MapScene extends Phaser.Scene {
         mapComposition.islandUpload(this)
         mapComposition.townsUpload(this)
         weaponComposition.uploadBullets(this, this.ship.type)
+        weaponComposition.uploadVFX(this)
     }
 
     create() {
