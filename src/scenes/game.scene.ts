@@ -17,7 +17,8 @@ export class MapScene extends Phaser.Scene {
     private townsArray!: Phaser.GameObjects.GameObject[]
     private fuelConsumption!: TimerEvent
     private healthConsumption!: TimerEvent
-    private bullets!: Phaser.Physics.Arcade.Group
+    private playerBullets!: Phaser.Physics.Arcade.Group
+    private pirateBullets!: Phaser.Physics.Arcade.Group
     private pirateFire!: TimerEvent
     private readonly coords!: Coords
     private readonly ship!: Ship
@@ -52,7 +53,8 @@ export class MapScene extends Phaser.Scene {
         this.townsArray = mapComposition.createTowns(["start-01", "start-02"], this.townsGroup, this.map)
 
         /* Инициализируем снаряды для игрока и пиратов */
-        this.bullets = weaponComposition.init(this)
+        this.playerBullets = weaponComposition.init(this)
+        this.pirateBullets = weaponComposition.init(this)
 
         /* Создаем игрока и передвижение для него */
         this.player = playerComposition.initPlayer(this, this.coords.x, this.coords.y)
@@ -61,15 +63,15 @@ export class MapScene extends Phaser.Scene {
 
         /* Создаем пиратов и их стрельбу */
         this.pirates = piratesComposition.initPirates(this, this.coords.x, this.coords.y - 800)
-        this.pirateFire = piratesComposition.initFireTimer(this, this.bullets, this.pirates)
+        this.pirateFire = piratesComposition.initFireTimer(this, this.pirateBullets, this.pirates)
 
         /* Создаем стрельбу игрока */
-        playerComposition.fire(this, this.bullets, this.player, "bullets")
+        playerComposition.fire(this, this.playerBullets, this.player, "bullets")
 
         /* Создаем эффекты и обработку попаданий */
         weaponComposition.initVFXAnimations(this)
-        weaponComposition.hitOnPlayerHandler(this, this.bullets, this.player)
-        weaponComposition.hitOnPirateHandler(this, this.bullets, this.pirates)
+        weaponComposition.hitOnPlayerHandler(this, this.pirateBullets, this.player)
+        weaponComposition.hitOnPirateHandler(this, this.playerBullets, this.pirates)
 
         /* Создаем таймер для расхода топлива */
         this.fuelConsumption = playerComposition.initFuelConsumption(this)
