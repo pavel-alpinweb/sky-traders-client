@@ -1,5 +1,6 @@
 import Phaser from "phaser"
 import { BULLET_VELOCITY } from "../configs/gameplay.config.ts"
+import { EventBus } from "../utils/utils.ts"
 
 export const weaponComposition = {
     uploadBullets(scene: Phaser.Scene, ship: string) {
@@ -63,6 +64,7 @@ export const weaponComposition = {
             () => {},
             (player, bullet) => {
                 weaponComposition.explosionOnHit(player, bullet)
+                EventBus.emit("damage-player")
             }
         )
     },

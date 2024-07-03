@@ -26,6 +26,7 @@ const goToTown = () => {
     EventBus.off("arrive-town")
     EventBus.off("decrease-fuel")
     EventBus.off("decrease-health")
+    EventBus.off("damage-player")
     router.push({ path: "/town" })
 }
 
@@ -47,6 +48,9 @@ onMounted(() => {
     })
     EventBus.on("decrease-health", () => {
         player.decreaseCurrentShipHealth()
+    })
+    EventBus.on("damage-player", () => {
+        player.damageCurrentShip()
     })
 })
 </script>

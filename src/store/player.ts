@@ -91,7 +91,9 @@ export const usePlayer = defineStore("player", {
             this.currentShip.currentHealth = this.currentShip.maxHealth
         },
         damageCurrentShip(): void {
-            this.currentShip.currentHealth -= PIRATE_DAMAGE
+            if (this.currentShip.currentHealth > 0) {
+                this.currentShip.currentHealth -= this.currentShip.currentHealth > PIRATE_DAMAGE ? PIRATE_DAMAGE : this.currentShip.currentHealth
+            }
         },
     },
 })
