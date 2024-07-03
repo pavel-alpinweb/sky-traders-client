@@ -34,7 +34,26 @@ export const weaponComposition = {
             const bullet = bullets.create(body.x, body.y, texture).setScale(0.7)
             bullet.angle = body.angle
             scene.physics.velocityFromAngle(body.angle, BULLET_VELOCITY, bullet.body.velocity)
+
+            bullet.on(
+                Phaser.Animations.Events.ANIMATION_COMPLETE,
+                function () {
+                    const { world } = scene.physics
+                    bullet.disableBody(true, true)
+                    bullets.remove(bullets.getLast(true), true, true)
+                    world.remove(bullet.body)
+                },
+                this
+            )
         }
+    },
+
+    // eslint-disable-next-line
+    // @ts-ignore
+    explosionOnHit(body, bullet) {
+        bullet.setVelocity(0)
+        bullet.anims.play("explosion", true)
+        bullet.body.enable = false
     },
 
     hitOnPlayerHandler(scene: Phaser.Scene, bullets: Phaser.Physics.Arcade.Group, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }) {
@@ -42,8 +61,8 @@ export const weaponComposition = {
             bullets,
             player,
             () => {},
-            () => {
-                console.log("Hit on player")
+            (player, bullet) => {
+                weaponComposition.explosionOnHit(player, bullet)
             }
         )
     },
@@ -53,8 +72,8 @@ export const weaponComposition = {
             bullets,
             pirate,
             () => {},
-            () => {
-                console.log("Hit on pirate")
+            (pirate, bullet) => {
+                weaponComposition.explosionOnHit(pirate, bullet)
             }
         )
     },
