@@ -66,8 +66,10 @@ export class MapScene extends Phaser.Scene {
         /* Создаем стрельбу игрока */
         playerComposition.fire(this, this.bullets, this.player, "bullets")
 
-        /* Создаем эффекты при стрельбе */
+        /* Создаем эффекты и обработку попаданий */
         weaponComposition.initVFXAnimations(this)
+        weaponComposition.hitOnPlayerHandler(this, this.bullets, this.player)
+        weaponComposition.hitOnPirateHandler(this, this.bullets, this.pirates)
 
         /* Создаем таймер для расхода топлива */
         this.fuelConsumption = playerComposition.initFuelConsumption(this)

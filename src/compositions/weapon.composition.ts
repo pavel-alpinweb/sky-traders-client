@@ -8,7 +8,7 @@ export const weaponComposition = {
     },
 
     uploadVFX(scene: Phaser.Scene) {
-        scene.load.atlas("explosion", "/assets/fx/explosion.png", "/assets/fx/explosion.json")
+        scene.load.atlas("explosion", "/assets/vfx/explosion.png", "/assets/vfx/explosion.json")
     },
 
     initVFXAnimations(scene: Phaser.Scene) {
@@ -35,5 +35,27 @@ export const weaponComposition = {
             bullet.angle = body.angle
             scene.physics.velocityFromAngle(body.angle, BULLET_VELOCITY, bullet.body.velocity)
         }
+    },
+
+    hitOnPlayerHandler(scene: Phaser.Scene, bullets: Phaser.Physics.Arcade.Group, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }) {
+        scene.physics.add.collider(
+            bullets,
+            player,
+            () => {},
+            () => {
+                console.log("Hit on player")
+            }
+        )
+    },
+
+    hitOnPirateHandler(scene: Phaser.Scene, bullets: Phaser.Physics.Arcade.Group, pirate: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }) {
+        scene.physics.add.collider(
+            bullets,
+            pirate,
+            () => {},
+            () => {
+                console.log("Hit on pirate")
+            }
+        )
     },
 }
