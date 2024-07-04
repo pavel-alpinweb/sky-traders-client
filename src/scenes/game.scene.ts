@@ -21,7 +21,7 @@ export class MapScene extends Phaser.Scene {
     private pirateBullets!: Phaser.Physics.Arcade.Group
     private pirateFire!: TimerEvent
     private pirateHealthBar!: Phaser.GameObjects.Graphics
-    // private pirateCurrentHealth: number = 100
+    private pirateCurrentHealth: number = 50
     private readonly coords!: Coords
     private readonly ship!: Ship
 
@@ -96,6 +96,8 @@ export class MapScene extends Phaser.Scene {
             piratesComposition.fire(this.pirates, this.player, this.pirateFire)
             piratesComposition.movePirate(this, this.player, this.pirates, PIRATE_VELOCITY)
         }
+
+        piratesComposition.updatePirateHealthBar(this.pirateHealthBar, this.pirateCurrentHealth)
 
         for (const town of this.townsArray) {
             if (checkOverlap(this.player, town)) {

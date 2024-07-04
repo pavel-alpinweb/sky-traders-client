@@ -1,5 +1,14 @@
 import Phaser from "phaser"
-import { BASIC_SHIP_SCALE, PIRATE_ANGULAR_VELOCITY, PIRATE_FIRE_DELAY, PIRATE_FIRE_DISTANCE, PIRATE_START_FIRE_DELAY, PIRATE_STOP_TOLERANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import {
+    BASIC_SHIP_SCALE,
+    PIRATE_ANGULAR_VELOCITY,
+    PIRATE_FIRE_DELAY,
+    PIRATE_FIRE_DISTANCE,
+    PIRATE_MAX_HEALTH,
+    PIRATE_START_FIRE_DELAY,
+    PIRATE_STOP_TOLERANCE,
+    TARGET_TOLERANCE,
+} from "../configs/gameplay.config.ts"
 import { weaponComposition } from "./weapon.composition.ts"
 
 export const piratesComposition = {
@@ -62,12 +71,16 @@ export const piratesComposition = {
     initPirateHealthBar(scene: Phaser.Scene, pirateX: number, pirateY: number): Phaser.GameObjects.Graphics {
         const bar = scene.add.graphics()
         bar.fillStyle(0x4caf50, 1)
-        bar.fillRect(0, 0, 100, 5)
+        bar.fillRect(0, 0, 100, 10)
         bar.x = pirateX - 50
         bar.y = pirateY - 50
 
         return bar
     },
 
-    updatePirateHealthBar() {},
+    updatePirateHealthBar(bar: Phaser.GameObjects.Graphics, currentHealth: number) {
+        const percentage = currentHealth / (PIRATE_MAX_HEALTH / 100)
+
+        bar.scaleX = percentage / 100
+    },
 }
