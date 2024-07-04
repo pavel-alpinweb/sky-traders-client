@@ -80,7 +80,18 @@ export const piratesComposition = {
 
     updatePirateHealthBar(bar: Phaser.GameObjects.Graphics, currentHealth: number) {
         const percentage = currentHealth / (PIRATE_MAX_HEALTH / 100)
+        let color
 
+        if (percentage >= 60) {
+            color = 0x4caf50
+        } else if (percentage >= 40) {
+            color = 0xffc107
+        } else if (percentage <= 39.9) {
+            color = 0xf44336
+        }
+        bar.clear()
+        bar.fillStyle(color as number, 1)
+        bar.fillRect(0, 0, 100, 10)
         bar.scaleX = percentage / 100
     },
 }
