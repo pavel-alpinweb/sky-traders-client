@@ -20,7 +20,8 @@ export class MapScene extends Phaser.Scene {
     private playerBullets!: Phaser.Physics.Arcade.Group
     private pirateBullets!: Phaser.Physics.Arcade.Group
     private pirateFire!: TimerEvent
-    private pirateHealthBar!: Phaser.Geom.Line
+    private pirateHealthBar!: Phaser.GameObjects.Graphics
+    // private pirateCurrentHealth: number = 100
     private readonly coords!: Coords
     private readonly ship!: Ship
 
