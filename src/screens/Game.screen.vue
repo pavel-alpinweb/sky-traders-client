@@ -27,6 +27,7 @@ const goToTown = () => {
     EventBus.off("decrease-fuel")
     EventBus.off("decrease-health")
     EventBus.off("damage-player")
+    EventBus.off("damage-pirate")
     router.push({ path: "/town" })
 }
 

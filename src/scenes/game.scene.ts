@@ -77,7 +77,11 @@ export class MapScene extends Phaser.Scene {
         /* Создаем эффекты и обработку попаданий */
         weaponComposition.initVFXAnimations(this)
         weaponComposition.hitOnPlayerHandler(this, this.pirateBullets, this.player)
-        weaponComposition.hitOnPirateHandler(this, this.playerBullets, this.pirates)
+        weaponComposition.hitOnPirateHandler(this, this.playerBullets, this.pirates, this.ship.damage)
+
+        EventBus.on("damage-pirate", (damage: number) => {
+            this.pirateCurrentHealth -= this.pirateCurrentHealth >= damage ? damage : this.pirateCurrentHealth
+        })
 
         /* Создаем таймер для расхода топлива */
         this.fuelConsumption = playerComposition.initFuelConsumption(this)

@@ -70,13 +70,14 @@ export const weaponComposition = {
         )
     },
 
-    hitOnPirateHandler(scene: Phaser.Scene, bullets: Phaser.Physics.Arcade.Group, pirate: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }) {
+    hitOnPirateHandler(scene: Phaser.Scene, bullets: Phaser.Physics.Arcade.Group, pirate: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, playerDamage: number) {
         scene.physics.add.collider(
             bullets,
             pirate,
             () => {},
             (pirate, bullet) => {
                 weaponComposition.explosionOnHit(pirate, bullet)
+                EventBus.emit("damage-pirate", playerDamage)
             }
         )
     },
