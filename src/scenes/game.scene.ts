@@ -64,7 +64,7 @@ export class MapScene extends Phaser.Scene {
         playerComposition.movePlayer(this, this.player, this.target, this.ship)
 
         /* Создаем пиратов и их стрельбу */
-        this.pirates = piratesComposition.initPirates(this, this.coords.x, this.coords.y - 800)
+        this.pirates = piratesComposition.initPirates(this, this.coords.x, this.coords.y - (window.innerHeight / 2 + 512))
         this.pirateFire = piratesComposition.initFireTimer(this, this.pirateBullets, this.pirates)
 
         /* Создаем здоровье для пиратов */
