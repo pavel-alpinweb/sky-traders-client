@@ -58,4 +58,14 @@ export const piratesComposition = {
 
         timer.paused = distance > PIRATE_FIRE_DISTANCE
     },
+
+    initPirateHealthBar(scene: Phaser.Scene, pirateX: number, pirateY: number): Phaser.Geom.Line {
+        const graphics = scene.add.graphics({ lineStyle: { width: 5, color: 0x4caf50 } })
+        const line = new Phaser.Geom.Line(0, 0, 100, 0)
+
+        Phaser.Geom.Line.CenterOn(line, pirateX, pirateY - 50)
+        graphics.strokeLineShape(line)
+
+        return line
+    },
 }

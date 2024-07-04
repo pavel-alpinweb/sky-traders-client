@@ -20,6 +20,7 @@ export class MapScene extends Phaser.Scene {
     private playerBullets!: Phaser.Physics.Arcade.Group
     private pirateBullets!: Phaser.Physics.Arcade.Group
     private pirateFire!: TimerEvent
+    private pirateHealthBar!: Phaser.Geom.Line
     private readonly coords!: Coords
     private readonly ship!: Ship
 
@@ -64,6 +65,10 @@ export class MapScene extends Phaser.Scene {
         /* Создаем пиратов и их стрельбу */
         this.pirates = piratesComposition.initPirates(this, this.coords.x, this.coords.y - 800)
         this.pirateFire = piratesComposition.initFireTimer(this, this.pirateBullets, this.pirates)
+
+        /* Создаем здоровье для пиратов */
+        this.pirateHealthBar = piratesComposition.initPirateHealthBar(this, this.pirates.x, this.pirates.y)
+        console.log(this.pirateHealthBar)
 
         /* Создаем стрельбу игрока */
         playerComposition.fire(this, this.playerBullets, this.player, "bullets")
