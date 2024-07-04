@@ -102,6 +102,7 @@ export class MapScene extends Phaser.Scene {
         }
 
         piratesComposition.updatePirateHealthBar(this.pirateHealthBar, this.pirateCurrentHealth)
+        piratesComposition.movePirateHealthBar(this.pirateHealthBar, this.pirates.x, this.pirates.y)
 
         for (const town of this.townsArray) {
             if (checkOverlap(this.player, town)) {

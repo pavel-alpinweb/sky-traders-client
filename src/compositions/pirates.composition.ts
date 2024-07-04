@@ -94,4 +94,9 @@ export const piratesComposition = {
         bar.fillRect(0, 0, 100, 10)
         bar.scaleX = percentage / 100
     },
+
+    movePirateHealthBar(bar: Phaser.GameObjects.Graphics, pirateX: number, pirateY: number) {
+        bar.x = pirateX - 50
+        bar.y = pirateY - 50
+    },
 }
