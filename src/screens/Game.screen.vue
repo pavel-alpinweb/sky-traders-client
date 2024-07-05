@@ -28,6 +28,7 @@ const goToTown = () => {
     EventBus.off("decrease-health")
     EventBus.off("damage-player")
     EventBus.off("damage-pirate")
+    EventBus.off("destroy-current-ship")
     router.push({ path: "/town" })
 }
 
@@ -58,7 +59,7 @@ onMounted(() => {
 watch(
     () => player.currentShipHealth,
     (value) => {
-        if (value && value <= 0) {
+        if (value === 0) {
             EventBus.emit("destroy-current-ship")
         }
     }

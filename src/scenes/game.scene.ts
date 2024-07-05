@@ -86,6 +86,10 @@ export class MapScene extends Phaser.Scene {
             }
         })
 
+        EventBus.on("destroy-current-ship", () => {
+            playerComposition.death(this, this.player as Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, this.target)
+        })
+
         /* Создаем таймер для расхода топлива */
         this.fuelConsumption = playerComposition.initFuelConsumption(this)
 

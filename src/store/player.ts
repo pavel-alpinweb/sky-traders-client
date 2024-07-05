@@ -61,7 +61,7 @@ export const usePlayer = defineStore("player", {
                 repairPrice: 8,
             },
         ],
-        currentShipId: 7,
+        currentShipId: 1,
     }),
     getters: {
         currentShip: (state): Ship => {

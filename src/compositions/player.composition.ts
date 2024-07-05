@@ -131,8 +131,7 @@ export const playerComposition = {
         }
     },
 
-    death(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, timer: Phaser.Time.TimerEvent, target: Phaser.GameObjects.Image) {
-        timer.destroy()
+    death(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image) {
         const playerExplosion = scene.add.sprite(player.x, player.y, "death")
         playerExplosion.anims.play("death")
         player.body.enable = false
