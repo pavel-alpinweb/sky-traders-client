@@ -100,12 +100,22 @@ export const piratesComposition = {
         bar.y = pirateY - 50
     },
 
-    death(pirate: Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, timer: Phaser.Time.TimerEvent) {
-        timer.paused = false
-        pirate.anims.play("death", true)
+    death(scene: Phaser.Scene, pirate: Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, timer: Phaser.Time.TimerEvent, healthBar: Phaser.GameObjects.Graphics) {
+        timer.destroy()
+        const pirateExplosion = scene.add.sprite(pirate.x, pirate.y, "death")
+        pirateExplosion.anims.play("death")
         pirate.body.enable = false
-        pirate.on(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-            pirate.destroy()
-        })
+        pirate.setAlpha(0)
+        healthBar.setAlpha(0)
+        pirateExplosion.on(
+            Phaser.Animations.Events.ANIMATION_COMPLETE,
+            function () {
+                console.log(Phaser.Animations.Events.ANIMATION_COMPLETE)
+                pirate.destroy()
+                pirateExplosion.destroy()
+                healthBar.destroy()
+            },
+            this
+        )
     },
 }

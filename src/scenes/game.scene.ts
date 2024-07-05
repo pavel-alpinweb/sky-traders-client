@@ -69,7 +69,6 @@ export class MapScene extends Phaser.Scene {
 
         /* Создаем здоровье для пиратов */
         this.pirateHealthBar = piratesComposition.initPirateHealthBar(this, this.pirates.x, this.pirates.y)
-        console.log(this.pirateHealthBar)
 
         /* Создаем стрельбу игрока */
         playerComposition.fire(this, this.playerBullets, this.player, "bullets")
@@ -83,7 +82,7 @@ export class MapScene extends Phaser.Scene {
             this.pirateCurrentHealth -= this.pirateCurrentHealth >= damage ? damage : this.pirateCurrentHealth
 
             if (this.pirateCurrentHealth <= 0) {
-                piratesComposition.death(this.pirates as Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, this.pirateFire)
+                piratesComposition.death(this, this.pirates as Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, this.pirateFire, this.pirateHealthBar)
             }
         })
 
@@ -100,13 +99,13 @@ export class MapScene extends Phaser.Scene {
     update() {
         playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity, this.fuelConsumption, this.healthConsumption, this.ship)
 
-        if (this.pirates) {
+        if (this.pirates && this.pirates.alpha !== 0) {
             piratesComposition.fire(this.pirates, this.player, this.pirateFire)
             piratesComposition.movePirate(this, this.player, this.pirates, PIRATE_VELOCITY)
-        }
 
-        piratesComposition.updatePirateHealthBar(this.pirateHealthBar, this.pirateCurrentHealth)
-        piratesComposition.movePirateHealthBar(this.pirateHealthBar, this.pirates.x, this.pirates.y)
+            piratesComposition.updatePirateHealthBar(this.pirateHealthBar, this.pirateCurrentHealth)
+            piratesComposition.movePirateHealthBar(this.pirateHealthBar, this.pirates.x, this.pirates.y)
+        }
 
         for (const town of this.townsArray) {
             if (checkOverlap(this.player, town)) {
