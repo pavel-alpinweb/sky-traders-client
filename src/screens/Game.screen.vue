@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue"
+import { onMounted, ref, watch } from "vue"
 import { useMapLevel } from "../setups/map.setup.ts"
 import { EventBus } from "../utils/utils.ts"
 import { router } from "../router.ts"
@@ -54,6 +54,15 @@ onMounted(() => {
         player.damageCurrentShip()
     })
 })
+
+watch(
+    () => player.currentShipHealth,
+    (value) => {
+        if (value && value <= 0) {
+            EventBus.emit("destroy-current-ship")
+        }
+    }
+)
 </script>
 
 <template>
