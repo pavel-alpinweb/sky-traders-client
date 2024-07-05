@@ -110,7 +110,6 @@ export const piratesComposition = {
         pirateExplosion.on(
             Phaser.Animations.Events.ANIMATION_COMPLETE,
             function () {
-                console.log(Phaser.Animations.Events.ANIMATION_COMPLETE)
                 pirate.destroy()
                 pirateExplosion.destroy()
                 healthBar.destroy()

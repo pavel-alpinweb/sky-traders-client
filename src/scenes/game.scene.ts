@@ -97,7 +97,9 @@ export class MapScene extends Phaser.Scene {
     }
 
     update() {
-        playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity, this.fuelConsumption, this.healthConsumption, this.ship)
+        if (this.player && this.player.alpha !== 0) {
+            playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity, this.fuelConsumption, this.healthConsumption, this.ship)
+        }
 
         if (this.pirates && this.pirates.alpha !== 0) {
             piratesComposition.fire(this.pirates, this.player, this.pirateFire)
