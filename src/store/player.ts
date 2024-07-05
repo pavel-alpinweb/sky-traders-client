@@ -19,7 +19,7 @@ export const usePlayer = defineStore("player", {
                 maxFuel: 50,
                 currentFuel: 20,
                 price: 100,
-                repairPrice: 1,
+                repairPrice: 10,
             },
             {
                 id: 2,
@@ -32,7 +32,7 @@ export const usePlayer = defineStore("player", {
                 maxFuel: 120,
                 currentFuel: 120,
                 price: 1000,
-                repairPrice: 3,
+                repairPrice: 30,
             },
             {
                 id: 6,
@@ -45,7 +45,7 @@ export const usePlayer = defineStore("player", {
                 maxFuel: 500,
                 currentFuel: 200,
                 price: 5000,
-                repairPrice: 5,
+                repairPrice: 50,
             },
             {
                 id: 7,
@@ -58,7 +58,7 @@ export const usePlayer = defineStore("player", {
                 maxFuel: 900,
                 currentFuel: 900,
                 price: 15000,
-                repairPrice: 8,
+                repairPrice: 80,
             },
         ],
         currentShipId: 1,
