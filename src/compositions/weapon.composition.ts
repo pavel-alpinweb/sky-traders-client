@@ -10,6 +10,7 @@ export const weaponComposition = {
 
     uploadVFX(scene: Phaser.Scene) {
         scene.load.atlas("explosion", "/assets/vfx/explosion.png", "/assets/vfx/explosion.json")
+        scene.load.atlas("death", "/assets/vfx/death.png", "/assets/vfx/death.json")
     },
 
     initVFXAnimations(scene: Phaser.Scene) {
@@ -22,6 +23,18 @@ export const weaponComposition = {
                 suffix: ".png",
             }),
             frameRate: 10,
+            repeat: 1,
+        })
+
+        scene.anims.create({
+            key: "death",
+            frames: scene.anims.generateFrameNames("death", {
+                start: 7,
+                end: 1,
+                zeroPad: 0,
+                suffix: ".png",
+            }),
+            frameRate: 15,
             repeat: 1,
         })
     },
