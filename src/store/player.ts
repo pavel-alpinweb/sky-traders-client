@@ -95,5 +95,9 @@ export const usePlayer = defineStore("player", {
                 this.currentShip.currentHealth -= this.currentShip.currentHealth > PIRATE_DAMAGE ? PIRATE_DAMAGE : this.currentShip.currentHealth
             }
         },
+        removeCurrentShip(): void {
+            this.ships = this.ships.filter((ship) => ship.id === this.currentShipId)
+            this.currentShipId = null
+        },
     },
 })
