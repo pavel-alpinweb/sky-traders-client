@@ -64,6 +64,7 @@ export const useTown = defineStore("town", {
                 repairPrice: 8,
             },
         ],
+        isShowSinkAlert: false,
     }),
     actions: {
         setTown(name: string): void {
@@ -71,6 +72,9 @@ export const useTown = defineStore("town", {
         },
         setCoords(coords: Coords): void {
             this.coords = coords
+        },
+        setShowSinkAlert(value: boolean) {
+            this.isShowSinkAlert = value
         },
     },
 })
