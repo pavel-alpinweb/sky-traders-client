@@ -99,4 +99,13 @@ export const piratesComposition = {
         bar.x = pirateX - 50
         bar.y = pirateY - 50
     },
+
+    death(pirate: Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, timer: Phaser.Time.TimerEvent) {
+        timer.paused = false
+        pirate.anims.play("death", true)
+        pirate.body.enable = false
+        pirate.on(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+            pirate.destroy()
+        })
+    },
 }

@@ -81,6 +81,10 @@ export class MapScene extends Phaser.Scene {
 
         EventBus.on("damage-pirate", (damage: number) => {
             this.pirateCurrentHealth -= this.pirateCurrentHealth >= damage ? damage : this.pirateCurrentHealth
+
+            if (this.pirateCurrentHealth <= 0) {
+                piratesComposition.death(this.pirates as Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, this.pirateFire)
+            }
         })
 
         /* Создаем таймер для расхода топлива */
