@@ -33,6 +33,13 @@ const goToTown = () => {
     router.push({ path: "/town" })
 }
 
+const destroyShip = (value: number | null) => {
+    console.log("destroyShip", value)
+    if ((value && value < 0) || value === 0) {
+        EventBus.emit("destroy-current-ship")
+    }
+}
+
 onMounted(() => {
     game = useMapLevel(townStore.coords, player.currentShip)
     // eslint-disable-next-line
@@ -65,9 +72,14 @@ onMounted(() => {
 watch(
     () => player.currentShipHealth,
     (value) => {
-        if (value === 0) {
-            EventBus.emit("destroy-current-ship")
-        }
+        destroyShip(value)
+    }
+)
+
+watch(
+    () => player.currentShipFuel,
+    (value) => {
+        destroyShip(value)
     }
 )
 </script>

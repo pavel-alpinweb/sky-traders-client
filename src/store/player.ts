@@ -72,6 +72,11 @@ export const usePlayer = defineStore("player", {
 
             return currentShip ? currentShip.currentHealth : null
         },
+        currentShipFuel: (state): number | null => {
+            const currentShip = state.ships.find((ship) => ship.id === state.currentShipId)
+
+            return currentShip ? currentShip.currentFuel : null
+        },
     },
     actions: {
         setCurrentShip(id: number): void {
