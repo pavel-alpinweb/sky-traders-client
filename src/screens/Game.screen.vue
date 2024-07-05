@@ -29,6 +29,7 @@ const goToTown = () => {
     EventBus.off("damage-player")
     EventBus.off("damage-pirate")
     EventBus.off("destroy-current-ship")
+    EventBus.off("crush-ship-end")
     router.push({ path: "/town" })
 }
 
@@ -53,6 +54,10 @@ onMounted(() => {
     })
     EventBus.on("damage-player", () => {
         player.damageCurrentShip()
+    })
+    EventBus.on("crush-ship-end", () => {
+        player.removeCurrentShip()
+        goToTown()
     })
 })
 

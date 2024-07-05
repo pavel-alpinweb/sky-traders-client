@@ -101,7 +101,7 @@ export const usePlayer = defineStore("player", {
             }
         },
         removeCurrentShip(): void {
-            this.ships = this.ships.filter((ship) => ship.id === this.currentShipId)
+            this.ships = this.ships.filter((ship) => ship.id !== this.currentShipId)
             this.currentShipId = null
         },
     },
