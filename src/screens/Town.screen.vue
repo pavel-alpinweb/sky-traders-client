@@ -9,6 +9,7 @@ import Market from "../windows/market.window.vue"
 import Shipyard from "../windows/shipyard.window.vue"
 import IconMarket from "/public/assets/icons/screens/market.svg"
 import IconShipyard from "/public/assets/icons/screens/shipyard.svg"
+import IconSink from "/public/assets/icons/alerts/sink.svg"
 import { usePlayer } from "../store/player.ts"
 // import IconWarehouse from "/public/assets/icons/screens/warehouse.svg"
 
@@ -16,12 +17,17 @@ let background: null | Game = null
 const townStore = useTown()
 const player = usePlayer()
 const tab = ref(null)
+const isBlockLEaveTown = ref(false)
 
 const goToMap = () => {
-    if (background) {
-        background?.destroy(true)
+    if (player.currentShip) {
+        if (background) {
+            background?.destroy(true)
+        }
+        router.push({ path: "/game" })
+    } else {
+        isBlockLEaveTown.value = true
     }
-    router.push({ path: "/game" })
 }
 
 onMounted(() => {
@@ -31,6 +37,17 @@ onMounted(() => {
 
 <template>
     <div class="town-screen">
+        <v-snackbar v-model="isBlockLEaveTown" color="red">
+            Нельзя покинуть город без корабля!
+            <template #actions>
+                <v-btn color="red-darken-4" variant="elevated" @click="isBlockLEaveTown = false"> OK </v-btn>
+            </template>
+        </v-snackbar>
+        <v-alert v-if="townStore.isShowSinkAlert" class="town-screen__alert" type="error" variant="elevated" title="Вы потерпели крушение, капитан!" text="Ваш корабль и груз потеряны" closable>
+            <template #prepend>
+                <IconSink class="town-screen__sink-icon" />
+            </template>
+        </v-alert>
         <div id="town" class="town-screen__background"></div>
         <div class="town-screen__panel">
             <ResourcesPanel :color="townStore.color" :gold="player.gold" />
@@ -89,6 +106,14 @@ onMounted(() => {
     position: relative;
     overflow: auto;
     display: flex;
+
+    &__alert {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        z-index: 2;
+    }
 
     &__wrapper {
         margin: 15vh auto 0;
@@ -152,6 +177,11 @@ onMounted(() => {
         width: 30px;
         height: 30px;
         margin-right: 10px;
+    }
+
+    &__sink-icon {
+        width: 50px;
+        height: 50px;
     }
 }
 </style>

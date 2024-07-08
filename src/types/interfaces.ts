@@ -15,6 +15,7 @@ export interface Town {
     coords: Coords
     color: string
     ships: Ship[]
+    isShowSinkAlert: boolean
 }
 
 export interface ResourcePanel {

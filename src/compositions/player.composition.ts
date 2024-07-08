@@ -1,7 +1,8 @@
 import Phaser from "phaser"
 import { EventBus } from "../utils/utils.ts"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, TARGET_HIDE_DISTANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, FIRE_BUTTON, TARGET_HIDE_DISTANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 import { Ship } from "../types/interfaces.ts"
+import { weaponComposition } from "./weapon.composition.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
         scene.load.image("ship", `/assets/ships/${ship}/${ship}-map.png`)
@@ -119,5 +120,32 @@ export const playerComposition = {
             },
             loop: true,
         })
+    },
+
+    fire(scene: Phaser.Scene, bullets: Phaser.Physics.Arcade.Group, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, texture: string): void {
+        const fireButton = scene.input.keyboard?.addKey(FIRE_BUTTON)
+        if (fireButton) {
+            fireButton.on("up", () => {
+                weaponComposition.fire(scene, bullets, player, texture)
+            })
+        }
+    },
+
+    death(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image) {
+        const playerExplosion = scene.add.sprite(player.x, player.y, "death")
+        playerExplosion.anims.play("death")
+        player.body.enable = false
+        player.setAlpha(0)
+        target.setAlpha(0)
+        playerExplosion.on(
+            Phaser.Animations.Events.ANIMATION_COMPLETE,
+            function () {
+                player.destroy()
+                playerExplosion.destroy()
+                target.destroy()
+                EventBus.emit("crush-ship-end")
+            },
+            this
+        )
     },
 }

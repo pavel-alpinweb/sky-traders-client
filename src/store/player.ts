@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { Player, RefuelParams, Ship } from "../types/interfaces.ts"
-import { BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION, PIRATE_DAMAGE } from "../configs/gameplay.config.ts"
 
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
@@ -19,46 +19,46 @@ export const usePlayer = defineStore("player", {
                 maxFuel: 50,
                 currentFuel: 20,
                 price: 100,
-                repairPrice: 1,
+                repairPrice: 10,
             },
             {
                 id: 2,
                 name: "Наглый альбатрос",
                 velocity: BASIC_SHIP_SPEED + 30,
-                damage: 20,
+                damage: 10,
                 type: "albatross",
                 maxHealth: 100,
-                currentHealth: 1,
+                currentHealth: 100,
                 maxFuel: 120,
-                currentFuel: 100,
+                currentFuel: 120,
                 price: 1000,
-                repairPrice: 3,
+                repairPrice: 30,
             },
             {
                 id: 6,
                 name: "Золотой пеликан",
                 velocity: BASIC_SHIP_SPEED + 80,
-                damage: 50,
+                damage: 20,
                 type: "pelican",
                 maxHealth: 300,
                 currentHealth: 300,
                 maxFuel: 500,
                 currentFuel: 200,
                 price: 5000,
-                repairPrice: 5,
+                repairPrice: 50,
             },
             {
                 id: 7,
                 name: "Небесный кит",
                 velocity: BASIC_SHIP_SPEED + 120,
-                damage: 100,
+                damage: 50,
                 type: "whale",
                 maxHealth: 700,
                 currentHealth: 600,
                 maxFuel: 900,
                 currentFuel: 900,
                 price: 15000,
-                repairPrice: 8,
+                repairPrice: 80,
             },
         ],
         currentShipId: 1,
@@ -66,6 +66,16 @@ export const usePlayer = defineStore("player", {
     getters: {
         currentShip: (state): Ship => {
             return state.ships.find((ship) => ship.id === state.currentShipId) as Ship
+        },
+        currentShipHealth: (state): number | null => {
+            const currentShip = state.ships.find((ship) => ship.id === state.currentShipId)
+
+            return currentShip ? currentShip.currentHealth : null
+        },
+        currentShipFuel: (state): number | null => {
+            const currentShip = state.ships.find((ship) => ship.id === state.currentShipId)
+
+            return currentShip ? currentShip.currentFuel : null
         },
     },
     actions: {
@@ -89,6 +99,15 @@ export const usePlayer = defineStore("player", {
         repairCurrentShip(repairBill: number): void {
             this.gold -= repairBill
             this.currentShip.currentHealth = this.currentShip.maxHealth
+        },
+        damageCurrentShip(): void {
+            if (this.currentShip.currentHealth > 0) {
+                this.currentShip.currentHealth -= this.currentShip.currentHealth > PIRATE_DAMAGE ? PIRATE_DAMAGE : this.currentShip.currentHealth
+            }
+        },
+        removeCurrentShip(): void {
+            this.ships = this.ships.filter((ship) => ship.id !== this.currentShipId)
+            this.currentShipId = null
         },
     },
 })

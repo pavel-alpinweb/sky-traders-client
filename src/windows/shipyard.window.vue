@@ -21,6 +21,7 @@ const tab = ref(null)
 
 const selectShipHandler = (ship: Ship) => {
     player.setCurrentShip(ship.id)
+    town.setShowSinkAlert(false)
 }
 
 const refuelHandler = (params: RefuelParams) => {

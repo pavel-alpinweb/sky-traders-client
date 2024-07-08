@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue"
+import { onMounted, ref, watch } from "vue"
 import { useMapLevel } from "../setups/map.setup.ts"
 import { EventBus } from "../utils/utils.ts"
 import { router } from "../router.ts"
@@ -26,7 +26,18 @@ const goToTown = () => {
     EventBus.off("arrive-town")
     EventBus.off("decrease-fuel")
     EventBus.off("decrease-health")
+    EventBus.off("damage-player")
+    EventBus.off("damage-pirate")
+    EventBus.off("destroy-current-ship")
+    EventBus.off("crush-ship-end")
     router.push({ path: "/town" })
+}
+
+const destroyShip = (value: number | null) => {
+    console.log("destroyShip", value)
+    if ((value && value < 0) || value === 0) {
+        EventBus.emit("destroy-current-ship")
+    }
 }
 
 onMounted(() => {
@@ -48,7 +59,29 @@ onMounted(() => {
     EventBus.on("decrease-health", () => {
         player.decreaseCurrentShipHealth()
     })
+    EventBus.on("damage-player", () => {
+        player.damageCurrentShip()
+    })
+    EventBus.on("crush-ship-end", () => {
+        player.removeCurrentShip()
+        townStore.setShowSinkAlert(true)
+        goToTown()
+    })
 })
+
+watch(
+    () => player.currentShipHealth,
+    (value) => {
+        destroyShip(value)
+    }
+)
+
+watch(
+    () => player.currentShipFuel,
+    (value) => {
+        destroyShip(value)
+    }
+)
 </script>
 
 <template>
