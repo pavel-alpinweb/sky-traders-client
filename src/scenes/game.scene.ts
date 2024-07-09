@@ -10,7 +10,7 @@ import { Pirate } from "../objects/Pirate.object.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
-    private piratesSpawners: Pirate[] = []
+    private pirates: Pirate[] = []
     private target!: Phaser.GameObjects.Image
     private map!: Phaser.Tilemaps.Tilemap
     private townsGroup!: Phaser.Physics.Arcade.StaticGroup
@@ -61,11 +61,6 @@ export class MapScene extends Phaser.Scene {
         playerComposition.movePlayer(this, this.player, this.target, this.ship)
 
         /* Создаем пиратов, шкалу здоровья и стрельбу для них */
-        const pirate = new Pirate(this)
-        this.piratesSpawners.push(pirate)
-        for (const pirate of this.piratesSpawners) {
-            pirate.init(this.coords)
-        }
 
         /* Создаем стрельбу игрока */
         playerComposition.fire(this, this.playerBullets, this.player, "bullets")
@@ -73,7 +68,7 @@ export class MapScene extends Phaser.Scene {
         /* Создаем эффекты и обработку попаданий */
         weaponComposition.initVFXAnimations(this)
         weaponComposition.hitOnPlayerHandler(this, this.pirateBullets, this.player)
-        for (const pirate of this.piratesSpawners) {
+        for (const pirate of this.pirates) {
             pirate.hitOnPirateHandler(this.playerBullets, this.ship.damage)
         }
 
@@ -96,7 +91,7 @@ export class MapScene extends Phaser.Scene {
             playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity, this.fuelConsumption, this.healthConsumption, this.ship)
         }
 
-        for (const pirate of this.piratesSpawners) {
+        for (const pirate of this.pirates) {
             if (pirate.body && pirate.body.alpha !== 0) {
                 pirate.onMoving(this.player)
             }
