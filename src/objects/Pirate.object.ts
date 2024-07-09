@@ -5,6 +5,7 @@ import {
     PIRATE_FIRE_DELAY,
     PIRATE_FIRE_DISTANCE,
     PIRATE_MAX_HEALTH,
+    PIRATE_SPAWN_PROBABILITY,
     PIRATE_START_FIRE_DELAY,
     PIRATE_STOP_TOLERANCE,
     PIRATE_VELOCITY,
@@ -27,10 +28,14 @@ export class Pirate {
     }
 
     spawnPirate(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, pirateBullets: Phaser.Physics.Arcade.Group) {
-        scene.physics.add.overlap(player, this.spawner, () => {
-            const { x, y } = player
-            this.spawner.destroy()
-            this.init({ x, y }, pirateBullets)
+        scene.physics.add.collider(player, this.spawner, () => {
+            if (Math.random() < PIRATE_SPAWN_PROBABILITY && this.spawner.body) {
+                const { x, y } = player
+                this.spawner.destroy()
+                this.init({ x, y }, pirateBullets)
+            } else {
+                this.spawner.destroy()
+            }
         })
     }
 

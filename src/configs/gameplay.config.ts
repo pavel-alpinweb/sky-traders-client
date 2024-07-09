@@ -25,6 +25,7 @@ export const PIRATE_FIRE_DISTANCE = 1000
 export const PIRATE_ANGULAR_VELOCITY = 35
 export const PIRATE_DAMAGE = 20
 export const PIRATE_MAX_HEALTH = 100
+export const PIRATE_SPAWN_PROBABILITY = 0.5
 
 /* Town Settings */
 export const TOWN_SIZE = 1024
