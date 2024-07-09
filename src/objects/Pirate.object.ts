@@ -28,12 +28,19 @@ export class Pirate {
         this.spawner.cameraFilter = 1
     }
 
-    spawnPirate(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, pirateBullets: Phaser.Physics.Arcade.Group) {
+    spawnPirate(
+        scene: Phaser.Scene,
+        player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body },
+        playerBullets: Phaser.Physics.Arcade.Group,
+        pirateBullets: Phaser.Physics.Arcade.Group,
+        playerShipDamage: number
+    ) {
         scene.physics.add.collider(player, this.spawner, () => {
             if (Math.random() < PIRATE_SPAWN_PROBABILITY && this.spawner.body) {
                 const { x, y } = player
                 this.spawner.destroy()
                 this.init({ x, y }, pirateBullets)
+                this.hitOnPirateHandler(playerBullets, playerShipDamage)
             } else {
                 this.spawner.destroy()
             }

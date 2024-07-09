@@ -64,7 +64,7 @@ export class MapScene extends Phaser.Scene {
         piratesComposition.createSpawners(this, this.map, this.pirates)
 
         for (const pirate of this.pirates) {
-            pirate.spawnPirate(this, this.player, this.pirateBullets)
+            pirate.spawnPirate(this, this.player, this.playerBullets, this.pirateBullets, this.ship.damage)
         }
 
         /* Создаем стрельбу игрока */
@@ -72,10 +72,9 @@ export class MapScene extends Phaser.Scene {
 
         /* Создаем эффекты и обработку попаданий */
         weaponComposition.initVFXAnimations(this)
-        for (const pirate of this.pirates) {
-            weaponComposition.hitOnPlayerHandler(this, this.pirateBullets, this.player)
-            pirate.hitOnPirateHandler(this.playerBullets, this.ship.damage)
-        }
+        weaponComposition.hitOnPlayerHandler(this, this.pirateBullets, this.player)
+
+        // weaponComposition.hitOnPirateHandler(this, this.playerBullets, this.pirates[0].body, this.ship.damage)
 
         EventBus.on("destroy-current-ship", () => {
             playerComposition.death(this, this.player as Phaser.Physics.Arcade.Sprite & { body: Phaser.Physics.Arcade.Body }, this.target)
@@ -98,6 +97,7 @@ export class MapScene extends Phaser.Scene {
 
         for (const pirate of this.pirates) {
             if (pirate.body && pirate.body.alpha !== 0) {
+                console.log("pirate.onMoving")
                 pirate.onMoving(this.player)
             }
         }
