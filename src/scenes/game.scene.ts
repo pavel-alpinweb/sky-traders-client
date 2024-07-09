@@ -97,7 +97,6 @@ export class MapScene extends Phaser.Scene {
 
         for (const pirate of this.pirates) {
             if (pirate.body && pirate.body.alpha !== 0) {
-                console.log("pirate.onMoving")
                 pirate.onMoving(this.player)
             }
         }

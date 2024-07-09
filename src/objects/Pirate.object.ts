@@ -13,6 +13,7 @@ import {
 } from "../configs/gameplay.config.ts"
 import { Coords } from "../types/interfaces.ts"
 import { weaponComposition } from "../compositions/weapon.composition.ts"
+import { EventBus } from "../utils/utils.ts"
 
 export class Pirate {
     public scene!: Phaser.Scene
@@ -41,6 +42,7 @@ export class Pirate {
                 this.spawner.destroy()
                 this.init({ x, y }, pirateBullets)
                 this.hitOnPirateHandler(playerBullets, playerShipDamage)
+                EventBus.emit("show-pirate-alert")
             } else {
                 this.spawner.destroy()
             }
