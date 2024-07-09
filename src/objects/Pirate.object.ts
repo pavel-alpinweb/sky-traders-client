@@ -16,13 +16,15 @@ import { weaponComposition } from "../compositions/weapon.composition.ts"
 export class Pirate {
     public scene!: Phaser.Scene
     public body!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
+    public spawner!: Phaser.GameObjects.GameObject
     public pirateFireTimer!: Phaser.Time.TimerEvent
     public pirateBullets!: Phaser.Physics.Arcade.Group
     public pirateHealthBar!: Phaser.GameObjects.Graphics
     public pirateCurrentHealth: number = PIRATE_MAX_HEALTH
 
-    constructor(scene: Phaser.Scene) {
+    constructor(scene: Phaser.Scene, spawner: Phaser.GameObjects.GameObject) {
         this.scene = scene
+        this.spawner = spawner
     }
 
     init(coords: Coords): void {
