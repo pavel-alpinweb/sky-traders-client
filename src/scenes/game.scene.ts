@@ -63,13 +63,17 @@ export class MapScene extends Phaser.Scene {
         /* Создаем пиратов, шкалу здоровья и стрельбу для них */
         piratesComposition.createSpawners(this, this.map, this.pirates)
 
+        for (const pirate of this.pirates) {
+            pirate.spawnPirate(this, this.player, this.pirateBullets)
+        }
+
         /* Создаем стрельбу игрока */
         playerComposition.fire(this, this.playerBullets, this.player, "bullets")
 
         /* Создаем эффекты и обработку попаданий */
         weaponComposition.initVFXAnimations(this)
-        weaponComposition.hitOnPlayerHandler(this, this.pirateBullets, this.player)
         for (const pirate of this.pirates) {
+            weaponComposition.hitOnPlayerHandler(this, this.pirateBullets, this.player)
             pirate.hitOnPirateHandler(this.playerBullets, this.ship.damage)
         }
 

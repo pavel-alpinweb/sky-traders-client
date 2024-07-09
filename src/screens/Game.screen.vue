@@ -34,7 +34,6 @@ const goToTown = () => {
 }
 
 const destroyShip = (value: number | null) => {
-    console.log("destroyShip", value)
     if ((value && value < 0) || value === 0) {
         EventBus.emit("destroy-current-ship")
     }

@@ -18,36 +18,38 @@ export class Pirate {
     public body!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
     public spawner!: Phaser.GameObjects.GameObject
     public pirateFireTimer!: Phaser.Time.TimerEvent
-    public pirateBullets!: Phaser.Physics.Arcade.Group
     public pirateHealthBar!: Phaser.GameObjects.Graphics
     public pirateCurrentHealth: number = PIRATE_MAX_HEALTH
 
     constructor(scene: Phaser.Scene, spawner: Phaser.GameObjects.GameObject) {
         this.scene = scene
-        this.spawner = spawner
+        this.spawner = scene.physics.add.existing(spawner, true)
     }
 
-    init(coords: Coords): void {
+    spawnPirate(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, pirateBullets: Phaser.Physics.Arcade.Group) {
+        scene.physics.add.overlap(player, this.spawner, () => {
+            const { x, y } = player
+            this.spawner.destroy()
+            this.init({ x, y }, pirateBullets)
+        })
+    }
+
+    init(coords: Coords, pirateBullets: Phaser.Physics.Arcade.Group): void {
         this.body = this.scene.physics.add
             .image(coords.x, coords.y - (window.innerHeight / 2 + 512), "shark")
             .setScale(BASIC_SHIP_SCALE)
             .refreshBody()
-        this.initBullets()
-        this.initFireTimer()
+        this.initFireTimer(pirateBullets)
         this.initPirateHealthBar()
     }
 
-    initBullets(): void {
-        this.pirateBullets = weaponComposition.init(this.scene)
-    }
-
-    initFireTimer(): void {
+    initFireTimer(pirateBullets: Phaser.Physics.Arcade.Group): void {
         this.pirateFireTimer = this.scene.time.addEvent({
             paused: true,
             delay: PIRATE_FIRE_DELAY,
             startAt: PIRATE_START_FIRE_DELAY,
             callback: () => {
-                weaponComposition.fire(this.scene, this.pirateBullets, this.body, "pirate-bullets")
+                weaponComposition.fire(this.scene, pirateBullets, this.body, "pirate-bullets")
             },
             loop: true,
         })
