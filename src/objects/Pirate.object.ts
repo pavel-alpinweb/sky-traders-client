@@ -25,6 +25,7 @@ export class Pirate {
     constructor(scene: Phaser.Scene, spawner: Phaser.GameObjects.GameObject) {
         this.scene = scene
         this.spawner = scene.physics.add.existing(spawner, true)
+        this.spawner.cameraFilter = 1
     }
 
     spawnPirate(scene: Phaser.Scene, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, pirateBullets: Phaser.Physics.Arcade.Group) {
