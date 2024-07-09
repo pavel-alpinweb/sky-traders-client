@@ -78,7 +78,7 @@ export class Pirate {
                 weaponComposition.explosionOnHit(pirate, bullet)
                 this.pirateCurrentHealth -= this.pirateCurrentHealth >= playerShipDamage ? playerShipDamage : this.pirateCurrentHealth
 
-                if (this.pirateCurrentHealth <= 0) {
+                if (this.pirateCurrentHealth <= 0 && this.body.body) {
                     this.death()
                 }
             }
