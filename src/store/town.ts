@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { Coords, Town } from "../types/interfaces.ts"
-import { BASIC_SHIP_SPEED } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED } from "../configs/gameplay.config.ts"
 
 export const useTown = defineStore("town", {
     state: (): Town => ({
@@ -15,6 +15,7 @@ export const useTown = defineStore("town", {
                 id: 4,
                 name: "Хромая чайка",
                 velocity: BASIC_SHIP_SPEED,
+                angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY + 80,
                 damage: 5,
                 type: "seagull",
                 maxHealth: 20,
@@ -28,6 +29,7 @@ export const useTown = defineStore("town", {
                 id: 5,
                 name: "Наглый альбатрос",
                 velocity: BASIC_SHIP_SPEED + 30,
+                angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY + 30,
                 damage: 20,
                 type: "albatross",
                 maxHealth: 100,
@@ -41,6 +43,7 @@ export const useTown = defineStore("town", {
                 id: 6,
                 name: "Золотой пеликан",
                 velocity: BASIC_SHIP_SPEED + 80,
+                angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY - 30,
                 damage: 50,
                 type: "pelican",
                 maxHealth: 300,
@@ -54,6 +57,7 @@ export const useTown = defineStore("town", {
                 id: 7,
                 name: "Небесный кит",
                 velocity: BASIC_SHIP_SPEED + 120,
+                angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY - 30,
                 damage: 100,
                 type: "whale",
                 maxHealth: 700,

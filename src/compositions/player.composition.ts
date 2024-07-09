@@ -1,6 +1,6 @@
 import Phaser from "phaser"
 import { EventBus } from "../utils/utils.ts"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, FIRE_BUTTON, TARGET_HIDE_DISTANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_SCALE, BASIC_SHIP_SPEED, FIRE_BUTTON, TARGET_HIDE_DISTANCE, TARGET_TOLERANCE } from "../configs/gameplay.config.ts"
 import { Ship } from "../types/interfaces.ts"
 import { weaponComposition } from "./weapon.composition.ts"
 export const playerComposition = {
@@ -49,7 +49,7 @@ export const playerComposition = {
         if (player.body.speed > 0 && ship.currentFuel > 0) {
             fuelConsumption.paused = false
             healthConsumption.paused = false
-            this.rotatePlayer(player, target)
+            this.rotatePlayer(player, target, ship.angularVelocity)
             scene.physics.moveToObject(player, target, velocity)
             player.body.velocity.scale(Phaser.Math.SmoothStep(distance, 0, 50))
         }
@@ -67,16 +67,16 @@ export const playerComposition = {
         }
     },
 
-    rotatePlayer(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image): void {
+    rotatePlayer(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, target: Phaser.GameObjects.Image, shipAngularVelocity: number): void {
         const angleToPointer = Phaser.Math.RadToDeg(Phaser.Math.Angle.Between(player.x, player.y, target.x, target.y))
         const angleDelta = Phaser.Math.Angle.ShortestBetween(player.body.rotation, angleToPointer)
 
         target.angle = angleToPointer
-        if (Phaser.Math.Fuzzy.Equal(angleDelta, 0, TARGET_TOLERANCE)) {
+        if (Phaser.Math.Fuzzy.Equal(angleDelta, 0, 5)) {
             player.body.rotation = angleToPointer
             player.setAngularVelocity(0)
         } else {
-            player.setAngularVelocity(Math.sign(angleDelta) * BASIC_SHIP_ANGULAR_VELOCITY)
+            player.setAngularVelocity(Math.sign(angleDelta) * shipAngularVelocity)
         }
     },
 
