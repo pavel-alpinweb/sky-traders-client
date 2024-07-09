@@ -2,6 +2,7 @@
 import { Ship } from "../types/interfaces.ts"
 import { ShipCardMode } from "../types/types.ts"
 import IconVelocity from "/public/assets/icons/ship-params/velocity.svg"
+import IconAngularVelocity from "/public/assets/icons/ship-params/angular-velocity.svg"
 import IconAim from "/public/assets/icons/ship-params/aim.svg"
 import IconArmor from "/public/assets/icons/ship-params/shield.svg"
 import IconFuel from "/public/assets/icons/ship-params/fuel.svg"
@@ -84,6 +85,9 @@ const healthBarColor = computed<string>(() => {
         <v-img class="align-end" :src="`/public/assets/ships/${props.ship.type}/${props.ship.type}-shop.png`" height="200">
             <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
                 <IconVelocity class="ship-card__param-icon" v-tooltip="'Скорость'" /> {{ props.ship.velocity }}
+            </v-card-subtitle>
+            <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
+                <IconAngularVelocity class="ship-card__param-icon" v-tooltip="'Маневренность'" /> {{ props.ship.angularVelocity }}
             </v-card-subtitle>
             <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
                 <IconAim class="ship-card__param-icon" v-tooltip="'Урон'" /> {{ props.ship.damage }}
