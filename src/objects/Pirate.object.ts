@@ -26,7 +26,10 @@ export class Pirate {
     }
 
     init(coords: Coords): void {
-        this.body = this.scene.physics.add.image(coords.x, coords.y, "shark").setScale(BASIC_SHIP_SCALE).refreshBody()
+        this.body = this.scene.physics.add
+            .image(coords.x, coords.y - (window.innerHeight / 2 + 512), "shark")
+            .setScale(BASIC_SHIP_SCALE)
+            .refreshBody()
         this.initBullets()
         this.initFireTimer()
         this.initPirateHealthBar()
