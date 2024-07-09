@@ -7,10 +7,12 @@ import TimerEvent = Phaser.Time.TimerEvent
 import { weaponComposition } from "../compositions/weapon.composition.ts"
 import { piratesComposition } from "../compositions/pirates.composition.ts"
 import { PIRATE_VELOCITY } from "../configs/gameplay.config.ts"
+import { Pirate } from "../objects/Pirate.object.ts"
 
 export class MapScene extends Phaser.Scene {
     private player!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
     private pirates!: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }
+    private piratesSpawners: Pirate[] = []
     private target!: Phaser.GameObjects.Image
     private map!: Phaser.Tilemaps.Tilemap
     private townsGroup!: Phaser.Physics.Arcade.StaticGroup
@@ -64,6 +66,8 @@ export class MapScene extends Phaser.Scene {
         playerComposition.movePlayer(this, this.player, this.target, this.ship)
 
         /* Создаем пиратов и их стрельбу */
+        const pirate = new Pirate(this)
+        this.piratesSpawners.push(pirate)
         this.pirates = piratesComposition.initPirates(this, this.coords.x, this.coords.y - (window.innerHeight / 2 + 512))
         this.pirateFire = piratesComposition.initFireTimer(this, this.pirateBullets, this.pirates)
 
