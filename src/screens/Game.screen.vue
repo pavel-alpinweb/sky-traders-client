@@ -159,9 +159,9 @@ watch(
         flex-direction: column;
         gap: 15px;
         position: fixed;
-        top: 50%;
+        top: 30%;
         left: 40px;
-        transform: translateY(-50%);
+        transform: translateY(-30%);
     }
 
     &__map-icon {
