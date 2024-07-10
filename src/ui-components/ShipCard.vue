@@ -32,7 +32,7 @@ const roundedCurrentHealth = computed<number>(() => {
 })
 
 const actionsLabel = computed<string>(() => {
-    return props.mode === "select" ? "Выбрать" : "Построить"
+    return props.mode === "select" ? "Выбрать" : "Купить"
 })
 
 const fuelPercentage = computed<number>(() => props.ship.currentFuel / (props.ship.maxFuel / 100))

@@ -2,7 +2,7 @@
 import { ref } from "vue"
 import IconShips from "/public/assets/icons/shipyard/zeppelin.svg"
 // import IconBlueprints from "/public/assets/icons/shipyard/drawing.svg"
-import IconBuildings from "/public/assets/icons/shipyard/building.svg"
+import IconBuy from "/public/assets/icons/shipyard/buy.svg"
 import { usePlayer } from "../store/player.ts"
 import ShipList from "../ui-components/ShipList.component.vue"
 import { useTown } from "../store/town.ts"
@@ -46,8 +46,8 @@ const repairHandler = (value: number) => {
             <!--                Мои чертежи-->
             <!--            </v-tab>-->
             <v-tab value="building">
-                <IconBuildings class="shipyard-window__menu-icon" />
-                Построить корабль
+                <IconBuy class="shipyard-window__menu-icon" />
+                Купить корабль
             </v-tab>
         </v-tabs>
 
