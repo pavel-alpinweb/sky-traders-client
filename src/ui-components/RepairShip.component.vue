@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import { ICONS_LIST } from "../utils/utils.ts"
-import IconRepair from "/public/assets/icons/ship-params/repair.svg"
+import IconArmor from "/public/assets/icons/ship-params/shield.svg"
 
 const props = defineProps<{
     gold: number
@@ -37,7 +37,7 @@ const repair = () => {
 
 <template>
     <div class="repair-ship">
-        <IconRepair class="repair-ship__repair-icon" />
+        <IconArmor class="repair-ship__repair-icon" />
         <v-text-field
             class="repair-ship__input"
             :value="repairBill"

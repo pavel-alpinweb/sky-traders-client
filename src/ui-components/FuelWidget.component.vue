@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconFuelLevel from "/public/assets/icons/ship-params/fuel-level.svg"
+import IconFuel from "/public/assets/icons/ship-params/fuel.svg"
 import { computed } from "vue"
 
 const props = defineProps<{
@@ -23,7 +23,7 @@ const fuelBarColor = computed<string>(() => {
 
 <template>
     <div class="fuel-widget">
-        <IconFuelLevel class="fuel-widget__icon" v-tooltip="'Текущий запас топлива'" />
+        <IconFuel class="fuel-widget__icon" v-tooltip="'Текущий запас топлива'" />
         <div class="fuel-widget__bar">
             <v-progress-linear :color="fuelBarColor" :model-value="fuelPercentage" height="20" rounded />
         </div>
