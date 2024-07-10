@@ -18,13 +18,14 @@ export const BULLET_VELOCITY = 1000
 
 /* PIRATES SETTINGS */
 export const PIRATE_VELOCITY = 150
+export const PIRATE_ANGULAR_VELOCITY = 150
 export const PIRATE_STOP_TOLERANCE = 500
 export const PIRATE_FIRE_DELAY = 3000
 export const PIRATE_START_FIRE_DELAY = 3000
 export const PIRATE_FIRE_DISTANCE = 1000
-export const PIRATE_ANGULAR_VELOCITY = 35
 export const PIRATE_DAMAGE = 20
 export const PIRATE_MAX_HEALTH = 100
+export const PIRATE_SPAWN_PROBABILITY = 1
 
 /* Town Settings */
 export const TOWN_SIZE = 1024

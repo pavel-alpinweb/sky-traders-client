@@ -36,6 +36,7 @@ export interface Ship {
     id: number
     name: string
     velocity: number
+    angularVelocity: number
     damage: number
     type: string
     maxHealth: number

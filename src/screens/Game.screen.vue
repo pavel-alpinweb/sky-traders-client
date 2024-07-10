@@ -6,12 +6,14 @@ import { router } from "../router.ts"
 import { useTown } from "../store/town.ts"
 import { Game } from "phaser"
 import mapIcon from "/public/assets/icons/map/map.svg"
+import IconPirate from "/public/assets/icons/alerts/pirate.svg"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import FuelWidget from "../ui-components/FuelWidget.component.vue"
 import HealthWidget from "../ui-components/HealthWidget.component.vue"
 import { usePlayer } from "../store/player.ts"
 
 const isShowTownAlert = ref(false)
+const isShowPirateAlert = ref(false)
 let game: null | Game = null
 
 const townStore = useTown()
@@ -30,11 +32,11 @@ const goToTown = () => {
     EventBus.off("damage-pirate")
     EventBus.off("destroy-current-ship")
     EventBus.off("crush-ship-end")
+    EventBus.off("show-pirate-alert")
     router.push({ path: "/town" })
 }
 
 const destroyShip = (value: number | null) => {
-    console.log("destroyShip", value)
     if ((value && value < 0) || value === 0) {
         EventBus.emit("destroy-current-ship")
     }
@@ -66,6 +68,9 @@ onMounted(() => {
         player.removeCurrentShip()
         townStore.setShowSinkAlert(true)
         goToTown()
+    })
+    EventBus.on("show-pirate-alert", () => {
+        isShowPirateAlert.value = true
     })
 })
 
@@ -113,6 +118,9 @@ watch(
                 <v-btn color="green-darken-4" variant="elevated" @click="goToTown"> OK </v-btn>
             </template>
         </v-snackbar>
+        <v-snackbar v-model="isShowPirateAlert" color="red" :timeout="2000">
+            <div class="game-screen__pirate-alert"><IconPirate class="game-screen__pirate-icon" /> <span class="text-black font-weight-black">Осторожно, капитан! На Вас напали пираты! </span></div>
+        </v-snackbar>
     </div>
 </template>
 
@@ -157,6 +165,18 @@ watch(
     }
 
     &__map-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    &__pirate-alert {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__pirate-icon {
+        display: inline-block;
         width: 50px;
         height: 50px;
     }
