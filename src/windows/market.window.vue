@@ -3,7 +3,7 @@ import TradeWidget from "../ui-components/TradeWidget.component.vue"
 import TradeTable from "../ui-components/TradeTable.component.vue"
 import { HEADING, ResourceTable } from "../types/interfaces.ts"
 import { ref } from "vue"
-import { usePlayer } from "../store/player.ts"
+import { usePlayer } from "../store/player.store.ts"
 
 const props = defineProps<{
     color: string

@@ -2,7 +2,7 @@
 import { router } from "../router.ts"
 import { onMounted, ref } from "vue"
 import { Game } from "phaser"
-import { useTown } from "../store/town.ts"
+import { useTown } from "../store/town.store.ts"
 import { useTownLevel } from "../setups/town.setup.ts"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import Market from "../windows/market.window.vue"
@@ -10,7 +10,7 @@ import Shipyard from "../windows/shipyard.window.vue"
 import IconMarket from "/public/assets/icons/screens/market.svg"
 import IconShipyard from "/public/assets/icons/screens/shipyard.svg"
 import IconSink from "/public/assets/icons/alerts/sink.svg"
-import { usePlayer } from "../store/player.ts"
+import { usePlayer } from "../store/player.store.ts"
 // import IconWarehouse from "/public/assets/icons/screens/warehouse.svg"
 
 let background: null | Game = null

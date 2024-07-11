@@ -3,14 +3,14 @@ import { onMounted, ref, watch } from "vue"
 import { useMapLevel } from "../setups/map.setup.ts"
 import { EventBus } from "../utils/utils.ts"
 import { router } from "../router.ts"
-import { useTown } from "../store/town.ts"
+import { useTown } from "../store/town.store.ts"
 import { Game } from "phaser"
 import mapIcon from "/public/assets/icons/map/map.svg"
 import IconPirate from "/public/assets/icons/alerts/pirate.svg"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import FuelWidget from "../ui-components/FuelWidget.component.vue"
 import HealthWidget from "../ui-components/HealthWidget.component.vue"
-import { usePlayer } from "../store/player.ts"
+import { usePlayer } from "../store/player.store.ts"
 
 const isShowTownAlert = ref(false)
 const isShowPirateAlert = ref(false)
