@@ -7,8 +7,7 @@ import { usePlayer } from "../store/player.store.ts"
 import ShipList from "../ui-components/ShipList.component.vue"
 import { useTown } from "../store/town.store.ts"
 import { RefuelParams, Ship } from "../types/interfaces.ts"
-import RepairShip from "../ui-components/RepairShip.component.vue"
-import ShipRefueling from "../ui-components/ShipRefueling.component.vue"
+import ShipService from "../ui-components/ShipService.component.vue"
 
 const props = defineProps<{
     color: string
@@ -53,27 +52,7 @@ const repairHandler = (value: number) => {
 
         <v-tabs-window v-model="tab">
             <v-tabs-window-item value="ships">
-                <div v-if="player.currentShip" class="shipyard-window__ship-service">
-                    <div :class="`text-${props.color}-darken-4 shipyard-window__service-title text-h5 text-center`">Обслуживание корабля: {{ player.currentShip.name }}</div>
-                    <div class="shipyard-window__ship-service-grid">
-                        <RepairShip
-                            :color="props.color"
-                            :current-health="player.currentShip.currentHealth"
-                            :max-health="player.currentShip.maxHealth"
-                            :repair-price="player.currentShip.repairPrice"
-                            :gold="player.gold"
-                            @repair="repairHandler"
-                        />
-                        <ShipRefueling
-                            :color="props.color"
-                            :max-fuel="player.currentShip.maxFuel"
-                            :current-fuel="player.currentShip.currentFuel"
-                            :id="player.currentShip.id"
-                            :gold="player.gold"
-                            @refuel="refuelHandler"
-                        />
-                    </div>
-                </div>
+                <ship-service :color="props.color" @refuel="refuelHandler" @repair="repairHandler" />
                 <ship-list :ships="player.ships" :color="props.color" mode="select" :current-ship-id="player.currentShipId" @select="selectShipHandler" />
             </v-tabs-window-item>
             <!--            <v-tabs-window-item value="blueprints">-->
