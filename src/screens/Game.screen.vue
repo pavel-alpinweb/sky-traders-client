@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue"
+import { onMounted, reactive, ref, watch } from "vue"
 import { useMapLevel } from "../setups/map.setup.ts"
 import { EventBus } from "../utils/utils.ts"
 import { router } from "../router.ts"
@@ -11,15 +11,23 @@ import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import FuelWidget from "../ui-components/FuelWidget.component.vue"
 import HealthWidget from "../ui-components/HealthWidget.component.vue"
 import { usePlayer } from "../store/player.store.ts"
+import { Coords } from "../types/interfaces.ts"
 
 const isShowTownAlert = ref(false)
 const isShowPirateAlert = ref(false)
 let game: null | Game = null
+const currentTownName = ref<string>("start-01")
+const currentTownCoords = reactive<Coords>({
+    x: 1280,
+    y: 1280,
+})
 
 const townStore = useTown()
 const player = usePlayer()
 
 const goToTown = () => {
+    townStore.setTown(currentTownName.value)
+    townStore.setCoords(currentTownCoords)
     if (game) {
         game?.destroy(true)
     }
@@ -46,8 +54,9 @@ onMounted(() => {
     game = useMapLevel(townStore.coords, player.currentShip)
     // eslint-disable-next-line
     EventBus.on("fly-on-town", (params: any) => {
-        townStore.setTown(params.town)
-        townStore.setCoords(params.coords)
+        currentTownName.value = params.town
+        currentTownCoords.x = params.coords.x
+        currentTownCoords.y = params.coords.y
     })
     EventBus.on("leave-town", () => {
         isShowTownAlert.value = false
