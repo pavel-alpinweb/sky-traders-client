@@ -50,8 +50,8 @@ export class Pirate {
     }
 
     init(coords: Coords, pirateBullets: Phaser.Physics.Arcade.Group): void {
-        const spawnY = Math.random() < 0.5 ? coords.y - (window.innerHeight / 2 + 512) : coords.y + (window.innerHeight / 2 + 512)
-        this.body = this.scene.physics.add.image(coords.x, spawnY, "shark").setScale(BASIC_SHIP_SCALE).refreshBody()
+        const spawnX = Math.random() < 0.5 ? coords.x - (window.innerWidth / 2 + 600) : coords.x + (window.innerHeight / 2 + 600)
+        this.body = this.scene.physics.add.image(spawnX, coords.y, "shark").setScale(BASIC_SHIP_SCALE).refreshBody()
         this.initFireTimer(pirateBullets)
         this.initPirateHealthBar()
     }
