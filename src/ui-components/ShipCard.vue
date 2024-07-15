@@ -2,12 +2,9 @@
 import { Ship } from "../types/interfaces.ts"
 import { ShipCardMode } from "../types/types.ts"
 import IconVelocity from "/public/assets/icons/ship-params/velocity.svg"
-import IconAngularVelocity from "/public/assets/icons/ship-params/angular-velocity.svg"
 import IconAim from "/public/assets/icons/ship-params/aim.svg"
 import IconArmor from "/public/assets/icons/ship-params/shield.svg"
 import IconFuel from "/public/assets/icons/ship-params/fuel.svg"
-import IconFuelLevel from "/public/assets/icons/ship-params/fuel-level.svg"
-import IconRepair from "/public/assets/icons/ship-params/repair.svg"
 import IconGold from "/public/assets/icons/resources/gold.svg"
 import { computed } from "vue"
 
@@ -35,7 +32,7 @@ const roundedCurrentHealth = computed<number>(() => {
 })
 
 const actionsLabel = computed<string>(() => {
-    return props.mode === "select" ? "Выбрать" : "Построить"
+    return props.mode === "select" ? "Выбрать" : "Купить"
 })
 
 const fuelPercentage = computed<number>(() => props.ship.currentFuel / (props.ship.maxFuel / 100))
@@ -87,9 +84,6 @@ const healthBarColor = computed<string>(() => {
                 <IconVelocity class="ship-card__param-icon" v-tooltip="'Скорость'" /> {{ props.ship.velocity }}
             </v-card-subtitle>
             <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-                <IconAngularVelocity class="ship-card__param-icon" v-tooltip="'Маневренность'" /> {{ props.ship.angularVelocity }}
-            </v-card-subtitle>
-            <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
                 <IconAim class="ship-card__param-icon" v-tooltip="'Урон'" /> {{ props.ship.damage }}
             </v-card-subtitle>
             <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
@@ -101,14 +95,14 @@ const healthBarColor = computed<string>(() => {
         </v-img>
         <v-card-title>{{ props.ship.name }}</v-card-title>
         <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-            <IconRepair class="ship-card__param-icon" v-tooltip="'Состояние корабля'" />
+            <IconArmor class="ship-card__param-icon" v-tooltip="'Состояние корабля'" />
             <div class="ship-card__bar">
                 <v-progress-linear :color="healthBarColor" :model-value="healthPercentage" height="10" rounded />
             </div>
             <span>{{ roundedCurrentHealth }} / {{ props.ship.maxHealth }}</span>
         </v-card-subtitle>
         <v-card-subtitle v-if="props.mode === 'select'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-            <IconFuelLevel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" />
+            <IconFuel class="ship-card__param-icon" v-tooltip="'Текущий запас топлива'" />
             <div class="ship-card__bar">
                 <v-progress-linear :color="fuelBarColor" :model-value="fuelPercentage" height="10" rounded />
             </div>

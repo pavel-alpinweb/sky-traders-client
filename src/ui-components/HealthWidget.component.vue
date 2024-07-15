@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconRepair from "/public/assets/icons/ship-params/repair.svg"
+import IconArmor from "/public/assets/icons/ship-params/shield.svg"
 import { computed } from "vue"
 
 const props = defineProps<{
@@ -23,7 +23,7 @@ const healthBarColor = computed<string>(() => {
 
 <template>
     <div class="health-widget">
-        <IconRepair class="health-widget__icon" v-tooltip="'Состояние корабля'" />
+        <IconArmor class="health-widget__icon" v-tooltip="'Состояние корабля'" />
         <div class="health-widget__bar">
             <v-progress-linear :color="healthBarColor" :model-value="healthPercentage" height="20" rounded />
         </div>

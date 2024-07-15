@@ -5,7 +5,7 @@ export const LEVEL_HEIGHT = window.innerHeight
 /* PLAYER SETTINGS */
 export const BASIC_SHIP_SPEED = 200
 export const BASIC_SHIP_ANGULAR_VELOCITY = 180
-export const BASIC_SHIP_SCALE = 0.3
+export const BASIC_SHIP_SCALE = 0.7
 
 /* GAMEPLAY SETTINGS */
 export const TARGET_TOLERANCE = 2
@@ -20,8 +20,8 @@ export const BULLET_VELOCITY = 1000
 export const PIRATE_VELOCITY = 150
 export const PIRATE_ANGULAR_VELOCITY = 150
 export const PIRATE_STOP_TOLERANCE = 500
-export const PIRATE_FIRE_DELAY = 3000
-export const PIRATE_START_FIRE_DELAY = 3000
+export const PIRATE_FIRE_DELAY = 1500
+export const PIRATE_START_FIRE_DELAY = 1500
 export const PIRATE_FIRE_DISTANCE = 1000
 export const PIRATE_DAMAGE = 20
 export const PIRATE_MAX_HEALTH = 100

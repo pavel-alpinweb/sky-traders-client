@@ -25,7 +25,7 @@ export const usePlayer = defineStore("player", {
             {
                 id: 2,
                 name: "Наглый альбатрос",
-                velocity: BASIC_SHIP_SPEED + 30,
+                velocity: BASIC_SHIP_SPEED + 80,
                 angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY + 50,
                 damage: 10,
                 type: "albatross",
@@ -39,7 +39,7 @@ export const usePlayer = defineStore("player", {
             {
                 id: 6,
                 name: "Золотой пеликан",
-                velocity: BASIC_SHIP_SPEED + 80,
+                velocity: BASIC_SHIP_SPEED + 120,
                 angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY - 50,
                 damage: 20,
                 type: "pelican",
@@ -53,7 +53,7 @@ export const usePlayer = defineStore("player", {
             {
                 id: 7,
                 name: "Небесный кит",
-                velocity: BASIC_SHIP_SPEED + 120,
+                velocity: BASIC_SHIP_SPEED + 150,
                 angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY - 50,
                 damage: 50,
                 type: "whale",

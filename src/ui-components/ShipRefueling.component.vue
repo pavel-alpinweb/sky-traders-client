@@ -2,7 +2,7 @@
 import { computed, ref, watch } from "vue"
 import { FUEL_PRICE } from "../configs/gameplay.config.ts"
 import { ICONS_LIST } from "../utils/utils.ts"
-import IconFuelLevel from "/public/assets/icons/ship-params/fuel-level.svg"
+import IconFuel from "/public/assets/icons/ship-params/fuel.svg"
 import { RefuelParams } from "../types/interfaces.ts"
 
 const props = defineProps<{
@@ -55,7 +55,7 @@ watch(
 <template>
     <div class="ship-refueling">
         <div class="ship-refueling__left">
-            <IconFuelLevel class="ship-refueling__icon" />
+            <IconFuel class="ship-refueling__icon" />
         </div>
         <div class="ship-refueling__center">
             <v-text-field
