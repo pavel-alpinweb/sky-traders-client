@@ -6,7 +6,68 @@ export const usePlayer = defineStore("player", {
     state: (): Player => ({
         id: 0,
         gold: 50000,
-        resources: [],
+        resources: [
+            {
+                value: 0,
+                name: "sugar",
+                title: "Сахарный тростник",
+            },
+            {
+                value: 0,
+                name: "corn",
+                title: "Кукуруза",
+            },
+            {
+                value: 0,
+                name: "spice",
+                title: "Пряности",
+            },
+            {
+                value: 0,
+                name: "grain",
+                title: "Зерно",
+            },
+            {
+                value: 0,
+                name: "wood",
+                title: "Древесина",
+            },
+            {
+                value: 0,
+                name: "hemp",
+                title: "Конопля",
+            },
+            {
+                value: 0,
+                name: "cotton",
+                title: "Хлопок",
+            },
+            {
+                value: 0,
+                name: "gunpowder",
+                title: "Порох",
+            },
+            {
+                value: 0,
+                name: "coal",
+                title: "Уголь",
+            },
+            {
+                value: 0,
+                name: "steel",
+                title: "Сталь",
+            },
+            {
+                value: 0,
+                name: "ivory",
+                title: "Слоновая кость",
+            },
+            {
+                value: 0,
+                name: "silk",
+                title: "Шелк",
+            },
+        ],
         ships: [
             {
                 id: 1,
