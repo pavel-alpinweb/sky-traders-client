@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { Coords, HEADING, TownStore } from "../types/interfaces.ts"
+import { Coords, HEADING, Town, TownStore } from "../types/interfaces.ts"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED } from "../configs/gameplay.config.ts"
 
 export const useTown = defineStore("town", {
@@ -311,6 +311,11 @@ export const useTown = defineStore("town", {
         ],
         isShowSinkAlert: false,
     }),
+    getters: {
+        currentTown: (state): Town => {
+            return state.towns.find((town) => town.id === state.currentTownId) as Town
+        },
+    },
     actions: {
         setTown(): void {},
         setCoords(coords: Coords): void {
