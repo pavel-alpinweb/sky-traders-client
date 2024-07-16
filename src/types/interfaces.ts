@@ -16,7 +16,6 @@ export interface Town {
     color: string
     ships: Ship[]
     resources: ResourceTable[]
-    isShowSinkAlert: boolean
 }
 
 export interface TownStore {
