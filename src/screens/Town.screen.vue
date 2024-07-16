@@ -31,7 +31,7 @@ const goToMap = () => {
 }
 
 onMounted(() => {
-    background = useTownLevel(townStore.name)
+    background = useTownLevel(townStore.currentTown.name)
 })
 </script>
 
@@ -50,29 +50,36 @@ onMounted(() => {
         </v-alert>
         <div id="town" class="town-screen__background"></div>
         <div class="town-screen__panel">
-            <ResourcesPanel :color="townStore.color" :gold="player.gold" />
+            <ResourcesPanel :color="townStore.currentTown.color" :gold="player.gold" />
         </div>
-        <h1 :class="`town-screen__name text-h2 text-${townStore.color}-darken-4`">
+        <h1 :class="`town-screen__name text-h2 text-${townStore.currentTown.color}-darken-4`">
             <v-dialog max-width="600">
                 <template #activator="{ props: activatorProps }">
-                    <v-btn class="town-screen__description-trigger" v-bind="activatorProps" :color="`${townStore.color}-darken-4`" size="x-small" variant="flat" icon="mdi-script-text-outline" />
+                    <v-btn
+                        class="town-screen__description-trigger"
+                        v-bind="activatorProps"
+                        :color="`${townStore.currentTown.color}-darken-4`"
+                        size="x-small"
+                        variant="flat"
+                        icon="mdi-script-text-outline"
+                    />
                 </template>
                 <template #default="{ isActive }">
-                    <v-card :title="townStore.name" :color="`${townStore.color}-lighten-5`">
+                    <v-card :title="townStore.currentTown.name" :color="`${townStore.currentTown.color}-lighten-5`">
                         <v-card-text> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </v-card-text>
 
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn :color="townStore.color" text="Закрыть" @click="isActive.value = false"></v-btn>
+                            <v-btn :color="townStore.currentTown.color" text="Закрыть" @click="isActive.value = false"></v-btn>
                         </v-card-actions>
                     </v-card>
                 </template>
             </v-dialog>
-            {{ townStore.name }}
+            {{ townStore.currentTown.name }}
         </h1>
-        <v-btn class="text-none town-screen__back-btn" size="large" variant="elevated" :color="townStore.color" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
+        <v-btn class="text-none town-screen__back-btn" size="large" variant="elevated" :color="townStore.currentTown.color" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
 
-        <v-tabs v-model="tab" class="town-screen__menu" direction="vertical" :bg-color="townStore.color" :mandatory="false">
+        <v-tabs v-model="tab" class="town-screen__menu" direction="vertical" :bg-color="townStore.currentTown.color" :mandatory="false">
             <v-tab value="market"><IconMarket class="town-screen__screen-icon" />Рынок</v-tab>
             <v-tab value="shipyard"><IconShipyard class="town-screen__screen-icon" />Верфь</v-tab>
             <!--            <v-tab value="warehouse"><IconWarehouse class="town-screen__screen-icon" />Склад</v-tab>-->
@@ -80,13 +87,13 @@ onMounted(() => {
 
         <v-tabs-window v-model="tab" class="town-screen__wrapper">
             <v-tabs-window-item value="market" class="town-screen__window">
-                <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.color}-lighten-5`" class="town-screen__content">
-                    <Market :color="townStore.color" />
+                <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.currentTown.color}-lighten-5`" class="town-screen__content">
+                    <Market :color="townStore.currentTown.color" />
                 </v-sheet>
             </v-tabs-window-item>
             <v-tabs-window-item value="shipyard" class="town-screen__window">
-                <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.color}-lighten-5`" class="town-screen__content">
-                    <Shipyard :color="townStore.color" />
+                <v-sheet :width="1200" :elevation="10" border rounded :color="`${townStore.currentTown.color}-lighten-5`" class="town-screen__content">
+                    <Shipyard :color="townStore.currentTown.color" />
                 </v-sheet>
             </v-tabs-window-item>
             <!--            <v-tabs-window-item value="warehouse" class="town-screen__window">-->

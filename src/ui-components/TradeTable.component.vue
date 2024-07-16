@@ -1,98 +1,12 @@
 <script setup lang="ts">
-import { reactive, ref, watch } from "vue"
+import { ref, watch } from "vue"
 import { ICONS_LIST } from "../utils/utils.ts"
 import { ResourceTable, HEADING } from "../types/interfaces.ts"
 
 const props = defineProps<{
     color: string
+    resources: ResourceTable[]
 }>()
-
-const items = reactive<ResourceTable[]>([
-    {
-        [HEADING.NAME]: "Сахарный тростник",
-        key: "sugar",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Кукуруза",
-        key: "corn",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Пряности",
-        key: "spice",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Зерно",
-        key: "grain",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Древесина",
-        key: "wood",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Конопля",
-        key: "hemp",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Хлопок",
-        key: "cotton",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Порох",
-        key: "gunpowder",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Уголь",
-        key: "coal",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Сталь",
-        key: "steel",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Слоновая кость",
-        key: "ivory",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-    {
-        [HEADING.NAME]: "Шелк",
-        key: "silk",
-        [HEADING.VALUE]: 262,
-        [HEADING.BUY_PRICE]: 16,
-        [HEADING.SELL_PRICE]: 23,
-    },
-])
 
 const currentRow = ref<ResourceTable[]>([])
 
@@ -127,7 +41,7 @@ watch(currentRow, () => {
         :class="`bg-${props.color}-lighten-4`"
         item-value="key"
         :items-per-page="12"
-        :items="items"
+        :items="resources"
         :row-props="rowProps"
         :header-props="{ class: `bg-${props.color}-darken-1` }"
         select-strategy="single"

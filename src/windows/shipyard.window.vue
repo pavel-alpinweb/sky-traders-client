@@ -59,7 +59,7 @@ const repairHandler = (value: number) => {
             <!--                <h2>Мои чертежи</h2>-->
             <!--            </v-tabs-window-item>-->
             <v-tabs-window-item value="building">
-                <ship-list :ships="town.ships" :color="props.color" mode="build" />
+                <ship-list :ships="town.currentTown.ships" :color="props.color" mode="build" />
             </v-tabs-window-item>
         </v-tabs-window>
     </div>
