@@ -26,7 +26,7 @@ const townStore = useTown()
 const player = usePlayer()
 
 const goToTown = () => {
-    townStore.setTown(currentTownName.value)
+    // townStore.setTown(currentTownName.value)
     townStore.setCoords(currentTownCoords)
     if (game) {
         game?.destroy(true)
