@@ -4,6 +4,8 @@ import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED } from "../configs/gamepl
 
 export const useTown = defineStore("town", {
     state: (): Town => ({
+        id: 1,
+        resources: [],
         name: "start-01",
         coords: {
             x: 1280,
