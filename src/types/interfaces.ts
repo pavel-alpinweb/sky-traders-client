@@ -11,13 +11,18 @@ export interface Coords {
 }
 
 export interface Town {
-    id: number
+    id: string
     name: string
     coords: Coords
     color: string
     ships: Ship[]
     resources: ResourceTable[]
     isShowSinkAlert: boolean
+}
+
+export interface TownStore {
+    currentTownId: string
+    towns: Town[]
 }
 
 export interface ResourcePanel {
