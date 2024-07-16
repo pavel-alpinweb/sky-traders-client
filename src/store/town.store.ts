@@ -317,7 +317,9 @@ export const useTown = defineStore("town", {
         },
     },
     actions: {
-        setTown(): void {},
+        setTown(name: string): void {
+            this.currentTownId = name
+        },
         setCoords(coords: Coords): void {
             this.coords = coords
         },
