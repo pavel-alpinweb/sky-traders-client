@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TradeWidget from "../ui-components/TradeWidget.component.vue"
 import TradeTable from "../ui-components/TradeTable.component.vue"
-import { HEADING, ResourceTable } from "../types/interfaces.ts"
+import { HEADING, ResourceTable, Transaction } from "../types/interfaces.ts"
 import { ref } from "vue"
 import { usePlayer } from "../store/player.store.ts"
 import { useTown } from "../store/town.store.ts"
@@ -24,6 +24,10 @@ const selectedResource = ref<ResourceTable>({
 const toggleResource = (resource: ResourceTable) => {
     selectedResource.value = resource
 }
+
+const buyHandler = (transaction: Transaction) => {
+    console.log("buyHandler", transaction)
+}
 </script>
 
 <template>
@@ -38,6 +42,7 @@ const toggleResource = (resource: ResourceTable) => {
                 :resource="selectedResource.key"
                 :player-gold="player.gold"
                 :player-resource-amount="2000"
+                @buy="buyHandler"
             />
         </div>
         <div class="market-window__container">
