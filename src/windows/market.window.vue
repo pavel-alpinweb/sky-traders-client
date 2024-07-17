@@ -19,6 +19,12 @@ const selectedResource = ref<ResourceTable>({
     [HEADING.VALUE]: 0,
     [HEADING.BUY_PRICE]: 0,
     [HEADING.SELL_PRICE]: 0,
+    optima: 262,
+    maxValue: 500,
+    minBuyPrice: 10,
+    minSellPrice: 13,
+    maxBuyPrice: 26,
+    maxSellPrice: 36,
 })
 
 const toggleResource = (resource: ResourceTable) => {
@@ -30,12 +36,14 @@ const buyHandler = (transaction: Transaction) => {
     player.decreaseGold(transaction.gold)
     player.addResource(transaction.resourceAmount)
     town.decreaseTownResource(selectedResource.value.key, transaction.resourceAmount)
+    town.calculatePrice(selectedResource.value)
 }
 
 const sellHandler = (transaction: Transaction) => {
     player.increaseGold(transaction.gold)
     player.removeResource(transaction.resourceAmount)
     town.increaseTownResource(selectedResource.value.key, transaction.resourceAmount)
+    town.calculatePrice(selectedResource.value)
 }
 </script>
 

@@ -478,5 +478,8 @@ export const useTown = defineStore("town", {
             const resource = this.currentTown.resources.find((resource) => resource.key === key) as ResourceTable
             resource[HEADING.VALUE] += amount
         },
+        calculatePrice(resource: ResourceTable) {
+            console.log("calculatePrice", resource)
+        },
     },
 })
