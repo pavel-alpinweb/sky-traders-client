@@ -37,6 +37,12 @@ export interface ResourceTable {
     [HEADING.VALUE]: number
     [HEADING.BUY_PRICE]: number
     [HEADING.SELL_PRICE]: number
+    optima: number
+    maxValue: number
+    minBuyPrice: number
+    minSellPrice: number
+    maxBuyPrice: number
+    maxSellPrice: number
 }
 
 export interface Transaction {
