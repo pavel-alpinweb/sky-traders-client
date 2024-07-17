@@ -28,13 +28,13 @@ const toggleResource = (resource: ResourceTable) => {
 
 const buyHandler = (transaction: Transaction) => {
     player.decreaseGold(transaction.gold)
-    player.addResource(selectedResource.value.key, transaction.resourceAmount)
+    player.addResource(transaction.resourceAmount)
     town.decreaseTownResource(selectedResource.value.key, transaction.resourceAmount)
 }
 
 const sellHandler = (transaction: Transaction) => {
     player.increaseGold(transaction.gold)
-    player.removeResource(selectedResource.value.key, transaction.resourceAmount)
+    player.removeResource(transaction.resourceAmount)
     town.increaseTownResource(selectedResource.value.key, transaction.resourceAmount)
 }
 </script>
@@ -48,7 +48,7 @@ const sellHandler = (transaction: Transaction) => {
                 :sell-price="selectedResource[HEADING.SELL_PRICE]"
                 :max-amount="selectedResource[HEADING.VALUE]"
                 :color="props.color"
-                :resource="selectedResource.key"
+                :resource="player.currentResource?.name ? player.currentResource.name : ''"
                 :player-gold="player.gold"
                 :player-resource-amount="player.currentResource ? player.currentResource.value : 0"
                 @buy="buyHandler"

@@ -115,12 +115,12 @@ export const usePlayer = defineStore("player", {
         increaseGold(bill: number) {
             this.gold += bill
         },
-        addResource(key: string, amount: number) {
-            const resource = this.resources.find((resource) => resource.name === key) as ResourcePanel
+        addResource(amount: number) {
+            const resource = this.resources.find((resource) => resource.name === this.currentResourceKey) as ResourcePanel
             resource.value += amount
         },
-        removeResource(key: string, amount: number) {
-            const resource = this.resources.find((resource) => resource.name === key) as ResourcePanel
+        removeResource(amount: number) {
+            const resource = this.resources.find((resource) => resource.name === this.currentResourceKey) as ResourcePanel
             resource.value -= amount
         },
         setCurrentShip(id: number): void {
