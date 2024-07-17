@@ -39,6 +39,11 @@ export interface ResourceTable {
     [HEADING.SELL_PRICE]: number
 }
 
+export interface Transaction {
+    gold: number
+    resourceAmount: number
+}
+
 export interface Ship {
     id: number
     name: string

@@ -2,6 +2,7 @@
 import { TradeMode } from "../types/types.ts"
 import { computed, ComputedRef, ref } from "vue"
 import { ICONS_LIST } from "../utils/utils.ts"
+import { Transaction } from "../types/interfaces.ts"
 
 const props = defineProps<{
     maxAmount: number
@@ -22,15 +23,20 @@ const changeMode = () => {
 }
 
 const buySellEmit = defineEmits<{
-    (event: "buy", value: number): void
-    (event: "sell", value: number): void
+    (event: TradeMode, value: Transaction): void
 }>()
 
 const buySell = () => {
     if (tradeMode.value === "buy") {
-        buySellEmit("buy", amount.value)
+        buySellEmit("buy", {
+            gold: totalAmount.value,
+            resourceAmount: amount.value,
+        })
     } else {
-        buySellEmit("sell", amount.value)
+        buySellEmit("sell", {
+            gold: totalAmount.value,
+            resourceAmount: amount.value,
+        })
     }
 }
 
