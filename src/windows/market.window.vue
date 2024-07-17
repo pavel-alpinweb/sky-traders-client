@@ -26,7 +26,7 @@ const toggleResource = (resource: ResourceTable) => {
 }
 
 const buyHandler = (transaction: Transaction) => {
-    console.log("buyHandler", transaction)
+    player.decreasePlayerGold(transaction.gold)
 }
 </script>
 

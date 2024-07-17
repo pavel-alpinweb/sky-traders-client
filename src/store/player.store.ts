@@ -102,6 +102,9 @@ export const usePlayer = defineStore("player", {
         },
     },
     actions: {
+        decreasePlayerGold(bill: number) {
+            this.gold -= bill
+        },
         setCurrentShip(id: number): void {
             this.currentShipId = id
         },
