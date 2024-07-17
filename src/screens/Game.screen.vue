@@ -101,7 +101,7 @@ watch(
 <template>
     <div class="game-screen">
         <div class="game-screen__top-panel">
-            <ResourcesPanel :color="townStore.color" :gold="player.gold" />
+            <ResourcesPanel :color="townStore.currentTown.color" :gold="player.gold" />
         </div>
         <div v-if="player.currentShip" class="game-screen__left-panel">
             <HealthWidget :current-health="player.currentShip.currentHealth" :max-health="player.currentShip.maxHealth" />
@@ -110,7 +110,7 @@ watch(
         <div class="game-screen__map-button-container">
             <v-dialog max-width="1200">
                 <template #activator="{ props: activatorProps }">
-                    <v-btn class="game-screen__map-trigger" v-bind="activatorProps" :color="`${townStore.color}-lighten-5`" variant="elevated" size="x-large" v-tooltip="'Карта'" icon="">
+                    <v-btn class="game-screen__map-trigger" v-bind="activatorProps" :color="`${townStore.currentTown.color}-lighten-5`" variant="elevated" size="x-large" v-tooltip="'Карта'" icon="">
                         <mapIcon class="game-screen__map-icon" />
                     </v-btn>
                 </template>
@@ -121,7 +121,7 @@ watch(
         </div>
         <div id="game" class="game-screen__game-wrapper"></div>
         <v-snackbar v-model="isShowTownAlert" color="green">
-            Вы хотите приземлиться в городе <b>{{ townStore.name }}</b
+            Вы хотите приземлиться в городе <b>{{ townStore.currentTown.name }}</b
             >?
             <template #actions>
                 <v-btn color="green-darken-4" variant="elevated" @click="goToTown"> OK </v-btn>

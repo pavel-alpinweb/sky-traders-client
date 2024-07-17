@@ -4,12 +4,14 @@ import TradeTable from "../ui-components/TradeTable.component.vue"
 import { HEADING, ResourceTable } from "../types/interfaces.ts"
 import { ref } from "vue"
 import { usePlayer } from "../store/player.store.ts"
+import { useTown } from "../store/town.store.ts"
 
 const props = defineProps<{
     color: string
 }>()
 
 const player = usePlayer()
+const town = useTown()
 
 const selectedResource = ref<ResourceTable>({
     [HEADING.NAME]: "",
@@ -39,7 +41,7 @@ const toggleResource = (resource: ResourceTable) => {
             />
         </div>
         <div class="market-window__container">
-            <TradeTable :color="props.color" @toggle="toggleResource" />
+            <TradeTable :color="props.color" @toggle="toggleResource" :resources="town.currentTown.resources" />
         </div>
     </div>
 </template>
