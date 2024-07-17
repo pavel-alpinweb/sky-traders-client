@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { Player, RefuelParams, Ship } from "../types/interfaces.ts"
+import { Player, RefuelParams, ResourcePanel, Ship } from "../types/interfaces.ts"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION, PIRATE_DAMAGE } from "../configs/gameplay.config.ts"
 
 export const usePlayer = defineStore("player", {
@@ -102,8 +102,12 @@ export const usePlayer = defineStore("player", {
         },
     },
     actions: {
-        decreasePlayerGold(bill: number) {
+        decreaseGold(bill: number) {
             this.gold -= bill
+        },
+        addResource(key: string, amount: number) {
+            const resource = this.resources.find((resource) => resource.name === key) as ResourcePanel
+            resource.value += amount
         },
         setCurrentShip(id: number): void {
             this.currentShipId = id
