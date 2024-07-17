@@ -85,6 +85,7 @@ export const usePlayer = defineStore("player", {
             },
         ],
         currentShipId: 1,
+        currentResourceKey: null,
     }),
     getters: {
         currentShip: (state): Ship => {
@@ -100,14 +101,27 @@ export const usePlayer = defineStore("player", {
 
             return currentShip ? currentShip.currentFuel : null
         },
+        currentResource: (state): ResourcePanel | null => {
+            return state.currentResourceKey ? (state.resources.find((resource) => resource.name === state.currentResourceKey) as ResourcePanel) : null
+        },
     },
     actions: {
+        setCurrentResource(key: string) {
+            this.currentResourceKey = key
+        },
         decreaseGold(bill: number) {
             this.gold -= bill
+        },
+        increaseGold(bill: number) {
+            this.gold += bill
         },
         addResource(key: string, amount: number) {
             const resource = this.resources.find((resource) => resource.name === key) as ResourcePanel
             resource.value += amount
+        },
+        removeResource(key: string, amount: number) {
+            const resource = this.resources.find((resource) => resource.name === key) as ResourcePanel
+            resource.value -= amount
         },
         setCurrentShip(id: number): void {
             this.currentShipId = id

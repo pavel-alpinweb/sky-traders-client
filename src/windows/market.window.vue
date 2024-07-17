@@ -23,12 +23,19 @@ const selectedResource = ref<ResourceTable>({
 
 const toggleResource = (resource: ResourceTable) => {
     selectedResource.value = resource
+    player.setCurrentResource(resource.key)
 }
 
 const buyHandler = (transaction: Transaction) => {
     player.decreaseGold(transaction.gold)
     player.addResource(selectedResource.value.key, transaction.resourceAmount)
     town.decreaseTownResource(selectedResource.value.key, transaction.resourceAmount)
+}
+
+const sellHandler = (transaction: Transaction) => {
+    player.increaseGold(transaction.gold)
+    player.removeResource(selectedResource.value.key, transaction.resourceAmount)
+    town.increaseTownResource(selectedResource.value.key, transaction.resourceAmount)
 }
 </script>
 
@@ -43,8 +50,9 @@ const buyHandler = (transaction: Transaction) => {
                 :color="props.color"
                 :resource="selectedResource.key"
                 :player-gold="player.gold"
-                :player-resource-amount="2000"
+                :player-resource-amount="player.currentResource ? player.currentResource.value : 0"
                 @buy="buyHandler"
+                @sell="sellHandler"
             />
         </div>
         <div class="market-window__container">

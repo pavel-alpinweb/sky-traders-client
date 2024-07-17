@@ -330,5 +330,9 @@ export const useTown = defineStore("town", {
             const resource = this.currentTown.resources.find((resource) => resource.key === key) as ResourceTable
             resource[HEADING.VALUE] -= amount
         },
+        increaseTownResource(key: string, amount: number) {
+            const resource = this.currentTown.resources.find((resource) => resource.key === key) as ResourceTable
+            resource[HEADING.VALUE] += amount
+        },
     },
 })

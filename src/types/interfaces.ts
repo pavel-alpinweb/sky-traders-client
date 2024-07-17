@@ -65,6 +65,7 @@ export interface Player {
     resources: ResourcePanel[]
     ships: Ship[]
     currentShipId: number | null
+    currentResourceKey: string | null
 }
 
 export interface RefuelParams {
