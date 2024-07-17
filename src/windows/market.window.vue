@@ -28,6 +28,7 @@ const toggleResource = (resource: ResourceTable) => {
 const buyHandler = (transaction: Transaction) => {
     player.decreaseGold(transaction.gold)
     player.addResource(selectedResource.value.key, transaction.resourceAmount)
+    town.decreaseTownResource(selectedResource.value.key, transaction.resourceAmount)
 }
 </script>
 

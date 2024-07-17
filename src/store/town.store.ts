@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { Coords, HEADING, Town, TownStore } from "../types/interfaces.ts"
+import { Coords, HEADING, ResourceTable, Town, TownStore } from "../types/interfaces.ts"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED } from "../configs/gameplay.config.ts"
 
 export const useTown = defineStore("town", {
@@ -325,6 +325,10 @@ export const useTown = defineStore("town", {
         },
         setShowSinkAlert(value: boolean) {
             this.isShowSinkAlert = value
+        },
+        decreaseTownResource(key: string, amount: number) {
+            const resource = this.currentTown.resources.find((resource) => resource.key === key) as ResourceTable
+            resource[HEADING.VALUE] -= amount
         },
     },
 })
