@@ -80,7 +80,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -94,7 +95,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -108,7 +110,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -122,7 +125,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -136,7 +140,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -150,7 +155,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -164,7 +170,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -178,7 +185,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -192,7 +200,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -206,7 +215,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -220,7 +230,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -234,7 +245,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -313,7 +325,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -327,7 +340,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -341,7 +355,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -355,7 +370,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -369,7 +385,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -383,7 +400,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -397,7 +415,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -411,7 +430,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -425,7 +445,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -439,7 +460,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -453,7 +475,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -467,7 +490,8 @@ export const useTown = defineStore("town", {
                         [HEADING.BUY_PRICE]: 16,
                         [HEADING.SELL_PRICE]: 23,
                         optima: 262,
-                        optimaPrice: 16,
+                        optimaBuyPrice: 16,
+                        optimaSellPrice: 23,
                         maxValue: 500,
                         minBuyPrice: 10,
                         minSellPrice: 13,
@@ -503,7 +527,35 @@ export const useTown = defineStore("town", {
             resource[HEADING.VALUE] += amount
         },
         calculatePrice(resource: ResourceTable) {
-            console.log("calculatePrice", resource)
+            const difference = resource.optima - resource[HEADING.VALUE]
+            const percentValue = difference / (resource.optima / 100)
+            const percentBuyPrice = resource.optimaBuyPrice / 100
+            const percentSellPrice = resource.optimaSellPrice / 100
+            let newBuyPrice = resource[HEADING.BUY_PRICE]
+            let newSellPrice = resource[HEADING.BUY_PRICE]
+            if (resource[HEADING.VALUE] < resource.optima) {
+                newBuyPrice = Math.floor(resource.optimaBuyPrice + Math.abs(percentValue) * percentBuyPrice)
+                newSellPrice = Math.floor(resource.optimaSellPrice + Math.abs(percentValue) * percentSellPrice)
+            } else {
+                newBuyPrice = Math.floor(resource.optimaBuyPrice - Math.abs(percentValue) * percentBuyPrice)
+                newSellPrice = Math.floor(resource.optimaSellPrice - Math.abs(percentValue) * percentSellPrice)
+            }
+
+            if (newBuyPrice > resource.maxBuyPrice) {
+                resource[HEADING.BUY_PRICE] = resource.maxBuyPrice
+            } else if (newBuyPrice < resource.minBuyPrice) {
+                resource[HEADING.BUY_PRICE] = resource.minBuyPrice
+            } else {
+                resource[HEADING.BUY_PRICE] = newBuyPrice
+            }
+
+            if (newSellPrice > resource.maxSellPrice) {
+                resource[HEADING.SELL_PRICE] = resource.maxSellPrice
+            } else if (newSellPrice < resource.minSellPrice) {
+                resource[HEADING.SELL_PRICE] = resource.minSellPrice
+            } else {
+                resource[HEADING.SELL_PRICE] = newSellPrice
+            }
         },
     },
 })

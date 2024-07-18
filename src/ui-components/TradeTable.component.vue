@@ -98,6 +98,8 @@ watch(currentRow, () => {
         <template #[`item.maxBuyPrice`]></template>
         <template #[`header.maxSellPrice`]></template>
         <template #[`item.maxSellPrice`]></template>
+        <template #[`header.optimaPrice`]></template>
+        <template #[`item.optimaPrice`]></template>
         <template #bottom></template>
     </v-data-table>
 </template>
