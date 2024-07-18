@@ -22,7 +22,7 @@ const selectedResource = ref<ResourceTable>({
     optima: 262,
     optimaBuyPrice: 16,
     optimaSellPrice: 23,
-    maxValue: 500,
+    [HEADING.MAX_VALUE]: 500,
     minBuyPrice: 10,
     minSellPrice: 13,
     maxBuyPrice: 26,

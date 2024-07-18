@@ -88,8 +88,6 @@ watch(currentRow, () => {
         <template #[`item.key`]></template>
         <template #[`header.optima`]></template>
         <template #[`item.optima`]></template>
-        <template #[`header.maxValue`]></template>
-        <template #[`item.maxValue`]></template>
         <template #[`header.minBuyPrice`]></template>
         <template #[`item.minBuyPrice`]></template>
         <template #[`header.minSellPrice`]></template>
@@ -98,8 +96,10 @@ watch(currentRow, () => {
         <template #[`item.maxBuyPrice`]></template>
         <template #[`header.maxSellPrice`]></template>
         <template #[`item.maxSellPrice`]></template>
-        <template #[`header.optimaPrice`]></template>
-        <template #[`item.optimaPrice`]></template>
+        <template #[`header.optimaBuyPrice`]></template>
+        <template #[`item.optimaBuyPrice`]></template>
+        <template #[`header.optimaSellPrice`]></template>
+        <template #[`item.optimaSellPrice`]></template>
         <template #bottom></template>
     </v-data-table>
 </template>

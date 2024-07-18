@@ -3,6 +3,7 @@ export enum HEADING {
     VALUE = "Количество на складе",
     BUY_PRICE = "Цена покупки",
     SELL_PRICE = "Цена продажи",
+    MAX_VALUE = "Объем склада",
 }
 
 export interface Coords {
@@ -40,7 +41,7 @@ export interface ResourceTable {
     optima: number
     optimaBuyPrice: number
     optimaSellPrice: number
-    maxValue: number
+    [HEADING.MAX_VALUE]: number
     minBuyPrice: number
     minSellPrice: number
     maxBuyPrice: number
