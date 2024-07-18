@@ -84,6 +84,11 @@ watch(currentRow, () => {
                 <component class="trade-table__icon" :is="ICONS_LIST.gold"></component>
             </div>
         </template>
+        <template #[`item.${HEADING.MAX_VALUE}`]="{ item }">
+            <div class="trade-table__item">
+                <span :class="`text-${props.color}-darken-4`">{{ item[HEADING.MAX_VALUE] }}</span>
+            </div>
+        </template>
         <template #[`header.key`]></template>
         <template #[`item.key`]></template>
         <template #[`header.optima`]></template>
