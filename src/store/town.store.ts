@@ -518,12 +518,17 @@ export const useTown = defineStore("town", {
         setShowSinkAlert(value: boolean) {
             this.isShowSinkAlert = value
         },
-        decreaseTownResource(key: string, amount: number) {
+        decreaseCurrentTownResource(key: string, amount: number) {
             const resource = this.currentTown.resources.find((resource) => resource.key === key) as ResourceTable
             resource[HEADING.VALUE] -= amount
         },
-        increaseTownResource(key: string, amount: number) {
+        increaseCurrentTownResource(key: string, amount: number) {
             const resource = this.currentTown.resources.find((resource) => resource.key === key) as ResourceTable
+            resource[HEADING.VALUE] += amount
+        },
+        increaseTownResource(townId: string, key: string, amount: number) {
+            const town = this.towns.find((town) => town.id === townId) as Town
+            const resource = town.resources.find((resource) => resource.key === key) as ResourceTable
             resource[HEADING.VALUE] += amount
         },
         calculatePrice(resource: ResourceTable) {

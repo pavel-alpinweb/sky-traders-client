@@ -11,7 +11,8 @@ import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import FuelWidget from "../ui-components/FuelWidget.component.vue"
 import HealthWidget from "../ui-components/HealthWidget.component.vue"
 import { usePlayer } from "../store/player.store.ts"
-import { Coords } from "../types/interfaces.ts"
+import { Coords, HEADING } from "../types/interfaces.ts"
+import { UPDATE_MARKETS_INTERVAL, UPDATE_MARKETS_VALUE } from "../configs/gameplay.config.ts"
 
 const isShowTownAlert = ref(false)
 const isShowPirateAlert = ref(false)
@@ -25,7 +26,20 @@ const currentTownCoords = reactive<Coords>({
 const townStore = useTown()
 const player = usePlayer()
 
+const updateMarket = setInterval(() => {
+    for (const town of townStore.towns) {
+        for (const resource of town.resources) {
+            if (resource[HEADING.VALUE] < resource[HEADING.MAX_VALUE]) {
+                const difference = resource[HEADING.MAX_VALUE] - resource[HEADING.VALUE]
+                townStore.increaseTownResource(town.id, resource.key, difference < UPDATE_MARKETS_VALUE ? difference : UPDATE_MARKETS_VALUE)
+                townStore.calculatePrice(resource)
+            }
+        }
+    }
+}, UPDATE_MARKETS_INTERVAL)
+
 const goToTown = () => {
+    clearInterval(updateMarket)
     townStore.setTown(currentTownName.value)
     townStore.setCoords(currentTownCoords)
     if (game) {
