@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, watch } from "vue"
 import { useMapLevel } from "../setups/map.setup.ts"
-import { EventBus } from "../utils/utils.ts"
+import { EventBus, updateMarket } from "../utils/utils.ts"
 import { router } from "../router.ts"
 import { useTown } from "../store/town.store.ts"
 import { Game } from "phaser"
@@ -11,8 +11,7 @@ import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import FuelWidget from "../ui-components/FuelWidget.component.vue"
 import HealthWidget from "../ui-components/HealthWidget.component.vue"
 import { usePlayer } from "../store/player.store.ts"
-import { Coords, HEADING } from "../types/interfaces.ts"
-import { UPDATE_MARKETS_INTERVAL, UPDATE_MARKETS_VALUE } from "../configs/gameplay.config.ts"
+import { Coords } from "../types/interfaces.ts"
 
 const isShowTownAlert = ref(false)
 const isShowPirateAlert = ref(false)
@@ -26,24 +25,10 @@ const currentTownCoords = reactive<Coords>({
 const townStore = useTown()
 const player = usePlayer()
 
-const updateMarket = setInterval(() => {
-    for (const town of townStore.towns) {
-        for (const resource of town.resources) {
-            if (resource[HEADING.VALUE] < resource[HEADING.MAX_VALUE] && resource.isGrow) {
-                const difference = resource[HEADING.MAX_VALUE] - resource[HEADING.VALUE]
-                townStore.increaseTownResource(town.id, resource.key, difference < UPDATE_MARKETS_VALUE ? difference : UPDATE_MARKETS_VALUE)
-                townStore.calculatePrice(resource)
-            } else if (resource[HEADING.VALUE] > resource.optima) {
-                const difference = resource[HEADING.VALUE] - resource.optima
-                townStore.decreaseTownResource(town.id, resource.key, difference < UPDATE_MARKETS_VALUE ? difference : UPDATE_MARKETS_VALUE)
-                townStore.calculatePrice(resource)
-            }
-        }
-    }
-}, UPDATE_MARKETS_INTERVAL)
+const updateMarketInterval = updateMarket(townStore)
 
 const goToTown = () => {
-    clearInterval(updateMarket)
+    clearInterval(updateMarketInterval)
     townStore.setTown(currentTownName.value)
     townStore.setCoords(currentTownCoords)
     if (game) {

@@ -11,8 +11,7 @@ import IconMarket from "/public/assets/icons/screens/market.svg"
 import IconShipyard from "/public/assets/icons/screens/shipyard.svg"
 import IconSink from "/public/assets/icons/alerts/sink.svg"
 import { usePlayer } from "../store/player.store.ts"
-import { HEADING } from "../types/interfaces.ts"
-import { UPDATE_MARKETS_INTERVAL, UPDATE_MARKETS_VALUE } from "../configs/gameplay.config.ts"
+import { updateMarket } from "../utils/utils"
 // import IconWarehouse from "/public/assets/icons/screens/warehouse.svg"
 
 let background: null | Game = null
@@ -21,25 +20,11 @@ const player = usePlayer()
 const tab = ref(null)
 const isBlockLeaveTown = ref(false)
 
-const updateMarket = setInterval(() => {
-    for (const town of townStore.towns) {
-        for (const resource of town.resources) {
-            if (resource[HEADING.VALUE] < resource[HEADING.MAX_VALUE] && resource.isGrow) {
-                const difference = resource[HEADING.MAX_VALUE] - resource[HEADING.VALUE]
-                townStore.increaseTownResource(town.id, resource.key, difference < UPDATE_MARKETS_VALUE ? difference : UPDATE_MARKETS_VALUE)
-                townStore.calculatePrice(resource)
-            } else if (resource[HEADING.VALUE] > resource.optima) {
-                const difference = resource[HEADING.VALUE] - resource.optima
-                townStore.decreaseTownResource(town.id, resource.key, difference < UPDATE_MARKETS_VALUE ? difference : UPDATE_MARKETS_VALUE)
-                townStore.calculatePrice(resource)
-            }
-        }
-    }
-}, UPDATE_MARKETS_INTERVAL)
+const updateMarketInterval = updateMarket(townStore)
 
 const goToMap = () => {
     if (player.currentShip) {
-        clearInterval(updateMarket)
+        clearInterval(updateMarketInterval)
         if (background) {
             background?.destroy(true)
         }
