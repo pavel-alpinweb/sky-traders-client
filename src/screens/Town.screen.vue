@@ -11,22 +11,26 @@ import IconMarket from "/public/assets/icons/screens/market.svg"
 import IconShipyard from "/public/assets/icons/screens/shipyard.svg"
 import IconSink from "/public/assets/icons/alerts/sink.svg"
 import { usePlayer } from "../store/player.store.ts"
+import { updateMarket } from "../utils/utils"
 // import IconWarehouse from "/public/assets/icons/screens/warehouse.svg"
 
 let background: null | Game = null
 const townStore = useTown()
 const player = usePlayer()
 const tab = ref(null)
-const isBlockLEaveTown = ref(false)
+const isBlockLeaveTown = ref(false)
+
+const updateMarketInterval = updateMarket(townStore)
 
 const goToMap = () => {
     if (player.currentShip) {
+        clearInterval(updateMarketInterval)
         if (background) {
             background?.destroy(true)
         }
         router.push({ path: "/game" })
     } else {
-        isBlockLEaveTown.value = true
+        isBlockLeaveTown.value = true
     }
 }
 
@@ -37,10 +41,10 @@ onMounted(() => {
 
 <template>
     <div class="town-screen">
-        <v-snackbar v-model="isBlockLEaveTown" color="red">
+        <v-snackbar v-model="isBlockLeaveTown" color="red">
             Нельзя покинуть город без корабля!
             <template #actions>
-                <v-btn color="red-darken-4" variant="elevated" @click="isBlockLEaveTown = false"> OK </v-btn>
+                <v-btn color="red-darken-4" variant="elevated" @click="isBlockLeaveTown = false"> OK </v-btn>
             </template>
         </v-snackbar>
         <v-alert v-if="townStore.isShowSinkAlert" class="town-screen__alert" type="error" variant="elevated" title="Вы потерпели крушение, капитан!" text="Ваш корабль и груз потеряны" closable>
