@@ -46,6 +46,7 @@ export interface ResourceTable {
     minSellPrice: number
     maxBuyPrice: number
     maxSellPrice: number
+    isGrow: boolean
 }
 
 export interface Transaction {

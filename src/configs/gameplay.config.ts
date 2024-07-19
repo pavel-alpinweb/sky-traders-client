@@ -32,4 +32,4 @@ export const TOWN_SIZE = 1024
 
 /* Trade Settings */
 export const UPDATE_MARKETS_INTERVAL = 3000
-export const UPDATE_MARKETS_VALUE = 1
+export const UPDATE_MARKETS_VALUE = 10

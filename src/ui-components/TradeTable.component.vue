@@ -105,6 +105,8 @@ watch(currentRow, () => {
         <template #[`item.optimaBuyPrice`]></template>
         <template #[`header.optimaSellPrice`]></template>
         <template #[`item.optimaSellPrice`]></template>
+        <template #[`header.isGrow`]></template>
+        <template #[`item.isGrow`]></template>
         <template #bottom></template>
     </v-data-table>
 </template>

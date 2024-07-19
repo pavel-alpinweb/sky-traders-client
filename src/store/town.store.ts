@@ -87,6 +87,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Кукуруза",
@@ -102,6 +103,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Пряности",
@@ -117,6 +119,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Зерно",
@@ -132,6 +135,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Древесина",
@@ -147,6 +151,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Конопля",
@@ -162,6 +167,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Хлопок",
@@ -177,6 +183,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Порох",
@@ -192,6 +199,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Уголь",
@@ -207,6 +215,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Сталь",
@@ -222,6 +231,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Слоновая кость",
@@ -237,6 +247,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Шелк",
@@ -252,6 +263,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                 ],
             },
@@ -332,6 +344,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Кукуруза",
@@ -347,6 +360,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Пряности",
@@ -362,6 +376,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Зерно",
@@ -377,6 +392,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Древесина",
@@ -392,6 +408,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Конопля",
@@ -407,6 +424,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Хлопок",
@@ -422,6 +440,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Порох",
@@ -437,6 +456,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Уголь",
@@ -452,6 +472,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Сталь",
@@ -467,6 +488,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Слоновая кость",
@@ -482,6 +504,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                     {
                         [HEADING.NAME]: "Шелк",
@@ -497,6 +520,7 @@ export const useTown = defineStore("town", {
                         minSellPrice: 13,
                         maxBuyPrice: 26,
                         maxSellPrice: 36,
+                        isGrow: true,
                     },
                 ],
             },
@@ -530,6 +554,13 @@ export const useTown = defineStore("town", {
             const town = this.towns.find((town) => town.id === townId) as Town
             const resource = town.resources.find((resource) => resource.key === key) as ResourceTable
             resource[HEADING.VALUE] += amount
+            resource.isGrow = true
+        },
+        decreaseTownResource(townId: string, key: string, amount: number) {
+            const town = this.towns.find((town) => town.id === townId) as Town
+            const resource = town.resources.find((resource) => resource.key === key) as ResourceTable
+            resource[HEADING.VALUE] -= amount
+            resource.isGrow = resource[HEADING.VALUE] <= resource.optima
         },
         calculatePrice(resource: ResourceTable) {
             const difference = resource.optima - resource[HEADING.VALUE]

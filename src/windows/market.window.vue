@@ -27,6 +27,7 @@ const selectedResource = ref<ResourceTable>({
     minSellPrice: 13,
     maxBuyPrice: 26,
     maxSellPrice: 36,
+    isGrow: true,
 })
 
 const toggleResource = (resource: ResourceTable) => {

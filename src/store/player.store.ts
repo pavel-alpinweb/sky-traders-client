@@ -5,10 +5,10 @@ import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
         id: 0,
-        gold: 50000,
+        gold: 5000,
         resources: [
             {
-                value: 1000,
+                value: 0,
                 name: "sugar",
                 title: "Сахарный тростник",
             },

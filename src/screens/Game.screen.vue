@@ -29,9 +29,13 @@ const player = usePlayer()
 const updateMarket = setInterval(() => {
     for (const town of townStore.towns) {
         for (const resource of town.resources) {
-            if (resource[HEADING.VALUE] < resource[HEADING.MAX_VALUE]) {
+            if (resource[HEADING.VALUE] < resource[HEADING.MAX_VALUE] && resource.isGrow) {
                 const difference = resource[HEADING.MAX_VALUE] - resource[HEADING.VALUE]
                 townStore.increaseTownResource(town.id, resource.key, difference < UPDATE_MARKETS_VALUE ? difference : UPDATE_MARKETS_VALUE)
+                townStore.calculatePrice(resource)
+            } else if (resource[HEADING.VALUE] > resource.optima) {
+                const difference = resource[HEADING.VALUE] - resource.optima
+                townStore.decreaseTownResource(town.id, resource.key, difference < UPDATE_MARKETS_VALUE ? difference : UPDATE_MARKETS_VALUE)
                 townStore.calculatePrice(resource)
             }
         }
