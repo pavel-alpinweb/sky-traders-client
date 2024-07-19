@@ -84,8 +84,29 @@ watch(currentRow, () => {
                 <component class="trade-table__icon" :is="ICONS_LIST.gold"></component>
             </div>
         </template>
+        <template #[`item.${HEADING.MAX_VALUE}`]="{ item }">
+            <div class="trade-table__item">
+                <span :class="`text-${props.color}-darken-4`">{{ item[HEADING.MAX_VALUE] }}</span>
+            </div>
+        </template>
         <template #[`header.key`]></template>
         <template #[`item.key`]></template>
+        <template #[`header.optima`]></template>
+        <template #[`item.optima`]></template>
+        <template #[`header.minBuyPrice`]></template>
+        <template #[`item.minBuyPrice`]></template>
+        <template #[`header.minSellPrice`]></template>
+        <template #[`item.minSellPrice`]></template>
+        <template #[`header.maxBuyPrice`]></template>
+        <template #[`item.maxBuyPrice`]></template>
+        <template #[`header.maxSellPrice`]></template>
+        <template #[`item.maxSellPrice`]></template>
+        <template #[`header.optimaBuyPrice`]></template>
+        <template #[`item.optimaBuyPrice`]></template>
+        <template #[`header.optimaSellPrice`]></template>
+        <template #[`item.optimaSellPrice`]></template>
+        <template #[`header.isGrow`]></template>
+        <template #[`item.isGrow`]></template>
         <template #bottom></template>
     </v-data-table>
 </template>

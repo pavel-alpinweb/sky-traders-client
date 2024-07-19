@@ -1,11 +1,11 @@
 import { defineStore } from "pinia"
-import { Player, RefuelParams, Ship } from "../types/interfaces.ts"
+import { Player, RefuelParams, ResourcePanel, Ship } from "../types/interfaces.ts"
 import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION, PIRATE_DAMAGE } from "../configs/gameplay.config.ts"
 
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
         id: 0,
-        gold: 50000,
+        gold: 5000,
         resources: [
             {
                 value: 0,
@@ -85,6 +85,7 @@ export const usePlayer = defineStore("player", {
             },
         ],
         currentShipId: 1,
+        currentResourceKey: null,
     }),
     getters: {
         currentShip: (state): Ship => {
@@ -100,8 +101,28 @@ export const usePlayer = defineStore("player", {
 
             return currentShip ? currentShip.currentFuel : null
         },
+        currentResource: (state): ResourcePanel | null => {
+            return state.currentResourceKey ? (state.resources.find((resource) => resource.name === state.currentResourceKey) as ResourcePanel) : null
+        },
     },
     actions: {
+        setCurrentResource(key: string) {
+            this.currentResourceKey = key
+        },
+        decreaseGold(bill: number) {
+            this.gold -= bill
+        },
+        increaseGold(bill: number) {
+            this.gold += bill
+        },
+        addResource(amount: number) {
+            const resource = this.resources.find((resource) => resource.name === this.currentResourceKey) as ResourcePanel
+            resource.value += amount
+        },
+        removeResource(amount: number) {
+            const resource = this.resources.find((resource) => resource.name === this.currentResourceKey) as ResourcePanel
+            resource.value -= amount
+        },
         setCurrentShip(id: number): void {
             this.currentShipId = id
         },

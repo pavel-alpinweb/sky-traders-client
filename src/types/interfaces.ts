@@ -3,6 +3,7 @@ export enum HEADING {
     VALUE = "Количество на складе",
     BUY_PRICE = "Цена покупки",
     SELL_PRICE = "Цена продажи",
+    MAX_VALUE = "Объем склада",
 }
 
 export interface Coords {
@@ -37,6 +38,20 @@ export interface ResourceTable {
     [HEADING.VALUE]: number
     [HEADING.BUY_PRICE]: number
     [HEADING.SELL_PRICE]: number
+    optima: number
+    optimaBuyPrice: number
+    optimaSellPrice: number
+    [HEADING.MAX_VALUE]: number
+    minBuyPrice: number
+    minSellPrice: number
+    maxBuyPrice: number
+    maxSellPrice: number
+    isGrow: boolean
+}
+
+export interface Transaction {
+    gold: number
+    resourceAmount: number
 }
 
 export interface Ship {
@@ -60,6 +75,7 @@ export interface Player {
     resources: ResourcePanel[]
     ships: Ship[]
     currentShipId: number | null
+    currentResourceKey: string | null
 }
 
 export interface RefuelParams {

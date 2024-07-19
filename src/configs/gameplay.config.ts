@@ -29,3 +29,7 @@ export const PIRATE_SPAWN_PROBABILITY = 1
 
 /* Town Settings */
 export const TOWN_SIZE = 1024
+
+/* Trade Settings */
+export const UPDATE_MARKETS_INTERVAL = 3000
+export const UPDATE_MARKETS_VALUE = 10
