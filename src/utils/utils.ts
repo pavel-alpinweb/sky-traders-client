@@ -57,6 +57,9 @@ export const updateMarket = (townStore: any) => {
                     const difference = resource[HEADING.VALUE] - resource.optima
                     townStore.decreaseTownResource(town.id, resource.key, difference < UPDATE_MARKETS_VALUE ? difference : UPDATE_MARKETS_VALUE)
                     townStore.calculatePrice(resource)
+                } else if (resource[HEADING.VALUE] === 0) {
+                    townStore.increaseTownResource(town.id, resource.key, UPDATE_MARKETS_VALUE)
+                    townStore.calculatePrice(resource)
                 }
             }
         }

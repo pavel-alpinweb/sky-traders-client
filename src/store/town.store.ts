@@ -560,7 +560,7 @@ export const useTown = defineStore("town", {
             const town = this.towns.find((town) => town.id === townId) as Town
             const resource = town.resources.find((resource) => resource.key === key) as ResourceTable
             resource[HEADING.VALUE] -= amount
-            resource.isGrow = resource[HEADING.VALUE] <= resource.optima || resource[HEADING.VALUE] === 0
+            resource.isGrow = resource[HEADING.VALUE] <= resource.optima
         },
         calculatePrice(resource: ResourceTable) {
             const difference = resource.optima - resource[HEADING.VALUE]
