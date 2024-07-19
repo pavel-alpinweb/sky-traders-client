@@ -2,7 +2,7 @@
 import TradeWidget from "../ui-components/TradeWidget.component.vue"
 import TradeTable from "../ui-components/TradeTable.component.vue"
 import { HEADING, ResourceTable, Transaction } from "../types/interfaces.ts"
-import { ref } from "vue"
+import { computed, ref } from "vue"
 import { usePlayer } from "../store/player.store.ts"
 import { useTown } from "../store/town.store.ts"
 
@@ -47,6 +47,15 @@ const sellHandler = (transaction: Transaction) => {
     town.increaseTownResource(selectedResource.value.key, transaction.resourceAmount)
     town.calculatePrice(selectedResource.value)
 }
+
+const maxSellAmount = computed<number>(() => {
+    const availableAmount = selectedResource.value[HEADING.MAX_VALUE] - selectedResource.value[HEADING.VALUE]
+    if (player.currentResource?.value) {
+        return player.currentResource?.value > availableAmount ? availableAmount : player.currentResource.value
+    }
+
+    return 0
+})
 </script>
 
 <template>
@@ -60,7 +69,7 @@ const sellHandler = (transaction: Transaction) => {
                 :color="props.color"
                 :resource="player.currentResource?.name ? player.currentResource.name : ''"
                 :player-gold="player.gold"
-                :player-resource-amount="player.currentResource ? player.currentResource.value : 0"
+                :player-resource-amount="maxSellAmount"
                 @buy="buyHandler"
                 @sell="sellHandler"
             />
