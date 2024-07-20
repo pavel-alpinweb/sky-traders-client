@@ -43,6 +43,11 @@ const repairHandler = (value: number) => {
 <template>
     <div class="shipyard-window">
         <h3 :class="`text-${props.color}-darken-4 text-h3`">Верфь</h3>
+        <v-alert class="shipyard-window__alert" type="success" variant="elevated" title="Вы приобрели корабль, Капитан!" text="Новый корабль уже находится в верфи, среди Ваших кораблей" closable>
+            <template #prepend>
+                <v-img class="shipyard-window__sink-icon" src="/public/assets/ships/seagull/seagull-shop.png" />
+            </template>
+        </v-alert>
         <v-tabs v-model="tab" :color="props.color" align-tabs="center">
             <v-tab value="ships">
                 <IconShips class="shipyard-window__menu-icon" />
@@ -75,6 +80,13 @@ const repairHandler = (value: number) => {
 
 <style lang="scss">
 .shipyard-window {
+    &__alert {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        z-index: 2;
+    }
     &__menu-icon {
         width: 30px;
         height: 30px;
@@ -90,6 +102,10 @@ const repairHandler = (value: number) => {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 15px;
+    }
+    &__sink-icon {
+        width: 50px;
+        height: 50px;
     }
 }
 </style>
