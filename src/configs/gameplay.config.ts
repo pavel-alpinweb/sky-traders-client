@@ -45,7 +45,7 @@ export const seagullParams = {
     maxFuel: 50,
     currentFuel: 50,
     price: 10000,
-    repairPrice: 1,
+    repairPrice: 10,
 }
 
 export const albatrossParams = {
@@ -57,7 +57,7 @@ export const albatrossParams = {
     maxFuel: 120,
     currentFuel: 120,
     price: 20000,
-    repairPrice: 3,
+    repairPrice: 30,
 }
 
 export const pelicanParams = {
@@ -69,7 +69,7 @@ export const pelicanParams = {
     maxFuel: 500,
     currentFuel: 500,
     price: 50000,
-    repairPrice: 5,
+    repairPrice: 50,
 }
 
 export const whaleParams = {
@@ -81,5 +81,5 @@ export const whaleParams = {
     maxFuel: 900,
     currentFuel: 900,
     price: 150000,
-    repairPrice: 8,
+    repairPrice: 80,
 }
