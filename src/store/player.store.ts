@@ -5,7 +5,7 @@ import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
         id: 0,
-        gold: 10000,
+        gold: 100000,
         resources: [
             {
                 value: 0,
