@@ -24,6 +24,7 @@ const selectShipHandler = (ship: Ship) => {
 }
 
 const buildShipHandler = (ship: Ship) => {
+    player.decreaseGold(ship.price)
     player.addNewShip({
         ...ship,
         id: new Date().getMilliseconds(),
