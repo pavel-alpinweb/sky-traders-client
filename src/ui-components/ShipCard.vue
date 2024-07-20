@@ -109,8 +109,12 @@ const healthBarColor = computed<string>(() => {
             </div>
             <span>{{ roundedCurrentFuel }} / {{ props.ship.maxFuel }}</span>
         </v-card-subtitle>
-        <v-card-subtitle v-if="props.mode === 'build'" :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
-            <IconGold class="ship-card__param-icon" v-tooltip="'Стоимость постройки'" /> {{ props.ship.price }}
+        <v-card-subtitle
+            v-if="props.mode === 'build'"
+            class="ship-card__param text-subtitle-1 align-center d-flex font-weight-black"
+            :class="`${props.playerGold < ship.price ? 'text-red-accent-4' : `text-${props.color}-darken-5`}`"
+        >
+            <IconGold class="ship-card__param-icon" v-tooltip="'Стоимость покупки'" /> {{ props.ship.price }}
         </v-card-subtitle>
         <v-card-actions>
             <v-btn :color="props.color" :disabled="props.playerGold < ship.price && props.mode === 'build'" @click="selectShip">{{ actionsLabel }}</v-btn>
