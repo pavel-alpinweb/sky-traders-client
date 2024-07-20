@@ -7,11 +7,14 @@ import { useTown } from "../store/town.store.ts"
 import { Game } from "phaser"
 import mapIcon from "/public/assets/icons/map/map.svg"
 import IconPirate from "/public/assets/icons/alerts/pirate.svg"
+import IconAward from "/public/assets/icons/alerts/award.svg"
+import IconGold from "/public/assets/icons/resources/gold.svg"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import FuelWidget from "../ui-components/FuelWidget.component.vue"
 import HealthWidget from "../ui-components/HealthWidget.component.vue"
 import { usePlayer } from "../store/player.store.ts"
 import { Coords } from "../types/interfaces.ts"
+import { PIRATE_AWARD_VALUE } from "../configs/gameplay.config.ts"
 
 const isShowTownAlert = ref(false)
 const isShowPirateAlert = ref(false)
@@ -26,6 +29,7 @@ const townStore = useTown()
 const player = usePlayer()
 
 const updateMarketInterval = updateMarket(townStore)
+const isShowAwardAlert = ref(false)
 
 const goToTown = () => {
     clearInterval(updateMarketInterval)
@@ -44,6 +48,7 @@ const goToTown = () => {
     EventBus.off("destroy-current-ship")
     EventBus.off("crush-ship-end")
     EventBus.off("show-pirate-alert")
+    EventBus.off("pirate-death")
     router.push({ path: "/town" })
 }
 
@@ -51,6 +56,10 @@ const destroyShip = (value: number | null) => {
     if ((value && value < 0) || value === 0) {
         EventBus.emit("destroy-current-ship")
     }
+}
+
+const closeHandler = () => {
+    isShowAwardAlert.value = false
 }
 
 onMounted(() => {
@@ -84,6 +93,10 @@ onMounted(() => {
     EventBus.on("show-pirate-alert", () => {
         isShowPirateAlert.value = true
     })
+    EventBus.on("pirate-death", () => {
+        isShowAwardAlert.value = true
+        player.increaseGold(PIRATE_AWARD_VALUE)
+    })
 })
 
 watch(
@@ -103,6 +116,14 @@ watch(
 
 <template>
     <div class="game-screen">
+        <v-alert v-if="isShowAwardAlert" class="game-screen__alert" type="success" variant="elevated" title="Вы одержали победу, капитан!" closable @click:close="closeHandler">
+            <template #prepend>
+                <IconAward class="game-screen__award-icon" />
+            </template>
+            <template #text>
+                <div class="game-screen__alert-text">Вы получаете награду 10000 <IconGold class="game-screen__gold-icon" /></div>
+            </template>
+        </v-alert>
         <div class="game-screen__top-panel">
             <ResourcesPanel :color="townStore.currentTown.color" :gold="player.gold" />
         </div>
@@ -137,6 +158,8 @@ watch(
 </template>
 
 <style scoped lang="scss">
+@import "/public/assets/scss/mixins.scss";
+
 .game-screen {
     width: 100vw;
     height: 100vh;
@@ -145,10 +168,35 @@ watch(
     align-items: center;
     justify-content: center;
     position: relative;
+
+    &__alert {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        z-index: 2;
+    }
+
+    &__alert-text {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    &__award-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    &__gold-icon {
+        @include icon-styles;
+    }
+
     &__game-wrapper {
         width: 100vw;
         height: 100vh;
     }
+
     &__town-alert {
         position: absolute;
         top: 0;
@@ -159,6 +207,7 @@ watch(
         background-color: #fff;
         color: #1a1a1a;
     }
+
     &__top-panel {
         position: fixed;
         top: 40px;

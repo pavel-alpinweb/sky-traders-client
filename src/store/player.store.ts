@@ -1,11 +1,11 @@
 import { defineStore } from "pinia"
 import { Player, RefuelParams, ResourcePanel, Ship } from "../types/interfaces.ts"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION, PIRATE_DAMAGE } from "../configs/gameplay.config.ts"
+import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION, PIRATE_DAMAGE, START_PLAYER_GOLD } from "../configs/gameplay.config.ts"
 
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
         id: 0,
-        gold: 100000,
+        gold: START_PLAYER_GOLD,
         resources: [
             {
                 value: 0,
