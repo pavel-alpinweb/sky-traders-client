@@ -18,7 +18,7 @@
                  "width":1024,
                  "x":312,
                  "y":1868
-                }, 
+                },
                 {
                  "gid":2147483650,
                  "height":1024,
@@ -30,7 +30,7 @@
                  "width":1024,
                  "x":1476,
                  "y":1164
-                }, 
+                },
                 {
                  "gid":1073741826,
                  "height":1024,
@@ -48,7 +48,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "id":7,
@@ -65,7 +65,7 @@
                  "width":512,
                  "x":820,
                  "y":2016
-                }, 
+                },
                 {
                  "gid":3221225473,
                  "height":512,
@@ -77,7 +77,7 @@
                  "width":512,
                  "x":760,
                  "y":788
-                }, 
+                },
                 {
                  "gid":2147483649,
                  "height":512,
@@ -89,7 +89,7 @@
                  "width":512,
                  "x":1656,
                  "y":1336
-                }, 
+                },
                 {
                  "gid":1073741825,
                  "height":512,
@@ -107,7 +107,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "id":5,
@@ -124,7 +124,7 @@
                  "width":512,
                  "x":4,
                  "y":628
-                }, 
+                },
                 {
                  "gid":1073741825,
                  "height":512,
@@ -136,7 +136,7 @@
                  "width":512,
                  "x":768,
                  "y":1196
-                }, 
+                },
                 {
                  "gid":3221225473,
                  "height":512,
@@ -154,7 +154,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "id":8,
@@ -171,7 +171,7 @@
                  "width":512,
                  "x":1652,
                  "y":2148
-                }, 
+                },
                 {
                  "gid":4,
                  "height":512,
@@ -189,7 +189,7 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
          "id":9,
@@ -206,7 +206,7 @@
                  "width":512,
                  "x":704.606363636364,
                  "y":671.15
-                }, 
+                },
                 {
                  "gid":5,
                  "height":512,
@@ -235,16 +235,16 @@
         {
          "columns":1,
          "firstgid":1,
-         "image":"..\/..\/..\/..\/\u041e\u0441\u0442\u0440\u043e\u0432\u0430\/island-grass-small\/islnad-grass-small.png",
+         "image":"..\/..\/..\/..\/\u041e\u0441\u0442\u0440\u043e\u0432\u0430\/island-grass-small\/island-grass-small.png",
          "imageheight":512,
          "imagewidth":512,
          "margin":0,
-         "name":"islnad-grass-small",
+         "name":"island-grass-small",
          "spacing":0,
          "tilecount":1,
          "tileheight":512,
          "tilewidth":512
-        }, 
+        },
         {
          "columns":1,
          "firstgid":2,
@@ -257,7 +257,7 @@
          "tilecount":1,
          "tileheight":1024,
          "tilewidth":1024
-        }, 
+        },
         {
          "columns":1,
          "firstgid":3,
@@ -270,7 +270,7 @@
          "tilecount":1,
          "tileheight":512,
          "tilewidth":512
-        }, 
+        },
         {
          "columns":1,
          "firstgid":4,
@@ -283,7 +283,7 @@
          "tilecount":1,
          "tileheight":512,
          "tilewidth":512
-        }, 
+        },
         {
          "columns":1,
          "firstgid":5,
