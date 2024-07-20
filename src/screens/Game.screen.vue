@@ -87,6 +87,7 @@ onMounted(() => {
     })
     EventBus.on("crush-ship-end", () => {
         player.removeCurrentShip()
+        player.resetAllResources()
         townStore.setShowSinkAlert(true)
         goToTown()
     })

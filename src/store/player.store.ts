@@ -123,6 +123,11 @@ export const usePlayer = defineStore("player", {
             const resource = this.resources.find((resource) => resource.name === this.currentResourceKey) as ResourcePanel
             resource.value -= amount
         },
+        resetAllResources() {
+            this.resources.forEach((resource) => {
+                resource.value = 0
+            })
+        },
         setCurrentShip(id: number): void {
             this.currentShipId = id
         },
