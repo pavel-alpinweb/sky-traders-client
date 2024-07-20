@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import IconFuel from "/public/assets/icons/ship-params/fuel.svg"
 import { computed } from "vue"
+import { useProgressBarColor } from "../utils/utils.ts"
 
 const props = defineProps<{
     currentFuel: number
@@ -8,17 +9,7 @@ const props = defineProps<{
 }>()
 
 const fuelPercentage = computed<number>(() => props.currentFuel / (props.maxFuel / 100))
-const fuelBarColor = computed<string>(() => {
-    let color = ""
-    if (fuelPercentage.value >= 60) {
-        color = "green"
-    } else if (fuelPercentage.value >= 40) {
-        color = "amber"
-    } else if (fuelPercentage.value <= 39.9) {
-        color = "red"
-    }
-    return color
-})
+const fuelBarColor = useProgressBarColor(fuelPercentage)
 </script>
 
 <template>
