@@ -60,13 +60,13 @@ const repairHandler = (value: number) => {
         <v-tabs-window v-model="tab">
             <v-tabs-window-item value="ships">
                 <ship-service v-if="player.currentShipId" :color="props.color" @refuel="refuelHandler" @repair="repairHandler" />
-                <ship-list :ships="player.ships" :color="props.color" mode="select" :current-ship-id="player.currentShipId" @select="selectShipHandler" />
+                <ship-list :ships="player.ships" :color="props.color" mode="select" :current-ship-id="player.currentShipId" :player-gold="player.gold" @select="selectShipHandler" />
             </v-tabs-window-item>
             <!--            <v-tabs-window-item value="blueprints">-->
             <!--                <h2>Мои чертежи</h2>-->
             <!--            </v-tabs-window-item>-->
             <v-tabs-window-item value="building">
-                <ship-list :ships="town.currentTown.ships" :color="props.color" mode="build" @build="buildShipHandler" />
+                <ship-list :ships="town.currentTown.ships" :color="props.color" mode="build" :player-gold="player.gold" @build="buildShipHandler" />
             </v-tabs-window-item>
         </v-tabs-window>
     </div>

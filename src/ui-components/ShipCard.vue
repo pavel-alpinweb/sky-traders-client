@@ -12,6 +12,7 @@ const props = defineProps<{
     color: string
     ship: Ship
     mode: ShipCardMode
+    playerGold: number
     variant: "flat" | "text" | "elevated" | "tonal" | "outlined" | "plain"
 }>()
 
@@ -112,7 +113,7 @@ const healthBarColor = computed<string>(() => {
             <IconGold class="ship-card__param-icon" v-tooltip="'Стоимость постройки'" /> {{ props.ship.price }}
         </v-card-subtitle>
         <v-card-actions>
-            <v-btn :color="props.color" @click="selectShip">{{ actionsLabel }}</v-btn>
+            <v-btn :color="props.color" :disabled="props.playerGold < ship.price && props.mode === 'build'" @click="selectShip">{{ actionsLabel }}</v-btn>
         </v-card-actions>
     </v-card>
 </template>
