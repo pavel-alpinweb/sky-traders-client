@@ -100,7 +100,7 @@ const errorMessages = computed<string[]>(() => {
                     :icon="tradeMode === 'buy' ? 'mdi-cash-plus' : 'mdi-cash-minus'"
                     :color="props.color"
                     size="x-large"
-                    v-tooltip="tradeMode === 'buy' ? 'Продать ресурс' : 'Купить ресурс'"
+                    v-tooltip="tradeMode === 'buy' ? 'Продать товар' : 'Купить товар'"
                     @click="changeMode"
                 />
                 <v-btn :color="props.color" size="x-large" @click="buySell" :disabled="disabledAction">
