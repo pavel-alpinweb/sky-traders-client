@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { reactive, ref } from "vue"
 import IconShips from "/public/assets/icons/shipyard/zeppelin.svg"
 // import IconBlueprints from "/public/assets/icons/shipyard/drawing.svg"
 import IconBuy from "/public/assets/icons/shipyard/buy.svg"
@@ -17,6 +17,11 @@ const player = usePlayer()
 const town = useTown()
 
 const tab = ref(null)
+const newShip = reactive({
+    isShowAlert: false,
+    shipType: "",
+    shipName: "",
+})
 
 const selectShipHandler = (ship: Ship) => {
     player.setCurrentShip(ship.id)
@@ -29,6 +34,9 @@ const buildShipHandler = (ship: Ship) => {
         ...ship,
         id: new Date().getMilliseconds(),
     })
+    newShip.isShowAlert = true
+    newShip.shipType = ship.type
+    newShip.shipName = ship.name
 }
 
 const refuelHandler = (params: RefuelParams) => {
@@ -43,9 +51,17 @@ const repairHandler = (value: number) => {
 <template>
     <div class="shipyard-window">
         <h3 :class="`text-${props.color}-darken-4 text-h3`">Верфь</h3>
-        <v-alert class="shipyard-window__alert" type="success" variant="elevated" title="Вы приобрели корабль, Капитан!" text="Новый корабль уже находится в верфи, среди Ваших кораблей" closable>
+        <v-alert
+            v-if="newShip.isShowAlert"
+            class="shipyard-window__alert"
+            type="success"
+            variant="elevated"
+            :title="`Вы приобрели корабль \'${newShip.shipName}\', Капитан!`"
+            text="Новый корабль уже находится среди Ваших кораблей"
+            closable
+        >
             <template #prepend>
-                <v-img class="shipyard-window__sink-icon" src="/public/assets/ships/seagull/seagull-shop.png" />
+                <v-img class="shipyard-window__sink-icon" :src="`/public/assets/ships/${newShip.shipType}/${newShip.shipType}-shop.png`" />
             </template>
         </v-alert>
         <v-tabs v-model="tab" :color="props.color" align-tabs="center">
