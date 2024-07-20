@@ -15,6 +15,8 @@ import IconSilk from "/public/assets/icons/resources/silk.svg"
 import { IconList } from "../types/types.ts"
 import { HEADING } from "../types/interfaces.ts"
 import { UPDATE_MARKETS_INTERVAL, UPDATE_MARKETS_VALUE } from "../configs/gameplay.config.ts"
+import { computed } from "vue"
+import { ComputedRef } from "@vue/reactivity"
 
 export const EventBus = new Phaser.Events.EventEmitter()
 
@@ -64,4 +66,18 @@ export const updateMarket = (townStore: any) => {
             }
         }
     }, UPDATE_MARKETS_INTERVAL)
+}
+
+export const useProgressBarColor = (percentage: ComputedRef<number>) => {
+    return computed<string>(() => {
+        let color = ""
+        if (percentage.value >= 60) {
+            color = "green"
+        } else if (percentage.value >= 40) {
+            color = "amber"
+        } else if (percentage.value <= 39.9999) {
+            color = "red"
+        }
+        return color
+    })
 }

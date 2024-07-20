@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import IconArmor from "/public/assets/icons/ship-params/shield.svg"
 import { computed } from "vue"
+import { useProgressBarColor } from "../utils/utils.ts"
 
 const props = defineProps<{
     currentHealth: number
@@ -8,17 +9,7 @@ const props = defineProps<{
 }>()
 
 const healthPercentage = computed<number>(() => props.currentHealth / (props.maxHealth / 100))
-const healthBarColor = computed<string>(() => {
-    let color = ""
-    if (healthPercentage.value >= 60) {
-        color = "green"
-    } else if (healthPercentage.value >= 40) {
-        color = "amber"
-    } else if (healthPercentage.value <= 39) {
-        color = "red"
-    }
-    return color
-})
+const healthBarColor = useProgressBarColor(healthPercentage)
 </script>
 
 <template>
