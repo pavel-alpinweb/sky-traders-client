@@ -33,3 +33,53 @@ export const TOWN_SIZE = 1024
 /* Trade Settings */
 export const UPDATE_MARKETS_INTERVAL = 3000
 export const UPDATE_MARKETS_VALUE = 10
+
+/* SHIPS PARAMS */
+
+export const seagullParams = {
+    velocity: BASIC_SHIP_SPEED,
+    angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY + 80,
+    damage: 5,
+    maxHealth: 20,
+    currentHealth: 20,
+    maxFuel: 50,
+    currentFuel: 50,
+    price: 10000,
+    repairPrice: 1,
+}
+
+export const albatrossParams = {
+    velocity: BASIC_SHIP_SPEED + 80,
+    angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY + 30,
+    damage: 20,
+    maxHealth: 100,
+    currentHealth: 100,
+    maxFuel: 120,
+    currentFuel: 120,
+    price: 20000,
+    repairPrice: 3,
+}
+
+export const pelicanParams = {
+    velocity: BASIC_SHIP_SPEED + 120,
+    angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY - 30,
+    damage: 50,
+    maxHealth: 300,
+    currentHealth: 300,
+    maxFuel: 500,
+    currentFuel: 500,
+    price: 50000,
+    repairPrice: 5,
+}
+
+export const whaleParams = {
+    velocity: BASIC_SHIP_SPEED + 150,
+    angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY - 30,
+    damage: 100,
+    maxHealth: 700,
+    currentHealth: 700,
+    maxFuel: 900,
+    currentFuel: 900,
+    price: 150000,
+    repairPrice: 8,
+}
