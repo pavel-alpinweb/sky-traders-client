@@ -5,7 +5,7 @@ import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
         id: 0,
-        gold: 5000,
+        gold: 10000,
         resources: [
             {
                 value: 0,
@@ -125,6 +125,9 @@ export const usePlayer = defineStore("player", {
         },
         setCurrentShip(id: number): void {
             this.currentShipId = id
+        },
+        addNewShip(ship: Ship): void {
+            this.ships.push(ship)
         },
         decreaseCurrentShipFuel(): void {
             if (this.currentShip.currentFuel > 0) {
