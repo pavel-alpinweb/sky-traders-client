@@ -108,6 +108,7 @@ export class Pirate {
             },
             this
         )
+        EventBus.emit("pirate-death")
     }
 
     onMoving(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }): void {
