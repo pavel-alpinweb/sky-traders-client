@@ -17,12 +17,16 @@ const selectShipEmit = defineEmits<{
 const selectShipHandler = (ship: Ship) => {
     selectShipEmit("select", ship)
 }
+
+const buildShipHandler = (ship: Ship) => {
+    selectShipEmit("build", ship)
+}
 </script>
 
 <template>
     <div class="ship-list">
         <div v-for="(ship, key) in props.ships" :key="key" class="ship-list__item">
-            <ShipCard :color="props.color" :mode="props.mode" :ship="ship" :variant="ship.id === currentShipId ? 'outlined' : 'tonal'" @select="selectShipHandler" />
+            <ShipCard :color="props.color" :mode="props.mode" :ship="ship" :variant="ship.id === currentShipId ? 'outlined' : 'tonal'" @select="selectShipHandler" @build="buildShipHandler" />
         </div>
     </div>
 </template>

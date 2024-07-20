@@ -23,6 +23,13 @@ const selectShipHandler = (ship: Ship) => {
     town.setShowSinkAlert(false)
 }
 
+const buildShipHandler = (ship: Ship) => {
+    player.addNewShip({
+        ...ship,
+        id: new Date().getMilliseconds(),
+    })
+}
+
 const refuelHandler = (params: RefuelParams) => {
     player.refuelCurrentShip(params)
 }
@@ -59,7 +66,7 @@ const repairHandler = (value: number) => {
             <!--                <h2>Мои чертежи</h2>-->
             <!--            </v-tabs-window-item>-->
             <v-tabs-window-item value="building">
-                <ship-list :ships="town.currentTown.ships" :color="props.color" mode="build" />
+                <ship-list :ships="town.currentTown.ships" :color="props.color" mode="build" @build="buildShipHandler" />
             </v-tabs-window-item>
         </v-tabs-window>
     </div>

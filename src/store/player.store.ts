@@ -126,6 +126,9 @@ export const usePlayer = defineStore("player", {
         setCurrentShip(id: number): void {
             this.currentShipId = id
         },
+        addNewShip(ship: Ship): void {
+            this.ships.push(ship)
+        },
         decreaseCurrentShipFuel(): void {
             if (this.currentShip.currentFuel > 0) {
                 this.currentShip.currentFuel -= FUEL_CONSUMPTION
