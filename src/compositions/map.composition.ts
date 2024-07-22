@@ -7,7 +7,7 @@ export const mapComposition = {
     },
 
     tileMapUpload(scene: Phaser.Scene) {
-        scene.load.tilemapTiledJSON("tilemap", "/assets/levels/dev.json")
+        scene.load.tilemapTiledJSON("tilemap", "/assets/levels/demo.json")
     },
 
     islandUpload(scene: Phaser.Scene) {

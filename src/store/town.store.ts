@@ -6,8 +6,8 @@ export const useTown = defineStore("town", {
     state: (): TownStore => ({
         currentTownId: "start-01",
         coords: {
-            x: 1280,
-            y: 1280,
+            x: 6144,
+            y: 6656,
         },
         towns: [
             {
