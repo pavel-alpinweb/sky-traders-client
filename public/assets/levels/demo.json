@@ -12,38 +12,40 @@
                  "height":512,
                  "id":4,
                  "name":"islandsBottom",
-                 "rotation":0,
+                 "rotation":47.8182017876328,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":5600,
-                 "y":7464
+                 "x":2790.39918908206,
+                 "y":4894.19961956896
                 }, 
                 {
                  "gid":3,
                  "height":512,
                  "id":5,
                  "name":"islandsBottom",
-                 "rotation":0,
+                 "rotation":305.983283880292,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":6920,
-                 "y":6264
+                 "x":4920.739648402,
+                 "y":4165.56483649713
                 }, 
                 {
                  "gid":3,
                  "height":512,
                  "id":6,
                  "name":"islandsBottom",
-                 "rotation":0,
+                 "rotation":166.271767212198,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":5088,
-                 "y":5656
+                 "x":3011.93355411617,
+                 "y":2562.56021710636
                 }],
          "opacity":1,
+         "parallaxx":0.4,
+         "parallaxy":0.4,
          "type":"objectgroup",
          "visible":true,
          "x":0,
@@ -59,38 +61,40 @@
                  "height":256,
                  "id":7,
                  "name":"islandsMiddle",
-                 "rotation":0,
+                 "rotation":318.784712648434,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":5848,
-                 "y":5656
+                 "x":3780.05133540209,
+                 "y":2892.62455374153
                 }, 
                 {
                  "gid":4,
                  "height":256,
                  "id":8,
                  "name":"islandsMiddle",
-                 "rotation":0,
+                 "rotation":295.704853039292,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":6368,
-                 "y":6648
+                 "x":4035.81502475373,
+                 "y":5090.85128859248
                 }, 
                 {
                  "gid":4,
                  "height":256,
                  "id":9,
                  "name":"islandsMiddle",
-                 "rotation":0,
+                 "rotation":319.500241002107,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":5360,
-                 "y":6152
+                 "x":2801.79662751872,
+                 "y":4772.4612540413
                 }],
          "opacity":1,
+         "parallaxx":0.6,
+         "parallaxy":0.6,
          "type":"objectgroup",
          "visible":true,
          "x":0,
@@ -99,7 +103,7 @@
         {
          "draworder":"topdown",
          "id":2,
-         "name":"islandTop",
+         "name":"islandsTop",
          "objects":[
                 {
                  "gid":4,
@@ -110,8 +114,8 @@
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":6912,
-                 "y":7168
+                 "x":3608,
+                 "y":4192
                 }, 
                 {
                  "gid":4,
@@ -122,10 +126,24 @@
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":5880,
-                 "y":6152
+                 "x":4328,
+                 "y":4704
+                }, 
+                {
+                 "gid":4,
+                 "height":256,
+                 "id":13,
+                 "name":"",
+                 "rotation":299.916382245002,
+                 "type":"",
+                 "visible":true,
+                 "width":256,
+                 "x":5200.70638051552,
+                 "y":5921.18269054665
                 }],
          "opacity":1,
+         "parallaxx":0.8,
+         "parallaxy":0.8,
          "type":"objectgroup",
          "visible":true,
          "x":0,
@@ -178,7 +196,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":12,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
