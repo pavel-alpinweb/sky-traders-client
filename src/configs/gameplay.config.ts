@@ -6,7 +6,7 @@ export const LEVEL_HEIGHT = window.innerHeight
 export const BASIC_SHIP_SPEED = 200
 export const BASIC_SHIP_ANGULAR_VELOCITY = 180
 export const BASIC_SHIP_SCALE = 0.7
-export const START_PLAYER_GOLD = 10000
+export const START_PLAYER_GOLD = 100000
 
 /* GAMEPLAY SETTINGS */
 export const TARGET_TOLERANCE = 2
@@ -44,8 +44,8 @@ export const seagullParams = {
     damage: 5,
     maxHealth: 20,
     currentHealth: 20,
-    maxFuel: 50,
-    currentFuel: 50,
+    maxFuel: 35,
+    currentFuel: 35,
     price: 10000,
     repairPrice: 10,
 }

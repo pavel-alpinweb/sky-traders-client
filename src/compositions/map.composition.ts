@@ -18,6 +18,7 @@ export const mapComposition = {
     townsUpload(scene: Phaser.Scene) {
         scene.load.image("start-01", "/assets/towns/start-01-map.png")
         scene.load.image("start-02", "/assets/towns/start-02-map.png")
+        scene.load.image("middle", "/assets/towns/middle-map.png")
     },
 
     addMapBackground(scene: Phaser.Scene): void {

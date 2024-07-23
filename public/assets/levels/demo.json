@@ -12,36 +12,36 @@
                  "height":512,
                  "id":4,
                  "name":"islandsBottom",
-                 "rotation":47.8182017876328,
+                 "rotation":47.8182,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":2790.39918908206,
-                 "y":4894.19961956896
+                 "x":2790.4,
+                 "y":4894.2
                 }, 
                 {
                  "gid":3,
                  "height":512,
                  "id":5,
                  "name":"islandsBottom",
-                 "rotation":305.983283880292,
+                 "rotation":305.983,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":4920.739648402,
-                 "y":4165.56483649713
+                 "x":4920.74,
+                 "y":4165.56
                 }, 
                 {
                  "gid":3,
                  "height":512,
                  "id":6,
                  "name":"islandsBottom",
-                 "rotation":166.271767212198,
+                 "rotation":166.272,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":2419.93355411617,
-                 "y":1906.56021710636
+                 "x":2419.93,
+                 "y":1906.56
                 }],
          "opacity":1,
          "parallaxx":0.4,
@@ -61,36 +61,36 @@
                  "height":256,
                  "id":7,
                  "name":"islandsMiddle",
-                 "rotation":318.784712648434,
+                 "rotation":318.785,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":3780.05133540209,
-                 "y":2892.62455374153
+                 "x":3780.05,
+                 "y":2892.62
                 }, 
                 {
                  "gid":4,
                  "height":256,
                  "id":8,
                  "name":"islandsMiddle",
-                 "rotation":295.704853039292,
+                 "rotation":295.705,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":4035.81502475373,
-                 "y":5090.85128859248
+                 "x":4035.82,
+                 "y":5090.85
                 }, 
                 {
                  "gid":4,
                  "height":256,
                  "id":9,
                  "name":"islandsMiddle",
-                 "rotation":319.500241002107,
+                 "rotation":319.5,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":2801.79662751872,
-                 "y":4772.4612540413
+                 "x":2801.8,
+                 "y":4772.46
                 }],
          "opacity":1,
          "parallaxx":0.6,
@@ -134,12 +134,12 @@
                  "height":256,
                  "id":13,
                  "name":"",
-                 "rotation":299.916382245002,
+                 "rotation":299.916,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":5200.70638051552,
-                 "y":5921.18269054665
+                 "x":5200.71,
+                 "y":5921.18
                 }],
          "opacity":1,
          "parallaxx":0.8,
@@ -177,6 +177,18 @@
                  "width":512,
                  "x":4552,
                  "y":5152
+                }, 
+                {
+                 "gid":5,
+                 "height":1024,
+                 "id":14,
+                 "name":"middle",
+                 "rotation":0,
+                 "type":"town",
+                 "visible":true,
+                 "width":1024,
+                 "x":14240,
+                 "y":15392
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -196,7 +208,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":14,
+ "nextobjectid":15,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
@@ -253,6 +265,19 @@
          "tilecount":1,
          "tileheight":256,
          "tilewidth":256
+        }, 
+        {
+         "columns":1,
+         "firstgid":5,
+         "image":"..\/towns\/middle-map.png",
+         "imageheight":1024,
+         "imagewidth":1024,
+         "margin":0,
+         "name":"middle-map",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":1024,
+         "tilewidth":1024
         }],
  "tilewidth":256,
  "type":"map",
