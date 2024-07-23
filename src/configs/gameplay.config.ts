@@ -26,7 +26,7 @@ export const PIRATE_START_FIRE_DELAY = 1500
 export const PIRATE_FIRE_DISTANCE = 1000
 export const PIRATE_DAMAGE = 20
 export const PIRATE_MAX_HEALTH = 100
-export const PIRATE_SPAWN_PROBABILITY = 1
+export const PIRATE_SPAWN_PROBABILITY = 0.5
 export const PIRATE_AWARD_VALUE = 10000
 
 /* Town Settings */
