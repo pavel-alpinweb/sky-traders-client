@@ -6,7 +6,7 @@ export const LEVEL_HEIGHT = window.innerHeight
 export const BASIC_SHIP_SPEED = 200
 export const BASIC_SHIP_ANGULAR_VELOCITY = 180
 export const BASIC_SHIP_SCALE = 0.7
-export const START_PLAYER_GOLD = 10000
+export const START_PLAYER_GOLD = 100000
 
 /* GAMEPLAY SETTINGS */
 export const TARGET_TOLERANCE = 2
@@ -25,7 +25,7 @@ export const PIRATE_FIRE_DELAY = 1500
 export const PIRATE_START_FIRE_DELAY = 1500
 export const PIRATE_FIRE_DISTANCE = 1000
 export const PIRATE_DAMAGE = 20
-export const PIRATE_MAX_HEALTH = 100
+export const PIRATE_MAX_HEALTH = 150
 export const PIRATE_SPAWN_PROBABILITY = 0.5
 export const PIRATE_AWARD_VALUE = 10000
 
@@ -56,8 +56,8 @@ export const albatrossParams = {
     damage: 20,
     maxHealth: 100,
     currentHealth: 100,
-    maxFuel: 120,
-    currentFuel: 120,
+    maxFuel: 60,
+    currentFuel: 60,
     price: 20000,
     repairPrice: 30,
 }
@@ -68,8 +68,8 @@ export const pelicanParams = {
     damage: 50,
     maxHealth: 300,
     currentHealth: 300,
-    maxFuel: 500,
-    currentFuel: 500,
+    maxFuel: 250,
+    currentFuel: 250,
     price: 50000,
     repairPrice: 50,
 }
@@ -80,8 +80,8 @@ export const whaleParams = {
     damage: 100,
     maxHealth: 700,
     currentHealth: 700,
-    maxFuel: 900,
-    currentFuel: 900,
+    maxFuel: 500,
+    currentFuel: 500,
     price: 100000,
     repairPrice: 80,
 }
