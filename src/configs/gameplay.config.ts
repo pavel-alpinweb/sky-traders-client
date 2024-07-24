@@ -6,12 +6,12 @@ export const LEVEL_HEIGHT = window.innerHeight
 export const BASIC_SHIP_SPEED = 200
 export const BASIC_SHIP_ANGULAR_VELOCITY = 180
 export const BASIC_SHIP_SCALE = 0.7
-export const START_PLAYER_GOLD = 100000
+export const START_PLAYER_GOLD = 10000
 
 /* GAMEPLAY SETTINGS */
 export const TARGET_TOLERANCE = 2
 export const TARGET_HIDE_DISTANCE = 50
-export const FUEL_PRICE = 5
+export const FUEL_PRICE = 100
 export const FUEL_CONSUMPTION = 0.1
 export const HEALTH_CONSUMPTION = 0.01
 export const FIRE_BUTTON = "space"
@@ -82,6 +82,6 @@ export const whaleParams = {
     currentHealth: 700,
     maxFuel: 900,
     currentFuel: 900,
-    price: 150000,
+    price: 100000,
     repairPrice: 80,
 }
