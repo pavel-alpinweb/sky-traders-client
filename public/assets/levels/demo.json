@@ -48,24 +48,24 @@
                  "height":512,
                  "id":21,
                  "name":"islandsBottom",
-                 "rotation":264.352915921485,
+                 "rotation":264.353,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":5102.34818302898,
-                 "y":7043.16701596434
+                 "x":5102.35,
+                 "y":7043.17
                 }, 
                 {
                  "gid":3,
                  "height":512,
                  "id":22,
                  "name":"islandsBottom",
-                 "rotation":79.1936253670379,
+                 "rotation":79.1936,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":6938.94220851587,
-                 "y":6314.13739626298
+                 "x":6938.94,
+                 "y":6314.14
                 }],
          "opacity":1,
          "parallaxx":0.4,
@@ -170,36 +170,36 @@
                  "height":256,
                  "id":15,
                  "name":"islandsTop",
-                 "rotation":275.898927746125,
+                 "rotation":275.899,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":6847.76714484448,
-                 "y":6936.87726875926
+                 "x":6847.77,
+                 "y":6936.88
                 }, 
                 {
                  "gid":4,
                  "height":256,
                  "id":16,
                  "name":"islandsTop",
-                 "rotation":86.3236476720605,
+                 "rotation":86.3236,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":8230.45598707259,
-                 "y":7641.67081800166
+                 "x":8230.46,
+                 "y":7641.67
                 }, 
                 {
                  "gid":4,
                  "height":256,
                  "id":17,
                  "name":"islandsTop",
-                 "rotation":137.198026453229,
+                 "rotation":137.198,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":6789.34270511168,
-                 "y":8704.31385115014
+                 "x":6789.34,
+                 "y":8704.31
                 }, 
                 {
                  "gid":4,
@@ -218,12 +218,12 @@
                  "height":256,
                  "id":19,
                  "name":"islandsTop",
-                 "rotation":182.848644331449,
+                 "rotation":182.849,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":11327.8031418849,
-                 "y":10412.1194801286
+                 "x":11327.8,
+                 "y":10412.1
                 }, 
                 {
                  "gid":3221225476,
@@ -285,6 +285,18 @@
                  "width":1024,
                  "x":14240,
                  "y":15392
+                }, 
+                {
+                 "gid":7,
+                 "height":1024,
+                 "id":39,
+                 "name":"final-01",
+                 "rotation":0,
+                 "type":"town",
+                 "visible":true,
+                 "width":1024,
+                 "x":24480,
+                 "y":1184
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -484,7 +496,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":39,
+ "nextobjectid":41,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
@@ -567,6 +579,19 @@
          "tilecount":1,
          "tileheight":512,
          "tilewidth":512
+        }, 
+        {
+         "columns":1,
+         "firstgid":7,
+         "image":"..\/towns\/final-01-map.png",
+         "imageheight":1024,
+         "imagewidth":1024,
+         "margin":0,
+         "name":"final-01-map",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":1024,
+         "tilewidth":1024
         }],
  "tilewidth":256,
  "type":"map",
