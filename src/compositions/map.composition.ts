@@ -13,6 +13,8 @@ export const mapComposition = {
     islandUpload(scene: Phaser.Scene) {
         scene.load.image("island-grass-big", "/assets/islands/island-grass-big.png")
         scene.load.image("island-grass-small", "/assets/islands/island-grass-small.png")
+        scene.load.image("island-ground-big", "/assets/islands/island-ground-big.png")
+        scene.load.image("island-ground-small", "/assets/islands/island-ground-small.png")
     },
 
     townsUpload(scene: Phaser.Scene) {
@@ -36,26 +38,36 @@ export const mapComposition = {
     },
 
     createIslands(map: Phaser.Tilemaps.Tilemap) {
-        const islandsBottom = map.createFromObjects("islandsBottom", { name: "islandsBottom", key: "island-grass-big" })
-        const islandsMiddle = map.createFromObjects("islandsMiddle", { name: "islandsMiddle", key: "island-grass-small" })
-        const islandsTop = map.createFromObjects("islandsTop", { name: "islandsTop", key: "island-grass-small" })
-        for (const island of islandsTop) {
+        const islandsGreenBigBottom = map.createFromObjects("islandsBottom", { name: "islandsBottom", key: "island-grass-big" })
+        const islandsGroundBigBottom = map.createFromObjects("islandsBottom", { name: "islandGroundBig", key: "island-ground-big" })
+        const allBottomIslands = islandsGreenBigBottom.concat(islandsGroundBigBottom)
+
+        const islandsGreenMiddle = map.createFromObjects("islandsMiddle", { name: "islandsMiddle", key: "island-grass-small" })
+        const islandsGroundMiddle = map.createFromObjects("islandsMiddle", { name: "islandsGroundSmall", key: "island-ground-small" })
+        const allMiddleIslands = islandsGreenMiddle.concat(islandsGroundMiddle)
+
+        const islandsGreenSmallTop = map.createFromObjects("islandsTop", { name: "islandsTop", key: "island-grass-small" })
+        const islandsGreenSmallBig = map.createFromObjects("islandsTop", { name: "islandGrassBig", key: "island-grass-big" })
+        const islandsGroundSmallTop = map.createFromObjects("islandsTop", { name: "islandGroundSmall", key: "island-ground-small" })
+        const allTopIslands = islandsGreenSmallTop.concat(islandsGreenSmallBig).concat(islandsGroundSmallTop)
+
+        for (const island of allTopIslands) {
             // eslint-disable-next-line
             // @ts-ignore
             // island.setScrollFactor(0.8).setScale(1).postFX.addBlur(0, 2, 2, 0.1, 0xa7efff, 2)
             island.setScrollFactor(0.8).setScale(0.9).setAlpha(0.9)
         }
-        for (const island of islandsMiddle) {
+        for (const island of allMiddleIslands) {
             // eslint-disable-next-line
             // @ts-ignore
             // island.setScrollFactor(0.6).setScale(0.9).postFX.addBlur(0, 2, 2, 0.2, 0xa7efff, 2)
-            island.setScrollFactor(0.6).setScale(0.8).setAlpha(0.8)
+            island.setScrollFactor(0.6).setScale(0.7).setAlpha(0.7)
         }
-        for (const island of islandsBottom) {
+        for (const island of allBottomIslands) {
             // eslint-disable-next-line
             // @ts-ignore
             // island.setScrollFactor(0.4).setScale(0.8).postFX.addBlur(0, 2, 2, 0.3, 0xa7efff, 2)
-            island.setScrollFactor(0.4).setScale(0.7).setAlpha(0.7)
+            island.setScrollFactor(0.5).setScale(0.6).setAlpha(0.6)
         }
     },
 
