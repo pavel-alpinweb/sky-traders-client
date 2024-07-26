@@ -15,6 +15,8 @@ export const mapComposition = {
         scene.load.image("island-grass-small", "/assets/islands/island-grass-small.png")
         scene.load.image("island-ground-big", "/assets/islands/island-ground-big.png")
         scene.load.image("island-ground-small", "/assets/islands/island-ground-small.png")
+        scene.load.image("island-sand-small", "/assets/islands/island-sand-small.png")
+        scene.load.image("island-sand-big", "/assets/islands/island-sand-big.png")
     },
 
     townsUpload(scene: Phaser.Scene) {
@@ -41,16 +43,19 @@ export const mapComposition = {
     createIslands(map: Phaser.Tilemaps.Tilemap) {
         const islandsGreenBigBottom = map.createFromObjects("islandsBottom", { name: "islandsBottom", key: "island-grass-big" })
         const islandsGroundBigBottom = map.createFromObjects("islandsBottom", { name: "islandGroundBig", key: "island-ground-big" })
-        const allBottomIslands = islandsGreenBigBottom.concat(islandsGroundBigBottom)
+        const islandsSandBigBottom = map.createFromObjects("islandsBottom", { name: "islandSandSmall", key: "island-sand-small" })
+        const allBottomIslands = islandsGreenBigBottom.concat(islandsGroundBigBottom).concat(islandsSandBigBottom)
 
         const islandsGreenMiddle = map.createFromObjects("islandsMiddle", { name: "islandsMiddle", key: "island-grass-small" })
         const islandsGroundMiddle = map.createFromObjects("islandsMiddle", { name: "islandsGroundSmall", key: "island-ground-small" })
-        const allMiddleIslands = islandsGreenMiddle.concat(islandsGroundMiddle)
+        const islandsSandMiddle = map.createFromObjects("islandsMiddle", { name: "islandSandBig", key: "island-sand-big" })
+        const allMiddleIslands = islandsGreenMiddle.concat(islandsGroundMiddle).concat(islandsSandMiddle)
 
         const islandsGreenSmallTop = map.createFromObjects("islandsTop", { name: "islandsTop", key: "island-grass-small" })
         const islandsGreenSmallBig = map.createFromObjects("islandsTop", { name: "islandGrassBig", key: "island-grass-big" })
         const islandsGroundSmallTop = map.createFromObjects("islandsTop", { name: "islandGroundSmall", key: "island-ground-small" })
-        const allTopIslands = islandsGreenSmallTop.concat(islandsGreenSmallBig).concat(islandsGroundSmallTop)
+        const islandsSandSmallTop = map.createFromObjects("islandsTop", { name: "islandSandTop", key: "island-sand-small" })
+        const allTopIslands = islandsGreenSmallTop.concat(islandsGreenSmallBig).concat(islandsGroundSmallTop).concat(islandsSandSmallTop)
 
         for (const island of allTopIslands) {
             // eslint-disable-next-line
