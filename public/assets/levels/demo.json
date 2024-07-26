@@ -120,12 +120,12 @@
                  "height":512,
                  "id":77,
                  "name":"islandGroundBig",
-                 "rotation":274.503954848845,
+                 "rotation":274.504,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":13460.7063060008,
-                 "y":3208.11259484207
+                 "x":13460.7,
+                 "y":3208.11
                 }, 
                 {
                  "gid":9,
@@ -144,12 +144,12 @@
                  "height":512,
                  "id":83,
                  "name":"islandGroundBig",
-                 "rotation":357.00832133221,
+                 "rotation":357.008,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":10433.0036824421,
-                 "y":2495.29919948297
+                 "x":10433,
+                 "y":2495.3
                 }, 
                 {
                  "gid":2147483651,
@@ -253,12 +253,12 @@
                  "height":256,
                  "id":69,
                  "name":"islandsMiddle",
-                 "rotation":46.4755852644749,
+                 "rotation":46.4756,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":12388.0261055494,
-                 "y":7731.68713369101
+                 "x":12388,
+                 "y":7731.69
                 }, 
                 {
                  "gid":8,
@@ -301,72 +301,72 @@
                  "height":256,
                  "id":87,
                  "name":"islandsGroundSmall",
-                 "rotation":70.210604992321,
+                 "rotation":70.2106,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":16063.4230764241,
-                 "y":5446.0954002409
+                 "x":16063.4,
+                 "y":5446.1
                 }, 
                 {
                  "gid":8,
                  "height":256,
                  "id":88,
                  "name":"islandsGroundSmall",
-                 "rotation":94.1971674630076,
+                 "rotation":94.1972,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":14907.3114618901,
-                 "y":1202.17510535738
+                 "x":14907.3,
+                 "y":1202.18
                 }, 
                 {
                  "gid":8,
                  "height":256,
                  "id":89,
                  "name":"islandsGroundSmall",
-                 "rotation":310.921379468786,
+                 "rotation":310.921,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":15547.2750459236,
-                 "y":4292.56088500133
+                 "x":15547.3,
+                 "y":4292.56
                 }, 
                 {
                  "gid":1073741832,
                  "height":256,
                  "id":90,
                  "name":"islandsGroundSmall",
-                 "rotation":227.351983285029,
+                 "rotation":227.352,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":16171.2668404295,
-                 "y":2367.42873024396
+                 "x":16171.3,
+                 "y":2367.43
                 }, 
                 {
                  "gid":8,
                  "height":256,
                  "id":91,
                  "name":"islandsGroundSmall",
-                 "rotation":14.2119032943751,
+                 "rotation":14.2119,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":14150.0161549698,
-                 "y":4747.29655470208
+                 "x":14150,
+                 "y":4747.3
                 }, 
                 {
                  "gid":2147483652,
                  "height":256,
                  "id":95,
                  "name":"islandsMiddle",
-                 "rotation":356.221972895433,
+                 "rotation":356.222,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":5385.69766030427,
-                 "y":6128.50446841332
+                 "x":5385.7,
+                 "y":6128.5
                 }, 
                 {
                  "ellipse":true,
@@ -566,12 +566,12 @@
                  "height":512,
                  "id":58,
                  "name":"islandGrassBig",
-                 "rotation":278.130102354156,
+                 "rotation":278.13,
                  "type":"",
                  "visible":true,
                  "width":512,
-                 "x":12990.0232031805,
-                 "y":10717.630937574
+                 "x":12990,
+                 "y":10717.6
                 }, 
                 {
                  "gid":3221225475,
@@ -650,12 +650,12 @@
                  "height":256,
                  "id":73,
                  "name":"islandGroundSmall",
-                 "rotation":286.629108276005,
+                 "rotation":286.629,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":21130.8162712149,
-                 "y":2532.87712041055
+                 "x":21130.8,
+                 "y":2532.88
                 }, 
                 {
                  "gid":1073741832,
@@ -674,12 +674,12 @@
                  "height":256,
                  "id":80,
                  "name":"islandGroundSmall",
-                 "rotation":242.476534609923,
+                 "rotation":242.477,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":20809.4634878363,
-                 "y":4847.56285467297
+                 "x":20809.5,
+                 "y":4847.56
                 }, 
                 {
                  "gid":8,
@@ -710,24 +710,24 @@
                  "height":256,
                  "id":92,
                  "name":"islandGroundSmall",
-                 "rotation":194.111504856845,
+                 "rotation":194.112,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":19313.881956398,
-                 "y":7313.50603744142
+                 "x":19313.9,
+                 "y":7313.51
                 }, 
                 {
                  "gid":2147483656,
                  "height":256,
                  "id":93,
                  "name":"islandGroundSmall",
-                 "rotation":141.809602767899,
+                 "rotation":141.81,
                  "type":"",
                  "visible":true,
                  "width":256,
-                 "x":21216.663532827,
-                 "y":3232.25763782963
+                 "x":21216.7,
+                 "y":3232.26
                 }, 
                 {
                  "gid":3,
@@ -752,12 +752,132 @@
                  "width":512,
                  "x":5648,
                  "y":7428.8
+                }, 
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":117,
+                 "name":"islandGrassBig",
+                 "rotation":86.5154388632601,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":10306.5137169449,
+                 "y":12690.4328623762
+                }, 
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":118,
+                 "name":"islandGrassBig",
+                 "rotation":86.5154,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":10006.4,
+                 "y":14945.6
+                }, 
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":119,
+                 "name":"islandGrassBig",
+                 "rotation":86.5154,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":7750.4,
+                 "y":14241.6
+                }, 
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":120,
+                 "name":"islandGrassBig",
+                 "rotation":86.5154,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":7718.4,
+                 "y":16321.6
+                }, 
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":121,
+                 "name":"islandGrassBig",
+                 "rotation":86.5154,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":5542.4,
+                 "y":16161.6
+                }, 
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":122,
+                 "name":"islandGrassBig",
+                 "rotation":86.5154,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":5657.6,
+                 "y":17796.8
+                }, 
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":123,
+                 "name":"islandGrassBig",
+                 "rotation":86.5154,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":3721.6,
+                 "y":17476.8
+                }, 
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":124,
+                 "name":"islandGrassBig",
+                 "rotation":86.5154,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":3545.6,
+                 "y":18932.8
+                }, 
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":125,
+                 "name":"islandGrassBig",
+                 "rotation":86.5154,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":1737.6,
+                 "y":18772.8
+                }, 
+                {
+                 "gid":3,
+                 "height":512,
+                 "id":126,
+                 "name":"islandGrassBig",
+                 "rotation":86.5154,
+                 "type":"",
+                 "visible":true,
+                 "width":512,
+                 "x":1257.6,
+                 "y":20164.8
                 }],
          "opacity":1,
          "parallaxx":0.8,
          "parallaxy":0.8,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -813,6 +933,18 @@
                  "width":1024,
                  "x":24480,
                  "y":1184
+                }, 
+                {
+                 "gid":10,
+                 "height":1024,
+                 "id":116,
+                 "name":"final-02",
+                 "rotation":0,
+                 "type":"town",
+                 "visible":true,
+                 "width":1024,
+                 "x":96,
+                 "y":25568
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1151,12 +1283,12 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":116,
+ "nextobjectid":127,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
@@ -1278,6 +1410,19 @@
          "tilecount":1,
          "tileheight":512,
          "tilewidth":512
+        }, 
+        {
+         "columns":1,
+         "firstgid":10,
+         "image":"..\/towns\/final-02-map.png",
+         "imageheight":1024,
+         "imagewidth":1024,
+         "margin":0,
+         "name":"final-02-map",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":1024,
+         "tilewidth":1024
         }],
  "tilewidth":256,
  "type":"map",
