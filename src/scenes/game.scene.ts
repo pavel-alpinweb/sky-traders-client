@@ -48,7 +48,6 @@ export class MapScene extends Phaser.Scene {
 
         /* Добавляем острова на карту */
         mapComposition.createIslands(this.map)
-        console.log("map", this.map)
 
         /* Добавляем верхний слой облаков */
         this.cloudsTop = mapComposition.createClouds(this, "clouds-top", 1.75)

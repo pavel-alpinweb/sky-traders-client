@@ -6,6 +6,7 @@ import { weaponComposition } from "./weapon.composition.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
         scene.load.image("ship", `/assets/ships/${ship}/${ship}-map.png`)
+        scene.load.image("smoke", "/assets/vfx/smoke-particle.png")
     },
 
     initPlayer(
@@ -15,7 +16,18 @@ export const playerComposition = {
     ): Phaser.Physics.Arcade.Image & {
         body: Phaser.Physics.Arcade.Body
     } {
+        const emitter = scene.add.particles(0, 0, "smoke", {
+            speed: {
+                onEmit: () => player.body.speed * 0.1,
+            },
+            lifespan: {
+                onEmit: () => Phaser.Math.Percent(player.body.speed, 0, 100) * 1000,
+            },
+            quantity: 1,
+            scale: { start: 0.3, end: 0 },
+        })
         const player = scene.physics.add.image(x, y, "ship").setScale(BASIC_SHIP_SCALE).refreshBody()
+        emitter.startFollow(player)
         scene.cameras.main.setBackgroundColor(0xa7efff).startFollow(player).setZoom(0.6)
         return player
     },
