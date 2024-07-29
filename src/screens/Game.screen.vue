@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref, watch } from "vue"
+import { onMounted, ref, watch } from "vue"
 import { useMapLevel } from "../setups/map.setup.ts"
 import { EventBus, updateMarket } from "../utils/utils.ts"
 import { router } from "../router.ts"
@@ -13,17 +13,11 @@ import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
 import FuelWidget from "../ui-components/FuelWidget.component.vue"
 import HealthWidget from "../ui-components/HealthWidget.component.vue"
 import { usePlayer } from "../store/player.store.ts"
-import { Coords } from "../types/interfaces.ts"
 import { PIRATE_AWARD_VALUE } from "../configs/gameplay.config.ts"
 
 const isShowTownAlert = ref(false)
 const isShowPirateAlert = ref(false)
 let game: null | Game = null
-const currentTownName = ref<string>("start-01")
-const currentTownCoords = reactive<Coords>({
-    x: 1280,
-    y: 1280,
-})
 
 const townStore = useTown()
 const player = usePlayer()
@@ -33,8 +27,6 @@ const isShowAwardAlert = ref(false)
 
 const goToTown = () => {
     clearInterval(updateMarketInterval)
-    townStore.setTown(currentTownName.value)
-    townStore.setCoords(currentTownCoords)
     if (game) {
         game?.destroy(true)
     }
@@ -64,16 +56,16 @@ const closeHandler = () => {
 
 onMounted(() => {
     game = useMapLevel(townStore.coords, player.currentShip)
-    // eslint-disable-next-line
-    EventBus.on("fly-on-town", (params: any) => {
-        currentTownName.value = params.town
-        currentTownCoords.x = params.coords.x
-        currentTownCoords.y = params.coords.y
-    })
     EventBus.on("leave-town", () => {
         isShowTownAlert.value = false
     })
-    EventBus.on("arrive-town", () => {
+    // eslint-disable-next-line
+    EventBus.on("arrive-town", (params: any) => {
+        townStore.setTown(params.town)
+        townStore.setCoords({
+            x: params.coords.x,
+            y: params.coords.y,
+        })
         isShowTownAlert.value = true
     })
     EventBus.on("decrease-fuel", () => {
@@ -145,11 +137,11 @@ watch(
             </v-dialog>
         </div>
         <div id="game" class="game-screen__game-wrapper"></div>
-        <v-snackbar v-model="isShowTownAlert" color="green">
+        <v-snackbar v-model="isShowTownAlert" :color="townStore.currentTown.color">
             Вы хотите приземлиться в городе <b>{{ townStore.currentTown.name }}</b
             >?
             <template #actions>
-                <v-btn color="green-darken-4" variant="elevated" @click="goToTown"> OK </v-btn>
+                <v-btn :color="`${townStore.currentTown.color}-darken-4`" variant="elevated" @click="goToTown"> OK </v-btn>
             </template>
         </v-snackbar>
         <v-snackbar v-model="isShowPirateAlert" color="red" :timeout="2000">

@@ -80,24 +80,6 @@ export const playerComposition = {
         }
     },
 
-    flyOnTown(player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }, towns: Phaser.Physics.Arcade.StaticGroup, scene: Phaser.Scene): void {
-        scene.physics.add.overlap(player, towns, (player, town) => {
-            EventBus.emit("fly-on-town", {
-                coords: {
-                    // eslint-disable-next-line
-                    // @ts-ignore
-                    x: player.x,
-                    // eslint-disable-next-line
-                    // @ts-ignore
-                    y: player.y,
-                },
-                // eslint-disable-next-line
-                // @ts-ignore
-                town: town.name,
-            })
-        })
-    },
-
     initFuelConsumption(scene: Phaser.Scene) {
         return scene.time.addEvent({
             paused: true,
