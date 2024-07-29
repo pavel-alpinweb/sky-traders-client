@@ -107,7 +107,6 @@ export class MapScene extends Phaser.Scene {
 
         for (const town of this.townsArray) {
             if (checkOverlap(this.player, town)) {
-                console.log("town", town.name)
                 EventBus.emit("arrive-town", {
                     coords: {
                         // eslint-disable-next-line

@@ -22,6 +22,7 @@ export class Pirate {
     public pirateFireTimer!: Phaser.Time.TimerEvent
     public pirateHealthBar!: Phaser.GameObjects.Graphics
     public pirateCurrentHealth: number = PIRATE_MAX_HEALTH
+    public emitter!: Phaser.GameObjects.Particles.ParticleEmitter
 
     constructor(scene: Phaser.Scene, spawner: Phaser.GameObjects.GameObject) {
         this.scene = scene
@@ -40,7 +41,7 @@ export class Pirate {
             if (Math.random() < PIRATE_SPAWN_PROBABILITY && this.spawner.body) {
                 const { x, y } = player
                 this.spawner.destroy()
-                this.init({ x, y }, pirateBullets)
+                this.init(scene, { x, y }, pirateBullets)
                 this.hitOnPirateHandler(playerBullets, playerShipDamage)
                 EventBus.emit("show-pirate-alert")
             } else {
@@ -49,9 +50,20 @@ export class Pirate {
         })
     }
 
-    init(coords: Coords, pirateBullets: Phaser.Physics.Arcade.Group): void {
+    init(scene: Phaser.Scene, coords: Coords, pirateBullets: Phaser.Physics.Arcade.Group): void {
         const spawnX = Math.random() < 0.5 ? coords.x - (window.innerWidth / 2 + 600) : coords.x + (window.innerHeight / 2 + 600)
+        this.emitter = scene.add.particles(0, 0, "smoke", {
+            speed: {
+                onEmit: () => this.body.body.speed * 0.25,
+            },
+            lifespan: {
+                onEmit: () => Phaser.Math.Percent(this.body.body.speed, 0, 100) * 1000,
+            },
+            quantity: 1,
+            scale: { start: 0.3, end: 0 },
+        })
         this.body = this.scene.physics.add.image(spawnX, coords.y, "shark").setScale(BASIC_SHIP_SCALE).refreshBody()
+        this.emitter.startFollow(this.body)
         this.initFireTimer(pirateBullets)
         this.initPirateHealthBar()
     }
@@ -102,6 +114,7 @@ export class Pirate {
         pirateExplosion.on(
             Phaser.Animations.Events.ANIMATION_COMPLETE,
             () => {
+                this.emitter.destroy()
                 this.body.destroy()
                 pirateExplosion.destroy()
                 this.pirateHealthBar.destroy()
