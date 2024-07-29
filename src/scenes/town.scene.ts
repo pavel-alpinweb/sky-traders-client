@@ -19,8 +19,8 @@ export class TownScene extends Phaser.Scene {
     }
 
     create() {
-        this.cloudsTop = townComposition.createClouds(this, LEVEL_HEIGHT / 3.5, 311, "clouds-dark")
-        this.cloudsBack = townComposition.createClouds(this, LEVEL_HEIGHT / 1.3, 454, "clouds-big")
+        this.cloudsTop = townComposition.createClouds(this, LEVEL_HEIGHT / 3.5, 311, "clouds-dark", 1.25)
+        this.cloudsBack = townComposition.createClouds(this, LEVEL_HEIGHT / 1.3, 454, "clouds-big", 1.5)
         townComposition.createTown(this)
         this.cloudsFront = townComposition.createClouds(this, LEVEL_HEIGHT / 2, 310, "clouds-small")
     }

@@ -16,8 +16,8 @@ export const townComposition = {
         return scene.add.image(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, "town")
     },
 
-    createClouds(scene: Phaser.Scene, y: number, height: number, name: string) {
-        return scene.add.tileSprite(LEVEL_WIDTH / 2, y, LEVEL_WIDTH, height, name)
+    createClouds(scene: Phaser.Scene, y: number, height: number, name: string, scale: number = 1) {
+        return scene.add.tileSprite(LEVEL_WIDTH / 2, y, LEVEL_WIDTH, height, name).setScale(scale)
     },
 
     moveClouds(clouds: Phaser.GameObjects.TileSprite, speed: number) {
