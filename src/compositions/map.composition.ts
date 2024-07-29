@@ -27,6 +27,24 @@ export const mapComposition = {
         scene.load.image("final-02", "/assets/towns/final-02-map.png")
     },
 
+    uploadClouds(scene: Phaser.Scene) {
+        scene.load.image("clouds-top", "/assets/vfx/clouds-map.png")
+    },
+
+    createClouds(scene: Phaser.Scene, name: string, scale: number) {
+        const container = scene.add.container(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2).setScrollFactor(0, 0)
+        const clouds = scene.add.tileSprite(0, 0, LEVEL_WIDTH * 2, LEVEL_HEIGHT * 2, name).setScrollFactor(0.5, 0.5)
+
+        clouds.setTileScale(scale, scale)
+        container.add(clouds)
+
+        return clouds
+    },
+
+    moveClouds(clouds: Phaser.GameObjects.TileSprite, speed: number, player: Phaser.Physics.Arcade.Image & { body: Phaser.Physics.Arcade.Body }) {
+        clouds.setTilePosition(player.x * speed + speed, player.y * speed)
+    },
+
     addMapBackground(scene: Phaser.Scene): void {
         scene.add
             .tileSprite(LEVEL_WIDTH / 2, LEVEL_HEIGHT / 2, LEVEL_WIDTH * 8, LEVEL_HEIGHT * 8, "map")

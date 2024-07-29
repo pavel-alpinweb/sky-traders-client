@@ -35,7 +35,7 @@ const goToMap = () => {
 }
 
 onMounted(() => {
-    background = useTownLevel(townStore.currentTown.name)
+    background = useTownLevel(townStore.currentTown.id)
 })
 </script>
 

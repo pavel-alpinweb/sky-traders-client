@@ -19,6 +19,7 @@ export class MapScene extends Phaser.Scene {
     private healthConsumption!: TimerEvent
     private playerBullets!: Phaser.Physics.Arcade.Group
     private pirateBullets!: Phaser.Physics.Arcade.Group
+    public cloudsTop!: Phaser.GameObjects.TileSprite
     private readonly coords!: Coords
     private readonly ship!: Ship
 
@@ -35,6 +36,7 @@ export class MapScene extends Phaser.Scene {
         mapComposition.tileMapUpload(this)
         mapComposition.islandUpload(this)
         mapComposition.townsUpload(this)
+        mapComposition.uploadClouds(this)
         weaponComposition.uploadBullets(this, this.ship.type)
         weaponComposition.uploadVFX(this)
     }
@@ -46,6 +48,9 @@ export class MapScene extends Phaser.Scene {
 
         /* Добавляем острова на карту */
         mapComposition.createIslands(this.map)
+
+        /* Добавляем верхний слой облаков */
+        this.cloudsTop = mapComposition.createClouds(this, "clouds-top", 1.75)
 
         /* Добавляем города на карту */
         this.townsGroup = this.physics.add.staticGroup()
@@ -88,6 +93,8 @@ export class MapScene extends Phaser.Scene {
     }
 
     update() {
+        mapComposition.moveClouds(this.cloudsTop, 0.9, this.player)
+
         if (this.player && this.player.alpha !== 0) {
             playerComposition.onMovingPlayer(this.player, this.target, this, this.ship.velocity, this.fuelConsumption, this.healthConsumption, this.ship)
         }
@@ -100,7 +107,6 @@ export class MapScene extends Phaser.Scene {
 
         for (const town of this.townsArray) {
             if (checkOverlap(this.player, town)) {
-                console.log("town", town.name)
                 EventBus.emit("arrive-town", {
                     coords: {
                         // eslint-disable-next-line
