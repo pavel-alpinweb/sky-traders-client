@@ -93,7 +93,7 @@ const healthBarColor = useProgressBarColor(healthPercentage)
         <v-card-subtitle
             v-if="props.mode === 'build'"
             class="ship-card__param text-subtitle-1 align-center d-flex font-weight-black"
-            :class="`${props.playerGold < ship.price ? 'text-red-accent-4' : `text-${props.color}-darken-5`}`"
+            :class="`${props.playerGold < ship.price ? 'text-red-accent-4 text-decoration-line-through' : `text-${props.color}-darken-5`}`"
         >
             <IconGold class="ship-card__param-icon" v-tooltip="'Стоимость покупки'" /> {{ props.ship.price }}
         </v-card-subtitle>
