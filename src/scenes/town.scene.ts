@@ -3,18 +3,18 @@ import { townComposition } from "../compositions/town.composition.ts"
 import { LEVEL_HEIGHT } from "../configs/gameplay.config.ts"
 
 export class TownScene extends Phaser.Scene {
-    private name!: string
+    private id!: string
     private cloudsTop!: Phaser.GameObjects.TileSprite
     private cloudsFront!: Phaser.GameObjects.TileSprite
     private cloudsBack!: Phaser.GameObjects.TileSprite
 
     constructor(name: string) {
         super()
-        this.name = name
+        this.id = name
     }
 
     preload() {
-        townComposition.uploadTown(this, this.name)
+        townComposition.uploadTown(this, this.id)
         townComposition.uploadClouds(this)
     }
 

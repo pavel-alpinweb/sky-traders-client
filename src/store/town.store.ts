@@ -12,7 +12,7 @@ export const useTown = defineStore("town", {
         towns: [
             {
                 id: "start-01",
-                name: "start-01",
+                name: "Брайвиль",
                 color: "green",
                 ships: [
                     {
@@ -255,7 +255,7 @@ export const useTown = defineStore("town", {
             },
             {
                 id: "start-02",
-                name: "start-02",
+                name: "Дальний берег",
                 color: "green",
                 ships: [
                     {
@@ -484,7 +484,7 @@ export const useTown = defineStore("town", {
             },
             {
                 id: "middle",
-                name: "middle",
+                name: "Мидлгард",
                 color: "green",
                 ships: [
                     {
@@ -713,7 +713,7 @@ export const useTown = defineStore("town", {
             },
             {
                 id: "final-01",
-                name: "final-01",
+                name: "Нордвиль",
                 color: "deep-orange",
                 ships: [
                     {
@@ -928,7 +928,7 @@ export const useTown = defineStore("town", {
             },
             {
                 id: "final-02",
-                name: "final-02",
+                name: "Южный кит",
                 color: "orange",
                 ships: [
                     {

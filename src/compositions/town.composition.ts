@@ -2,8 +2,8 @@ import Phaser from "phaser"
 import { LEVEL_WIDTH, LEVEL_HEIGHT } from "../configs/gameplay.config.ts"
 
 export const townComposition = {
-    uploadTown(scene: Phaser.Scene, name: string) {
-        scene.load.image("town", `/assets/towns/${name}-screen.png`)
+    uploadTown(scene: Phaser.Scene, id: string) {
+        scene.load.image("town", `/assets/towns/${id}-screen.png`)
     },
 
     uploadClouds(scene: Phaser.Scene) {
