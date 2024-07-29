@@ -85,9 +85,6 @@ export class MapScene extends Phaser.Scene {
 
         /* Создаем таймер для поломки во время полета */
         this.healthConsumption = playerComposition.initHealthConsumption(this)
-
-        /* Эмитим событие с данными о городе и координаты игрока при полете над городом */
-        playerComposition.flyOnTown(this.player, this.townsGroup, this)
     }
 
     update() {
@@ -103,7 +100,20 @@ export class MapScene extends Phaser.Scene {
 
         for (const town of this.townsArray) {
             if (checkOverlap(this.player, town)) {
-                EventBus.emit("arrive-town")
+                console.log("town", town.name)
+                EventBus.emit("arrive-town", {
+                    coords: {
+                        // eslint-disable-next-line
+                        // @ts-ignore
+                        x: this.player.x,
+                        // eslint-disable-next-line
+                        // @ts-ignore
+                        y: this.player.y,
+                    },
+                    // eslint-disable-next-line
+                    // @ts-ignore
+                    town: town.name,
+                })
                 break
             } else {
                 EventBus.emit("leave-town")
