@@ -43,20 +43,6 @@ export const useTown = defineStore("town", {
                         price: albatrossParams.price,
                         repairPrice: albatrossParams.repairPrice,
                     },
-                    {
-                        id: 7,
-                        name: "Небесный кит",
-                        velocity: whaleParams.velocity,
-                        angularVelocity: whaleParams.angularVelocity,
-                        damage: whaleParams.damage,
-                        type: "whale",
-                        maxHealth: whaleParams.maxHealth,
-                        currentHealth: whaleParams.currentHealth,
-                        maxFuel: whaleParams.maxFuel,
-                        currentFuel: whaleParams.currentFuel,
-                        price: whaleParams.price,
-                        repairPrice: 8,
-                    },
                 ],
                 resources: [
                     {

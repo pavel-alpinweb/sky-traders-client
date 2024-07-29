@@ -75,7 +75,7 @@ export const useProgressBarColor = (percentage: ComputedRef<number>) => {
             color = "green"
         } else if (percentage.value >= 40) {
             color = "amber"
-        } else if (percentage.value <= 39.9999) {
+        } else if (percentage.value < 40) {
             color = "red"
         }
         return color
