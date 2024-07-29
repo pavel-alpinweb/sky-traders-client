@@ -7,17 +7,24 @@ export const mapComposition = {
     },
 
     tileMapUpload(scene: Phaser.Scene) {
-        scene.load.tilemapTiledJSON("tilemap", "/assets/levels/dev.json")
+        scene.load.tilemapTiledJSON("tilemap", "/assets/levels/demo.json")
     },
 
     islandUpload(scene: Phaser.Scene) {
         scene.load.image("island-grass-big", "/assets/islands/island-grass-big.png")
         scene.load.image("island-grass-small", "/assets/islands/island-grass-small.png")
+        scene.load.image("island-ground-big", "/assets/islands/island-ground-big.png")
+        scene.load.image("island-ground-small", "/assets/islands/island-ground-small.png")
+        scene.load.image("island-sand-small", "/assets/islands/island-sand-small.png")
+        scene.load.image("island-sand-big", "/assets/islands/island-sand-big.png")
     },
 
     townsUpload(scene: Phaser.Scene) {
         scene.load.image("start-01", "/assets/towns/start-01-map.png")
         scene.load.image("start-02", "/assets/towns/start-02-map.png")
+        scene.load.image("middle", "/assets/towns/middle-map.png")
+        scene.load.image("final-01", "/assets/towns/final-01-map.png")
+        scene.load.image("final-02", "/assets/towns/final-02-map.png")
     },
 
     addMapBackground(scene: Phaser.Scene): void {
@@ -34,23 +41,39 @@ export const mapComposition = {
     },
 
     createIslands(map: Phaser.Tilemaps.Tilemap) {
-        const islandsBottom = map.createFromObjects("islandsBottom", { name: "islandsBottom", key: "island-grass-big" })
-        const islandsMiddle = map.createFromObjects("islandsMiddle", { name: "islandsMiddle", key: "island-grass-small" })
-        const islandsTop = map.createFromObjects("islandsTop", { name: "islandsTop", key: "island-grass-small" })
-        for (const island of islandsTop) {
+        const islandsGreenBigBottom = map.createFromObjects("islandsBottom", { name: "islandsBottom", key: "island-grass-big" })
+        const islandsGroundBigBottom = map.createFromObjects("islandsBottom", { name: "islandGroundBig", key: "island-ground-big" })
+        const islandsSandBigBottom = map.createFromObjects("islandsBottom", { name: "islandSandSmall", key: "island-sand-small" })
+        const allBottomIslands = islandsGreenBigBottom.concat(islandsGroundBigBottom).concat(islandsSandBigBottom)
+
+        const islandsGreenMiddle = map.createFromObjects("islandsMiddle", { name: "islandsMiddle", key: "island-grass-small" })
+        const islandsGroundMiddle = map.createFromObjects("islandsMiddle", { name: "islandsGroundSmall", key: "island-ground-small" })
+        const islandsSandMiddle = map.createFromObjects("islandsMiddle", { name: "islandSandBig", key: "island-sand-big" })
+        const allMiddleIslands = islandsGreenMiddle.concat(islandsGroundMiddle).concat(islandsSandMiddle)
+
+        const islandsGreenSmallTop = map.createFromObjects("islandsTop", { name: "islandsTop", key: "island-grass-small" })
+        const islandsGreenSmallBig = map.createFromObjects("islandsTop", { name: "islandGrassBig", key: "island-grass-big" })
+        const islandsGroundSmallTop = map.createFromObjects("islandsTop", { name: "islandGroundSmall", key: "island-ground-small" })
+        const islandsSandSmallTop = map.createFromObjects("islandsTop", { name: "islandSandTop", key: "island-sand-small" })
+        const allTopIslands = islandsGreenSmallTop.concat(islandsGreenSmallBig).concat(islandsGroundSmallTop).concat(islandsSandSmallTop)
+
+        for (const island of allTopIslands) {
             // eslint-disable-next-line
             // @ts-ignore
-            island.setScrollFactor(0.8).setScale(0.8).postFX.addBlur(0, 2, 2, 0.2, 0xa7efff, 2)
+            // island.setScrollFactor(0.8).setScale(1).postFX.addBlur(0, 2, 2, 0.1, 0xa7efff, 2)
+            island.setScrollFactor(0.8).setScale(0.9).setAlpha(0.9)
         }
-        for (const island of islandsMiddle) {
+        for (const island of allMiddleIslands) {
             // eslint-disable-next-line
             // @ts-ignore
-            island.setScrollFactor(0.6).setScale(0.6).postFX.addBlur(0, 2, 2, 0.4, 0xa7efff, 2)
+            // island.setScrollFactor(0.6).setScale(0.9).postFX.addBlur(0, 2, 2, 0.2, 0xa7efff, 2)
+            island.setScrollFactor(0.6).setScale(0.7).setAlpha(0.7)
         }
-        for (const island of islandsBottom) {
+        for (const island of allBottomIslands) {
             // eslint-disable-next-line
             // @ts-ignore
-            island.setScrollFactor(0.4).setScale(0.4).postFX.addBlur(0, 2, 2, 0.6, 0xa7efff, 2)
+            // island.setScrollFactor(0.4).setScale(0.8).postFX.addBlur(0, 2, 2, 0.3, 0xa7efff, 2)
+            island.setScrollFactor(0.5).setScale(0.6).setAlpha(0.6)
         }
     },
 

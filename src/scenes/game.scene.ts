@@ -49,7 +49,7 @@ export class MapScene extends Phaser.Scene {
 
         /* Добавляем города на карту */
         this.townsGroup = this.physics.add.staticGroup()
-        this.townsArray = mapComposition.createTowns(["start-01", "start-02"], this.townsGroup, this.map)
+        this.townsArray = mapComposition.createTowns(["start-01", "start-02", "middle", "final-01", "final-02"], this.townsGroup, this.map)
 
         /* Инициализируем снаряды для игрока и пиратов */
         this.playerBullets = weaponComposition.init(this)
