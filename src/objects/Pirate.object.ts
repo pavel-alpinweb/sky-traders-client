@@ -57,7 +57,7 @@ export class Pirate {
                 onEmit: () => this.body.body.speed * 0.25,
             },
             lifespan: {
-                onEmit: () => Phaser.Math.Percent(this.body.body.speed, 0, 100) * 1000,
+                onEmit: () => Phaser.Math.Percent(this.body.body.speed, 0, 100) * 2000,
             },
             quantity: 1,
             scale: { start: 0.3, end: 0 },

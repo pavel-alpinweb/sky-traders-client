@@ -21,10 +21,10 @@ export const playerComposition = {
                 onEmit: () => player.body.speed * 0.1,
             },
             lifespan: {
-                onEmit: () => Phaser.Math.Percent(player.body.speed, 0, 100) * 1000,
+                onEmit: () => Phaser.Math.Percent(player.body.speed, 0, 100) * 2000,
             },
             quantity: 1,
-            scale: { start: 0.3, end: 0 },
+            scale: { start: 0.15, end: 0 },
         })
         const player = scene.physics.add.image(x, y, "ship").setScale(BASIC_SHIP_SCALE).refreshBody()
         emitter.startFollow(player)
