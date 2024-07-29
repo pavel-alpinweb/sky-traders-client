@@ -54,10 +54,10 @@ export class Pirate {
         const spawnX = Math.random() < 0.5 ? coords.x - (window.innerWidth / 2 + 600) : coords.x + (window.innerHeight / 2 + 600)
         this.emitter = scene.add.particles(0, 0, "smoke", {
             speed: {
-                onEmit: () => this.body.body.speed * 0.2,
+                onEmit: () => this.body.body.speed * 0.1,
             },
             lifespan: {
-                onEmit: () => Phaser.Math.Percent(this.body.body.speed, 0, 100) * 1000,
+                onEmit: () => Phaser.Math.Percent(this.body.body.speed, 0, 100) * 1500,
             },
             quantity: 1,
             scale: { start: 0.3, end: 0 },
