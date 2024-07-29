@@ -28,7 +28,7 @@ export const mapComposition = {
     },
 
     uploadClouds(scene: Phaser.Scene) {
-        scene.load.image("clouds-top", "/assets/vfx/clouds-map-2.png")
+        scene.load.image("clouds-top", "/assets/vfx/clouds-map.png")
     },
 
     createClouds(scene: Phaser.Scene, name: string, scale: number) {
