@@ -5,6 +5,7 @@ import { Game } from "phaser"
 import { useTown } from "../store/town.store.ts"
 import { useTownLevel } from "../setups/town.setup.ts"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
+import TownInstraction from "../ui-components/TownInstraction.component.vue"
 import Market from "../windows/market.window.vue"
 import Shipyard from "../windows/shipyard.window.vue"
 import IconMarket from "/public/assets/icons/screens/market.svg"
@@ -106,6 +107,10 @@ onMounted(() => {
             <!--                </v-sheet>-->
             <!--            </v-tabs-window-item>-->
         </v-tabs-window>
+
+        <div class="town-screen__map-button-container">
+            <TownInstraction :color="townStore.currentTown.color" />
+        </div>
     </div>
 </template>
 
@@ -193,6 +198,15 @@ onMounted(() => {
     &__sink-icon {
         width: 50px;
         height: 50px;
+    }
+
+    &__map-button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
     }
 }
 </style>
