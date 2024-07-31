@@ -17,6 +17,7 @@ export interface Town {
     color: string
     ships: Ship[]
     resources: ResourceTable[]
+    description: string
 }
 
 export interface TownStore {

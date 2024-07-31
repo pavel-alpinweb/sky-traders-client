@@ -238,6 +238,7 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
+                description: "",
             },
             {
                 id: "start-02",
@@ -467,6 +468,7 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
+                description: "",
             },
             {
                 id: "middle",
@@ -696,6 +698,7 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
+                description: "",
             },
             {
                 id: "final-01",
@@ -911,6 +914,7 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
+                description: "",
             },
             {
                 id: "final-02",
@@ -1126,6 +1130,7 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
+                description: "",
             },
         ],
         isShowSinkAlert: false,

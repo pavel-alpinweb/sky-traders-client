@@ -58,7 +58,7 @@ onMounted(() => {
             <ResourcesPanel :color="townStore.currentTown.color" :gold="player.gold" />
         </div>
         <h1 :class="`town-screen__name text-h2 text-${townStore.currentTown.color}-darken-4`">
-            <v-dialog max-width="600" scrollable>
+            <v-dialog max-width="768" scrollable>
                 <template #activator="{ props: activatorProps }">
                     <v-btn
                         class="town-screen__description-trigger"
@@ -70,8 +70,11 @@ onMounted(() => {
                     />
                 </template>
                 <template #default="{ isActive }">
-                    <v-card :title="townStore.currentTown.name" :color="`${townStore.currentTown.color}-lighten-5`">
-                        <v-card-text> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </v-card-text>
+                    <v-card :color="`${townStore.currentTown.color}-lighten-5`">
+                        <v-card-title :class="`text-${townStore.currentTown.color}-darken-4`">{{ townStore.currentTown.name }}</v-card-title>
+                        <v-card-text>
+                            <div v-html="townStore.currentTown.description"></div>
+                        </v-card-text>
 
                         <v-card-actions>
                             <v-spacer></v-spacer>
