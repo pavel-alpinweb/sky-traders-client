@@ -17,7 +17,7 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 4,
-                        name: "Хромая чайка",
+                        name: "Храбрая чайка",
                         velocity: seagullParams.velocity,
                         angularVelocity: seagullParams.angularVelocity,
                         damage: seagullParams.damage,
@@ -258,7 +258,7 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 4,
-                        name: "Хромая чайка",
+                        name: "Храбрая чайка",
                         velocity: seagullParams.velocity,
                         angularVelocity: seagullParams.angularVelocity,
                         damage: seagullParams.damage,
