@@ -238,7 +238,18 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
-                description: "",
+                description:
+                    '<p><b style="color:#4CAF50;"><strong>Брайвиль</strong></b> — город храбрых авантюристов. Он стал первым поселением людей в Королевстве Зеленых Островов. Именно здесь изобрели корабль <b style="color:#6658cd;"><strong>“Храбрая чайка”</strong></b>, с помощью которого стали заселять соседние острова.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Благодаря благоприятному климату региона, <b style="color:#4CAF50;"><strong>Брайвиль</strong></b> преуспел в выращивании таких сельскохозяйственных культур, как <b style="color:#4CAF50;"><strong>сахарный тростник</strong></b>, <b style="color:#B71C1C;"><strong>пряности</strong></b> и <b style="color:#FF6F00;"><strong>зерно</strong></b>. В городе изготавливают ткани из <b style="color:#9CCC65;"><strong>хлопка</strong></b> и <b style="color:#64DD17;"><strong>конопли</strong></b>. Поэтому эти товары здесь всегда можно приобрести по выгодной цене.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p><b style="color:#FFB300;"><strong>Кукурузу</strong></b> в <b style="color:#4CAF50;"><strong>Брайвиле</strong></b> не выращивают, ее предпочитают закупать у <b style="color:#4CAF50;"><strong>Дальнего берега</strong></b>.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Своего производства и добычи промышленных товаров в <b style="color:#4CAF50;"><strong>Брайвиле</strong></b> нет. Поэтому <b style="color:#3E2723;"><strong>порох</strong></b>, <b style="color:#607D8B;"><strong>сталь</strong></b> и <b style="color:#000000;"><strong>уголь</strong></b> городу приходится закупать из дальних городов. Каждый караван с <b style="color:#E65100;"><strong>Южного Кита</strong></b> всегда встречается с большой радостью.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Ремесленники, которые ценят роскошные товары, такие как <b style="color:#D50000;"><strong>шелк</strong></b> и <b style="color:#BDBDBD;"><strong>слоновая кость</strong></b>, ждут корабли, прилетающие из <b style="color:#BF360C;"><strong>Нордвиля</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Между <b style="color:#4CAF50;"><strong>Брайвилем</strong></b> и <b style="color:#4CAF50;"><strong>Мидлгардом</strong></b> постоянно идет торговля. Хотя корабли модели <b style="color:#23628e;"><strong>“Храбрый альбатрос”</strong></b> отлично справляются с перевозками, они недостаточно мощные в бою, чтобы отпугивать <b style="color:#474c5e;"><strong>пиратов</strong></b>, которые на этом маршруте встречаются достаточно часто.&nbsp;</p>\n',
             },
             {
                 id: "start-02",
