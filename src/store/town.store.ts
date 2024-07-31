@@ -975,7 +975,7 @@ export const useTown = defineStore("town", {
                     {
                         id: 7,
                         name: whaleParams.name,
-                        description: whaleParams.name,
+                        description: whaleParams.description,
                         velocity: whaleParams.velocity,
                         angularVelocity: whaleParams.angularVelocity,
                         damage: whaleParams.damage,
