@@ -718,7 +718,18 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
-                description: "",
+                description:
+                    '<p><b style="color:#4CAF50;"><strong>Мидлгард</strong></b> является столицей Королевства Зеленых Островов и крупнейшим в нем городом. После долгих скитаний по небесным островам первые поселенцы попали на остров огромных размеров, покрытый лесами и горами. Есть теория о том, что этот остров был частью огромного континента, который взмыл в небо после Катаклизма, а затем раскололся на отдельные острова. Судя по всему, остальные острова откололись именно от <b style="color:#4CAF50;"><strong>Мидлгарда</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Город является главным поставщиком всех сельскохозяйственных культур на Небесах Трех Дорог. <b style="color:#4CAF50;"><strong>Сахарный тростник</strong></b>, <b style="color:#B71C1C;"><strong>пряности</strong></b>, <b style="color:#FF6F00;"><strong>зерно</strong></b> и <b style="color:#FFB300;"><strong>кукуруза</strong></b> здесь всегда в изобилии и стоят дешево.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Только <b style="color:#9CCC65;"><strong>хлопок</strong></b> и <b style="color:#64DD17;"><strong>конопля</strong></b> из-за более южного расположения здесь растут плохо. Город закупает их у <b style="color:#4CAF50;"><strong>Брайвиля</strong></b> и <b style="color:#4CAF50;"><strong>Дальнего Берега</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Как и все королевство, промышленное сырье и товары, такие как <b style="color:#3E2723;"><strong>порох</strong></b>, <b style="color:#607D8B;"><strong>сталь</strong></b> и <b style="color:#000000;"><strong>уголь</strong></b>, город закупает из <b style="color:#E65100;"><strong>Южного Кита</strong></b>.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Для торговли с <b style="color:#BF360C;"><strong>Нордвилем</strong></b>, у которого город покупает <b style="color:#D50000;"><strong>шелк</strong></b> и <b style="color:#BDBDBD;"><strong>слоновую кость</strong></b>, верфи города закупают корабли <b style="color:#febe0c;"><strong>“Золотой Пеликан”</strong></b>. На этих кораблях можно добраться также и до <b style="color:#E65100;"><strong>Южного Кита</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Флот королевства состоит в основном из кораблей модели <b style="color:#23628e;"><strong>“Храбрый альбатрос”</strong></b>, которая не очень подходит для боя с <b style="color:#474c5e;"><strong>пиратами</strong></b>. Поэтому как рядом с городом, так и на пути к <b style="color:#4CAF50;"><strong>Брайвилю</strong></b>, их достаточно много.</p>\n',
             },
             {
                 id: "final-01",
