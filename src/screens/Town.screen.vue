@@ -57,7 +57,7 @@ onMounted(() => {
             <ResourcesPanel :color="townStore.currentTown.color" :gold="player.gold" />
         </div>
         <h1 :class="`town-screen__name text-h2 text-${townStore.currentTown.color}-darken-4`">
-            <v-dialog max-width="600">
+            <v-dialog max-width="600" scrollable>
                 <template #activator="{ props: activatorProps }">
                     <v-btn
                         class="town-screen__description-trigger"
