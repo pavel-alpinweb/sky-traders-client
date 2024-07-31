@@ -48,6 +48,8 @@ export const seagullParams = {
     currentFuel: 50,
     price: 10000,
     repairPrice: 10,
+    description: "",
+    name: "Храбрая чайка",
 }
 
 export const albatrossParams = {
@@ -60,6 +62,8 @@ export const albatrossParams = {
     currentFuel: 60,
     price: 20000,
     repairPrice: 30,
+    description: "",
+    name: "Наглый альбатрос",
 }
 
 export const pelicanParams = {
@@ -72,6 +76,8 @@ export const pelicanParams = {
     currentFuel: 250,
     price: 50000,
     repairPrice: 50,
+    description: "",
+    name: "Золотой пеликан",
 }
 
 export const whaleParams = {
@@ -84,4 +90,6 @@ export const whaleParams = {
     currentFuel: 500,
     price: 100000,
     repairPrice: 80,
+    description: "",
+    name: "Небесный кит",
 }

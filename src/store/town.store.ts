@@ -17,7 +17,8 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 4,
-                        name: "Храбрая чайка",
+                        name: seagullParams.name,
+                        description: seagullParams.description,
                         velocity: seagullParams.velocity,
                         angularVelocity: seagullParams.angularVelocity,
                         damage: seagullParams.damage,
@@ -31,7 +32,8 @@ export const useTown = defineStore("town", {
                     },
                     {
                         id: 5,
-                        name: "Наглый альбатрос",
+                        name: albatrossParams.name,
+                        description: albatrossParams.description,
                         velocity: albatrossParams.velocity,
                         angularVelocity: albatrossParams.angularVelocity,
                         damage: albatrossParams.damage,
@@ -258,7 +260,8 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 4,
-                        name: "Храбрая чайка",
+                        name: seagullParams.name,
+                        description: seagullParams.description,
                         velocity: seagullParams.velocity,
                         angularVelocity: seagullParams.angularVelocity,
                         damage: seagullParams.damage,
@@ -272,7 +275,8 @@ export const useTown = defineStore("town", {
                     },
                     {
                         id: 5,
-                        name: "Наглый альбатрос",
+                        name: albatrossParams.name,
+                        description: albatrossParams.description,
                         velocity: albatrossParams.velocity,
                         angularVelocity: albatrossParams.angularVelocity,
                         damage: albatrossParams.damage,
@@ -497,7 +501,8 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 5,
-                        name: "Наглый альбатрос",
+                        name: albatrossParams.name,
+                        description: albatrossParams.description,
                         velocity: albatrossParams.velocity,
                         angularVelocity: albatrossParams.angularVelocity,
                         damage: albatrossParams.damage,
@@ -511,7 +516,8 @@ export const useTown = defineStore("town", {
                     },
                     {
                         id: 6,
-                        name: "Золотой пеликан",
+                        name: pelicanParams.name,
+                        description: pelicanParams.description,
                         velocity: pelicanParams.velocity,
                         angularVelocity: pelicanParams.angularVelocity,
                         damage: pelicanParams.damage,
@@ -738,7 +744,8 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 6,
-                        name: "Золотой пеликан",
+                        name: pelicanParams.name,
+                        description: pelicanParams.description,
                         velocity: pelicanParams.velocity,
                         angularVelocity: pelicanParams.angularVelocity,
                         damage: pelicanParams.damage,
@@ -967,7 +974,8 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 7,
-                        name: "Небесный кит",
+                        name: whaleParams.name,
+                        description: whaleParams.name,
                         velocity: whaleParams.velocity,
                         angularVelocity: whaleParams.angularVelocity,
                         damage: whaleParams.damage,

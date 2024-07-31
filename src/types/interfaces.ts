@@ -68,6 +68,7 @@ export interface Ship {
     currentFuel: number
     price: number
     repairPrice: number
+    description: string
 }
 
 export interface Player {

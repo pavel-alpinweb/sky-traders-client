@@ -71,7 +71,8 @@ export const usePlayer = defineStore("player", {
         ships: [
             {
                 id: 1,
-                name: "Храбрая чайка",
+                name: seagullParams.name,
+                description: seagullParams.description,
                 velocity: seagullParams.velocity,
                 angularVelocity: seagullParams.angularVelocity,
                 damage: seagullParams.damage,
