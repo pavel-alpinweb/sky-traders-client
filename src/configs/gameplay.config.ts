@@ -39,13 +39,13 @@ export const UPDATE_MARKETS_VALUE = 10
 /* SHIPS PARAMS */
 
 export const seagullParams = {
-    velocity: BASIC_SHIP_SPEED - 50,
+    velocity: BASIC_SHIP_SPEED,
     angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY + 80,
     damage: 5,
     maxHealth: 20,
     currentHealth: 20,
-    maxFuel: 35,
-    currentFuel: 35,
+    maxFuel: 50,
+    currentFuel: 50,
     price: 10000,
     repairPrice: 10,
 }
