@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { Player, RefuelParams, ResourcePanel, Ship } from "../types/interfaces.ts"
-import { BASIC_SHIP_ANGULAR_VELOCITY, BASIC_SHIP_SPEED, FUEL_CONSUMPTION, HEALTH_CONSUMPTION, PIRATE_DAMAGE, START_PLAYER_GOLD } from "../configs/gameplay.config.ts"
+import { FUEL_CONSUMPTION, HEALTH_CONSUMPTION, PIRATE_DAMAGE, seagullParams, START_PLAYER_GOLD } from "../configs/gameplay.config.ts"
 
 export const usePlayer = defineStore("player", {
     state: (): Player => ({
@@ -71,17 +71,18 @@ export const usePlayer = defineStore("player", {
         ships: [
             {
                 id: 1,
-                name: "Хромая чайка",
-                velocity: BASIC_SHIP_SPEED,
-                angularVelocity: BASIC_SHIP_ANGULAR_VELOCITY + 100,
-                damage: 5,
+                name: seagullParams.name,
+                description: seagullParams.description,
+                velocity: seagullParams.velocity,
+                angularVelocity: seagullParams.angularVelocity,
+                damage: seagullParams.damage,
                 type: "seagull",
-                maxHealth: 20,
-                currentHealth: 20,
-                maxFuel: 50,
-                currentFuel: 50,
-                price: 100,
-                repairPrice: 10,
+                maxHealth: seagullParams.maxHealth,
+                currentHealth: seagullParams.currentHealth,
+                maxFuel: seagullParams.maxFuel,
+                currentFuel: seagullParams.maxFuel,
+                price: seagullParams.price,
+                repairPrice: seagullParams.repairPrice,
             },
         ],
         currentShipId: 1,

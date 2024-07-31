@@ -52,7 +52,9 @@ const healthBarColor = useProgressBarColor(healthPercentage)
             </template>
             <template #default="{ isActive }">
                 <v-card :title="props.ship.name" :color="`${props.color}-lighten-5`">
-                    <v-card-text> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </v-card-text>
+                    <v-card-text>
+                        <div class="ship-card__description" v-html="props.ship.description" />
+                    </v-card-text>
 
                     <v-card-actions>
                         <v-spacer></v-spacer>

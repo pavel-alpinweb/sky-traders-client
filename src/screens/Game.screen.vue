@@ -10,6 +10,7 @@ import IconPirate from "/public/assets/icons/alerts/pirate.svg"
 import IconAward from "/public/assets/icons/alerts/award.svg"
 import IconGold from "/public/assets/icons/resources/gold.svg"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
+import MapInstruction from "../ui-components/MapInstruction.component.vue"
 import FuelWidget from "../ui-components/FuelWidget.component.vue"
 import HealthWidget from "../ui-components/HealthWidget.component.vue"
 import { usePlayer } from "../store/player.store.ts"
@@ -125,14 +126,17 @@ watch(
             <FuelWidget :current-fuel="player.currentShip.currentFuel" :max-fuel="player.currentShip.maxFuel" />
         </div>
         <div class="game-screen__map-button-container">
-            <v-dialog max-width="1200">
+            <MapInstruction :color="townStore.currentTown.color" />
+            <v-dialog width="1024" height="1024" scrollable>
                 <template #activator="{ props: activatorProps }">
                     <v-btn class="game-screen__map-trigger" v-bind="activatorProps" :color="`${townStore.currentTown.color}-lighten-5`" variant="elevated" size="x-large" v-tooltip="'Карта'" icon="">
                         <mapIcon class="game-screen__map-icon" />
                     </v-btn>
                 </template>
                 <template #default>
-                    <v-img src="/public/assets/maps/start-map.jpg" />
+                    <div class="game-screen__map-container">
+                        <v-img src="/public/assets/maps/main-map.jpg" contain />
+                    </div>
                 </template>
             </v-dialog>
         </div>
@@ -236,9 +240,19 @@ watch(
     }
 
     &__map-button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
         position: absolute;
         left: 30px;
         bottom: 30px;
+    }
+
+    &__map-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
     }
 }
 </style>

@@ -17,7 +17,8 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 4,
-                        name: "Хромая чайка",
+                        name: seagullParams.name,
+                        description: seagullParams.description,
                         velocity: seagullParams.velocity,
                         angularVelocity: seagullParams.angularVelocity,
                         damage: seagullParams.damage,
@@ -31,7 +32,8 @@ export const useTown = defineStore("town", {
                     },
                     {
                         id: 5,
-                        name: "Наглый альбатрос",
+                        name: albatrossParams.name,
+                        description: albatrossParams.description,
                         velocity: albatrossParams.velocity,
                         angularVelocity: albatrossParams.angularVelocity,
                         damage: albatrossParams.damage,
@@ -238,6 +240,18 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
+                description:
+                    '<p><b style="color:#4CAF50;"><strong>Брайвиль</strong></b> — город храбрых авантюристов. Он стал первым поселением людей в Королевстве Зеленых Островов. Именно здесь изобрели корабль <b style="color:#6658cd;"><strong>“Храбрая чайка”</strong></b>, с помощью которого стали заселять соседние острова.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Благодаря благоприятному климату региона, <b style="color:#4CAF50;"><strong>Брайвиль</strong></b> преуспел в выращивании таких сельскохозяйственных культур, как <b style="color:#4CAF50;"><strong>сахарный тростник</strong></b>, <b style="color:#B71C1C;"><strong>пряности</strong></b> и <b style="color:#FF6F00;"><strong>зерно</strong></b>. В городе изготавливают ткани из <b style="color:#9CCC65;"><strong>хлопка</strong></b> и <b style="color:#64DD17;"><strong>конопли</strong></b>. Поэтому эти товары здесь всегда можно приобрести по выгодной цене.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p><b style="color:#FFB300;"><strong>Кукурузу</strong></b> в <b style="color:#4CAF50;"><strong>Брайвиле</strong></b> не выращивают, ее предпочитают закупать у <b style="color:#4CAF50;"><strong>Дальнего берега</strong></b>.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Своего производства и добычи промышленных товаров в <b style="color:#4CAF50;"><strong>Брайвиле</strong></b> нет. Поэтому <b style="color:#3E2723;"><strong>порох</strong></b>, <b style="color:#607D8B;"><strong>сталь</strong></b> и <b style="color:#000000;"><strong>уголь</strong></b> городу приходится закупать из дальних городов. Каждый караван с <b style="color:#E65100;"><strong>Южного Кита</strong></b> всегда встречается с большой радостью.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Ремесленники, которые ценят роскошные товары, такие как <b style="color:#D50000;"><strong>шелк</strong></b> и <b style="color:#BDBDBD;"><strong>слоновая кость</strong></b>, ждут корабли, прилетающие из <b style="color:#BF360C;"><strong>Нордвиля</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Между <b style="color:#4CAF50;"><strong>Брайвилем</strong></b> и <b style="color:#4CAF50;"><strong>Мидлгардом</strong></b> постоянно идет торговля. Хотя корабли модели <b style="color:#23628e;"><strong>“Храбрый альбатрос”</strong></b> отлично справляются с перевозками, они недостаточно мощные в бою, чтобы отпугивать <b style="color:#474c5e;"><strong>пиратов</strong></b>, которые на этом маршруте встречаются достаточно часто.&nbsp;</p>\n',
             },
             {
                 id: "start-02",
@@ -246,7 +260,8 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 4,
-                        name: "Хромая чайка",
+                        name: seagullParams.name,
+                        description: seagullParams.description,
                         velocity: seagullParams.velocity,
                         angularVelocity: seagullParams.angularVelocity,
                         damage: seagullParams.damage,
@@ -260,7 +275,8 @@ export const useTown = defineStore("town", {
                     },
                     {
                         id: 5,
-                        name: "Наглый альбатрос",
+                        name: albatrossParams.name,
+                        description: albatrossParams.description,
                         velocity: albatrossParams.velocity,
                         angularVelocity: albatrossParams.angularVelocity,
                         damage: albatrossParams.damage,
@@ -467,6 +483,16 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
+                description:
+                    '<p><b style="color:#4CAF50;"><strong>Дальний Берег</strong></b> — город, находящийся на самом краю Королевства Зеленых Островов. Этот остров был заселен вторым после <b style="color:#4CAF50;"><strong>Брайвиля</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Как и <b style="color:#4CAF50;"><strong>Брайвиль</strong></b>, <b style="color:#4CAF50;"><strong>Дальний Берег</strong></b> специализируется на изготовлении тканей из <b style="color:#9CCC65;"><strong>хлопка</strong></b> и <b style="color:#64DD17;"><strong>конопли</strong></b>. Однако такие культуры, как <b style="color:#4CAF50;"><strong>сахарный тростник</strong></b>, <b style="color:#B71C1C;"><strong>пряности</strong></b> и <b style="color:#FF6F00;"><strong>зерно</strong></b>, выращивают не так много, как в соседнем городе, поэтому эти товары здесь дороже.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p><b style="color:#FFB300;"><strong>Кукурузу</strong></b> на <b style="color:#4CAF50;"><strong>Дальнем Берегу</strong></b> выращивают очень много. Так много, что продают большой излишек <b style="color:#4CAF50;"><strong>Брайвилю</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Своего производства и добычи промышленных товаров на <b style="color:#4CAF50;"><strong>Дальнем Берегу</strong></b> нет. Как и соседний город, <b style="color:#3E2723;"><strong>порох</strong></b>, <b style="color:#607D8B;"><strong>сталь</strong></b> и <b style="color:#000000;"><strong>уголь</strong></b> <b style="color:#4CAF50;"><strong>Дальний Берег</strong></b> закупает из дальних городов, в первую очередь из <b style="color:#E65100;"><strong>Южного Кита</strong></b>. <b style="color:#D50000;"><strong>Шелк</strong></b> и <b style="color:#BDBDBD;"><strong>слоновую кость</strong></b> — из <b style="color:#BF360C;"><strong>Нордвиля</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Из-за отдаленного расположения <b style="color:#474c5e;"><strong>пираты</strong></b> не появляются рядом с городом. Но отлетать далеко от города, кроме как в направлении к <b style="color:#4CAF50;"><strong>Брайвилю</strong></b>, все же не стоит.</p>\n',
             },
             {
                 id: "middle",
@@ -475,7 +501,8 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 5,
-                        name: "Наглый альбатрос",
+                        name: albatrossParams.name,
+                        description: albatrossParams.description,
                         velocity: albatrossParams.velocity,
                         angularVelocity: albatrossParams.angularVelocity,
                         damage: albatrossParams.damage,
@@ -489,7 +516,8 @@ export const useTown = defineStore("town", {
                     },
                     {
                         id: 6,
-                        name: "Золотой пеликан",
+                        name: pelicanParams.name,
+                        description: pelicanParams.description,
                         velocity: pelicanParams.velocity,
                         angularVelocity: pelicanParams.angularVelocity,
                         damage: pelicanParams.damage,
@@ -696,6 +724,18 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
+                description:
+                    '<p><b style="color:#4CAF50;"><strong>Мидлгард</strong></b> является столицей Королевства Зеленых Островов и крупнейшим в нем городом. После долгих скитаний по небесным островам первые поселенцы попали на остров огромных размеров, покрытый лесами и горами. Есть теория о том, что этот остров был частью огромного континента, который взмыл в небо после Катаклизма, а затем раскололся на отдельные острова. Судя по всему, остальные острова откололись именно от <b style="color:#4CAF50;"><strong>Мидлгарда</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Город является главным поставщиком всех сельскохозяйственных культур на Небесах Трех Дорог. <b style="color:#4CAF50;"><strong>Сахарный тростник</strong></b>, <b style="color:#B71C1C;"><strong>пряности</strong></b>, <b style="color:#FF6F00;"><strong>зерно</strong></b> и <b style="color:#FFB300;"><strong>кукуруза</strong></b> здесь всегда в изобилии и стоят дешево.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Только <b style="color:#9CCC65;"><strong>хлопок</strong></b> и <b style="color:#64DD17;"><strong>конопля</strong></b> из-за более южного расположения здесь растут плохо. Город закупает их у <b style="color:#4CAF50;"><strong>Брайвиля</strong></b> и <b style="color:#4CAF50;"><strong>Дальнего Берега</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Как и все королевство, промышленное сырье и товары, такие как <b style="color:#3E2723;"><strong>порох</strong></b>, <b style="color:#607D8B;"><strong>сталь</strong></b> и <b style="color:#000000;"><strong>уголь</strong></b>, город закупает из <b style="color:#E65100;"><strong>Южного Кита</strong></b>.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Для торговли с <b style="color:#BF360C;"><strong>Нордвилем</strong></b>, у которого город покупает <b style="color:#D50000;"><strong>шелк</strong></b> и <b style="color:#BDBDBD;"><strong>слоновую кость</strong></b>, верфи города закупают корабли <b style="color:#febe0c;"><strong>“Золотой Пеликан”</strong></b>. На этих кораблях можно добраться также и до <b style="color:#E65100;"><strong>Южного Кита</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Флот королевства состоит в основном из кораблей модели <b style="color:#23628e;"><strong>“Храбрый альбатрос”</strong></b>, которая не очень подходит для боя с <b style="color:#474c5e;"><strong>пиратами</strong></b>. Поэтому как рядом с городом, так и на пути к <b style="color:#4CAF50;"><strong>Брайвилю</strong></b>, их достаточно много.</p>\n',
             },
             {
                 id: "final-01",
@@ -704,7 +744,8 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 6,
-                        name: "Золотой пеликан",
+                        name: pelicanParams.name,
+                        description: pelicanParams.description,
                         velocity: pelicanParams.velocity,
                         angularVelocity: pelicanParams.angularVelocity,
                         damage: pelicanParams.damage,
@@ -911,6 +952,20 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
+                description:
+                    '<p><b style="color:#BF360C;"><strong>Нордвиль</strong></b> — единственный город, расположенный в регионе Глиняных гор. Из-за своей удаленности на севере и сурового климата, это был последний город, который заселили в Небесах Трех Дорог. Но несмотря на то, что <b style="color:#BF360C;"><strong>Нордвиль</strong></b> является самым молодым поселением, он развивается достаточно быстро.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Как уже было сказано, климат в <b style="color:#BF360C;"><strong>Нордвиле</strong></b> очень суровый, поэтому выращивать здесь сельскохозяйственные культуры очень сложно. <b style="color:#4CAF50;"><strong>Сахарный тростник</strong></b>, <b style="color:#FF6F00;"><strong>зерно</strong></b> и <b style="color:#FFB300;"><strong>кукурузу</strong></b> город закупает у <b style="color:#4CAF50;"><strong>Мидлгарда</strong></b>. <b style="color:#9CCC65;"><strong>Хлопок</strong></b> приходится везти аж из самого <b style="color:#4CAF50;"><strong>Брайвиля</strong></b>.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Каким-то чудом в городе научились выращивать <b style="color:#B71C1C;"><strong>пряности</strong></b> и <b style="color:#64DD17;"><strong>коноплю</strong></b>. Как фермерам <b style="color:#BF360C;"><strong>Нордвиля</strong></b> удается получать большие урожаи этих культур, никто не знает, а те не раскрывают своих секретов.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>В горах <b style="color:#BF360C;"><strong>Нордвиля</strong></b> было найдено большое количество скелетов мамонтов. Эти древние существа населяли землю задолго до Катаклизма. <b style="color:#BF360C;"><strong>Нордвиль</strong></b> стал главным поставщиком как изделий из <b style="color:#BDBDBD;"><strong>слоновой кости</strong></b>, так и самих костей.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>В лесах <b style="color:#BF360C;"><strong>Нордвиля</strong></b> обитает большое количество гусениц-шелкопрядов. Цены на <b style="color:#D50000;"><strong>шелк</strong></b> здесь самые низкие в Небесах Трех Дорог.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>В городе промышленность находится на ранней стадии развития, ведь поселение очень молодое. <b style="color:#3E2723;"><strong>Порох</strong></b>, <b style="color:#607D8B;"><strong>сталь</strong></b> и <b style="color:#000000;"><strong>уголь</strong></b> город пока вынужден закупать из <b style="color:#E65100;"><strong>Южного Кита</strong></b>.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Для торговли с другими городами инженеры <b style="color:#BF360C;"><strong>Нордвиля</strong></b> создали мощный корабль модели <b style="color:#febe0c;"><strong>“Золотой пеликан”</strong></b>. На этом корабле можно добраться в любой уголок в Небесах Трех Дорог. По этой причине <b style="color:#474c5e;"><strong>пираты</strong></b> держатся от Глиняных гор на почтительном расстоянии.&nbsp;</p>\n',
             },
             {
                 id: "final-02",
@@ -919,7 +974,8 @@ export const useTown = defineStore("town", {
                 ships: [
                     {
                         id: 7,
-                        name: "Небесный кит",
+                        name: whaleParams.name,
+                        description: whaleParams.description,
                         velocity: whaleParams.velocity,
                         angularVelocity: whaleParams.angularVelocity,
                         damage: whaleParams.damage,
@@ -1126,6 +1182,14 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
+                description:
+                    '<p><b style="color:#E65100;"><strong>Южный Кит</strong></b> — единственное поселение на Лунной дороге. Город стал одним из последних поселений в Небесах Трех Дорог. Название город получил благодаря своей форме, напоминающей гигантскую рыбу. Видимо, по этой причине здесь возник культ поклонения Небесным Китам, мифическим созданиям, якобы летающим среди островов.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>В Хвостовом хребте, так называются горы в южной части города, были обнаружены богатые залежи различных полезных ископаемых. <b style="color:#E65100;"><strong>Южный Кит</strong></b> является главным поставщиком <b style="color:#3E2723;"><strong>пороха</strong></b>, <b style="color:#607D8B;"><strong>стали</strong></b> и <b style="color:#000000;"><strong>угля</strong></b> во всех городах, выполняя роль промышленного центра.</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Все остальные товары город закупает со всего региона. Поскольку на песчаных островах Лунной дороги вообще не растут деревья, <b style="color:#795548;"><strong>древесина</strong></b> в <b style="color:#E65100;"><strong>Южном</strong></b> <b style="color:#E65100;"><strong>Ките</strong></b> — один из самых дорогих товаров. Здесь она стоит дороже, чем в любом другом городе.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Благодаря развитой промышленности инженеры <b style="color:#E65100;"><strong>Южного Кита</strong></b> смогли создать самый мощный корабль в районе — модель <b style="color:#325ceb;"><strong>Небесный Кит</strong></b>. Этот шедевр инженерной мысли превосходит любой корабль. По этой причине <b style="color:#474c5e;"><strong>пираты</strong></b> даже близко не подлетают к Лунной дороге.</p>\n',
             },
         ],
         isShowSinkAlert: false,

@@ -5,6 +5,7 @@ import { Game } from "phaser"
 import { useTown } from "../store/town.store.ts"
 import { useTownLevel } from "../setups/town.setup.ts"
 import ResourcesPanel from "../ui-components/ResourcesPanel.component.vue"
+import TownInstraction from "../ui-components/TownInstraction.component.vue"
 import Market from "../windows/market.window.vue"
 import Shipyard from "../windows/shipyard.window.vue"
 import IconMarket from "/public/assets/icons/screens/market.svg"
@@ -57,7 +58,7 @@ onMounted(() => {
             <ResourcesPanel :color="townStore.currentTown.color" :gold="player.gold" />
         </div>
         <h1 :class="`town-screen__name text-h2 text-${townStore.currentTown.color}-darken-4`">
-            <v-dialog max-width="600">
+            <v-dialog max-width="768" scrollable>
                 <template #activator="{ props: activatorProps }">
                     <v-btn
                         class="town-screen__description-trigger"
@@ -69,8 +70,11 @@ onMounted(() => {
                     />
                 </template>
                 <template #default="{ isActive }">
-                    <v-card :title="townStore.currentTown.name" :color="`${townStore.currentTown.color}-lighten-5`">
-                        <v-card-text> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </v-card-text>
+                    <v-card :color="`${townStore.currentTown.color}-lighten-5`">
+                        <v-card-title :class="`text-${townStore.currentTown.color}-darken-4`">{{ townStore.currentTown.name }}</v-card-title>
+                        <v-card-text>
+                            <div v-html="townStore.currentTown.description"></div>
+                        </v-card-text>
 
                         <v-card-actions>
                             <v-spacer></v-spacer>
@@ -106,6 +110,10 @@ onMounted(() => {
             <!--                </v-sheet>-->
             <!--            </v-tabs-window-item>-->
         </v-tabs-window>
+
+        <div class="town-screen__map-button-container">
+            <TownInstraction :color="townStore.currentTown.color" />
+        </div>
     </div>
 </template>
 
@@ -193,6 +201,15 @@ onMounted(() => {
     &__sink-icon {
         width: 50px;
         height: 50px;
+    }
+
+    &__map-button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
     }
 }
 </style>
