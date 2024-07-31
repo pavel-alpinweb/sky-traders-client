@@ -54,6 +54,7 @@ const repairHandler = (value: number) => {
         <v-alert
             v-if="newShip.isShowAlert"
             class="shipyard-window__alert"
+            :color="props.color"
             type="success"
             variant="elevated"
             :title="`Вы приобрели корабль \'${newShip.shipName}\', Капитан!`"
