@@ -945,7 +945,16 @@ export const useTown = defineStore("town", {
                         isGrow: true,
                     },
                 ],
-                description: "",
+                description:
+                    '<p><b style="color:#BF360C;"><strong>Нордвиль</strong></b> — единственный город, расположенный в регионе Глиняных гор. Из-за своей удаленности на севере и сурового климата, это был последний город, который заселили в Небесах Трех Дорог. Но несмотря на то, что <b style="color:#BF360C;"><strong>Нордвиль</strong></b> является самым молодым поселением, он развивается достаточно быстро.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Как уже было сказано, климат в <b style="color:#BF360C;"><strong>Нордвиле</strong></b> очень суровый, поэтому выращивать здесь сельскохозяйственные культуры очень сложно. <b style="color:#4CAF50;"><strong>Сахарный тростник</strong></b>, <b style="color:#FF6F00;"><strong>зерно</strong></b> и <b style="color:#FFB300;"><strong>кукурузу</strong></b> город закупает у <b style="color:#4CAF50;"><strong>Мидлгарда</strong></b>. <b style="color:#9CCC65;"><strong>Хлопок</strong></b> приходится везти аж из самого <b style="color:#4CAF50;"><strong>Брайвиля</strong></b>.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Каким-то чудом в городе научились выращивать <b style="color:#B71C1C;"><strong>пряности</strong></b> и <b style="color:#64DD17;"><strong>коноплю</strong></b>. Как фермерам <b style="color:#BF360C;"><strong>Нордвиля</strong></b> удается получать большие урожаи этих культур, никто не знает, а те не раскрывают своих секретов.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>В городе промышленность находится на ранней стадии развития, ведь поселение очень молодое. <b style="color:#3E2723;"><strong>Порох</strong></b>, <b style="color:#607D8B;"><strong>сталь</strong></b> и <b style="color:#000000;"><strong>уголь</strong></b> город пока вынужден закупать из <b style="color:#E65100;"><strong>Южного Кита</strong></b>.&nbsp;</p>\n' +
+                    "<p>&nbsp;</p>\n" +
+                    '<p>Для торговли с другими городами инженеры <b style="color:#BF360C;"><strong>Нордвиля</strong></b> создали мощный корабль модели <b style="color:#febe0c;"><strong>“Золотой пеликан”</strong></b>. На этом корабле можно добраться в любой уголок в Небесах Трех Дорог. По этой причине <b style="color:#474c5e;"><strong>пираты</strong></b> держатся от Глиняных гор на почтительном расстоянии.&nbsp;</p>\n',
             },
             {
                 id: "final-02",
