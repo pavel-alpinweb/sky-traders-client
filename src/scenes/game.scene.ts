@@ -93,6 +93,7 @@ export class MapScene extends Phaser.Scene {
     }
 
     update() {
+        console.log("FPS", this.game.loop.actualFps)
         mapComposition.moveClouds(this.cloudsTop, 0.9, this.player)
 
         if (this.player && this.player.alpha !== 0) {
