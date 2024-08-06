@@ -5,11 +5,4 @@ export const engineConfig = {
     type: Phaser.AUTO,
     width: LEVEL_WIDTH,
     height: LEVEL_HEIGHT,
-    physics: {
-        default: "arcade",
-        arcade: {
-            gravity: { y: 0 },
-            debug: false,
-        },
-    },
 }

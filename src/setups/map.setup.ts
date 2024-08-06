@@ -8,6 +8,13 @@ export function useMapLevel(coords: Coords, ship: Ship) {
     const config = {
         ...engineConfig,
         parent: gameContainer,
+        physics: {
+            default: "arcade",
+            arcade: {
+                gravity: { y: 0 },
+                debug: false,
+            },
+        },
         scene: new MapScene(coords, ship),
     }
 
