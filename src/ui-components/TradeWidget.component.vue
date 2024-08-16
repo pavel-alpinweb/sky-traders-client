@@ -89,7 +89,7 @@ const errorMessages = computed<string[]>(() => {
                 variant="outlined"
                 :label="`Общая стоимость ${tradeMode === 'buy' ? 'покупки' : 'продажи'}`"
                 focused
-                :append-inner-icon="tradeMode === 'buy' ? 'mdi-cash-minus' : 'mdi-cash-plus'"
+                :append-inner-icon="tradeMode === 'buy' ? 'mdi-minus-circle-multiple' : 'mdi-plus-circle-multiple'"
                 :error-messages="errorMessages"
             >
                 <template #prepend-inner>

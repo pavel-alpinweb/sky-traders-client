@@ -38,6 +38,7 @@ watch(currentRow, () => {
 
 <template>
     <v-data-table
+        class="trade-table"
         :class="`bg-${props.color}-lighten-4`"
         item-value="key"
         :items-per-page="12"
@@ -50,16 +51,22 @@ watch(currentRow, () => {
         @update:model-value="selectResource"
     >
         <template #[`header.${[HEADING.NAME]}`]="{ column }">
-            <span class="text-white font-weight-bold">{{ column.title }}</span>
+            <span class="text-white trade-table__heading font-weight-bold">{{ column.title }}</span>
         </template>
         <template #[`header.${[HEADING.VALUE]}`]="{ column }">
-            <span class="text-white font-weight-bold">{{ column.title }}</span>
+            <span class="text-white trade-table__heading font-weight-bold">{{ column.title }} <v-icon class="table__icon" icon="mdi-warehouse" /></span>
         </template>
         <template #[`header.${[HEADING.BUY_PRICE]}`]="{ column }">
-            <span class="text-white font-weight-bold">{{ column.title }}</span>
+            <span class="text-white trade-table__heading font-weight-bold">{{ column.title }} <v-icon class="table__icon" icon="mdi-plus-circle-multiple" /></span>
         </template>
         <template #[`header.${[HEADING.SELL_PRICE]}`]="{ column }">
-            <span class="text-white font-weight-bold">{{ column.title }}</span>
+            <span class="text-white trade-table__heading font-weight-bold">{{ column.title }} <v-icon class="table__icon" icon="mdi-minus-circle-multiple" /></span>
+        </template>
+        <template #[`header.${[HEADING.MAX_VALUE]}`]="{ column }">
+            <span class="text-white trade-table__heading font-weight-bold">
+                {{ column.title }}
+                <v-icon class="table__icon" icon="mdi-warehouse" />
+            </span>
         </template>
         <template #[`item.${HEADING.NAME}`]="{ item }">
             <div class="trade-table__item">
@@ -111,14 +118,24 @@ watch(currentRow, () => {
     </v-data-table>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "/public/assets/scss/mixins.scss";
 
 .trade-table {
+    .v-table__wrapper {
+        overflow: hidden;
+    }
     &__item {
         display: flex;
         align-items: center;
         gap: 5px;
+        white-space: nowrap;
+    }
+    &__heading {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
     }
     &__icon {
         @include icon-styles;
