@@ -48,6 +48,10 @@ const maxAmount = computed<number>(() => {
     return tradeMode.value === "buy" ? props.maxAmount : props.playerResourceAmount
 })
 
+const inputMaxValue = () => {
+    amount.value = maxAmount.value
+}
+
 const errorMessages = computed<string[]>(() => {
     const messages = []
     if (props.playerGold < totalAmount.value && tradeMode.value === "buy") {
@@ -92,26 +96,30 @@ const errorMessages = computed<string[]>(() => {
                     <component class="trade-widget__resource" :is="ICONS_LIST.gold"></component>
                 </template>
             </v-text-field>
-            <v-slider class="trade-widget__slider" v-model="amount" :max="tradeMode === 'buy' ? props.maxAmount : props.playerResourceAmount" :step="1" :color="props.color" />
-        </div>
-        <div class="trade-widget__right-control">
-            <v-btn-group color="green" variant="elevated">
-                <v-btn
-                    :icon="tradeMode === 'buy' ? 'mdi-cash-plus' : 'mdi-cash-minus'"
-                    :color="props.color"
-                    size="x-large"
-                    v-tooltip="tradeMode === 'buy' ? 'Продать товар' : 'Купить товар'"
-                    @click="changeMode"
-                />
-                <v-btn :color="props.color" size="x-large" @click="buySell" :disabled="disabledAction">
-                    {{ tradeMode === "buy" ? "Купить" : "Продать" }}
-                </v-btn>
-            </v-btn-group>
+            <div class="trade-widget__slider-wrapper">
+                <v-slider class="trade-widget__slider" v-model="amount" :max="tradeMode === 'buy' ? props.maxAmount : props.playerResourceAmount" :step="1" :color="props.color">
+                    <template #prepend>
+                        <span class="font-weight-bold" :class="`text-${props.color}-darken-4 `">0</span>
+                    </template>
+                    <template #append>
+                        <span class="font-weight-bold" :class="`text-${props.color}-darken-4 `">{{ maxAmount }}</span>
+                    </template>
+                </v-slider>
+                <v-btn-group :color="props.color" variant="elevated">
+                    <v-btn :color="props.color" size="x-large" :disabled="maxAmount === 0" @click="inputMaxValue">макс.</v-btn>
+                </v-btn-group>
+                <v-btn-group :color="props.color" variant="elevated">
+                    <v-btn icon="mdi-autorenew" :color="props.color" size="x-large" v-tooltip="tradeMode === 'buy' ? 'Продать товар' : 'Купить товар'" @click="changeMode" />
+                    <v-btn :color="props.color" size="x-large" @click="buySell" :disabled="disabledAction">
+                        {{ tradeMode === "buy" ? "Купить" : "Продать" }}
+                    </v-btn>
+                </v-btn-group>
+            </div>
         </div>
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "/public/assets/scss/mixins.scss";
 
 .trade-widget {
@@ -124,22 +132,29 @@ const errorMessages = computed<string[]>(() => {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        flex-basis: 80%;
-    }
-    &__right-control {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
+        flex-basis: 100%;
     }
     &__input {
-        flex-grow: 1;
+        flex-basis: 49%;
         &--readonly {
             pointer-events: none;
         }
+        .v-input__details {
+            display: none;
+        }
+    }
+    &__slider-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
     &__slider {
-        width: 100%;
+        flex-grow: 1;
+
+        .v-input__details {
+            display: none;
+        }
     }
     &__resource {
         margin: 0 5px;
