@@ -21,10 +21,10 @@ export const BULLET_VELOCITY = 1000
 export const PIRATE_VELOCITY = 150
 export const PIRATE_ANGULAR_VELOCITY = 150
 export const PIRATE_STOP_TOLERANCE = 500
-export const PIRATE_FIRE_DELAY = 1500
-export const PIRATE_START_FIRE_DELAY = 1500
+export const PIRATE_FIRE_DELAY = 2000
+export const PIRATE_START_FIRE_DELAY = 2000
 export const PIRATE_FIRE_DISTANCE = 1000
-export const PIRATE_DAMAGE = 20
+export const PIRATE_DAMAGE = 10
 export const PIRATE_MAX_HEALTH = 150
 export const PIRATE_SPAWN_PROBABILITY = 0.5
 export const PIRATE_AWARD_VALUE = 10000
@@ -47,7 +47,7 @@ export const seagullParams = {
     maxFuel: 50,
     currentFuel: 50,
     price: 10000,
-    repairPrice: 10,
+    repairPrice: 20,
     description:
         '<p>Что такое храбрость, люди, пережившие Катаклизм, знают не понаслышке. Когда гигантский материк взмыл в небо и раскололся на куски, выжившие остались на небольшом острове, позже названом <b style="color:#4CAF50;"><strong>Брайвиль</strong></b>. &nbsp;</p>\n' +
         "<p>&nbsp;</p>\n" +
@@ -66,7 +66,7 @@ export const albatrossParams = {
     maxFuel: 60,
     currentFuel: 60,
     price: 20000,
-    repairPrice: 30,
+    repairPrice: 60,
     description:
         '<p>Наглость — счастье дураков, гласит известная пословица. Только вот торговцы, выбирающие <b style="color:#23628e;"><strong>Наглый альбатрос</strong></b>, так не считают. Чтобы прорваться через <b style="color:#474c5e;"><strong>пиратов</strong></b> между <b style="color:#4CAF50;"><strong>Брайвилем</strong></b> и <b style="color:#4CAF50;"><strong>Мидлгардом</strong></b>, нужно обладать порядочной долей наглости, которая будет щедро вознаграждена.&nbsp;</p>\n' +
         "<p>&nbsp;</p>\n" +
@@ -87,7 +87,7 @@ export const pelicanParams = {
     maxFuel: 250,
     currentFuel: 250,
     price: 50000,
-    repairPrice: 50,
+    repairPrice: 100,
     description:
         '<p><b style="color:#febe0c;"><strong>Золотой Пеликан</strong></b> — шедевр инженеров <b style="color:#BF360C;"><strong>Нордвиля</strong></b>, названный в честь королевской птицы. Из-за большой удалённости города, необходимо было создать корабль, способный долететь до любого уголка в Небесах Трёх Дорог.&nbsp;</p>\n' +
         "<p>&nbsp;</p>\n" +
@@ -108,7 +108,7 @@ export const whaleParams = {
     maxFuel: 500,
     currentFuel: 500,
     price: 100000,
-    repairPrice: 80,
+    repairPrice: 160,
     description:
         '<p>Кто знает, откуда появился культ поклонения китам. Может быть, действительно, кто-то видел гигантских, летающих по небу рыб размером с город, а может быть, речь идет про остров <b style="color:#E65100;"><strong>Южный Кит</strong></b>, по форме сильно напоминающий гигантскую рыбу. Когда в <b style="color:#E65100;"><strong>Южном Ките</strong></b> был изобретен новый корабль, то его решили назвать в честь величественного существа. Подразумевалась ли мифическая рыба или речь шла о родном острове, инженеры умолчали.</p>\n' +
         "<p>&nbsp;</p>\n" +
