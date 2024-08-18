@@ -26,6 +26,8 @@ const player = usePlayer()
 const updateMarketInterval = updateMarket(townStore)
 const isShowAwardAlert = ref(false)
 
+const mapImageUrl = `${import.meta.env.BASE_URL}assets/maps/main-map.jpg`
+
 const goToTown = () => {
     clearInterval(updateMarketInterval)
     if (game) {
@@ -135,7 +137,7 @@ watch(
                 </template>
                 <template #default>
                     <div class="game-screen__map-container">
-                        <v-img src="/public/assets/maps/main-map.jpg" contain />
+                        <v-img :src="mapImageUrl" contain />
                     </div>
                 </template>
             </v-dialog>
