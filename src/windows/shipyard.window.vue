@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue"
+import { computed, reactive, ref } from "vue"
 import IconShips from "/public/assets/icons/shipyard/zeppelin.svg"
 // import IconBlueprints from "/public/assets/icons/shipyard/drawing.svg"
 import IconBuy from "/public/assets/icons/shipyard/buy.svg"
@@ -46,6 +46,10 @@ const refuelHandler = (params: RefuelParams) => {
 const repairHandler = (value: number) => {
     player.repairCurrentShip(value)
 }
+
+// const imageUrl = `${import.meta.env.BASE_URL}/assets/ships/${newShip.shipType}/${newShip.shipType}-shop.png`
+const imageUrl = computed<string>(() => `${import.meta.env.BASE_URL}/assets/ships/${newShip.shipType}/${newShip.shipType}-shop.png`)
+console.log("imageUrl", imageUrl.value)
 </script>
 
 <template>
@@ -62,7 +66,7 @@ const repairHandler = (value: number) => {
             closable
         >
             <template #prepend>
-                <v-img class="shipyard-window__sink-icon" :src="`/public/assets/ships/${newShip.shipType}/${newShip.shipType}-shop.png`" />
+                <v-img class="shipyard-window__sink-icon" :src="imageUrl" />
             </template>
         </v-alert>
         <v-tabs v-model="tab" :color="props.color" align-tabs="center">

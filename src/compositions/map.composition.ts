@@ -3,32 +3,32 @@ import { LEVEL_HEIGHT, LEVEL_WIDTH } from "../configs/gameplay.config.ts"
 
 export const mapComposition = {
     mapBackgroundUpload(scene: Phaser.Scene): void {
-        scene.load.image("map", "/assets/tiles/surface.png")
+        scene.load.image("map", `${import.meta.env.BASE_URL}/assets/tiles/surface.png`)
     },
 
     tileMapUpload(scene: Phaser.Scene) {
-        scene.load.tilemapTiledJSON("tilemap", "/assets/levels/demo.json")
+        scene.load.tilemapTiledJSON("tilemap", `${import.meta.env.BASE_URL}/assets/levels/demo.json`)
     },
 
     islandUpload(scene: Phaser.Scene) {
-        scene.load.image("island-grass-big", "/assets/islands/island-grass-big.png")
-        scene.load.image("island-grass-small", "/assets/islands/island-grass-small.png")
-        scene.load.image("island-ground-big", "/assets/islands/island-ground-big.png")
-        scene.load.image("island-ground-small", "/assets/islands/island-ground-small.png")
-        scene.load.image("island-sand-small", "/assets/islands/island-sand-small.png")
-        scene.load.image("island-sand-big", "/assets/islands/island-sand-big.png")
+        scene.load.image("island-grass-big", `${import.meta.env.BASE_URL}/assets/islands/island-grass-big.png`)
+        scene.load.image("island-grass-small", `${import.meta.env.BASE_URL}/assets/islands/island-grass-small.png`)
+        scene.load.image("island-ground-big", `${import.meta.env.BASE_URL}/assets/islands/island-ground-big.png`)
+        scene.load.image("island-ground-small", `${import.meta.env.BASE_URL}/assets/islands/island-ground-small.png`)
+        scene.load.image("island-sand-small", `${import.meta.env.BASE_URL}/assets/islands/island-sand-small.png`)
+        scene.load.image("island-sand-big", `${import.meta.env.BASE_URL}/assets/islands/island-sand-big.png`)
     },
 
     townsUpload(scene: Phaser.Scene) {
-        scene.load.image("start-01", "/assets/towns/start-01-map.png")
-        scene.load.image("start-02", "/assets/towns/start-02-map.png")
-        scene.load.image("middle", "/assets/towns/middle-map.png")
-        scene.load.image("final-01", "/assets/towns/final-01-map.png")
-        scene.load.image("final-02", "/assets/towns/final-02-map.png")
+        scene.load.image("start-01", `${import.meta.env.BASE_URL}/assets/towns/start-01-map.png`)
+        scene.load.image("start-02", `${import.meta.env.BASE_URL}/assets/towns/start-02-map.png`)
+        scene.load.image("middle", `${import.meta.env.BASE_URL}/assets/towns/middle-map.png`)
+        scene.load.image("final-01", `${import.meta.env.BASE_URL}/assets/towns/final-01-map.png`)
+        scene.load.image("final-02", `${import.meta.env.BASE_URL}/assets/towns/final-02-map.png`)
     },
 
     uploadClouds(scene: Phaser.Scene) {
-        scene.load.image("clouds-top", "/assets/vfx/clouds-map.png")
+        scene.load.image("clouds-top", `${import.meta.env.BASE_URL}/assets/vfx/clouds-map.png`)
     },
 
     createClouds(scene: Phaser.Scene, name: string, scale: number) {

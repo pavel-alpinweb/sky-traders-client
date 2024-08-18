@@ -3,13 +3,13 @@ import { LEVEL_WIDTH, LEVEL_HEIGHT } from "../configs/gameplay.config.ts"
 
 export const townComposition = {
     uploadTown(scene: Phaser.Scene, id: string) {
-        scene.load.image("town", `/assets/towns/${id}-screen.png`)
+        scene.load.image("town", `${import.meta.env.BASE_URL}/assets/towns/${id}-screen.png`)
     },
 
     uploadClouds(scene: Phaser.Scene) {
-        scene.load.image("clouds-small", "/assets/vfx/clouds-screen.png")
-        scene.load.image("clouds-dark", "/assets/vfx/clouds-screen-2.png")
-        scene.load.image("clouds-big", "/assets/vfx/clouds-screen-3.png")
+        scene.load.image("clouds-small", `${import.meta.env.BASE_URL}/assets/vfx/clouds-screen.png`)
+        scene.load.image("clouds-dark", `${import.meta.env.BASE_URL}/assets/vfx/clouds-screen-2.png`)
+        scene.load.image("clouds-big", `${import.meta.env.BASE_URL}/assets/vfx/clouds-screen-3.png`)
     },
 
     createTown(scene: Phaser.Scene): Phaser.GameObjects.Image {

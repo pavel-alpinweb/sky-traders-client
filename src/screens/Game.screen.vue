@@ -42,7 +42,7 @@ const goToTown = () => {
     EventBus.off("crush-ship-end")
     EventBus.off("show-pirate-alert")
     EventBus.off("pirate-death")
-    router.push({ path: "/town" })
+    router.push({ path: `${import.meta.env.BASE_URL}town` })
 }
 
 const destroyShip = (value: number | null) => {

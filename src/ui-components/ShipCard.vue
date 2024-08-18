@@ -42,6 +42,8 @@ const fuelBarColor = useProgressBarColor(fuelPercentage)
 
 const healthPercentage = computed<number>(() => props.ship.currentHealth / (props.ship.maxHealth / 100))
 const healthBarColor = useProgressBarColor(healthPercentage)
+
+const imageUrl = `${import.meta.env.BASE_URL}assets/ships/${props.ship.type}/${props.ship.type}-shop.png`
 </script>
 
 <template>
@@ -63,7 +65,7 @@ const healthBarColor = useProgressBarColor(healthPercentage)
                 </v-card>
             </template>
         </v-dialog>
-        <v-img class="align-end" :src="`/public/assets/ships/${props.ship.type}/${props.ship.type}-shop.png`" height="200">
+        <v-img class="align-end" :src="imageUrl" height="200">
             <v-card-subtitle :class="`ship-card__param text-subtitle-1 align-center d-flex text-${props.color}-darken-5 font-weight-black`">
                 <IconVelocity class="ship-card__param-icon" v-tooltip="'Скорость'" /> {{ props.ship.velocity }}
             </v-card-subtitle>
