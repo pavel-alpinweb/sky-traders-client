@@ -4,13 +4,13 @@ import { EventBus } from "../utils/utils.ts"
 
 export const weaponComposition = {
     uploadBullets(scene: Phaser.Scene, ship: string) {
-        scene.load.image("bullets", `/assets/projectiles/${ship}-bullet.png`)
-        scene.load.image("pirate-bullets", "/assets/projectiles/shark-bullet.png")
+        scene.load.image("bullets", `${import.meta.env.BASE_URL}/assets/projectiles/${ship}-bullet.png`)
+        scene.load.image("pirate-bullets", `${import.meta.env.BASE_URL}/assets/projectiles/shark-bullet.png`)
     },
 
     uploadVFX(scene: Phaser.Scene) {
-        scene.load.atlas("explosion", "/assets/vfx/explosion.png", "/assets/vfx/explosion.json")
-        scene.load.atlas("death", "/assets/vfx/death.png", "/assets/vfx/death.json")
+        scene.load.atlas("explosion", `${import.meta.env.BASE_URL}/assets/vfx/explosion.png`, `${import.meta.env.BASE_URL}/assets/vfx/explosion.json`)
+        scene.load.atlas("death", `${import.meta.env.BASE_URL}/assets/vfx/death.png`, `${import.meta.env.BASE_URL}/assets/vfx/death.json`)
     },
 
     initVFXAnimations(scene: Phaser.Scene) {

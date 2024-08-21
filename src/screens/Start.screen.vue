@@ -5,7 +5,7 @@ const router = useRouter()
 
 const goToGame = (event: Event) => {
     event.preventDefault()
-    router.push({ path: "/game" })
+    router.push({ path: `${import.meta.env.BASE_URL}game` })
 }
 </script>
 

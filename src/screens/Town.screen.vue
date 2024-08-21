@@ -29,7 +29,7 @@ const goToMap = () => {
         if (background) {
             background?.destroy(true)
         }
-        router.push({ path: "/game" })
+        router.push({ path: `${import.meta.env.BASE_URL}game` })
     } else {
         isBlockLeaveTown.value = true
     }

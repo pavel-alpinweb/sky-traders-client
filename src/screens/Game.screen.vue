@@ -26,6 +26,8 @@ const player = usePlayer()
 const updateMarketInterval = updateMarket(townStore)
 const isShowAwardAlert = ref(false)
 
+const mapImageUrl = `${import.meta.env.BASE_URL}assets/maps/main-map.jpg`
+
 const goToTown = () => {
     clearInterval(updateMarketInterval)
     if (game) {
@@ -42,7 +44,7 @@ const goToTown = () => {
     EventBus.off("crush-ship-end")
     EventBus.off("show-pirate-alert")
     EventBus.off("pirate-death")
-    router.push({ path: "/town" })
+    router.push({ path: `${import.meta.env.BASE_URL}town` })
 }
 
 const destroyShip = (value: number | null) => {
@@ -135,7 +137,7 @@ watch(
                 </template>
                 <template #default>
                     <div class="game-screen__map-container">
-                        <v-img src="/public/assets/maps/main-map.jpg" contain />
+                        <v-img :src="mapImageUrl" contain />
                     </div>
                 </template>
             </v-dialog>

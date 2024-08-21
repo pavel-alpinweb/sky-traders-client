@@ -3,8 +3,8 @@ import { Pirate } from "../objects/Pirate.object.ts"
 
 export const piratesComposition = {
     piratesShipsUpload(scene: Phaser.Scene) {
-        scene.load.image("shark", "/assets/ships/shark/shark-map.png")
-        scene.load.image("spawner", "/assets/tiles/spawner.jpg")
+        scene.load.image("shark", `${import.meta.env.BASE_URL}/assets/ships/shark/shark-map.png`)
+        scene.load.image("spawner", `${import.meta.env.BASE_URL}/assets/tiles/spawner.jpg`)
     },
 
     createSpawners(scene: Phaser.Scene, map: Phaser.Tilemaps.Tilemap, pirates: Pirate[]) {

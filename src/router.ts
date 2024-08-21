@@ -5,15 +5,15 @@ import TownScreen from "./screens/Town.screen.vue"
 
 export const routes = [
     {
-        path: "/",
+        path: import.meta.env.BASE_URL,
         component: StartScreen,
     },
     {
-        path: "/game",
+        path: `${import.meta.env.BASE_URL}game`,
         component: GameScreen,
     },
     {
-        path: "/town",
+        path: `${import.meta.env.BASE_URL}town`,
         component: TownScreen,
     },
 ]

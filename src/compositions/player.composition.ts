@@ -5,8 +5,8 @@ import { Ship } from "../types/interfaces.ts"
 import { weaponComposition } from "./weapon.composition.ts"
 export const playerComposition = {
     playerShipUpload(scene: Phaser.Scene, ship: string): void {
-        scene.load.image("ship", `/assets/ships/${ship}/${ship}-map.png`)
-        scene.load.image("smoke", "/assets/vfx/smoke-particle.png")
+        scene.load.image("ship", `${import.meta.env.BASE_URL}/assets/ships/${ship}/${ship}-map.png`)
+        scene.load.image("smoke", `${import.meta.env.BASE_URL}/assets/vfx/smoke-particle.png`)
     },
 
     initPlayer(
