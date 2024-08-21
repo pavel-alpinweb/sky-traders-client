@@ -16,7 +16,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <v-dialog max-width="600" max-height="768">
+    <v-dialog max-width="600" max-height="90vh">
         <template #activator="{ props: activatorProps }">
             <v-btn v-bind="activatorProps" :color="`${props.color}-darken-4`" variant="elevated" size="x-large" v-tooltip="'Инструкция'" icon="mdi-help-circle" />
         </template>
