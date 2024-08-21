@@ -251,7 +251,7 @@ export const useTown = defineStore("town", {
                     "<p>&nbsp;</p>\n" +
                     '<p>Ремесленники, которые ценят роскошные товары, такие как <b style="color:#D50000;"><strong>шелк</strong></b> и <b style="color:#BDBDBD;"><strong>слоновая кость</strong></b>, ждут корабли, прилетающие из <b style="color:#BF360C;"><strong>Нордвиля</strong></b>.</p>\n' +
                     "<p>&nbsp;</p>\n" +
-                    '<p>Между <b style="color:#4CAF50;"><strong>Брайвилем</strong></b> и <b style="color:#4CAF50;"><strong>Мидлгардом</strong></b> постоянно идет торговля. Хотя корабли модели <b style="color:#23628e;"><strong>“Храбрый альбатрос”</strong></b> отлично справляются с перевозками, они недостаточно мощные в бою, чтобы отпугивать <b style="color:#474c5e;"><strong>пиратов</strong></b>, которые на этом маршруте встречаются достаточно часто.&nbsp;</p>\n',
+                    '<p>Между <b style="color:#4CAF50;"><strong>Брайвилем</strong></b> и <b style="color:#4CAF50;"><strong>Мидлгардом</strong></b> постоянно идет торговля. Хотя корабли модели <b style="color:#23628e;"><strong>“Наглый альбатрос”</strong></b> отлично справляются с перевозками, они недостаточно мощные в бою, чтобы отпугивать <b style="color:#474c5e;"><strong>пиратов</strong></b>, которые на этом маршруте встречаются достаточно часто.&nbsp;</p>\n',
             },
             {
                 id: "start-02",
@@ -490,7 +490,7 @@ export const useTown = defineStore("town", {
                     "<p>&nbsp;</p>\n" +
                     '<p><b style="color:#FFB300;"><strong>Кукурузу</strong></b> на <b style="color:#4CAF50;"><strong>Дальнем Берегу</strong></b> выращивают очень много. Так много, что продают большой излишек <b style="color:#4CAF50;"><strong>Брайвилю</strong></b>.</p>\n' +
                     "<p>&nbsp;</p>\n" +
-                    '<p>Своего производства и добычи промышленных товаров на <b style="color:#4CAF50;"><strong>Дальнем Берегу</strong></b> нет. Как и соседний город, <b style="color:#3E2723;"><strong>порох</strong></b>, <b style="color:#607D8B;"><strong>сталь</strong></b> и <b style="color:#000000;"><strong>уголь</strong></b> <b style="color:#4CAF50;"><strong>Дальний Берег</strong></b> закупает из дальних городов, в первую очередь из <b style="color:#E65100;"><strong>Южного Кита</strong></b>. <b style="color:#D50000;"><strong>Шелк</strong></b> и <b style="color:#BDBDBD;"><strong>слоновую кость</strong></b> — из <b style="color:#BF360C;"><strong>Нордвиля</strong></b>.</p>\n' +
+                    '<p>Добычи полезных ископаемых на <b style="color:#4CAF50;"><strong>Дальнем Берегу</strong></b> нет. В городе расположены две шахты и те почти заброшенны. Как и соседний город, <b style="color:#3E2723;"><strong>порох</strong></b>, <b style="color:#607D8B;"><strong>сталь</strong></b> и <b style="color:#000000;"><strong>уголь</strong></b> <b style="color:#4CAF50;"><strong>Дальний Берег</strong></b> закупает из дальних городов, в первую очередь из <b style="color:#E65100;"><strong>Южного Кита</strong></b>. <b style="color:#D50000;"><strong>Шелк</strong></b> и <b style="color:#BDBDBD;"><strong>слоновую кость</strong></b> — из <b style="color:#BF360C;"><strong>Нордвиля</strong></b>.</p>\n' +
                     "<p>&nbsp;</p>\n" +
                     '<p>Из-за отдаленного расположения <b style="color:#474c5e;"><strong>пираты</strong></b> не появляются рядом с городом. Но отлетать далеко от города, кроме как в направлении к <b style="color:#4CAF50;"><strong>Брайвилю</strong></b>, все же не стоит.</p>\n',
             },
