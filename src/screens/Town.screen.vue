@@ -83,7 +83,7 @@ onMounted(() => {
                     </v-card>
                 </template>
             </v-dialog>
-            {{ townStore.currentTown.name }}
+            <span class="town-screen__name-text" :class="`town-screen__name-text--${townStore.currentTown.color}`">{{ townStore.currentTown.name }}</span>
         </h1>
         <v-btn class="text-none town-screen__back-btn" size="large" variant="elevated" :color="townStore.currentTown.color" prepend-icon="mdi-location-exit" @click="goToMap"> Покинуть город </v-btn>
 
@@ -125,6 +125,30 @@ onMounted(() => {
     position: relative;
     overflow: auto;
     display: flex;
+
+    &__name-text {
+        &--green {
+            text-shadow:
+                -1px -1px 0 #e8f5e9,
+                1px -1px 0 #e8f5e9,
+                1px 1px 0 #e8f5e9,
+                1px 1px 0 #e8f5e9;
+        }
+        &--deep-orange {
+            text-shadow:
+                -1px -1px 0 #fbe9e7,
+                1px -1px 0 #fbe9e7,
+                1px 1px 0 #fbe9e7,
+                1px 1px 0 #fbe9e7;
+        }
+        &--orange {
+            text-shadow:
+                -1px -1px 0 #fff3e0,
+                1px -1px 0 #fff3e0,
+                1px 1px 0 #fff3e0,
+                1px 1px 0 #fff3e0;
+        }
+    }
 
     &__alert {
         position: absolute;
